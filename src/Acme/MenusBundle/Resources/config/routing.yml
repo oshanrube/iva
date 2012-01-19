@@ -1,0 +1,3 @@
+member_menu:
+    pattern:  /member/{url}
+    defaults: { _controller: AcmeMenusBundle:Default:index }

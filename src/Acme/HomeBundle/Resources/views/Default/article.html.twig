@@ -1,0 +1,4 @@
+<h2> {{ article.title | capitalize }} </h2>
+{% autoescape false %}
+<p>{{ article.content }}</p>
+{% endautoescape %}

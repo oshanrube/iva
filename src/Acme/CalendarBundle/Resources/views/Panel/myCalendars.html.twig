@@ -1,0 +1,19 @@
+<h2>My Calendars</h2>
+<div id="mcs12_container">
+	<div class="customScrollBox">
+		<div class="container" style="position:relative; top:0; float:left;width: 160px;">
+			<div class="content" style="clear:both;width: 160px;">
+{% for calendar in calendars %} 
+	<label class="label_check" for="calendar-{{ calendar.id }}">
+	<input name="calendar-{{ calendar.id }}" id="calendar-{{ calendar.id }}" value="1" type="checkbox" 
+	{% if calendar.enabled %} {{ "checked=\"checked\"" }} {% endif %}>
+	{{ calendar.title }}
+	</label>	
+{% endfor %}
+			</div>
+		</div>
+		<div class="dragger_container">
+			<div class="dragger"></div>
+		</div>
+	</div>
+</div>

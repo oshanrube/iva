@@ -1,0 +1,16 @@
+Acme\TaskBundle\Entity\Task:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    task:
+      type: string
+      length: '10'
+    dueDate:
+      type: datetime
+      length: null
+  lifecycleCallbacks: {  }

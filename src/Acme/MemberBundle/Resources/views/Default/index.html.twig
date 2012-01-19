@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+{% block content%}
+<div class="">
+ <div class="col">
+  	<div class="widget">
+    <h2>Calendars</h2>
+        {% render "AcmeCalendarBundle:Default:userCalendars" %}        
+  </div>
+  <div class="widget">
+    <h2>Location</h2>
+    <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+    <p><a class="btn" href="#">View details »</a></p>
+  </div>
+ </div>
+ <section class="col middle-col">
+ 	<header>
+		<h2>Dash</h2>
+	</header>
+   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+   <p><a class="btn" href="#">View details »</a></p>
+ </section>
+ <div class="col">
+ 	<div class="widget">
+    <h2>Weather</h2>
+    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p><a class="btn" href="#">View details »</a></p>
+   </div>
+   <div class="widget">
+    <h2>News</h2>
+    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p><a class="btn" href="#">View details »</a></p>
+   </div>
+ </div>
+</div>
+{% endblock %}

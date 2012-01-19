@@ -1,0 +1,16 @@
+Acme\HomeBundle\Entity\Article:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    title:
+      type: string
+      length: '255'
+    content:
+      type: text
+      length: null
+  lifecycleCallbacks: {  }

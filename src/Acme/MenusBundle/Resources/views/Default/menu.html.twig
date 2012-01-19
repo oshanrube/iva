@@ -1,0 +1,5 @@
+<ul class="button-list">
+{% for item in menu %}
+	<li><a href="{{ path('member_menu', { 'url': item.url }) }}" class='button'>{{item.label}}</a></li>
+{% endfor %}
+</ul>

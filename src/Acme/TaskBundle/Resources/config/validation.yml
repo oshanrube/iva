@@ -1,0 +1,9 @@
+# Acme/TaskBundle/Resources/config/validation.yml
+Acme\TaskBundle\Entity\Task:
+    properties:
+        task:
+            - NotBlank: ~
+            - MinLength: { limit: 3, message: "Your name must have at least {{ limit }} characters." }
+        dueDate:
+            - NotBlank: ~
+            - Type: \DateTime

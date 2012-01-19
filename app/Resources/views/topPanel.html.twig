@@ -1,0 +1,66 @@
+<div id="toppanel">
+	<div id="panel">
+		<div class="content clearfix">
+			<div class="left">
+				<ul id="menu">
+					<li id="menu_active"><a href="home">Home</a></li>
+					<li><a href="features">Features</a></li>
+					<li><a href="about">About</a></li>
+					<li><a href="support">Support</a></li>
+					<li><a href="contacts">Contacts</a></li>
+				</ul>
+			</div>
+			<div class="left">
+				<!-- Login Form -->
+				{% render "FOSUserBundle:Security:login" with {'quick' : true} %}
+			</div>
+			<div class="left right">			
+				<!-- Register Form -->
+					<div id="mcs_container">
+					<div class="mcs_customScrollBox">
+					<div class="mcs_container">
+					<div class="mcs_content">
+            {% render "FOSUserBundle:Registration:register" with {'quick' : true} %}
+            <div class="clear"></div>
+					</div>
+					</div>
+					<div class="dragger_container">
+					<div class="dragger"></div>
+					</div>
+					</div>
+					</div>
+					
+					<!-- content to show if javascript is disabled -->
+					<noscript>
+						<style type="text/css">
+							#mcs_container .customScrollBox{overflow:auto;}
+							#mcs_container .dragger_container{display:none;}
+						</style>
+					</noscript>
+			</div>
+		</div>
+</div> <!-- /login -->	
+
+	<!-- The tab on top -->	
+	<div class="tab">
+		<ul class="login">
+			<li class="left">&nbsp;</li>
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+         	<li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</li>
+         {% else %}
+            <li>Hello Guest!</li>
+         {% endif %}
+			<li class="sep">|</li>
+			<li id="toggle">
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+         	<a class="open" href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+         {% else %}
+            <span id="open" class="open">Log In | Register</span>
+         {% endif %}
+				<span id="close" style="display: none;" class="close">Close Panel</span>			
+			</li>
+			<li class="right">&nbsp;</li>
+		</ul> 
+	</div> 
+	<!-- / top -->
+	</div>

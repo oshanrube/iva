@@ -1,0 +1,11 @@
+{% form_theme form 'AcmeHomeBundle:Form:quickFields.html.twig' %}
+
+
+<h1>Not a member yet? Sign Up!</h1>
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_quickRegister">
+    {{ form_widget(form) }}
+	<div class="clear"></div>
+	<button type="submit" name="Submit" class="btn register">
+    {{ 'registration.submit'|trans({}, 'FOSUserBundle') }}
+    </button>
+</form>

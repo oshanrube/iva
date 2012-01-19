@@ -1,0 +1,37 @@
+#calendar-panel label {
+	text-align: left;
+	color: #fff;
+	padding-top: 0;
+	display: block; cursor: pointer; line-height: 20px; padding-bottom: 9px; text-shadow: 0 -1px 0 rgba(0,0,0,.2); 
+	float: none;
+}
+#calendar-panel #prev,#calendar-panel #next {
+	display: inline-block;
+	height: 252px;
+	vertical-align: middle;
+	background: #AAA;
+	cursor: pointer;
+	border:1px solid #CCC;
+}
+#calendar-panel #prev:hover,#calendar-panel #next:hover {
+	border:1px solid #000;
+}
+#calendar-panel #middle {
+	display: inline-block;
+	vertical-align: top;
+	width: 172px;
+	text-align: center;
+}
+#calendar-panel #middle input[type=text],
+#calendar-panel #middle textarea,
+#calendar-panel #middle select,
+#calendar-panel #middle button {
+	width: 163px;
+	margin-bottom: 10px;
+}
+#calendar-panel #middle .alert-message{
+	margin-bottom: 0;
+}
+#calendar-panel #middle .alert-message p{
+	padding-bottom: 0;
+}

@@ -1,0 +1,8 @@
+{% form_theme form 'AcmeHomeBundle:Form:quickFields.html.twig' %}
+<h2>New Calendar</h2>
+<form onSubmit="ajaxSubmit(this);return false;" action="{{ path('AcmeCalendarBundle_ajaxnewcalendar') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+	<button type="submit" name="Submit" class="btn register">
+    {{ 'registration.submit'|trans({}, 'FOSUserBundle') }}
+    </button>
+</form>

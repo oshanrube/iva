@@ -1,0 +1,29 @@
+AcmeStoreBundle_homepage:
+    pattern:  /store/hello/{name}
+    defaults: { _controller: AcmeStoreBundle:Default:index }
+
+AcmeStoreBundle_create:
+    pattern:  /store/create
+    defaults: { _controller: AcmeStoreBundle:Default:create }
+
+AcmeStoreBundle_showall:
+    pattern:  /store/showall
+    defaults: { _controller: AcmeStoreBundle:Default:showAll }
+
+AcmeStoreBundle_show:
+    pattern:  /store/show/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:show }
+    requirements:
+       id: \d+
+
+AcmeStoreBundle_update:
+    pattern:  /store/update/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:update }
+    requirements:
+       id: \d+
+
+AcmeStoreBundle_delete:
+    pattern:  /store/delete/{id}
+    defaults: { _controller: AcmeStoreBundle:Default:delete }
+    requirements:
+       id: \d+

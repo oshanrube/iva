@@ -1,0 +1,25 @@
+Acme\MenusBundle\Entity\Menu:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    label:
+      type: string
+      length: '255'
+    url:
+      type: string
+      length: '255'
+    parent:
+      type: integer
+      length: null
+    description:
+      type: text
+      length: null
+    type:
+      type: integer
+      length: null
+  lifecycleCallbacks: {  }

@@ -1,0 +1,3 @@
+AcmeMemberBundle_dashboard:
+    pattern:  /member
+    defaults: { _controller: AcmeMemberBundle:Default:index }

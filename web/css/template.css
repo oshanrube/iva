@@ -1,0 +1,8 @@
+#contentHolder h1{
+	width: 100%;
+	padding: 0;	
+}
+#contentHolder {
+	border: 1px solid #666;
+	padding: 10px;
+}

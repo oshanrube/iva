@@ -1,0 +1,41 @@
+<header {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}{{ 'style="height: 597px;"' }}{% endif %} >
+	<div class="wrapper">
+		<ul id="icons">
+			<li><a href="<?php echo JURI::base(); ?>"><img src="{{ asset('images/icon1.gif') }}" alt=""></a></li>
+			<li><a href="<?php echo JURI::base(); ?>sitemap"><img src="{{ asset('images/icon2.gif') }}" alt=""></a></li>
+			<li><a href="<?php echo JURI::base(); ?>contacts"><img src="{{ asset('images/icon3.gif') }}" alt=""></a></li>
+		</ul>
+		<span class="call"></span>
+	</div>
+	{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	<div class="wrapper">
+		<nav>
+			<div id="main_menu">
+			<ul id="menu">
+				<li class="first" class="menu_active">
+					<a href="home?tmpl=ajax"  class="house">Home</a></li>
+				<li><a href="features?tmpl=ajax" class="features">Features</a></li>
+				<li><a href="about?tmpl=ajax" class="info">About</a></li>
+				<li><a href="support?tmpl=ajax" class="wrench">Support</a></li>
+				<li><a href="contacts?tmpl=ajax" class="envelope">Contacts</a></li>
+			</ul>
+			</div>
+		</nav>
+	</div>
+	<div id="stage">
+			<!-- The dot divs are shown here -->
+	</div>
+  		<div id="ajax_content"></div>
+  		
+	{% else %}
+	<div class="wrapper">
+		<nav>
+			<div id="member_menu">
+				<jdoc:include type="modules" name="member-menu" />
+			</div>
+		</nav>
+	</div>
+	{% endif %}
+	
+	{% block content %}{% endblock %}
+</header>

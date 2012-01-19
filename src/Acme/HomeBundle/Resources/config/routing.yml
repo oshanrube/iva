@@ -1,0 +1,12 @@
+AcmeHomeBundle_homepage:
+    pattern:  /
+    defaults: { _controller: AcmeHomeBundle:Default:index }
+
+AcmeHomeBundle_ajax:
+    pattern:  /ajax/{article}
+    defaults: { _controller: AcmeHomeBundle:Default:ajax }
+    requirements:
+        _method:  GET
+error:
+    pattern:  /
+    defaults: { _controller: AcmeHomeBundle:Default:index,name:error }
