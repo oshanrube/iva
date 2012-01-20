@@ -1,0 +1,23 @@
+{% block field_row %}
+{% spaceless %}
+        {{ form_errors(form) }}     
+        {{ form_widget(form) }}
+{% endspaceless %}
+{% endblock field_row %}
+
+{% block field_widget %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    {% set value = value|default('') %}
+    <input type="{{ type }}" class="field" placeholder="{{ form.vars.label }}" {{ block('widget_attributes') }} value="{{ value }}" />
+{% endspaceless %}
+{% endblock field_widget %}
+
+{% block checkbox_widget %}
+{% spaceless %}
+	<label class="label_check {% if checked %}c_on{% else %}c_off{% endif %}" for="{{ form.vars.id }}" onClick="checkCheckbox(this)">
+		<input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} >
+	{{ form.vars.label }}
+	</label>
+{% endspaceless %}
+{% endblock checkbox_widget %}

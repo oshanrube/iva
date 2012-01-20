@@ -1,0 +1,44 @@
+AcmeCalendarBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AcmeCalendarBundle:Default:index }
+
+AcmeCalendarBundle_ajaxcurrentmonth:
+    pattern:  /calendar/month/ajax/currentmonth/{year}/{month}
+    defaults: { _controller: AcmeCalendarBundle:Panel:ajaxMonth , year:2011,month:1,nav:'currentMonth' }
+
+AcmeCalendarBundle_ajaxnextmonth:
+    pattern:  /calendar/month/ajax/nextmonth/{year}/{month}
+    defaults: { _controller: AcmeCalendarBundle:Panel:ajaxMonth , year:2011,month:1,nav:'nextMonth' }
+
+AcmeCalendarBundle_ajaxprevmonth:
+    pattern:  /calendar/month/ajax/prevmonth/{year}/{month}
+    defaults: { _controller: AcmeCalendarBundle:Panel:ajaxMonth , year:2011,month:1,nav:'prevMonth' }
+
+AcmeCalendarBundle_ajaxnextyear:
+    pattern:  /calendar/month/ajax/nextyear/{year}/{month}
+    defaults: { _controller: AcmeCalendarBundle:Panel:ajaxMonth , year:2011,month:1,nav:'nextYear' }
+    
+AcmeCalendarBundle_ajaxprevyear:
+    pattern:  /calendar/month/ajax/prevyear/{year}/{month}
+    defaults: { _controller: AcmeCalendarBundle:Panel:ajaxMonth , year:2011,month:1,nav:'prevYear' }
+
+AcmeCalendarBundle_ajaxprevpanel:
+    pattern:  /calendar/panel/ajax/prev/{current}
+    defaults: { _controller: AcmeCalendarBundle:Panel:ajaxPanel , nav:prev,current:mycalendars }
+    
+AcmeCalendarBundle_ajaxnextpanel:
+    pattern:  /calendar/panel/ajax/next/{current}
+    defaults: { _controller: AcmeCalendarBundle:Panel:ajaxPanel , nav:next,current:mycalendars }
+    
+AcmeCalendarBundle_ajaxcurrentpanel:
+    pattern:  /calendar/panel/ajax/next/newcalendar
+    defaults: { _controller: AcmeCalendarBundle:Panel:ajaxPanel , nav:next,current:mycalendars }
+    
+AcmeCalendarBundle_ajaxnewcalendar:
+    pattern:  /calendar/panel/ajax/addnewcalendar
+    defaults: { _controller: AcmeCalendarBundle:Default:addNewCalendar }
+
+AcmeCalendarBundle_ajaxtickcalendar:
+    pattern:  /calendar/panel/ajax/tickcalendar/{id}
+    defaults: { _controller: AcmeCalendarBundle:Default:tickCalendar , id:0 }
+
