@@ -48,7 +48,7 @@ class __TwigTemplate_c5d498d06bb34af3efddede23e25d02f extends Twig_Template
    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
    <p><a class=\"btn\" href=\"#\">View details »</a></p>
  </section>
- <div class=\"col\">
+ <div class=\"col\" style=\"position: absolute;right: 35px;\">
  \t<div class=\"widget\">
     <h2>Weather</h2>
     <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>

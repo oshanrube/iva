@@ -8,6 +8,23 @@ use Acme\CalendarBundle\Entity\Calendar;
 
 class PanelController extends Controller
 {
+    public function ajaxMonthAction($year,$month,$nav) {
+    	if(!$this->getRequest()->isXmlHttpRequest()){
+			return $this->redirect($this->generateUrl('error'));
+		}
+    	if($nav == 'nextMonth')$month++;
+    	elseif($nav == 'prevMonth') $month--;
+		elseif($nav == 'nextYear') $year++;
+		elseif($nav == 'prevYear') $year--;
+		
+    	$timestamp = mktime(0,0,0,$month,1,$year);
+    	$templating = $this->get('templating');
+    	$page = $templating->render('AcmeCalendarBundle:Panel:month.html.php',array('timestamp' => $timestamp));
+			
+    	$response = new Response(json_encode(array('page' => $page,'month' => date('m',$timestamp),'year' => date('Y',$timestamp),'mon' => date('F',$timestamp))));
+		$response->headers->set('Content-Type', 'application/json');
+		return $response;
+   }
 	public function ajaxPanelAction($current,$nav) {
 		if(!$this->getRequest()->isXmlHttpRequest()){
 			return $this->redirect($this->generateUrl('error'));
@@ -46,7 +63,6 @@ class PanelController extends Controller
 		        ->findByOwnerId($user->getId());
 			$panel = $templating->render('AcmeCalendarBundle:Panel:myCalendars.html.twig',array('calendars' => $calendars));
 		} else {$panel='';}
-    	$response = new Response('Hello ', 200);
     	$response = new Response(json_encode(array('page' => $panel,'current' => $current)));
 		$response->headers->set('Content-Type', 'application/json');
 		return $response;

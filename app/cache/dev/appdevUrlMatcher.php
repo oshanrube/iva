@@ -112,24 +112,29 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeCalendarBundle_homepage'));
         }
 
+        // AcmeCalendarBundle_ajaxcurrentmonth
+        if (0 === strpos($pathinfo, '/calendar/month/ajax/currentmonth') && preg_match('#^/calendar/month/ajax/currentmonth(?:/(?P<year>[^/]+?)(?:/(?P<month>[^/]+?))?)?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'currentMonth',)), array('_route' => 'AcmeCalendarBundle_ajaxcurrentmonth'));
+        }
+
         // AcmeCalendarBundle_ajaxnextmonth
         if (0 === strpos($pathinfo, '/calendar/month/ajax/nextmonth') && preg_match('#^/calendar/month/ajax/nextmonth(?:/(?P<year>[^/]+?)(?:/(?P<month>[^/]+?))?)?$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextMonth',)), array('_route' => 'AcmeCalendarBundle_ajaxnextmonth'));
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextMonth',)), array('_route' => 'AcmeCalendarBundle_ajaxnextmonth'));
         }
 
         // AcmeCalendarBundle_ajaxprevmonth
         if (0 === strpos($pathinfo, '/calendar/month/ajax/prevmonth') && preg_match('#^/calendar/month/ajax/prevmonth(?:/(?P<year>[^/]+?)(?:/(?P<month>[^/]+?))?)?$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevMonth',)), array('_route' => 'AcmeCalendarBundle_ajaxprevmonth'));
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevMonth',)), array('_route' => 'AcmeCalendarBundle_ajaxprevmonth'));
         }
 
         // AcmeCalendarBundle_ajaxnextyear
         if (0 === strpos($pathinfo, '/calendar/month/ajax/nextyear') && preg_match('#^/calendar/month/ajax/nextyear(?:/(?P<year>[^/]+?)(?:/(?P<month>[^/]+?))?)?$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextYear',)), array('_route' => 'AcmeCalendarBundle_ajaxnextyear'));
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextYear',)), array('_route' => 'AcmeCalendarBundle_ajaxnextyear'));
         }
 
         // AcmeCalendarBundle_ajaxprevyear
         if (0 === strpos($pathinfo, '/calendar/month/ajax/prevyear') && preg_match('#^/calendar/month/ajax/prevyear(?:/(?P<year>[^/]+?)(?:/(?P<month>[^/]+?))?)?$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevYear',)), array('_route' => 'AcmeCalendarBundle_ajaxprevyear'));
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevYear',)), array('_route' => 'AcmeCalendarBundle_ajaxprevyear'));
         }
 
         // AcmeCalendarBundle_ajaxprevpanel
@@ -142,9 +147,24 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxPanelAction',  'nav' => 'next',  'current' => 'mycalendars',)), array('_route' => 'AcmeCalendarBundle_ajaxnextpanel'));
         }
 
+        // AcmeCalendarBundle_ajaxcurrentpanel
+        if ($pathinfo === '/calendar/panel/ajax/next/newcalendar') {
+            return array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxPanelAction',  'nav' => 'next',  'current' => 'mycalendars',  '_route' => 'AcmeCalendarBundle_ajaxcurrentpanel',);
+        }
+
         // AcmeCalendarBundle_ajaxnewcalendar
         if ($pathinfo === '/calendar/panel/ajax/addnewcalendar') {
             return array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::addNewCalendarAction',  '_route' => 'AcmeCalendarBundle_ajaxnewcalendar',);
+        }
+
+        // AcmeCalendarBundle_ajaxtickcalendar
+        if (0 === strpos($pathinfo, '/calendar/panel/ajax/tickcalendar') && preg_match('#^/calendar/panel/ajax/tickcalendar(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::tickCalendarAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_ajaxtickcalendar'));
+        }
+
+        // AcmeCalendarBundle_ajaxdeletecalendar
+        if (0 === strpos($pathinfo, '/calendar/panel/ajax/deletecalendar') && preg_match('#^/calendar/panel/ajax/deletecalendar(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::deleteCalendarAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_ajaxdeletecalendar'));
         }
 
         // AcmeMemberBundle_dashboard

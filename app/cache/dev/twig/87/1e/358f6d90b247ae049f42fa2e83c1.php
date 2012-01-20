@@ -156,32 +156,41 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
 \t\t\t\t<a href=\"http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode\"><img src=\"http://www.theie6countdown.com/images/upgrade.jpg\" border=\"0\" alt=\"\" /></a>
 \t\t\t</div>
 \t\t<![endif]-->
-\t\t";
-        // line 53
-        $this->displayBlock('javascript', $context, $blocks);
+\t\t<!--bootstrap javascripts-->
+\t\t<script type=\"text/javascript\" src=\"";
         // line 54
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap-twipsy.js"), "html", null, true);
+        echo "\"></script>
+\t\t<script type=\"text/javascript\" src=\"";
+        // line 55
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap-popover.js"), "html", null, true);
+        echo "\"></script>
+\t\t";
+        // line 56
+        $this->displayBlock('javascript', $context, $blocks);
+        // line 57
         echo "\t\t<script type=\"text/javascript\" src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/script.js"), "html", null, true);
         echo "\"></script>\t\t
 </head>
 <body id=\"page1\" ";
-        // line 56
+        // line 59
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             echo "class=\"member\"";
         }
         echo " >
 <!-- Panel -->
 \t";
-        // line 58
+        // line 61
         $this->env->loadTemplate("::topPanel.html.twig")->display($context);
-        // line 59
+        // line 62
         echo "<!--panel -->
 \t<div class=\"body1\" id=\"body1\">
 \t\t<div class=\"body2\">
 \t\t\t<div class=\"main\">
 \t\t\t<!-- header -->
 <header ";
-        // line 64
+        // line 67
         if ((!$this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED"))) {
             echo "style=\"height: 597px;\"";
         }
@@ -189,47 +198,47 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
 \t<div class=\"span4\">
 \t\t<ul id=\"icons\">
 \t\t\t<li><a href=\"<?php echo JURI::base(); ?>\"><img src=\"";
-        // line 67
+        // line 70
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icon1.gif"), "html", null, true);
         echo "\" alt=\"\"></a></li>
 \t\t\t<li><a href=\"<?php echo JURI::base(); ?>sitemap\"><img src=\"";
-        // line 68
+        // line 71
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icon2.gif"), "html", null, true);
         echo "\" alt=\"\"></a></li>
 \t\t\t<li><a href=\"<?php echo JURI::base(); ?>contacts\"><img src=\"";
-        // line 69
+        // line 72
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icon3.gif"), "html", null, true);
         echo "\" alt=\"\"></a></li>
 \t\t</ul>
 \t\t<span class=\"call\"></span>
 \t</div>
 \t";
-        // line 73
+        // line 76
         if ((!$this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED"))) {
-            // line 74
+            // line 77
             echo "\t<div class=\"wrapper\">
 \t\t<nav>
 \t\t\t<div id=\"main_menu\">
 \t\t\t<ul id=\"menu\">
 \t\t\t\t<li class=\"first\" class=\"menu_active\">
 \t\t\t\t\t<a href=\"";
-            // line 79
+            // line 82
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "aa")), "html", null, true);
             echo "\"  class=\"house\">Home</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 80
+            // line 83
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "features")), "html", null, true);
             echo "\" class=\"features\">Features</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 81
+            // line 84
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "about")), "html", null, true);
             echo "\" class=\"info\">About</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 82
+            // line 85
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "support")), "html", null, true);
             echo "\" class=\"wrench\">Support</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 83
+            // line 86
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "contact-us")), "html", null, true);
             echo "\" class=\"envelope\">Contact us</a></li>
 \t\t\t</ul>
@@ -240,110 +249,110 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
 \t\t\t<!-- The dot divs are shown here -->
 \t</div>
   \t\t<div id=\"ajax_content\">";
-            // line 91
+            // line 94
             $this->displayBlock('fos_user_content', $context, $blocks);
             echo "</div>
   \t\t
 \t";
         } else {
-            // line 94
+            // line 97
             echo "\t<div class=\"pull-right\">
 \t\t<nav>
 \t\t\t<div id=\"member_menu\">
 \t\t\t\t";
-            // line 97
+            // line 100
             echo $this->env->getExtension('actions')->renderAction("AcmeMenusBundle:Default:getMenu", array("menu_type" => 2), array());
-            // line 98
+            // line 101
             echo "\t\t\t</div>
 \t\t</nav>
 \t</div>
 \t";
         }
-        // line 102
+        // line 105
         echo "</header>
 \t\t\t<!-- / header -->
 \t\t\t</div>
 \t\t</div>
 \t</div>
 ";
-        // line 107
+        // line 110
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 108
+            // line 111
             echo "<div class=\"dashboard\">
 <!-- content -->
 \t<section id=\"content\">
 \t\t<div id=\"tabContent\">
 \t\t\t";
-            // line 112
+            // line 115
             if (array_key_exists("error", $context)) {
-                // line 113
+                // line 116
                 echo "\t\t\t";
                 if ((!twig_test_empty($this->getContext($context, "error")))) {
-                    // line 114
+                    // line 117
                     echo "\t\t\t<div id=\"message\">
 \t\t\t<dl id=\"system-message\"><dt class=\"error\">Error</dt><dd class=\"error message\"><ul><li>";
-                    // line 115
+                    // line 118
                     echo twig_escape_filter($this->env, $this->getContext($context, "error"), "html", null, true);
                     echo "</li></ul></dd></dl>
 \t\t\t\t<a id=\"close-button\" src=\"\" >
 \t\t\t\t<img src=\"";
-                    // line 117
+                    // line 120
                     echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/close.gif"), "html", null, true);
                     echo "\" style=\"padding: 7px;margin-top: 10px;position: relative;float:left\">
 \t\t\t\t</a>
 \t\t\t</div>
 \t\t\t";
                 }
-                // line 121
+                // line 124
                 echo "\t\t\t";
             }
-            // line 122
+            // line 125
             echo "\t\t\t";
             if ($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "hasFlash", array("notice", ), "method")) {
-                // line 123
+                // line 126
                 echo "\t\t\t<div id=\"message\">
 \t\t\t\t<dl id=\"system-message\">
 \t\t\t\t\t<dt class=\"notice\">Notice</dt><dd class=\"notice message\"><ul><li>";
-                // line 125
+                // line 128
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "flash", array("notice", ), "method"), "html", null, true);
                 echo "</li></ul></dd></dl>
 \t\t\t\t<a id=\"close-button\" src=\"\" >
 \t\t\t\t<img src=\"";
-                // line 127
+                // line 130
                 echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/close.gif"), "html", null, true);
                 echo "\" style=\"padding: 7px;margin-top: 10px;position: relative;float:left\">
 \t\t\t\t</a>
 \t\t\t</div>
 \t\t\t";
             }
-            // line 131
+            // line 134
             echo "\t\t\t<div class=\"clear\"></div>
 \t\t\t<div id=\"contentHolder\">
 \t\t\t\t<!-- The AJAX fetched content goes here -->
 \t\t\t\t";
-            // line 134
+            // line 137
             $this->displayBlock('content', $context, $blocks);
-            // line 135
+            // line 138
             echo "\t\t\t\t";
             $this->displayBlock('body', $context, $blocks);
-            // line 136
+            // line 139
             echo "\t\t\t\t";
             $this->displayBlock('javascripts', $context, $blocks);
-            // line 137
+            // line 140
             echo "\t\t\t</div>
 \t\t</div>
 \t</section>
 </div>
 ";
         }
-        // line 142
+        // line 145
         echo "<script>
 \tjQuery(document).ready(function(\$) {
 \t\t\$('#form_1').jqTransform({imgPath:'jqtransformplugin/img/'});\t
 \t});
 </script>
 <script src=\"";
-        // line 147
+        // line 150
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.mCustomScrollbar.js"), "html", null, true);
         echo "\" type=\"text/javascript\"></script>
 
@@ -363,27 +372,27 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
     {
     }
 
-    // line 53
+    // line 56
     public function block_javascript($context, array $blocks = array())
     {
     }
 
-    // line 91
+    // line 94
     public function block_fos_user_content($context, array $blocks = array())
     {
     }
 
-    // line 134
+    // line 137
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 135
+    // line 138
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 136
+    // line 139
     public function block_javascripts($context, array $blocks = array())
     {
     }

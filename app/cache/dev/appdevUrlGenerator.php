@@ -28,13 +28,17 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeWeatherBundle_homepage' => true,
        'AcmeLocationBundle_homepage' => true,
        'AcmeCalendarBundle_homepage' => true,
+       'AcmeCalendarBundle_ajaxcurrentmonth' => true,
        'AcmeCalendarBundle_ajaxnextmonth' => true,
        'AcmeCalendarBundle_ajaxprevmonth' => true,
        'AcmeCalendarBundle_ajaxnextyear' => true,
        'AcmeCalendarBundle_ajaxprevyear' => true,
        'AcmeCalendarBundle_ajaxprevpanel' => true,
        'AcmeCalendarBundle_ajaxnextpanel' => true,
+       'AcmeCalendarBundle_ajaxcurrentpanel' => true,
        'AcmeCalendarBundle_ajaxnewcalendar' => true,
+       'AcmeCalendarBundle_ajaxtickcalendar' => true,
+       'AcmeCalendarBundle_ajaxdeletecalendar' => true,
        'AcmeMemberBundle_dashboard' => true,
        'member_menu' => true,
        'fos_user_security_login' => true,
@@ -164,24 +168,29 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
     }
 
+    private function getAcmeCalendarBundle_ajaxcurrentmonthRouteInfo()
+    {
+        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'currentMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/currentmonth',  ),));
+    }
+
     private function getAcmeCalendarBundle_ajaxnextmonthRouteInfo()
     {
-        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/nextmonth',  ),));
+        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/nextmonth',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxprevmonthRouteInfo()
     {
-        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/prevmonth',  ),));
+        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/prevmonth',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxnextyearRouteInfo()
     {
-        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextYear',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/nextyear',  ),));
+        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextYear',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/nextyear',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxprevyearRouteInfo()
     {
-        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevYear',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/prevyear',  ),));
+        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevYear',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/prevyear',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxprevpanelRouteInfo()
@@ -194,9 +203,24 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (  0 => 'current',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxPanelAction',  'nav' => 'next',  'current' => 'mycalendars',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'current',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/next',  ),));
     }
 
+    private function getAcmeCalendarBundle_ajaxcurrentpanelRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxPanelAction',  'nav' => 'next',  'current' => 'mycalendars',), array (), array (  0 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/next/newcalendar',  ),));
+    }
+
     private function getAcmeCalendarBundle_ajaxnewcalendarRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::addNewCalendarAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/addnewcalendar',  ),));
+    }
+
+    private function getAcmeCalendarBundle_ajaxtickcalendarRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::tickCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/tickcalendar',  ),));
+    }
+
+    private function getAcmeCalendarBundle_ajaxdeletecalendarRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::deleteCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/deletecalendar',  ),));
     }
 
     private function getAcmeMemberBundle_dashboardRouteInfo()

@@ -54,20 +54,41 @@ class DefaultController extends Controller
 		$response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
-    public function ajaxMonthAction($year,$month,$nav) {
+    
+    function tickCalendarAction($id) {
     	if(!$this->getRequest()->isXmlHttpRequest()){
 			return $this->redirect($this->generateUrl('error'));
 		}
-    	if($nav == 'nextMonth')$month++;
-    	elseif($nav == 'prevMonth') $month--;
-		elseif($nav == 'nextYear') $year++;
-		elseif($nav == 'prevYear') $year--;
-		
-    	$timestamp = mktime(0,0,0,$month,1,$year);
-    	$templating = $this->get('templating');
-    	$page = $templating->render('AcmeCalendarBundle:Default:month.html.php',array('timestamp' => $timestamp));
-
-    	$response = new Response(json_encode(array('page' => $page,'month' => date('m',$timestamp),'year' => date('Y',$timestamp),'mon' => date('F',$timestamp))));
+    	//get calendar by id
+    	$calendar = $this->getDoctrine()
+        ->getRepository('AcmeCalendarBundle:Calendar')
+        ->findOneById($id);
+      //enable or disable
+      if($calendar->getEnabled() == 0){
+      	$calendar->setEnabled(1);
+      }else {
+      	$calendar->setEnabled(0);
+      }
+    	$em = $this->getDoctrine()->getEntityManager();
+				$em->persist($calendar);
+				$em->flush();
+   	$response = new Response(json_encode(array('success' => true)));
+		$response->headers->set('Content-Type', 'application/json');
+		return $response;
+    }
+    //delete a calendar
+    function deleteCalendarAction($id) {
+    	if(!$this->getRequest()->isXmlHttpRequest()){
+			return $this->redirect($this->generateUrl('error'));
+		}
+    	//get calendar by id
+    	$calendar = $this->getDoctrine()
+        ->getRepository('AcmeCalendarBundle:Calendar')
+        ->findOneById($id);
+    	$em = $this->getDoctrine()->getEntityManager();
+				$em->remove($calendar);
+				$em->flush();
+   	$response = new Response(json_encode(array('success' => true)));
 		$response->headers->set('Content-Type', 'application/json');
 		return $response;
     }

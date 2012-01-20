@@ -21,19 +21,24 @@ class __TwigTemplate_9ed17721dd4d66fb80d349549109a632 extends Twig_Template
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "calendars"));
         foreach ($context['_seq'] as $context["_key"] => $context["calendar"]) {
-            echo " 
-\t<label class=\"label_check\" for=\"calendar-";
             // line 7
+            echo "\t<span class=\"delete\" title=\"Delete Calendar\" id=\"calendar-";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "calendar"), "id"), "html", null, true);
+            echo "\"></span> 
+\t<label class=\"label_check\" for=\"calendar-";
+            // line 8
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "calendar"), "id"), "html", null, true);
+            echo "\" id=\"calendar-";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "calendar"), "id"), "html", null, true);
             echo "\">
 \t<input name=\"calendar-";
-            // line 8
+            // line 9
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "calendar"), "id"), "html", null, true);
             echo "\" id=\"calendar-";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "calendar"), "id"), "html", null, true);
             echo "\" value=\"1\" type=\"checkbox\" 
 \t";
-            // line 9
+            // line 10
             if ($this->getAttribute($this->getContext($context, "calendar"), "enabled")) {
                 echo " ";
                 echo "checked=\"checked\"";
@@ -41,16 +46,16 @@ class __TwigTemplate_9ed17721dd4d66fb80d349549109a632 extends Twig_Template
             }
             echo ">
 \t";
-            // line 10
+            // line 11
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "calendar"), "title"), "html", null, true);
             echo "
-\t</label>\t
+\t</label>
 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['calendar'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 13
+        // line 14
         echo "\t\t\t</div>
 \t\t</div>
 \t\t<div class=\"dragger_container\">

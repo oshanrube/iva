@@ -135,6 +135,10 @@ footer a:hover{}
 .jqTransformHidden {display:none}
 .jqTransformInputWrapper { width:auto !important;border:1px solid #262626}
 .jqTransformInputWrapper div{}
+/* --------------
+*entent bootstrap
+-----------------*/
+.popover h3{ color:#404040; } 
 /* -------------
  * Checkbox
  * ------------- */
@@ -347,4 +351,3 @@ section  border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 1
 section #contentHolder .middle-col{ width: 67%; background: #ebe8d9; margin: 0 0 30px 0; padding: 20px; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; box-shadow: 0 0 10px #629996; -moz-box-shadow: 0 0 10px #629996; -webkit-box-shadow: 0 0 10px #629996; }
 section h#contentHolder .middle-col{ width: 67%; background: #ebe8d9; margin: 0 0 30px 0; padding: 20px; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; box-shadow: 0 0 10px #629996; -moz-box-shadow: 0 0 10px #629996; -webkit-box-shadow: 0 0 10px #629996; }
 section h#contentHolder .middle-col{ width: 67%; background: #ebe8d9; margin: 0 0 30px 0; padding: 20px; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; box-shadow: 0 0 10px #629996; -moz-box-shadow: 0 0 10px #629996; -webkit-box-shadow: 0 0 10px #629996; }
-section h

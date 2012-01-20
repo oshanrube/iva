@@ -33,18 +33,17 @@ class __TwigTemplate_9270e8403d15d29a4ba7b54da8944572 extends Twig_Template
 \t\t\t<div class=\"left right\">\t\t\t
 \t\t\t\t<!-- Register Form -->
 \t\t\t\t\t<div id=\"mcs_container\">
-\t\t\t\t\t<div class=\"mcs_customScrollBox\">
-\t\t\t\t\t<div class=\"mcs_container\">
-\t\t\t\t\t<div class=\"mcs_content\">
+\t\t\t\t\t<div class=\"customScrollBox\">
+\t\t\t\t\t<div class=\"container\" style=\"position:relative;width: 280px;top: 0px;margin: 0;padding: 0;float:left;\">
+\t\t\t\t\t<div class=\"content\" style=\"clear:both;width: inherit;\">
             ";
         // line 23
         echo $this->env->getExtension('actions')->renderAction("FOSUserBundle:Registration:register", array("quick" => true), array());
         // line 24
-        echo "            <div class=\"clear\"></div>
-\t\t\t\t\t</div>
+        echo "\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"dragger_container\">
-\t\t\t\t\t<div class=\"dragger\"></div>
+\t\t\t\t\t\t<div class=\"dragger\"></div>
 \t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -54,6 +53,7 @@ class __TwigTemplate_9270e8403d15d29a4ba7b54da8944572 extends Twig_Template
 \t\t\t\t\t\t<style type=\"text/css\">
 \t\t\t\t\t\t\t#mcs_container .customScrollBox{overflow:auto;}
 \t\t\t\t\t\t\t#mcs_container .dragger_container{display:none;}
+\t\t\t\t\t\t\t
 \t\t\t\t\t\t</style>
 \t\t\t\t\t</noscript>
 \t\t\t</div>

@@ -22,25 +22,27 @@ function ajaxSubmit(that){
 	});
 	return false;
 }
-function initBinding() 
-{ 
-	$("label.label_check").click(function(e){
-		if($(this).hasClass('c_on')){
-			$(this).removeClass('c_on');
-			$(this).addClass('c_off');
-			$(this).find('input').prop("checked", false);
-		} else {
-			$(this).removeClass('c_off');
-			$(this).addClass('c_on');
-			$(this).find('input').prop("checked", true);
-		}
-		e.preventDefault();
-		//check_it($(this));
-	});
-	$("#mcs12_container").mCustomScrollbar("vertical",400,"easeOutCirc",1.05,"auto","yes","yes",10);
+
+function checkCheckbox(that){
+	if($(that).hasClass('c_on')){
+		$(that).removeClass('c_on');
+		$(that).addClass('c_off');
+		$(that).find('input').prop("checked", false);
+	} else {
+		$(that).removeClass('c_off');
+		$(that).addClass('c_on');
+		$(that).find('input').prop("checked", true);
+	}
 }
-
-
+function bindCheckBoxes(){
+	$("label.label_check input").each(function(){
+		if($(this).prop("checked")){
+			$(this).parent().addClass('c_on');
+		} else {
+			$(this).parent().addClass('c_off');
+		}
+	});
+}
 
 
 

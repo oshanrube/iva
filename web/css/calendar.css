@@ -35,3 +35,33 @@
 #calendar-panel #middle .alert-message p{
 	padding-bottom: 0;
 }
+#calendar-panel #middle #loadingContainer{
+	background: #414C52;
+	padding: 40px 0;
+}
+#calendar-panel #middle #loadingContainer #loading{
+	width: 50px;
+	height: 50px;
+}
+#calendar-panel #middle #loadingContainer #loading span{
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-top: 40px solid rgba(65, 76, 82, 0.7);
+	top: -13px;
+	left: 0px;
+	-webkit-animation: ticktock 5s linear infinite;
+	-webkit-transform-origin: 25px 40px;
+	-webkit-transform-origin-y: 40px;
+	-webkit-transform-origin-x: 25px;
+}
+#calendar-panel #middle #loadingContainer #loading strong{
+	line-height: 50px;
+}
+#mcs12_container .customScrollBox{position:relative; height:100%; overflow:hidden;}
+#mcs12_container .dragger_container{display:none;}
+#mcs12_container {height: 217px;}
+#mcs12_container .dragger_container{position:absolute; width:2px; height: 215px; float:left; margin:0; background:#000; cursor:pointer -moz-border-radius:2px; -khtml-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; cursor:s-resize;right: 0;}
+#mcs12_container .dragger{position:absolute; width:2px; height:60px; background:#999; text-align:center; line-height:60px; color:#666; overflow:hidden; cursor:pointer; -moz-border-radius:2px; -khtml-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;}
+#mcs12_container .dragger_pressed{position:absolute; width:4px; margin-left:-1px; height:60px; background:#999; text-align:center; line-height:60px; color:#666; overflow:hidden; -moz-border-radius:4px; -khtml-border-radius:4px; -webkit-border-radius:4px; border-radius:4px; cursor:s-resize;}
+#calendar-panel #middle label { width: 90px; overflow: hidden; height: 30px; }
+#calendar-panel #middle span.delete { float: right; height: 30px; width: 30px; background: white; background: url(../images/icons/close.ico) no-repeat;cursor: pointer; }

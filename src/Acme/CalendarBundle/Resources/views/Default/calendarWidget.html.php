@@ -21,6 +21,7 @@
 				$('.calendar #month').attr('year',r.year);
 				$('.calendar .month').html(r.mon);
 				$('.calendar .year').html(r.year);
+				initBinding();
 		}
 		});
 	}
@@ -33,6 +34,16 @@
 		$lefty.find("*").show('slow');
 		$lefty.show();
 		$lefty.animate({width: 200});
+		//lazy loading panel
+		$('#calendar-panel #middle').loading();
+		$.ajax({
+			url: '<?php echo $view['router']->generate('AcmeCalendarBundle_ajaxcurrentpanel');?>',
+			success: function(r){
+					$('#calendar-panel #middle').html(r.page);
+					$('#calendar-panel').attr('current',r.current);
+					initBinding();
+			}
+		});
 	}
 });
 </script>
@@ -54,14 +65,56 @@ $timestamp = mktime(0,0,0,$month,1,$year);
 	<th onclick="nav('nextMonth');">></th>
 	</tr>
 	<tr>
-	<th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th>
+	<th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th>
 	</tr>
 </thead>
 <tbody>
-<?php echo $view->render('AcmeCalendarBundle:Default:month.html.php', array('timestamp' => $timestamp)) ?>
+<?php //echo $view->render('AcmeCalendarBundle:Panel:month.html.php', array('timestamp' => $timestamp)) ?>
 </tbody>
 </table>
 <script type="text/javascript" >
+
+function initBinding() 
+{ 
+	//add calendar
+	$("#calendar-panel #middle label.label_check").click(function(e){
+		//if my calendars 
+		if($("#calendar-panel").attr('current') == "mycalendars"){
+			var calendarId = $(this).find('input').attr('name').replace('calendar-','');
+			var checkbox = $(this);
+			$.ajax({
+				url: '<?php echo $view['router']->generate('AcmeCalendarBundle_ajaxtickcalendar');?>/'+calendarId,
+				success: function(r){
+					if(r.success){
+						checkCheckbox(checkbox);
+					}
+				}
+			});
+		}
+		e.preventDefault();
+	});
+	//delete button
+	$("#calendar-panel #middle span.delete").click(function(e){
+		//if my calendars 
+		if($("#calendar-panel").attr('current') == "mycalendars"){
+			var calendarId = $(this).attr('id').replace('calendar-','');
+			var closebutton = $(this);
+			$.ajax({
+				url: '<?php echo $view['router']->generate('AcmeCalendarBundle_ajaxdeletecalendar');?>/'+calendarId,
+				success: function(r){
+					if(r.success){
+						closebutton.parent().find("#calendar-"+calendarId).remove();
+						closebutton.remove();
+					}
+				}
+			});
+		}
+		e.preventDefault();
+	});
+	$("#mcs12_container").mCustomScrollbar("vertical",400,"easeOutCirc",1.05,"auto","yes","yes",10);
+	bindCheckBoxes();
+   $("td[rel=popover]").popover({offset: 10});
+}
 	$(document).ready( function(){
 		$("#calendar-panel #prev").click(function(){
 			var current = $("#calendar-panel").attr('current');
@@ -74,6 +127,7 @@ $timestamp = mktime(0,0,0,$month,1,$year);
 			}
 			});
 		});
+		//right arrow in right side
 		$("#calendar-panel #next").click(function(){
 			var current = $("#calendar-panel").attr('current');
 			$.ajax({
@@ -85,25 +139,28 @@ $timestamp = mktime(0,0,0,$month,1,$year);
 			}
 			});
 		});
+		//
+
+		//lazy loading calendar
+		$('.calendar tbody').html('<tr><td colspan="7"></td></tr>');
+		$('.calendar tbody tr td').loading();
+		$.ajax({
+			url: '<?php echo $view['router']->generate('AcmeCalendarBundle_ajaxcurrentmonth');?>/<?php echo $year;?>/<?php echo $month;?>',
+			success: function(r){
+				$('.calendar tbody').html(r.page);
+				initBinding();
+			}
+		});
+
 	});
 </script>
-<div id="calendar-panel" current="mycalendars">
+<div id="calendar-panel" current="mycalendars" style="width: 0px;display: none;">
 	<div id="prev"><</div>
 	<div id="middle">
 		<h3>My calendars</h3>
-		<?php echo $view->render('AcmeCalendarBundle:Panel:myCalendars.html.twig', array('calendars' => $calendars)) ?>
 	</div>
 	<div id="next">></div>
 </div>
-<style type="text/css">
-#mcs12_container .customScrollBox{position:relative; height:100%; overflow:hidden;}
-#mcs12_container .dragger_container{display:none;}
-#mcs12_container {height: 217px;}
-#mcs12_container .dragger_container{position:absolute; width:2px; height: 215px; float:left; margin:0; background:#000; cursor:pointer -moz-border-radius:2px; -khtml-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; cursor:s-resize;right: 0;}
-#mcs12_container .dragger{position:absolute; width:2px; height:60px; background:#999; text-align:center; line-height:60px; color:#666; overflow:hidden; cursor:pointer; -moz-border-radius:2px; -khtml-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;}
-#mcs12_container .dragger_pressed{position:absolute; width:4px; margin-left:-1px; height:60px; background:#999; text-align:center; line-height:60px; color:#666; overflow:hidden; -moz-border-radius:4px; -khtml-border-radius:4px; -webkit-border-radius:4px; border-radius:4px; cursor:s-resize;}
-</style>
-
 
 
 

@@ -15,7 +15,7 @@
 
 {% block checkbox_widget %}
 {% spaceless %}
-	<label class="label_check {% if checked %}c_on{% else %}c_off{% endif %}" for="{{ form.vars.id }}" onClick="check_it(this)">
+	<label class="label_check {% if checked %}c_on{% else %}c_off{% endif %}" for="{{ form.vars.id }}" onClick="checkCheckbox(this)">
 		<input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} >
 	{{ form.vars.label }}
 	</label>

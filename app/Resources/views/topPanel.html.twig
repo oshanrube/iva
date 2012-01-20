@@ -17,15 +17,14 @@
 			<div class="left right">			
 				<!-- Register Form -->
 					<div id="mcs_container">
-					<div class="mcs_customScrollBox">
-					<div class="mcs_container">
-					<div class="mcs_content">
+					<div class="customScrollBox">
+					<div class="container" style="position:relative;width: 280px;top: 0px;margin: 0;padding: 0;float:left;">
+					<div class="content" style="clear:both;width: inherit;">
             {% render "FOSUserBundle:Registration:register" with {'quick' : true} %}
-            <div class="clear"></div>
 					</div>
 					</div>
 					<div class="dragger_container">
-					<div class="dragger"></div>
+						<div class="dragger"></div>
 					</div>
 					</div>
 					</div>
@@ -35,6 +34,7 @@
 						<style type="text/css">
 							#mcs_container .customScrollBox{overflow:auto;}
 							#mcs_container .dragger_container{display:none;}
+							
 						</style>
 					</noscript>
 			</div>

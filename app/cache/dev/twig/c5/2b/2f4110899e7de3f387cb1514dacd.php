@@ -91,7 +91,7 @@ class __TwigTemplate_c52b2f4110899e7de3f387cb1514dacd extends Twig_Template
         }
         echo "\" for=\"";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "form"), "vars"), "id"), "html", null, true);
-        echo "\" onClick=\"check_it(this)\">
+        echo "\" onClick=\"checkCheckbox(this)\">
 \t\t<input type=\"checkbox\" ";
         // line 19
         $this->displayBlock("widget_attributes", $context, $blocks);
