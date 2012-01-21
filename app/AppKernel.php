@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new Acme\LocationBundle\AcmeLocationBundle(),
             new Acme\WeatherBundle\AcmeWeatherBundle(),
             new Acme\NewsBundle\AcmeNewsBundle(),
+            new Acme\EventsBundle\AcmeEventsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

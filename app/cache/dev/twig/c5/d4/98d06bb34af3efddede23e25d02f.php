@@ -26,12 +26,23 @@ class __TwigTemplate_c5d498d06bb34af3efddede23e25d02f extends Twig_Template
     public function block_content($context, array $blocks = array())
     {
         // line 4
-        echo "<div class=\"\">
+        echo "<section id=\"addNew\">
+\t<header>
+\t\t<h2>Quick Add</h2>
+\t</header>
+\t<content>
+\t\t";
+        // line 9
+        echo $this->env->getExtension('actions')->renderAction("AcmeTaskBundle:Panel:AddNewTask", array(), array());
+        // line 10
+        echo "\t</content>
+</section>
+<div class=\"\">
  <div class=\"col\">
   \t<div class=\"widget\">
     <h2>Calendars</h2>
         ";
-        // line 8
+        // line 16
         echo $this->env->getExtension('actions')->renderAction("AcmeCalendarBundle:Default:userCalendars", array(), array());
         echo "        
   </div>

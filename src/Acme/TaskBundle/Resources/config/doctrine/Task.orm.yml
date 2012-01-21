@@ -7,10 +7,16 @@ Acme\TaskBundle\Entity\Task:
       id: true
       generator:
         strategy: AUTO
+    calendarId:
+      type: integer
+      length: '11'
     task:
       type: string
-      length: '10'
-    dueDate:
-      type: datetime
+      length: '255'
+    description:
+      type: text
       length: null
+    dueDate:
+      type: integer
+      length: '11'
   lifecycleCallbacks: {  }

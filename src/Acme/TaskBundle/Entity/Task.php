@@ -15,12 +15,22 @@ class Task
     private $id;
 
     /**
+     * @var integer $calendarId
+     */
+    private $calendarId;
+
+    /**
      * @var string $task
      */
     private $task;
 
     /**
-     * @var datetime $dueDate
+     * @var text $description
+     */
+    private $description;
+
+    /**
+     * @var integer $dueDate
      */
     private $dueDate;
 
@@ -33,6 +43,26 @@ class Task
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set calendarId
+     *
+     * @param integer $calendarId
+     */
+    public function setCalendarId($calendarId)
+    {
+        $this->calendarId = $calendarId;
+    }
+
+    /**
+     * Get calendarId
+     *
+     * @return integer 
+     */
+    public function getCalendarId()
+    {
+        return $this->calendarId;
     }
 
     /**
@@ -56,9 +86,29 @@ class Task
     }
 
     /**
+     * Set description
+     *
+     * @param text $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Get description
+     *
+     * @return text 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Set dueDate
      *
-     * @param datetime $dueDate
+     * @param integer $dueDate
      */
     public function setDueDate($dueDate)
     {
@@ -68,7 +118,7 @@ class Task
     /**
      * Get dueDate
      *
-     * @return datetime 
+     * @return integer 
      */
     public function getDueDate()
     {
