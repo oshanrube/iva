@@ -17,7 +17,8 @@ function ajaxSubmit(that){
 			$(that).prepend($('<div class="alert-message warning"><span class="close" onClick="closeAlert(this)">×</span><p><strong>New Calendar Added!</strong></p></div>'));
 			$(that).resetForm();
 		} else if(r.response == 'reload'){
-			$(that).html(r.content);
+			alert('aaasdasdasd');
+			$(that).parent().html(r.html);
 		}	else {
 			alert("An error adding your request");
 		} 

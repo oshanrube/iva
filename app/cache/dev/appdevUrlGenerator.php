@@ -435,6 +435,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
 
     private function getAcmeTaskBundle_addnewtaskRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'AcmeTaskBundle:Panel:addNewTask',), array (), array (  0 =>   array (    0 => 'text',    1 => '/task/new',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\TaskBundle\\Controller\\PanelController::addNewTaskAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/task/new',  ),));
     }
 }

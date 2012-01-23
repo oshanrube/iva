@@ -63,94 +63,98 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
         echo "\" type=\"text/css\" media=\"screen\" />
 \t\t<link rel=\"stylesheet\" href=\"";
         // line 15
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/slide.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/notifications.css"), "html", null, true);
         echo "\" type=\"text/css\" media=\"screen\" />
 \t\t<link rel=\"stylesheet\" href=\"";
         // line 16
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/menu.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/slide.css"), "html", null, true);
         echo "\" type=\"text/css\" media=\"screen\" />
 \t\t<link rel=\"stylesheet\" href=\"";
         // line 17
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/jquery.mCustomScrollbar.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/menu.css"), "html", null, true);
         echo "\" type=\"text/css\" media=\"screen\" />
 \t\t<link rel=\"stylesheet\" href=\"";
         // line 18
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/calendar.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/jquery.mCustomScrollbar.css"), "html", null, true);
         echo "\" type=\"text/css\" media=\"screen\" />
 \t\t<link rel=\"stylesheet\" href=\"";
         // line 19
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/calendar.css"), "html", null, true);
+        echo "\" type=\"text/css\" media=\"screen\" />
+\t\t<link rel=\"stylesheet\" href=\"";
+        // line 20
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/tasks.css"), "html", null, true);
         echo "\" type=\"text/css\" media=\"screen\" />
 \t\t";
-        // line 20
-        $this->displayBlock('stylesheets', $context, $blocks);
         // line 21
+        $this->displayBlock('stylesheets', $context, $blocks);
+        // line 22
         echo "\t\t<!-- javascript -->
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 22
+        // line 23
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.jqtransform.js"), "html", null, true);
         echo "\"></script>
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 23
+        // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/menu.js"), "html", null, true);
         echo "\"></script>
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 24
+        // line 25
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/ajax_content.js"), "html", null, true);
         echo "\"></script>
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 25
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery-ui.min.js"), "html", null, true);
         echo "\"></script>
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 26
+        // line 27
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.easing.1.3.js"), "html", null, true);
         echo "\"></script>
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 27
+        // line 28
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.mousewheel.min.js"), "html", null, true);
         echo "\"></script>
 
 \t\t<!-- styles needed by jScrollPane -->
 \t\t<link type=\"text/css\" href=\"";
-        // line 30
+        // line 31
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/jquery.jscrollpane.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" media=\"all\" />
 \t\t<!-- the mousewheel plugin - optional to provide mousewheel support -->
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 32
+        // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.mousewheel.js"), "html", null, true);
         echo "\"></script>
 \t\t<!-- the jScrollPane script -->
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 34
+        // line 35
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.jscrollpane.min.js"), "html", null, true);
         echo "\"></script>\t\t
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 35
+        // line 36
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.form.js"), "html", null, true);
         echo "\"></script> 
 \t\t<!-- PNG FIX for IE6 -->
 \t\t<!-- http://24ways.org/2007/supersleight-transparent-png-in-ie6 -->
 \t\t<!--[if lte IE 6]>
 \t\t\t<script type=\"text/javascript\" src=\"";
-        // line 39
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/pngfix/supersleight-min.js"), "html", null, true);
         echo "\"></script>
 \t\t<![endif]-->
 \t\t<!-- Sliding effect -->
 \t\t<script src=\"";
-        // line 42
+        // line 43
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/slide.js"), "html", null, true);
         echo "\" type=\"text/javascript\"></script>
 \t\t<!--[if lt IE 9]>
 \t\t\t<script type=\"text/javascript\" src=\"";
-        // line 44
+        // line 45
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/html5.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<style type=\"text/css\">
 \t\t\t\t.button1 {behavior: url(";
-        // line 46
+        // line 47
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/PIE.htc"), "html", null, true);
         echo ")}
 \t\t\t</style>
@@ -162,39 +166,39 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
 \t\t<![endif]-->
 \t\t<!--bootstrap javascripts-->
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 55
+        // line 56
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap-twipsy.js"), "html", null, true);
         echo "\"></script>
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 56
+        // line 57
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap-popover.js"), "html", null, true);
         echo "\"></script>
 \t\t";
-        // line 57
-        $this->displayBlock('javascript', $context, $blocks);
         // line 58
+        $this->displayBlock('javascript', $context, $blocks);
+        // line 59
         echo "\t\t<script type=\"text/javascript\" src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/script.js"), "html", null, true);
         echo "\"></script>\t\t
 </head>
 <body id=\"page1\" ";
-        // line 60
+        // line 61
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             echo "class=\"member\"";
         }
         echo " >
 <!-- Panel -->
 \t";
-        // line 62
-        $this->env->loadTemplate("::topPanel.html.twig")->display($context);
         // line 63
+        $this->env->loadTemplate("::topPanel.html.twig")->display($context);
+        // line 64
         echo "<!--panel -->
 \t<div class=\"body1\" id=\"body1\">
 \t\t<div class=\"body2\">
 \t\t\t<div class=\"main\">
 \t\t\t<!-- header -->
 <header ";
-        // line 68
+        // line 69
         if ((!$this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED"))) {
             echo "style=\"height: 597px;\"";
         }
@@ -202,47 +206,47 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
 \t<div class=\"span4\">
 \t\t<ul id=\"icons\">
 \t\t\t<li><a href=\"<?php echo JURI::base(); ?>\"><img src=\"";
-        // line 71
+        // line 72
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icon1.gif"), "html", null, true);
         echo "\" alt=\"\"></a></li>
 \t\t\t<li><a href=\"<?php echo JURI::base(); ?>sitemap\"><img src=\"";
-        // line 72
+        // line 73
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icon2.gif"), "html", null, true);
         echo "\" alt=\"\"></a></li>
 \t\t\t<li><a href=\"<?php echo JURI::base(); ?>contacts\"><img src=\"";
-        // line 73
+        // line 74
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icon3.gif"), "html", null, true);
         echo "\" alt=\"\"></a></li>
 \t\t</ul>
 \t\t<span class=\"call\"></span>
 \t</div>
 \t";
-        // line 77
+        // line 78
         if ((!$this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED"))) {
-            // line 78
+            // line 79
             echo "\t<div class=\"wrapper\">
 \t\t<nav>
 \t\t\t<div id=\"main_menu\">
 \t\t\t<ul id=\"menu\">
 \t\t\t\t<li class=\"first\" class=\"menu_active\">
 \t\t\t\t\t<a href=\"";
-            // line 83
+            // line 84
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "aa")), "html", null, true);
             echo "\"  class=\"house\">Home</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 84
+            // line 85
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "features")), "html", null, true);
             echo "\" class=\"features\">Features</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 85
+            // line 86
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "about")), "html", null, true);
             echo "\" class=\"info\">About</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 86
+            // line 87
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "support")), "html", null, true);
             echo "\" class=\"wrench\">Support</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 87
+            // line 88
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "contact-us")), "html", null, true);
             echo "\" class=\"envelope\">Contact us</a></li>
 \t\t\t</ul>
@@ -253,110 +257,110 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
 \t\t\t<!-- The dot divs are shown here -->
 \t</div>
   \t\t<div id=\"ajax_content\">";
-            // line 95
+            // line 96
             $this->displayBlock('fos_user_content', $context, $blocks);
             echo "</div>
   \t\t
 \t";
         } else {
-            // line 98
+            // line 99
             echo "\t<div class=\"pull-right\">
 \t\t<nav>
 \t\t\t<div id=\"member_menu\">
 \t\t\t\t";
-            // line 101
-            echo $this->env->getExtension('actions')->renderAction("AcmeMenusBundle:Default:getMenu", array("menu_type" => 2), array());
             // line 102
+            echo $this->env->getExtension('actions')->renderAction("AcmeMenusBundle:Default:getMenu", array("menu_type" => 2), array());
+            // line 103
             echo "\t\t\t</div>
 \t\t</nav>
 \t</div>
 \t";
         }
-        // line 106
+        // line 107
         echo "</header>
 \t\t\t<!-- / header -->
 \t\t\t</div>
 \t\t</div>
 \t</div>
 ";
-        // line 111
+        // line 112
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 112
+            // line 113
             echo "<div class=\"dashboard\">
 <!-- content -->
 \t<section id=\"content\">
 \t\t<div id=\"tabContent\">
 \t\t\t";
-            // line 116
+            // line 117
             if (array_key_exists("error", $context)) {
-                // line 117
+                // line 118
                 echo "\t\t\t";
                 if ((!twig_test_empty($this->getContext($context, "error")))) {
-                    // line 118
+                    // line 119
                     echo "\t\t\t<div id=\"message\">
 \t\t\t<dl id=\"system-message\"><dt class=\"error\">Error</dt><dd class=\"error message\"><ul><li>";
-                    // line 119
+                    // line 120
                     echo twig_escape_filter($this->env, $this->getContext($context, "error"), "html", null, true);
                     echo "</li></ul></dd></dl>
 \t\t\t\t<a id=\"close-button\" src=\"\" >
 \t\t\t\t<img src=\"";
-                    // line 121
+                    // line 122
                     echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/close.gif"), "html", null, true);
                     echo "\" style=\"padding: 7px;margin-top: 10px;position: relative;float:left\">
 \t\t\t\t</a>
 \t\t\t</div>
 \t\t\t";
                 }
-                // line 125
+                // line 126
                 echo "\t\t\t";
             }
-            // line 126
+            // line 127
             echo "\t\t\t";
             if ($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "hasFlash", array("notice", ), "method")) {
-                // line 127
+                // line 128
                 echo "\t\t\t<div id=\"message\">
 \t\t\t\t<dl id=\"system-message\">
 \t\t\t\t\t<dt class=\"notice\">Notice</dt><dd class=\"notice message\"><ul><li>";
-                // line 129
+                // line 130
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "flash", array("notice", ), "method"), "html", null, true);
                 echo "</li></ul></dd></dl>
 \t\t\t\t<a id=\"close-button\" src=\"\" >
 \t\t\t\t<img src=\"";
-                // line 131
+                // line 132
                 echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/close.gif"), "html", null, true);
                 echo "\" style=\"padding: 7px;margin-top: 10px;position: relative;float:left\">
 \t\t\t\t</a>
 \t\t\t</div>
 \t\t\t";
             }
-            // line 135
+            // line 136
             echo "\t\t\t<div class=\"clear\"></div>
 \t\t\t<div id=\"contentHolder\">
 \t\t\t\t<!-- The AJAX fetched content goes here -->
 \t\t\t\t";
-            // line 138
-            $this->displayBlock('content', $context, $blocks);
             // line 139
-            echo "\t\t\t\t";
-            $this->displayBlock('body', $context, $blocks);
+            $this->displayBlock('content', $context, $blocks);
             // line 140
             echo "\t\t\t\t";
-            $this->displayBlock('javascripts', $context, $blocks);
+            $this->displayBlock('body', $context, $blocks);
             // line 141
+            echo "\t\t\t\t";
+            $this->displayBlock('javascripts', $context, $blocks);
+            // line 142
             echo "\t\t\t</div>
 \t\t</div>
 \t</section>
 </div>
 ";
         }
-        // line 146
+        // line 147
         echo "<script>
 \tjQuery(document).ready(function(\$) {
 \t\t\$('#form_1').jqTransform({imgPath:'jqtransformplugin/img/'});\t
 \t});
 </script>
 <script src=\"";
-        // line 151
+        // line 152
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.mCustomScrollbar.js"), "html", null, true);
         echo "\" type=\"text/javascript\"></script>
 
@@ -371,32 +375,32 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
         echo "Welcome!";
     }
 
-    // line 20
+    // line 21
     public function block_stylesheets($context, array $blocks = array())
     {
     }
 
-    // line 57
+    // line 58
     public function block_javascript($context, array $blocks = array())
     {
     }
 
-    // line 95
+    // line 96
     public function block_fos_user_content($context, array $blocks = array())
     {
     }
 
-    // line 138
+    // line 139
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 139
+    // line 140
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 140
+    // line 141
     public function block_javascripts($context, array $blocks = array())
     {
     }
