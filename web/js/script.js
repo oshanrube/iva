@@ -13,10 +13,12 @@ function closeAlert(that){
 function ajaxSubmit(that){
 	//var url = that.action;
 	$(that).ajaxSubmit(function(r) {
-		if(r.success == true){
-			$("#calendar-panel #middle #form").prepend($('<div class="alert-message warning"><span class="close" onClick="closeAlert(this)">×</span><p><strong>New Calendar Added!</strong></p></div>'));
+		if(r.response == 'success'){
+			$(that).prepend($('<div class="alert-message warning"><span class="close" onClick="closeAlert(this)">×</span><p><strong>New Calendar Added!</strong></p></div>'));
 			$(that).resetForm();
-		} else {
+		} else if(r.response == 'reload'){
+			$(that).html(r.content);
+		}	else {
 			alert("An error adding your request");
 		} 
 	});

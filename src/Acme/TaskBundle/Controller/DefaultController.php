@@ -17,8 +17,6 @@ class DefaultController extends Controller
 	{
 		// create a task and give it some dummy data for this example
 		$task = new Task();
-		$task->setTask('Write a blog post');
-		$task->setDueDate(new \DateTime('tomorrow'));
 
 		$form = $this->createFormBuilder($task)
 			->add('task')

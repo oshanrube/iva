@@ -46,9 +46,9 @@ class DefaultController extends Controller
 				$em->persist($calendar);
 				$em->flush();
 				// perform some action, such as saving the task to the database
-				$response = new Response(json_encode(array('success' => true)));
+				$response = new Response(json_encode(array('response' => 'success')));
 			} else {
-				$response = new Response(json_encode(array('success' => false)));
+				$response = new Response(json_encode(array('response' => 'error')));
 			}
 		}
 		$response->headers->set('Content-Type', 'application/json');
@@ -72,7 +72,7 @@ class DefaultController extends Controller
     	$em = $this->getDoctrine()->getEntityManager();
 				$em->persist($calendar);
 				$em->flush();
-   	$response = new Response(json_encode(array('success' => true)));
+   	$response = new Response(json_encode(array('response' => 'success')));
 		$response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
@@ -88,7 +88,7 @@ class DefaultController extends Controller
     	$em = $this->getDoctrine()->getEntityManager();
 				$em->remove($calendar);
 				$em->flush();
-   	$response = new Response(json_encode(array('success' => true)));
+   	$response = new Response(json_encode(array('response' => 'success')));
 		$response->headers->set('Content-Type', 'application/json');
 		return $response;
     }

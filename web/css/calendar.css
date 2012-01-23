@@ -1,3 +1,17 @@
+#calendar-panel{
+	left: 273px;
+	top: 200px;
+	position: absolute;
+	background: #CCC;
+	padding: 10px 10px 10px 5px;
+	height: 271px;
+	width: 200px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border: 3px solid;
+	border-left: 0;
+}
+
 #calendar-panel label {
 	text-align: left;
 	color: #fff;

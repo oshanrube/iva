@@ -444,9 +444,9 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::indexAction',  '_route' => 'AcmeTaskBundle_success',);
         }
 
-        // AcmeTaskBundle_new
+        // AcmeTaskBundle_addnewtask
         if ($pathinfo === '/task/new') {
-            return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::newAction',  '_route' => 'AcmeTaskBundle_new',);
+            return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\PanelController::addNewTaskAction',  '_route' => 'AcmeTaskBundle_addnewtask',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

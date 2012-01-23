@@ -79,7 +79,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeStoreBundle_delete' => true,
        'AcmeTaskBundle_homepage' => true,
        'AcmeTaskBundle_success' => true,
-       'AcmeTaskBundle_new' => true,
+       'AcmeTaskBundle_addnewtask' => true,
     );
 
     /**
@@ -433,8 +433,8 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/task/success',  ),));
     }
 
-    private function getAcmeTaskBundle_newRouteInfo()
+    private function getAcmeTaskBundle_addnewtaskRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/task/new',  ),));
+        return array(array (), array (  '_controller' => 'AcmeTaskBundle:Panel:addNewTask',), array (), array (  0 =>   array (    0 => 'text',    1 => '/task/new',  ),));
     }
 }

@@ -6,6 +6,6 @@ AcmeTaskBundle_success:
     pattern:  /task/success
     defaults: { _controller: AcmeTaskBundle:Default:index }
 
-AcmeTaskBundle_new:
+AcmeTaskBundle_addnewtask:
     pattern:  /task/new
-    defaults: { _controller: AcmeTaskBundle:Default:new }
+    defaults: { _controller: AcmeTaskBundle:Panel:addNewTask }

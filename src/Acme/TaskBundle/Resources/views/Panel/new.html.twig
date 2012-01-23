@@ -1,4 +1,9 @@
-<form action="{{ path('AcmeTaskBundle_new') }}" method="post" {{ form_enctype(form) }}>
-	<input type="text" id="form_task" name="form[task]" required="required" maxlength="255" pattern=".{3,255}" placeholder="What, Where, When" />
+{% if app.session.hasFlash('question') %}
+    <div class="flash-notice">
+        {{ app.session.flash('question') }}
+    </div>
+{% endif %}
+<form onsubmit="ajaxSubmit(this);return false;" action="{{ path('AcmeTaskBundle_addnewtask') }}" method="post" {{ form_enctype(form) }}>
+	<input type="text" id="form_task" name="task" required="required" maxlength="255" pattern=".{3,255}" placeholder="What, Where, When" />
    <button type="submit" class="btn primary">Add</button>
 </form>
