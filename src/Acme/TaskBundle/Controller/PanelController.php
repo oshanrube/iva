@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Acme\TaskBundle\Entity\Task;
 use Acme\TaskBundle\Library\Decode;
+use Acme\TaskBundle\Library\Language;
 use Symfony\Component\HttpFoundation\Request;
 
 class PanelController extends Controller
@@ -24,8 +25,10 @@ class PanelController extends Controller
 					->getForm();
 		if ($request->getMethod() == 'POST' && $this->getRequest()->isXmlHttpRequest()) 
 		{
+			$task = $request->request->get('task');
+			$task = Language::improveSentence($task);
 			//get time
-			$datetime = Decode::getDateTime($request->request->get('task'));
+			$datetime = Decode::getDateTime($task);
 			//if the time is a error
 			if($datetime == 0){
 				$this->get('session')->setFlash('question', 'Hey system couldnt figure out the "when" part, please help out!!');
