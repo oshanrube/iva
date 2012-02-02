@@ -1,6 +1,7 @@
 <?php
 
 namespace Acme\TaskBundle\Library;
+use Acme\TaskBundle\Library\Includes\ProperNouns;
 
 class Decode{
 	function isDate($datetime) {
@@ -151,13 +152,16 @@ class Decode{
 		return true;
 	}
 	public static function getDateTime($string) {
+		$knownErrors = array(' in ',' at ',' this ',' on ');
+		$string = strtolower(str_replace($knownErrors,' ',$string));
 		$descriptorspec = array(
 		   0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
 		   1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
 		   2 => array("file", "./error-output.txt", "a") // stderr is a file to write to
 		);
 		//$text = "tommoro aound 2 in the morning will be a nice day";
-		$process = proc_open('ruby '.__DIR__.'/run.rb "'.$string.'"', $descriptorspec, $pipes);
+		$process = 'ruby '.__DIR__.'/Includes/run.rb "'.$string.'"';
+		$process = proc_open($process, $descriptorspec, $pipes);
 		
 		if (is_resource($process)) {
 		    // $pipes now looks like this:
@@ -178,5 +182,28 @@ class Decode{
 		}
 		return $output;
 	}
+	public static function getCalendarName($string) {
+		preg_match("/to (.*)/",$string,$matches);
+		if(isset($matches[1])){return $matches[1];}
+		else {return false;}
+	}
+	public static function removeTime($task){
+		preg_match_all("/[1-z]*/",$task,$matches);
+		foreach($matches[0] as $key => $value){
+			if(strtotime($value)){
+				unset($matches[0][$key]);
+			}
+		}
+		return implode(' ',$matches[0]);
+	}
+	public static function removeLocation($task,$location) {
+		return str_replace(strtolower($location),'',$task);	
+	}
+	public static function getTask($task) {
+		//create instance from pronous class
+		$pn = new ProperNouns();
+		//get array with proper nouns
+		return implode('',$pn->get($task));
+		
+	}
 }
-?>

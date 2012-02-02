@@ -6,7 +6,10 @@ jQuery.fn.loading = function() {
 
 $(document).ready(function() {
 	initBinding();
+	$('#addNew header').click(function(){ $('#addNew content').slideToggle(); });
+	CenterPanel();
 });
+$(window).bind('resize', function () { CenterPanel();});
 function closeAlert(that){
 	$(that).parent().hide();
 }
@@ -14,10 +17,9 @@ function ajaxSubmit(that){
 	//var url = that.action;
 	$(that).ajaxSubmit(function(r) {
 		if(r.response == 'success'){
-			$(that).prepend($('<div class="alert-message warning"><span class="close" onClick="closeAlert(this)">×</span><p><strong>New Calendar Added!</strong></p></div>'));
+			$(that).prepend($('<div class="alert-message warning"><span class="close" onClick="closeAlert(this)">×</span><p><strong>'+r.message+'</strong></p></div>'));
 			$(that).resetForm();
 		} else if(r.response == 'reload'){
-			alert('aaasdasdasd');
 			$(that).parent().html(r.html);
 		}	else {
 			alert("An error adding your request");
@@ -45,6 +47,13 @@ function bindCheckBoxes(){
 			$(this).parent().addClass('c_off');
 		}
 	});
+}
+function CenterPanel(){
+  var panel = $(".col.middle-col");
+    if (panel) {
+    	var width = $("#content").width();
+      $(".col.middle-col").width(width-517);
+  }
 }
 
 

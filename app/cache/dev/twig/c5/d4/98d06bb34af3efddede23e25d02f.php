@@ -41,16 +41,18 @@ class __TwigTemplate_c5d498d06bb34af3efddede23e25d02f extends Twig_Template
  <div class=\"col\">
   \t<div class=\"widget\">
     <h2>Calendars</h2>
-        ";
+\t\t";
         // line 16
         echo $this->env->getExtension('actions')->renderAction("AcmeCalendarBundle:Default:userCalendars", array(), array());
         echo "        
   </div>
-  <div class=\"widget\">
-    <h2>Location</h2>
-    <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-    <p><a class=\"btn\" href=\"#\">View details »</a></p>
-  </div>
+  <div class=\"widget\" style=\"height: 300px;\">
+    <h2>Location</h2>    
+\t\t";
+        // line 20
+        echo $this->env->getExtension('actions')->renderAction("AcmeLocationBundle:Default:index", array(), array());
+        // line 21
+        echo "  </div>
  </div>
  <section class=\"col middle-col\">
  \t<header>

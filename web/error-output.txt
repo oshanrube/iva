@@ -22,3 +22,15 @@ ruby: No such file or directory -- /var/www/html/Symfony/src/Acme/TaskBundle/Lib
 	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/run.rb:1
 /var/www/html/Symfony/src/Acme/TaskBundle/Library/run.rb:1:in `require': no such file to load -- chronic (LoadError)
 	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/run.rb:1
+/var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/chronic.rb:67:in `require': no such file to load -- /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/chronic/chronic (LoadError)
+	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/chronic.rb:67
+	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/run.rb:1:in `require'
+	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/run.rb:1
+/var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/chronic.rb:67:in `require': no such file to load -- /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/chronic/chronic (LoadError)
+	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/chronic.rb:67
+	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/run.rb:1:in `require'
+	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/run.rb:1
+/var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/chronic.rb:67:in `require': no such file to load -- /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/chronic/chronic (LoadError)
+	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/chronic.rb:67
+	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/run.rb:1:in `require'
+	from /var/www/html/Symfony/src/Acme/TaskBundle/Library/Includes/run.rb:1

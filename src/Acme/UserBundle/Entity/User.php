@@ -43,4 +43,14 @@ class User extends BaseUser
 		$this->name == $name;
 	}
 	
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

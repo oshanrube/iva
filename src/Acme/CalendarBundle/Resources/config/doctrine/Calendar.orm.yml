@@ -1,5 +1,6 @@
 Acme\CalendarBundle\Entity\Calendar:
   type: entity
+  repositoryClass: Acme\CalendarBundle\Repository\CalendarRepository
   table: null
   fields:
     id:

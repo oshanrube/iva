@@ -46,7 +46,7 @@ class DefaultController extends Controller
 				$em->persist($calendar);
 				$em->flush();
 				// perform some action, such as saving the task to the database
-				$response = new Response(json_encode(array('response' => 'success')));
+				$response = new Response(json_encode(array('response' => 'success','message' => 'Calendar Added!!')));
 			} else {
 				$response = new Response(json_encode(array('response' => 'error')));
 			}

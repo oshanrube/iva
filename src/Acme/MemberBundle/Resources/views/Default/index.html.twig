@@ -13,12 +13,11 @@
  <div class="col">
   	<div class="widget">
     <h2>Calendars</h2>
-        {% render "AcmeCalendarBundle:Default:userCalendars" %}        
+		{% render "AcmeCalendarBundle:Default:userCalendars" %}        
   </div>
-  <div class="widget">
-    <h2>Location</h2>
-    <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-    <p><a class="btn" href="#">View details »</a></p>
+  <div class="widget" style="height: 300px;">
+    <h2>Location</h2>    
+		{% render "AcmeLocationBundle:Default:index" %}
   </div>
  </div>
  <section class="col middle-col">

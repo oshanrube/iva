@@ -3,7 +3,7 @@
 	display: block;
 	position: absolute;
 	left: 50%;
-	margin-left: -300px;
+	margin-left: -320px;
 	background: #EBE8D9;
 	padding: 20px;
 	border-radius: 15px;
@@ -18,4 +18,15 @@
 }
 #addNew content form input[type=text]{
 	width: 530px;
+}
+.ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all{
+list-style: none !important;
+background: white !important;
+padding: 5px !important;
+border: 1px solid gray !important;
+width: 528px !important;
+}
+#addNew #did-you-mean{
+	color: blue;
+	font-weight: bold;
 }

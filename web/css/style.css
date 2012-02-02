@@ -26,7 +26,8 @@ h2 span {font-size:35px;line-height:1.2em;color:#fff;margin-top:-10px;display:bl
 h3 {font-size:30px;line-height:1.2em;color:#fff;padding:0 0 27px 0;letter-spacing:-1px}
 p {padding-bottom:20px}
 /****/
-.alert-message .close{cursor: pointer;}
+.alert-message .close{cursor: pointer;margin-top: -1px;}
+.alert-message p {margin-bottom: 0;padding-bottom: 0px;}
 /* ============================= header ====================== */
 header {width:100%;overflow:hidden}
 #icons {float:left;padding:5px 0 0 32px}

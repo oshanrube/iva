@@ -10,6 +10,8 @@ Acme\TaskBundle\Entity\Task:
     calendarId:
       type: integer
       length: '11'
+      nullable: true
+      default: 0      
     task:
       type: string
       length: '255'
@@ -19,4 +21,11 @@ Acme\TaskBundle\Entity\Task:
     dueDate:
       type: integer
       length: '11'
+    location:
+      type: string
+      lenth: '255'
+    lng:
+      type: float
+    lat:
+      type: float
   lifecycleCallbacks: {  }
