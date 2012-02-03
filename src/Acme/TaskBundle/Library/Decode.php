@@ -21,8 +21,12 @@ class Decode{
 		return $calendar;
 	}
 	public static function getDateTime($string) {
+		//remove known errors
 		$knownErrors = array(' in ',' at ',' this ',' on ');
 		$string = strtolower(str_replace($knownErrors,' ',$string));
+		//remove non alphabatic characters
+		$string = preg_replace("/[^a-zA-Z0-9\s]/", "", $string);
+		
 		$descriptorspec = array(
 		   0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
 		   1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
@@ -45,6 +49,10 @@ class Decode{
 		    // proc_close in order to avoid a deadlock
 		    $return_value = proc_close($process);
 		}
+		//log
+		if($output == 0)
+			Log::err('Decode','Time not found in '.$string);
+		
 		return $output;
 	}
 	public static function getCalendarName($string) {

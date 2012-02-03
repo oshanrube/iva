@@ -47,7 +47,16 @@ class PanelController extends Controller
 				$task->setDatetime($datetime);
 			}
 			//get location
-			if($locations = Language::getEasyLocation($quickTask)){
+			//check for location id
+			if($locId != ''){
+				$location = new Location();
+				$taskLocation = $location->getLocation($locId);
+				//set location
+				$task->setLocation($taskLocation->name);
+				$task->setLng($taskLocation->location->lng);
+				$task->setLat($taskLocation->location->lat);
+				//search for locations in the text
+			} elseif($locations = Language::getEasyLocation($quickTask)) {
 				if(!$lng || !$lat){
 					//$this->get('session')->setFlash('question', 'Hey system needs your location to process accurate data!!');
 					if($_SERVER['REMOTE_ADDR'] == '192.168.1.100'){$_SERVER['REMOTE_ADDR'] ='112.134.98.178'; }
@@ -58,7 +67,7 @@ class PanelController extends Controller
 				} else {$accurate=true;}
 				//search the locations list and get alternative sentences
 				$location = new Location();
-				if(!$taskLocation = $location->getLocation($quickTask,$locations,$lng,$lat,$accurate,$locId)){
+				if(!$taskLocation = $location->searchLocation($quickTask,$locations,$lng,$lat,$accurate)){
 					//improve 
 					$sentences = $location->improveSentence();
 					//add to suggetions
@@ -69,17 +78,8 @@ class PanelController extends Controller
 				} else {
 					$task->setLocation($taskLocation->name);
 					$task->setLng($taskLocation->location->lng);
-					$task->setLat($taskLocation->location->lat);
-					
-					$loc = new \stdClass();
-					$loc->loc = $taskLocation->name;
-					$loc->name = $taskLocation->name;
-					$loc->lng = $taskLocation->location->lng;
-					$loc->lat = $taskLocation->location->lat;
-					$loc->id = $taskLocation->id;
-					$venues[] = $loc; 
+					$task->setLat($taskLocation->location->lat); 
 				}
-				
 			} else {
 				$this->get('session')->setFlash('question', 'Hey system couldnt figure out the "Where" part(Location), please help out!!');
 			}

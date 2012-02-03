@@ -17,9 +17,13 @@ function ajaxSubmit(that){
 	//var url = that.action;
 	$(that).ajaxSubmit(function(r) {
 		if(r.response == 'success'){
-			$(that).prepend($('<div class="alert-message warning"><span class="close" onClick="closeAlert(this)">×</span><p><strong>'+r.message+'</strong></p></div>'));
 			//reset the form
 			$(that).resetForm();
+			//delete 
+			$(that).find("#form_task").val('');
+			$(that).parent().find(".info").remove(); 
+			//add message
+			$(that).prepend($('<div class="alert-message warning"><span class="close" onClick="closeAlert(this)">×</span><p><strong>'+r.message+'</strong></p></div>'));
 			//delete the markers in the map
 			deleteOverlays();
 		} else if(r.response == 'reload'){
