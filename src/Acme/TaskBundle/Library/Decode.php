@@ -2,6 +2,7 @@
 
 namespace Acme\TaskBundle\Library;
 use Acme\TaskBundle\Library\Includes\ProperNouns;
+use Acme\TaskBundle\Library\Log;
 
 class Decode{
 	public static function getCalendar($events) {
@@ -56,7 +57,7 @@ class Decode{
 		return $output;
 	}
 	public static function getCalendarName($string) {
-		preg_match("/to (.*)/",$string,$matches);
+		preg_match("/to: (.*)/",$string,$matches);
 		if(isset($matches[1])){return $matches[1];}
 		else {return false;}
 	}
