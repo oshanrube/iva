@@ -37,7 +37,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeNewsBundle_homepage' => true,
        'AcmeWeatherBundle_homepage' => true,
        'AcmeLocationBundle_homepage' => true,
-       'AcmeCalendarBundle_homepage' => true,
        'AcmeCalendarBundle_ajaxcurrentmonth' => true,
        'AcmeCalendarBundle_ajaxnextmonth' => true,
        'AcmeCalendarBundle_ajaxprevmonth' => true,
@@ -221,11 +220,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getAcmeLocationBundle_homepageRouteInfo()
     {
         return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\LocationBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
-    }
-
-    private function getAcmeCalendarBundle_homepageRouteInfo()
-    {
-        return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxcurrentmonthRouteInfo()

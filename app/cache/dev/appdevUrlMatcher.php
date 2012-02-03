@@ -163,11 +163,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\LocationBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeLocationBundle_homepage'));
         }
 
-        // AcmeCalendarBundle_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeCalendarBundle_homepage'));
-        }
-
         // AcmeCalendarBundle_ajaxcurrentmonth
         if (0 === strpos($pathinfo, '/calendar/month/ajax/currentmonth') && preg_match('#^/calendar/month/ajax/currentmonth(?:/(?P<year>[^/]+?)(?:/(?P<month>[^/]+?))?)?$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'currentMonth',)), array('_route' => 'AcmeCalendarBundle_ajaxcurrentmonth'));

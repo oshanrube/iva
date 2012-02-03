@@ -64,9 +64,11 @@ class __TwigTemplate_c5d498d06bb34af3efddede23e25d02f extends Twig_Template
  <div class=\"col\" style=\"position: absolute;right: 35px;\">
  \t<div class=\"widget\">
     <h2>Weather</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class=\"btn\" href=\"#\">View details »</a></p>
-   </div>
+\t\t";
+        // line 33
+        echo $this->env->getExtension('actions')->renderAction("AcmeWeatherBundle:Default:index", array(), array());
+        // line 34
+        echo "   </div>
    <div class=\"widget\">
     <h2>News</h2>
     <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>

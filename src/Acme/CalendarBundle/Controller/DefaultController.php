@@ -10,10 +10,6 @@ use Acme\CalendarBundle\Entity\Calendar;
 class DefaultController extends Controller
 {
     
-    public function indexAction($name)
-    {
-        return $this->render('AcmeCalendarBundle:Default:index.html.twig', array('name' => $name));
-    }
     public function userCalendarsAction() {
     	//get the user id
     	$user = $this->get('security.context')->getToken()->getUser();

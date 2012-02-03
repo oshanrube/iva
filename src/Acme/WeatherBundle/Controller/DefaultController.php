@@ -14,6 +14,6 @@ class DefaultController extends Controller
 	{
 		$xml = Weather::getWeather('Colombo');
 		$todaysWeather = $xml["weather"][strtotime("today")];
-		return $this->render('AcmeCalendarBundle:Default:index.html.twig',array('todayWeather' => $todaysWeather));
+		return $this->render('AcmeWeatherBundle:Default:index.html.twig',array('todaysWeather' => $todaysWeather));
 	}
 }
