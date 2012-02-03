@@ -1,3 +1,7 @@
+AcmeDashBundle:
+    resource: "@AcmeDashBundle/Resources/config/routing.yml"
+    prefix:   /
+
 AcmeEventsBundle:
     resource: "@AcmeEventsBundle/Resources/config/routing.yml"
     prefix:   /

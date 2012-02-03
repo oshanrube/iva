@@ -143,14 +143,19 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // AcmeDashBundle_ajax_panel
+        if ($pathinfo === '/dash/ajax/panel') {
+            return array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',  '_route' => 'AcmeDashBundle_ajax_panel',);
+        }
+
         // AcmeEventsBundle_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\EventsBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeEventsBundle_homepage'));
         }
 
-        // AcmeNewsBundle_homepage
-        if ($pathinfo === '/news/test') {
-            return array (  '_controller' => 'Acme\\NewsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'AcmeNewsBundle_homepage',);
+        // AcmeNewsBundle_ajax_panel
+        if ($pathinfo === '/news/ajax/panel') {
+            return array (  '_controller' => 'Acme\\NewsBundle\\Controller\\DefaultController::ajaxAction',  '_route' => 'AcmeNewsBundle_ajax_panel',);
         }
 
         // AcmeLocationBundle_homepage

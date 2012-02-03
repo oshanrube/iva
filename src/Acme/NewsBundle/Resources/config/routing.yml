@@ -1,3 +1,3 @@
-AcmeNewsBundle_homepage:
-    pattern:  /news/test
-    defaults: { _controller: AcmeNewsBundle:Default:index }
+AcmeNewsBundle_ajax_panel:
+    pattern:  /news/ajax/panel
+    defaults: { _controller: AcmeNewsBundle:Default:ajax }
