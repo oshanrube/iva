@@ -44,7 +44,7 @@ class PanelController extends Controller
 				$error = true;
 				$this->get('session')->setFlash('question', 'Hey system couldnt figure out the "when" part(Time), please help out!!');
 			} else {
-				$task->setdueDate($datetime);
+				$task->setDatetime($datetime);
 			}
 			//get location
 			if($locations = Language::getEasyLocation($quickTask)){

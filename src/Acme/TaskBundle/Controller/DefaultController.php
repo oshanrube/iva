@@ -20,7 +20,7 @@ class DefaultController extends Controller
 
 		$form = $this->createFormBuilder($task)
 			->add('task')
-			->add('dueDate')
+			->add('datetime')
 			->getForm();
 		//if save
 		if ($request->getMethod() == 'POST') {

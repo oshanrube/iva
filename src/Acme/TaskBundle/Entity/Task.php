@@ -30,9 +30,9 @@ class Task
     private $description;
 
     /**
-     * @var integer $dueDate
+     * @var integer $datetime
      */
-    private $dueDate;
+    private $datetime;
 
 
     /**
@@ -106,23 +106,23 @@ class Task
     }
 
     /**
-     * Set dueDate
+     * Set datetime
      *
-     * @param integer $dueDate
+     * @param integer $datetime
      */
-    public function setDueDate($dueDate)
+    public function setDatetime($datetime)
     {
-        $this->dueDate = $dueDate;
+        $this->datetime = $datetime;
     }
 
     /**
-     * Get dueDate
+     * Get datetime
      *
      * @return integer 
      */
-    public function getDueDate()
+    public function getDatetime()
     {
-        return $this->dueDate;
+        return $this->datetime;
     }
     /**
      * @var string $location

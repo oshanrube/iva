@@ -1,5 +1,6 @@
 Acme\TaskBundle\Entity\Task:
   type: entity
+  repositoryClass: Acme\TaskBundle\Entity\TaskRepository
   table: null
   fields:
     id:
@@ -18,7 +19,7 @@ Acme\TaskBundle\Entity\Task:
     description:
       type: text
       length: null
-    dueDate:
+    datetime:
       type: integer
       length: '11'
     location:

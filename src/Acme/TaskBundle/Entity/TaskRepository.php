@@ -37,4 +37,15 @@ class TaskRepository extends EntityRepository
 			return "couldnt find the date";
 		}
 	}
+	public function findByThisMonth() {
+		$thisMonth = mktime(0, 0, 0, date('m'), 1, date('Y'));
+		$nextMonth = mktime(0, 0, 0, (date('m')+1), 1, date('Y'));
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.datetime > :thisMonth AND t.datetime < :nextMonth';
+		
+		return $this->getEntityManager()
+			->createQuery($query)
+			->setParameter('thisMonth', $thisMonth)
+			->setParameter('nextMonth', $nextMonth)
+			->getResult();
+	}
 }
