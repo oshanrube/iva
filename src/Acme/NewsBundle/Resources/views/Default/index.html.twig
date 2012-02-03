@@ -1,1 +1,19 @@
-Hello {{ name }}!
+<script type="text/javascript">
+$(function(){
+	$('#news-feed').vTicker({ 
+		speed: 500,
+		pause: 3000,
+		animation: 'fade',
+		mousePause: false,
+		showItems: 3,
+		height: 300
+	});
+});
+</script>
+<div id="news-feed" class="border">
+<ul>
+{% for item in feed %}  
+	<li>{{ item.title }}</li> 
+{% endfor %}
+</ul>
+</div>

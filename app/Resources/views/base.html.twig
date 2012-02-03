@@ -19,6 +19,7 @@
 		<link rel="stylesheet" href="{{ asset('css/calendar.css') }}" type="text/css" media="screen" />
 		<link rel="stylesheet" href="{{ asset('css/tasks.css') }}" type="text/css" media="screen" />
 		<link rel="stylesheet" href="{{ asset('css/weather.css') }}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/news.css') }}" type="text/css" media="screen" />
 		{% block stylesheets %}{% endblock %}
 		<!-- javascript -->
 		<script type="text/javascript" src="{{ asset('js/jquery.jqtransform.js') }}"></script>
@@ -58,6 +59,7 @@
 		<script type="text/javascript" src="{{ asset('js/bootstrap-popover.js') }}"></script>
 		{% block javascript %}{% endblock %}
 		<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>		
+		<script type="text/javascript" src="{{ asset('js/jquery.vticker-min.js') }}"></script>
 </head>
 <body id="page1" {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}{{ 'class="member"' }}{% endif %} >
 <!-- Panel -->

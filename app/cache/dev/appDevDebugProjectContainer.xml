@@ -1679,7 +1679,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4f2b879f1c3a3</argument>
+            <argument>4f2b9fabc8e43</argument>
           </service>
         </argument>
       </argument>
@@ -1882,7 +1882,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4f2b879f1c3a3</argument>
+            <argument>4f2b9fabc8e43</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2193,6 +2193,7 @@
               <argument key="AcmeMenusBundle">Acme\MenusBundle\Entity</argument>
               <argument key="AcmeCalendarBundle">Acme\CalendarBundle\Entity</argument>
               <argument key="AcmeWeatherBundle">Acme\WeatherBundle\Entity</argument>
+              <argument key="AcmeNewsBundle">Acme\NewsBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2253,6 +2254,7 @@
                         <argument>/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine</argument>
                       </argument>
                       <call method="setNamespacePrefixes">
                         <argument type="collection">
@@ -2262,6 +2264,7 @@
                           <argument key="/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine">Acme\MenusBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine">Acme\CalendarBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine">Acme\WeatherBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine">Acme\NewsBundle\Entity</argument>
                         </argument>
                       </call>
                       <call method="setGlobalBasename">
@@ -2281,6 +2284,7 @@
                         <argument>/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine</argument>
                       </argument>
                       <call method="setNamespacePrefixes">
                         <argument type="collection">
@@ -2290,6 +2294,7 @@
                           <argument key="/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine">Acme\MenusBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine">Acme\CalendarBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine">Acme\WeatherBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine">Acme\NewsBundle\Entity</argument>
                         </argument>
                       </call>
                       <call method="setGlobalBasename">
@@ -2309,6 +2314,7 @@
                         <argument>/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine</argument>
                       </argument>
                       <call method="setNamespacePrefixes">
                         <argument type="collection">
@@ -2318,6 +2324,7 @@
                           <argument key="/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine">Acme\MenusBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine">Acme\CalendarBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine">Acme\WeatherBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine">Acme\NewsBundle\Entity</argument>
                         </argument>
                       </call>
                       <call method="setGlobalBasename">
@@ -2337,6 +2344,7 @@
                         <argument>/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine</argument>
                       </argument>
                       <call method="setNamespacePrefixes">
                         <argument type="collection">
@@ -2346,6 +2354,7 @@
                           <argument key="/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine">Acme\MenusBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine">Acme\CalendarBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine">Acme\WeatherBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine">Acme\NewsBundle\Entity</argument>
                         </argument>
                       </call>
                       <call method="setGlobalBasename">
@@ -2365,6 +2374,7 @@
                         <argument>/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine</argument>
                       </argument>
                       <call method="setNamespacePrefixes">
                         <argument type="collection">
@@ -2374,6 +2384,7 @@
                           <argument key="/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine">Acme\MenusBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine">Acme\CalendarBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine">Acme\WeatherBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine">Acme\NewsBundle\Entity</argument>
                         </argument>
                       </call>
                       <call method="setGlobalBasename">
@@ -2393,6 +2404,7 @@
                         <argument>/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine</argument>
                         <argument>/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine</argument>
                       </argument>
                       <call method="setNamespacePrefixes">
                         <argument type="collection">
@@ -2402,6 +2414,7 @@
                           <argument key="/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine">Acme\MenusBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine">Acme\CalendarBundle\Entity</argument>
                           <argument key="/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine">Acme\WeatherBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine">Acme\NewsBundle\Entity</argument>
                         </argument>
                       </call>
                       <call method="setGlobalBasename">
@@ -2410,6 +2423,36 @@
                     </service>
                   </argument>
                   <argument>Acme\WeatherBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Symfony\Bridge\Doctrine\Mapping\Driver\YamlDriver" public="false">
+                      <argument type="collection">
+                        <argument>/var/www/html/Symfony/src/Acme/StoreBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/TaskBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/HomeBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine</argument>
+                        <argument>/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine</argument>
+                      </argument>
+                      <call method="setNamespacePrefixes">
+                        <argument type="collection">
+                          <argument key="/var/www/html/Symfony/src/Acme/StoreBundle/Resources/config/doctrine">Acme\StoreBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/TaskBundle/Resources/config/doctrine">Acme\TaskBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/HomeBundle/Resources/config/doctrine">Acme\HomeBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/MenusBundle/Resources/config/doctrine">Acme\MenusBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/CalendarBundle/Resources/config/doctrine">Acme\CalendarBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/WeatherBundle/Resources/config/doctrine">Acme\WeatherBundle\Entity</argument>
+                          <argument key="/var/www/html/Symfony/src/Acme/NewsBundle/Resources/config/doctrine">Acme\NewsBundle\Entity</argument>
+                        </argument>
+                      </call>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>Acme\NewsBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">

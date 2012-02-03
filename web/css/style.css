@@ -141,8 +141,8 @@ footer a:hover{}
 -----------------*/
 .popover h3{ color:#404040; } 
 /* -------------
- * Checkbox
- * ------------- */
+* Checkbox
+* ------------- */
 .jqTransformCheckboxWrapper {float:left;display:block;margin-right:9px;margin-top:0px}
 .jqTransformCheckbox {	height:15px;width:15px;display:block;background-image:url(../images/checkbox.gif);background-position:top /*display:-moz-inline-block;*/}
 .jqTransformCheckbox.jqTransformChecked {background-position:bottom}
@@ -156,17 +156,17 @@ footer a:hover{}
 #form_1 .links a {color:#fff}
 #ajax_content 
 {
-    display: inline-block;
-    vertical-align: top;
-    width: 470px;
-    background: #414C52;
-    padding: 10px;
-    border-radius: 10px;
-    border: 3px solid white;
-    box-shadow: 3px 3px 3px rgba(255,255,255,5);
-    color: #CFDAE3;
-    height: 353px;
-    border-image: initial;
+	display: inline-block;
+	vertical-align: top;
+	width: 470px;
+	background: #414C52;
+	padding: 10px;
+	border-radius: 10px;
+	border: 3px solid white;
+	box-shadow: 3px 3px 3px rgba(255,255,255,5);
+	color: #CFDAE3;
+	height: 353px;
+	border-image: initial;
 }
 .label_check,
 .label_radio { padding-left: 34px; }
@@ -185,8 +185,8 @@ label.r_on { background: url(radio-on.png) no-repeat; }
 			width: 100px;
 			height: 100px;
 			-webkit-border-radius: 50px;
-			   -moz-border-radius: 50px;
-			        border-radius: 50px;
+				-moz-border-radius: 50px;
+					border-radius: 50px;
 			background: #ccc;
 			font: 12px "Lucida Grande", Sans-Serif;
 			text-align: center;
@@ -200,13 +200,13 @@ label.r_on { background: url(radio-on.png) no-repeat; }
 		#loading:before {
 			content: "";
 			position: absolute;
-			  left: -20px;
-			   top: -20px;
+			left: -20px;
+				top: -20px;
 			bottom: -20px;
-			 right: -20px;
+			right: -20px;
 			-webkit-border-radius: 70px;
-			   -moz-border-radius: 70px;
-			        border-radius: 70px;
+				-moz-border-radius: 70px;
+					border-radius: 70px;
 			background: #eee;
 			z-index: -2;
 			-webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
@@ -218,12 +218,12 @@ label.r_on { background: url(radio-on.png) no-repeat; }
 			width: 0;
 			height: 0;
 			border-left: 50px solid transparent;
-        	border-right: 50px solid transparent;
-        	border-top: 80px solid rgba(65,76,82,0.7);
-        	top: -28px;
-        	left: 0px;
-        	-webkit-animation: ticktock 5s linear infinite;
-        	-webkit-transform-origin: 50px 80px;
+			border-right: 50px solid transparent;
+			border-top: 80px solid rgba(65,76,82,0.7);
+			top: -28px;
+			left: 0px;
+			-webkit-animation: ticktock 5s linear infinite;
+			-webkit-transform-origin: 50px 80px;
 		}
 		#loading strong {
 			overflow: hidden;
@@ -234,21 +234,21 @@ label.r_on { background: url(radio-on.png) no-repeat; }
 		}
 		
 		@-webkit-keyframes expand {
-	        0% {
-	                width: 0;
-	        }
-	        100% {
-	                width: 60px;
-	        }
+			0% {
+						width: 0;
+			}
+			100% {
+						width: 60px;
+			}
 		}
 		
 		@-webkit-keyframes ticktock {
-	        0% {
-	                -webkit-transform: rotate(0);
-	        }
-	        100% {
-	                -webkit-transform: rotate(360deg);
-	        }
+			0% {
+						-webkit-transform: rotate(0);
+			}
+			100% {
+						-webkit-transform: rotate(360deg);
+			}
 		}
 	#loadingContainer {
 		background: #414C52;
@@ -313,5 +313,6 @@ table.calendar th:hover,table.calendar td:hover{
 table.calendar .month,table.calendar .year{
 	text-align: center;
 }
-
-	
+.border { display: block; padding: 4px; line-height: 1; border: 1px solid #ddd; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075); -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075); }
+.border:hover { border-color: #0088cc; -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); }
+.border > img { display: block; max-width: 100%; margin-left: auto; margin-right: auto; }

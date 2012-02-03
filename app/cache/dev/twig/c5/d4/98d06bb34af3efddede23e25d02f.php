@@ -71,9 +71,11 @@ class __TwigTemplate_c5d498d06bb34af3efddede23e25d02f extends Twig_Template
         echo "   </div>
    <div class=\"widget\">
     <h2>News</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class=\"btn\" href=\"#\">View details »</a></p>
-   </div>
+    \t";
+        // line 37
+        echo $this->env->getExtension('actions')->renderAction("AcmeNewsBundle:Default:index", array(), array());
+        // line 38
+        echo "   </div>
  </div>
 </div>
 ";
