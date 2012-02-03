@@ -18,7 +18,10 @@ function ajaxSubmit(that){
 	$(that).ajaxSubmit(function(r) {
 		if(r.response == 'success'){
 			$(that).prepend($('<div class="alert-message warning"><span class="close" onClick="closeAlert(this)">×</span><p><strong>'+r.message+'</strong></p></div>'));
+			//reset the form
 			$(that).resetForm();
+			//delete the markers in the map
+			deleteOverlays();
 		} else if(r.response == 'reload'){
 			$(that).parent().html(r.html);
 		}	else {

@@ -24,10 +24,6 @@ class __TwigTemplate_b47aa241e3bb84f57fa55cd5c49923f6 extends Twig_Template
         // line 5
         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "todaysWeather"), "condition"), "html", null, true);
         echo "</h5>
-\t<div class=\"humidity\">";
-        // line 6
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "todaysWeather"), "humidity"), "html", null, true);
-        echo "</div>
 </div>
 </div>";
     }

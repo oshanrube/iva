@@ -369,7 +369,7 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
         echo "\" type=\"text/javascript\"></script>
 
 </body>
-<footer><small>The imformation in this page is for demostration purposes only!</small> haha oshan Presents...</footer>
+<footer><small style=\"float: left;margin-left: 41px;font-size: 10px;\">The imformation in this page is for demostration purposes only!</small> haha oshan Presents...</footer>
 </html>";
     }
 
