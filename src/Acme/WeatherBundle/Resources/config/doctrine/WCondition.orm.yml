@@ -1,0 +1,20 @@
+Acme\WeatherBundle\Entity\WCondition:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: '50'
+    icon:
+      type: string
+      length: '255'
+  lifecycleCallbacks: {  }
+  oneToMany:
+        weather:
+            targetEntity: Weather
+            mappedBy: condition

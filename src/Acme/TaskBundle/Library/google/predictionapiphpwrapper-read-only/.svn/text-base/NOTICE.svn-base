@@ -1,0 +1,11 @@
+The original source was created by David McNelis, Co-Founder of 
+Entunne.com.  He can be contacted at dmcnelis@entunne.com for 
+questions or suggestions for this class.
+
+At this point the code is very basic and provides a simple wrapper for
+accessing the Google Prediction API.  Usage assumes that you have legitimate
+access to the Google Prediction API and have logged in via Google Login.
+
+You can use the TWS_Service_Google_Storage project to load files.  You can
+find this BSD licensed project here:
+http://github.com/dragonmantank/tws_service_google_storage/

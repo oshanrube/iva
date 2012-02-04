@@ -1,0 +1,9 @@
+AcmeDashBundle_ajax_panel:
+    pattern:  /dash/ajax/panel
+    defaults: { _controller: AcmeDashBundle:Default:ajax }
+
+AcmeDashBundle_ajax_edit_date:
+    pattern:  /dash/ajax/edit/{date}
+    defaults: { _controller: AcmeDashBundle:Default:ajax }
+    requirements:
+        date:  \d+

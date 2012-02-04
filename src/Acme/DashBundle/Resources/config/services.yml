@@ -1,0 +1,7 @@
+parameters:
+#    acme_dash.example.class: Acme\DashBundle\Example
+
+services:
+#    acme_dash.example:
+#        class: %acme_dash.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,1099 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="title" content="Doctrine - Doctrine ORM for PHP - Not Null" />
+<meta name="robots" content="index, follow" />
+<meta name="description" content="Doctrine is a PHP ORM(object relational mapper) for PHP that sits on top of a powerful DBAL(database abstraction layer)" />
+<meta name="keywords" content="doctrine, php orm, database, orm, object relational mapper, database abstraction layer" />
+<meta name="language" content="en" />
+
+<title>Doctrine - Doctrine ORM for PHP - Not Null</title>
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="alternate" type="application/rss+xml" href="/blog/feed" title="Doctrine Blog RSS feed" />
+<link rel="search" type="application/opensearchdescription+xml" title="Doctrine API Documentation" href="https://addons.mozilla.org/en-US/firefox/downloads/file/67525/doctrine_1.1_api-20091022.xml?confirmed">
+
+<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/layout.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/css/documentation.css" />
+<script type="text/javascript" src="/js/mootools-min.js"></script>
+<script type="text/javascript" src="/js/documentation_toc.js"></script>
+</head>
+<body>
+
+  <div id="wrapper">
+          <div id="header">
+        <h1 id="h1title">
+                                                Not Null                              </h1>
+
+      	<div id="logo">
+      		<a href="/">Doctrine - PHP Database Libraries</a>      	</div>
+      </div>
+
+      <div id="nav" class="cls">
+      	<div class="tl cls">
+      	  <ul>
+  <li><a class="" target="_top" href="/">home</a></li><li><a class="" target="_top" href="/about">about</a></li><li><a class="" target="_top" href="/projects">projects</a></li><li><a class="current" target="_top" href="/projects/orm">orm</a></li><li><a class="" target="_top" href="/projects/dbal">dbal</a></li><li><a class="" target="_top" href="/blog">blog</a></li><li><a class="" target="_top" href="http://www.doctrine-project.org/jira">development</a></li><li><a class="" target="_top" href="/contribute">contribute</a></li><li><a class="" target="_top" href="/community">community</a></li><li><a class="" target="_top" href="http://wiki.doctrine-project.org">wiki</a></li></ul>
+      	</div>
+      </div>
+
+                    <div id="top1">
+          <div class="content">
+                            You are currently reading the <strong>1.2</strong> documentation.
+
+  Switch to 
+      <a href="/projects/orm/2.2/docs/pl">2.2</a>&nbsp;
+      <a href="/projects/orm/2.1/docs/pl">2.1</a>&nbsp;
+      <a href="/projects/orm/2.0/docs/pl">2.0</a>&nbsp;
+              
+            
+                          <div id="top1_right">
+                                  <ul>
+  <li><a target="_top" href="/projects/orm/download">Download</a></li>
+  <li><a target="_top" href="/projects/orm/2.1/docs/pl">Documentation</a></li>
+</ul>                              </div>
+                      </div>
+        </div>
+      
+          
+    <div id="content" class="cls">
+                    	<div id="sidebar">
+          <div class="cls">
+          	<div class="bd cls">
+                <h2>Table of Contents</h2>
+  <ul class="tree">
+    <li><a href="/projects/orm/1.2/docs/manual/introduction/pl">Introduction</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/introduction/pl">Code Examples</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction/pl">What is Doctrine?</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction/pl">What is an ORM?</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction/pl">What is the Problem?</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction/pl">Minimum Requirements</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction/pl">Basic Overview</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction/pl">Doctrine Explained</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction/pl">Key Concepts</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction/pl">Further Reading</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Getting Started</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Checking Requirements</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Installing</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Sandbox</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">SVN</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl#installing">Installing</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl#updating">Updating</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">SVN Externals</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">PEAR Installer</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Download Pear Package</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Implementing</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Including Doctrine Libraries</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Require Doctrine Base Class</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Register Autoloader</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl#autoloading-explained">Autoloading Explained</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Bootstrap File</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Test Script</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/getting-started/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-connections/pl">Introduction to Connections</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-connections/pl">DSN, the Data Source Name</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-connections/pl">Examples</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-connections/pl">Opening New Connections</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-connections/pl">Lazy Database Connecting</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-connections/pl">Testing your Connection</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-connections/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Configuration</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Levels of Configuration</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Defaults Attributes</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Default Column Options</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Default Added Auto Id</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Portability</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Portability Mode Attributes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Examples</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Identifier quoting</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Hydration Overwriting</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Configure Table Class</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Configure Query Class</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Configure Collection Class</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Disabling Cascading Saves</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Exporting</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Naming convention attributes</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Index name format</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Sequence name format</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Table name format</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Database name format</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Validation attributes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Validation mode constants</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Examples</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/configuration/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Connections</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Opening Connections</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Retrieve Connections</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Current Connection</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Change Current Connection</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Iterating Connections</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Get Connection Name</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Close Connection</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Get All Connections</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Count Connections</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Creating and Dropping Database</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Writing Custom Connections</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/connections/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl">Introduction to Models</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl">Generating Models</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl">Existing Databases</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl#making-the-first-import">Making the first import</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl">Schema Files</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl">Manually Writing Models</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl">Autoloading Models</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl">Conservative</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl">Aggressive</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/introduction-to-models/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Defining Models</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Columns</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Column Lengths</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Column Aliases</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Default values</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Data types</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#introduction">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#type-modifiers">Type modifiers</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#boolean">Boolean</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#integer">Integer</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#float">Float</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#decimal">Decimal</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#string">String</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#array">Array</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#object">Object</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#blob">Blob</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#clob">Clob</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#timestamp">Timestamp</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#time">Time</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#date">Date</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#enum">Enum</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#gzip">Gzip</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Examples</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Relationships</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Foreign Key Associations</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#one-to-one">One to One</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#one-to-many-and-many-to-one">One to Many and Many to One</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#tree-structure">Tree Structure</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Join Table Associations</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#many-to-many">Many to Many</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#self-referencing-nest-relations">Self Referencing (Nest Relations)</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#self-referencing-nest-relations:non-equal-nest-relations">Non-Equal Nest Relations</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#self-referencing-nest-relations:equal-nest-relations">Equal Nest Relations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Foreign Key Constraints</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#introduction">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#foreign-key-names">Foreign Key Names</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#integrity-actions">Integrity Actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Indexes</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Adding indexes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Index options</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Special indexes</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Checks</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Table Options</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Record Filters</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Transitive Persistence</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Application-Level Cascades</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#save-cascades">Save Cascades</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl#delete-cascades">Delete Cascades</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Database-Level Cascades</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/defining-models/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Working with Models</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Define Test Schema</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Dealing with Relations</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Creating Related Records</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Retrieving Related Records</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Updating Related Records</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Clearing Related Records</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Deleting Related Records</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Working with Related Records</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl#testing-the-existence-of-a-relation">Testing the Existence of a Relation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Many-to-Many Relations</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Creating a New Link</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Deleting a Link</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Fetching Objects</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Sample Queries</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Field Lazy Loading</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Arrays and Objects</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">To Array</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">From Array</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Synchronize With Array</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Overriding the Constructor</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/working-with-models/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">DQL (Doctrine Query Language)</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">SELECT queries</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Aggregate values</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">UPDATE queries</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">DELETE Queries</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">FROM clause</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">JOIN syntax</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">ON keyword</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">WITH keyword</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">INDEXBY keyword</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">WHERE clause</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Conditional expressions</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Literals</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Input parameters</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Operators and operator precedence</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">In expressions</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Like Expressions</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Exists Expressions</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">All and Any Expressions</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Subqueries</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Functional Expressions</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">String functions</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Arithmetic functions</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Subqueries</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Comparisons using subqueries</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">GROUP BY, HAVING clauses</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">ORDER BY clause</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Sorting by an aggregate value</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Using random order</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">LIMIT and OFFSET clauses</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Driver Portability</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">The limit-subquery-algorithm</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Named Queries</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Creating a Named Query</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Accessing Named Query</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Executing a Named Query</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Cross-Accessing Named Query</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">BNF</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Magic Finders</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Debugging Queries</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/dql-doctrine-query-language/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Component Overview</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Manager</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Retrieving Connections</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Connection</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Available Drivers</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Creating Connections</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Flushing the Connection</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Table</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Getting a Table Object</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Getting Column Information</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Getting Relation Information</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Finder Methods</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl#custom-table-classes">Custom Table Classes</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Custom Finders</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Record</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Properties</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Updating Records</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Replacing Records</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Refreshing Records</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Refreshing relationships</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Deleting Records</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Using Expression Values</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Getting Record State</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Getting Object Copy</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Saving a Blank Record</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Mapping Custom Values</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Serializing</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Checking Existence</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Function Callbacks for Columns</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Collection</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Accessing Elements</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Adding new Elements</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Getting Collection Count</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Saving the Collection</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Deleting the Collection</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Key Mapping</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Loading Related Records</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Validator</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">More Validation</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Valid or Not Valid</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl#implicit-validation">Implicit Validation</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl#explicit-validation">Explicit Validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Profiler</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Basic Usage</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Locking Manager</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Optimistic Locking</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Pessimistic Locking</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Examples</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Technical Details</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Views</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Using Views</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/component-overview/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/native-sql/pl">Native SQL</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/native-sql/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/native-sql/pl">Component Queries</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/native-sql/pl">Fetching from Multiple Components</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/native-sql/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">YAML Schema Files</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Abbreviated Syntax</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Verbose Syntax</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Relationships</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Detect Relations</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Customizing Relationships</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">One to One</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">One to Many</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Many to Many</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Features & Examples</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Connection Binding</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Attributes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Enums</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">ActAs Behaviors</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Listeners</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Options</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Indexes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Inheritance</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl#simple-inheritance">Simple Inheritance</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl#concrete-inheritance">Concrete Inheritance</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl#column-aggregation-inheritance">Column Aggregation Inheritance</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Column Aliases</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Packages</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl#package-custom-path">Package Custom Path</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Global Schema Information</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Using Schema Files</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Data Validation</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Examples</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Not Null</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Email</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Not Blank</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">No Space</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Past</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Future</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Min Length</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Country</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">IP Address</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">HTML Color</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Range</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Unique</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Regular Expression</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Credit Card</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Read Only</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Unsigned</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">US State</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/data-validation/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/data-hydrators/pl">Data Hydrators</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/data-hydrators/pl">Core Hydration Methods</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/data-hydrators/pl">Record</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-hydrators/pl">Array</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-hydrators/pl">Scalar</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-hydrators/pl">Single Scalar</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-hydrators/pl">On Demand</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-hydrators/pl">Nested Set Record Hierarchy</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-hydrators/pl">Nested Set Array Hierarchy</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/data-hydrators/pl">Writing Hydration Method</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/inheritance/pl">Inheritance</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/inheritance/pl">Simple</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/inheritance/pl">Concrete</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/inheritance/pl">Column Aggregation</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/inheritance/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Behaviors</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Simple Templates</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Templates with Relations</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Delegate Methods</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Creating Behaviors</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Core Behaviors</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Versionable</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Timestampable</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Sluggable</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">I18n</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">NestedSet</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Searchable</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Geographical</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">SoftDelete</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Nesting Behaviors</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Generating Files</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Querying Generated Classes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/behaviors/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/searching/pl">Searching</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/searching/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/searching/pl">Index structure</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/searching/pl">Index Building</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/searching/pl">Text Analyzers</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/searching/pl">Query language</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/searching/pl">Performing Searches</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/searching/pl">File searches</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/searching/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl">Hierarchical Data</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl">Nested Set</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl">Setting Up</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl">Multiple Trees</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl">Working with Trees</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl#creating-a-root-node">Creating a Root Node</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl#inserting-a-node">Inserting a Node</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl#deleting-a-node">Deleting a Node</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl#moving-a-node">Moving a Node</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl#examining-a-node">Examining a Node</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl#examining-and-retrieving-siblings">Examining and Retrieving Siblings</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl#examining-and-retrieving-descendants">Examining and Retrieving Descendants</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl#rendering-a-simple-tree">Rendering a Simple Tree</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl">Advanced Usage</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl#fetching-a-tree-with-relations">Fetching a Tree with Relations</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl">Rendering with Indention</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/hierarchical-data/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/data-fixtures/pl">Data Fixtures</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/data-fixtures/pl">Importing</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-fixtures/pl">Dumping</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-fixtures/pl">Implement</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-fixtures/pl">Writing</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-fixtures/pl">Fixtures For Nested Sets</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-fixtures/pl">Fixtures For I18n</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/data-fixtures/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Database Abstraction Layer</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Export</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Creating Databases</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Creating Tables</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Creating Foreign Keys</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Altering table</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Creating Indexes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Deleting database elements</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Import</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Listing Databases</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Listing Sequences</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Listing Constraints</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Listing Table Columns</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Listing Table Indexes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Listing Tables</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Listing Views</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">DataDict</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Getting portable declaration</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Getting Native Declaration</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Drivers</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Mysql</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl#setting-table-type">Setting table type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/database-abstraction-layer/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/transactions/pl">Transactions</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/transactions/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/transactions/pl">Nesting</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/transactions/pl">Savepoints</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/transactions/pl">Isolation Levels</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/transactions/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Event Listeners</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Connection Listeners</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Creating a New Listener</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Attaching listeners</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Pre and Post Connect</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Transaction Listeners</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Query Execution Listeners</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Hydration Listeners</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Record Listeners</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Record Hooks</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">DQL Hooks</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Chaining Listeners</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">The Event object</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Getting the Invoker</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Event Codes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Getting the Invoker</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Skip Next Operation</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Skip Next Listener</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/event-listeners/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">Caching</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">Drivers</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">Memcache</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">APC</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">Db</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">Query Cache & Result Cache</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">Query Cache</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl#using-the-query-cache">Using the Query Cache</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl#fine-tuning">Fine Tuning</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">Result Cache</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl#using-the-result-cache">Using the Result Cache</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl#fine-tuning">Fine Tuning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/caching/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl">Migrations</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl">Performing Migrations</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl">Implement</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl">Writing Migration Classes</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl">Available Operations</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#create-table">Create Table</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#drop-table">Drop Table</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#rename-table">Rename Table</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#create-constraint">Create Constraint</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#drop-constraint">Drop Constraint</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#create-foreign-key">Create Foreign Key</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#drop-foreign-key">Drop Foreign Key</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#add-column">Add Column</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#rename-column">Rename Column</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#change-column">Change Column</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#remove-column">Remove Column</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#irreversible-migration">Irreversible Migration</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#add-index">Add Index</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#remove-index">Remove Index</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl">Pre and Post Hooks</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl">Up/Down Automation</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl">Generating Migrations</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#from-database">From Database</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#from-existing-models">From Existing Models</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl#diff-tool">Diff Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/migrations/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/extensions/pl">Extensions</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Utilities</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Pagination</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Working with Pager</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Controlling Range Styles</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl#sliding">Sliding</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl#jumping">Jumping</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Advanced layouts with pager</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl#mask">Mask</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl#template">Template</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Customizing pager layout</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Facade</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Creating & Dropping Databases</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Convenience Methods</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Tasks</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Command Line Interface</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Tasks</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Usage</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Sandbox</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Installation</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/utilities/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">Unit Testing</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">Running tests</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">CLI</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">Browser</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">Writing Tests</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">Ticket Tests</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">Methods for testing</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl#assert-equal">Assert Equal</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl#assert-not-equal">Assert Not Equal</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl#assert-identical">Assert Identical</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl#assert-true">Assert True</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl#assert-false">Assert False</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">Mock Drivers</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">Test Class Guidelines</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">Test Method Guidelines</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/unit-testing/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/improving-performance/pl">Improving Performance</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/improving-performance/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/improving-performance/pl">Compile</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/improving-performance/pl">Conservative Fetching</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/improving-performance/pl">Bundle your Class Files</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/improving-performance/pl">Use a Bytecode Cache</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/improving-performance/pl">Free Objects</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/improving-performance/pl">Other Tips</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/improving-performance/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/technology/pl">Technology</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/technology/pl">Introduction</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/technology/pl">Architecture</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/technology/pl">Doctrine CORE</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/technology/pl">Doctrine DBAL</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/technology/pl">Doctrine ORM</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/technology/pl">Design Patterns Used</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/technology/pl">Speed</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/technology/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/exceptions-and-warnings/pl">Exceptions and Warnings</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/exceptions-and-warnings/pl">Manager exceptions</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/exceptions-and-warnings/pl">Relation exceptions</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/exceptions-and-warnings/pl">Connection exceptions</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/exceptions-and-warnings/pl">Query exceptions</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/exceptions-and-warnings/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/real-world-examples/pl">Real World Examples</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/real-world-examples/pl">User Management System</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/real-world-examples/pl">Forum Application</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/real-world-examples/pl">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Coding Standards</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">PHP File Formatting</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">General</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Indentation</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Maximum Line Length</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Line Termination</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Naming Conventions</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Classes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Interfaces</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Filenames</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Functions and Methods</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Variables</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Constants</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Record Columns</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Coding Style</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">PHP Code Demarcation</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Strings</a>
+<ul class="closed">
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl#literal-string">Literal String</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl#string-containing-apostrophes">String Containing Apostrophes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl#variable-substitution">Variable Substitution</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl#string-concatenation">String Concatenation</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl#concatenation-line-breaking">Concatenation Line Breaking</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Arrays</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Classes</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Functions and Methods</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Control Statements</a></li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Inline Documentation</a></li>
+</ul>
+</li>
+<li><a href="/projects/orm/1.2/docs/manual/coding-standards/pl">Conclusion</a></li>
+</ul>
+</li>
+  </ul>
+          	</div>
+          	<div class="ft"><!-- foot --></div>
+          </div>
+      	</div>
+      
+      
+    	
+
+<ul id="breadcrumb_trail">
+  <li><a href="/">Home</a></li>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/projects/orm">Object Relational Mapper</a></li>
+  <li><a href="/projects/orm/1.2/docs/pl">Documentation</a></li>
+  <li><a href="/projects/orm/1.2/docs/manual/pl">Doctrine ORM for PHP</a></li>
+  <li class="last">Not Null</li>
+</ul>
+
+<div id="documentation">
+  <div class="chapter-nav">
+  
+      <div class="next">
+      <a href="/projects/orm/1.2/docs/manual/data-validation%3Aexamples%3Aemail/pl">Email >></a>    </div>
+  </div>
+  <div class="section">
+<h3>Not Null</h3><div class="documentation_markup"><p>A not-null constraint simply specifies that a column must not assume the null value. A not-null constraint is always written as a column constraint.</p>
+
+<p>The following definition uses a <tt>notnull</tt> constraint for column name. This means that the specified column doesn't accept null values.</p>
+
+
+
+<pre><code><span class="comment">// models/User.php</span>
+
+<span class="keyword">class</span><span class="default"> </span><span class="default">User</span><span class="default"> </span><span class="keyword">extends</span><span class="default"> </span><span class="default">BaseUser</span>
+<span class="keyword">{</span>
+<span class="default">    </span><span class="comment">// ...</span>
+
+<span class="default">    </span><span class="keyword">public</span><span class="default"> </span><span class="keyword">function</span><span class="default"> </span><span class="default">setTableDefinition</span><span class="keyword">(</span><span class="keyword">)</span>
+<span class="default">    </span><span class="keyword">{</span>
+<span class="default">        </span><span class="default">parent</span><span class="keyword">::</span><span class="default">setTableDefinition</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span>
+
+<span class="default">        </span><span class="comment">// ...</span>
+
+<span class="default">        </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">hasColumn</span><span class="keyword">(</span><span class="string">'username'</span><span class="keyword">,</span><span class="default"> </span><span class="string">'string'</span><span class="keyword">,</span><span class="default"> </span><span class="default">255</span><span class="keyword">,</span><span class="default"> </span><span class="keyword">array</span><span class="keyword">(</span>
+<span class="default">                </span><span class="string">'notnull'</span><span class="default"> </span><span class="keyword">=&gt;</span><span class="default"> </span><span class="default">true</span><span class="keyword">,</span>
+<span class="default">                </span><span class="string">'primary'</span><span class="default"> </span><span class="keyword">=&gt;</span><span class="default"> </span><span class="default">true</span><span class="keyword">,</span>
+<span class="default">            </span><span class="keyword">)</span>
+<span class="default">        </span><span class="keyword">)</span><span class="keyword">;</span>
+<span class="default">    </span><span class="keyword">}</span>
+<span class="keyword">}</span>
+</code></pre>
+
+
+<p>Here is the same example in YAML format. You can read more about YAML in the <a href="/projects/orm/1.2/docs/manual/yaml-schema-files/pl" class="pageref">YAML Schema Files</a> chapter:</p>
+
+
+
+<pre><code class="yaml"><span class="yaml_top_dashes">---</span>
+<span class="yaml_comment"># schema.yml</span>
+
+<span class="yaml_comment"># ...</span>
+<span class="yaml_keys">User</span><span class="yaml_colon">:</span>
+<span class="yaml_keys">  columns</span><span class="yaml_colon">:</span>
+<span class="yaml_keys">    username</span><span class="yaml_colon">:</span>
+<span class="yaml_keys">      type</span><span class="yaml_colon">:</span><span class="yaml_string"> string(255)</span>
+<span class="yaml_keys">      notnull</span><span class="yaml_colon">:</span><span class="yaml_boolean"> true</span>
+<span class="yaml_keys">      primary</span><span class="yaml_colon">:</span><span class="yaml_boolean"> true</span>
+<span class="yaml_comment"># ...</span></code></pre>
+
+<p>When this class gets exported to database the following SQL statement would get executed (in MySQL):</p>
+
+
+
+<pre><code><span style="color: #ffcc66;"><strong>CREATE </strong></span><span style="color: #ffcc66;"><strong>TABLE </strong></span>user (username VARCHAR(255) NOT NULL, <br/><span style="color: #ffcc66;"><strong>PRIMARY KEY</strong></span>(username))</code></pre>
+
+<p>The <tt>notnull</tt> constraint also acts as an application level validator. This means that if Doctrine validators are turned on, Doctrine will automatically check that specified columns do not contain null values when saved.</p>
+
+<p>If those columns happen to contain null values <tt>Doctrine_Validator_Exception</tt> is raised.</p>
+
+</div></div>
+
+  <div class="chapter-nav">
+  
+      <div class="next">
+      <a href="/projects/orm/1.2/docs/manual/data-validation%3Aexamples%3Aemail/pl">Email >></a>    </div>
+  </div>
+  <br style="clear: both;" />
+
+<div id="help">
+  <h3>Questions and Feedback</h3>
+
+  If you find a problem with the documentation or have a suggestion, please <a href="http://www.doctrine-project.org/jira">register</a> and open a ticket.
+  <br/><br/>
+  If you need support or have a technical question, you can post to the <a href="http://groups.google.com/group/doctrine-user">user mailing-list</a>.
+</div></div>
+
+    </div>
+
+	  <div id="bot-rcnr">
+		  <div class="tl"><!-- corner --></div>
+	  </div>
+
+    <div id="footer">
+      <br/>
+      <a target="_BLANK" href="http://www.servergrove.com"><img src="/images/servergrove.jpg" /></a>      <br/><br/>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="BAE2E3XANQ77Y">
+      <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
+    </div>
+  </div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-288343-7";
+urchinTracker();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+Acme\WeatherBundle\Entity\Weather:
+  type: entity
+  repositoryClass: Acme\WeatherBundle\Entity\WeatherRepository
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    datetime:
+      type: integer
+      length: '11'
+    location:
+      type: string
+      length: '255'
+    condition_id:
+      type: integer
+      length: null
+  lifecycleCallbacks: {  }
+  manyToOne:
+        wcondition:
+            targetEntity: WCondition
+            inversedBy: wconditions
+            joinColumn:
+                name: condition_id
+                referencedColumnName: id
