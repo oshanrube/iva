@@ -1,10 +1,17 @@
 <link rel="stylesheet" href="/Symfony/web/css/dashboard.css" type="text/css" media="screen">
+<link rel="stylesheet" href="/Symfony/web/css/notifications.css" type="text/css" media="screen">
 <div id="dashboard">
 <?php
 $timestamp = mktime(0, 0, 0, date('m'), 1, date('Y'));
 $maxday = date("t",$timestamp);
 $thismonth = getdate ($timestamp);
 $startday = $thismonth['wday'];
+if ($view['session']->hasFlash('success')):
+echo "<div class=\"success message\">
+        <p>".$view['session']->getFlash('success')."</p>
+    </div>";
+endif;
+
 echo "<table>";
 echo "<thead><tr><td>Sunday</td><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td><td>Saturday</td></tr></thead>";
 echo "<tbody>";

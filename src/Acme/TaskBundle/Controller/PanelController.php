@@ -8,7 +8,7 @@ use Acme\TaskBundle\Entity\Task;
 use Acme\TaskBundle\Library\Decode;
 use Acme\TaskBundle\Library\Language;
 use Acme\TaskBundle\Library\Location;
-use Acme\CalendarBundle\Entity\Calendar;
+use Acme\TaskBundle\Entity\Calendar;
 
 
 class PanelController extends Controller
@@ -88,12 +88,13 @@ class PanelController extends Controller
 			}
 			//calendar
 			if($calendarName = Decode::getCalendarName($quickTask)){
-				$calendar = $em->getRepository('AcmeCalendarBundle:Calendar')
+				$calendar = $em->getRepository('AcmeTaskBundle:Calendar')
             ->findOneByCalendarName($calendarName,$user);
-            $calendarId = $calendar[0]->getId();
-            $task->setCalendarId($calendarId);
+            $task->setCalendar($calendar);
 			} else {
-				$task->setCalendarId(0);
+				$calendar = $em->getRepository('AcmeTaskBundle:Calendar')
+				->findOneById(0);
+				$task->setCalendar($calendar);
 			}
 			//task
 			if(!$error){

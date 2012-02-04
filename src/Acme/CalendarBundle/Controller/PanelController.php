@@ -4,7 +4,7 @@ namespace Acme\CalendarBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Acme\CalendarBundle\Entity\Calendar;
+use Acme\TaskBundle\Entity\Calendar;
 
 class PanelController extends Controller
 {
@@ -38,6 +38,7 @@ class PanelController extends Controller
 			while (current($calendarPanelOptions) !== $current) next($calendarPanelOptions);
 			if(!$current = prev($calendarPanelOptions)) $current = end($calendarPanelOptions);
 		}
+		
 		//generate the panel 
 		$templating = $this->get('templating');
 		//if it requests new calenday generate the form
@@ -59,7 +60,7 @@ class PanelController extends Controller
 		    	$user = $this->get('security.context')->getToken()->getUser();
 		    	//retrive the users calendars
 				$calendars = $this->getDoctrine()
-		        ->getRepository('AcmeCalendarBundle:Calendar')
+		        ->getRepository('AcmeTaskBundle:Calendar')
 		        ->findByOwnerId($user->getId());
 			$panel = $templating->render('AcmeCalendarBundle:Panel:myCalendars.html.twig',array('calendars' => $calendars));
 		} else {$panel='';}

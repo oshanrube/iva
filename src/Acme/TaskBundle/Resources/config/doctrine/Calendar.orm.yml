@@ -1,0 +1,29 @@
+Acme\TaskBundle\Entity\Calendar:
+  type: entity
+  repositoryClass: Acme\TaskBundle\Repository\CalendarRepository
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    title:
+      type: string
+      length: '255'
+    enabled:
+      type: boolean
+    description:
+      type: text
+      length: null
+    ownerId:
+      type: integer
+      length: '11'
+    privacyType:
+      type: string
+      length: '7'
+  lifecycleCallbacks: {  }
+  oneToMany:
+       task:
+            targetEntity: Task
+            mappedBy: calendar

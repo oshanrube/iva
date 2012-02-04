@@ -8,26 +8,44 @@ use Acme\TaskBundle\Entity\Task;
 use Acme\TaskBundle\Library\Decode;
 use Acme\TaskBundle\Library\Language;
 use Acme\TaskBundle\Library\Location;
-use Acme\CalendarBundle\Entity\Calendar;
-
+use Acme\TaskBundle\Entity\Calendar;
+use Acme\TaskBundle\Form\TaskType;
 
 class DayController extends Controller
 {
 
-	public function editAction($id)
+	public function editAction($id, Request $request)
 	{
 		//get the task list from db
 		$user = $this->get('security.context')->getToken()->getUser();
 		$em = $this->getDoctrine()->getEntityManager();
 		$task = $em->getRepository('AcmeTaskBundle:Task')
             		->findOneByDay($id,$user);
-            		
+      $calendars = $em->getRepository('AcmeTaskBundle:Calendar')
+            		->findByUser($user);
+        
       $form = $this->createFormBuilder($task)
-      			->add('task')
-      			->add('description')
-      			->add('calendarId')
+      			->add('userId','hidden')
+            	->add('task')
+            	->add('description')
+            	->add('datetime','hidden')
+            	->add('location','hidden')
+            	->add('lng','hidden')
+            	->add('lat','hidden')
+      			->add('calendarId', 'choice', array( 'choices' => $calendars ))
 					->getForm();
-		return $this->render('AcmeTaskBundle:Day:edit.html.twig', array('id' => $id, 'form' => $form->createView()));
+      //save?
+      if ($request->getMethod() == 'POST') 
+		{
+			$form->bindRequest($request);
+			if ($form->isValid()) {
+				$em = $this->getDoctrine()->getEntityManager();
+				$em->persist($task);
+				$em->flush();
+        		return $this->redirect($this->generateUrl('AcmeDashBundle_ajax_panel'));
+        	}
+		}  
+			return $this->render('AcmeTaskBundle:Day:edit.html.twig', array('id' => $id, 'form' => $form->createView()));
 	}
 	public function AddNewTaskAction(Request $request)
 	{
@@ -98,7 +116,7 @@ class DayController extends Controller
 			if($calendarName = Decode::getCalendarName($quickTask)){
 				$user = $this->get('security.context')->getToken()->getUser();
 				$em = $this->getDoctrine()->getEntityManager();
-				$calendar = $em->getRepository('AcmeCalendarBundle:Calendar')
+				$calendar = $em->getRepository('AcmeTaskBundle:Calendar')
             ->findOneByCalendarName($calendarName,$user);
             $calendarId = $calendar[0]->getId();
             $task->setCalendarId($calendarId);

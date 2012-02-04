@@ -15,3 +15,7 @@ AcmeTaskBundle_edit_id:
     defaults: { _controller: AcmeTaskBundle:Day:edit }
     requirements:
         id:  \d+
+        
+AcmeTaskBundle_delete:
+    pattern:  /task/delete
+    defaults: { _controller: AcmeTaskBundle:Default:delete }

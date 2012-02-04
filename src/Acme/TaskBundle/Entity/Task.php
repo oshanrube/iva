@@ -15,6 +15,11 @@ class Task
     private $id;
 
     /**
+     * @var integer $userId
+     */
+    private $userId;
+
+    /**
      * @var integer $calendarId
      */
     private $calendarId;
@@ -34,6 +39,26 @@ class Task
      */
     private $datetime;
 
+    /**
+     * @var string $location
+     */
+    private $location;
+
+    /**
+     * @var float $lng
+     */
+    private $lng;
+
+    /**
+     * @var float $lat
+     */
+    private $lat;
+
+    /**
+     * @var Acme\TaskBundle\Entity\Calendar
+     */
+    private $calendar;
+
 
     /**
      * Get id
@@ -43,6 +68,26 @@ class Task
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->userId;
     }
 
     /**
@@ -124,10 +169,6 @@ class Task
     {
         return $this->datetime;
     }
-    /**
-     * @var string $location
-     */
-    private $location;
 
     /**
      * Set location
@@ -148,17 +189,6 @@ class Task
     {
         return $this->location;
     }
-
-    /**
-     * @var float $lng
-     */
-    private $lng;
-
-    /**
-     * @var float $lat
-     */
-    private $lat;
-
 
     /**
      * Set lng
@@ -199,29 +229,24 @@ class Task
     {
         return $this->lat;
     }
-    /**
-     * @var integer $userId
-     */
-    private $userId;
-
 
     /**
-     * Set userId
+     * Set calendar
      *
-     * @param integer $userId
+     * @param Acme\TaskBundle\Entity\Calendar $calendar
      */
-    public function setUserId($userId)
+    public function setCalendar(\Acme\TaskBundle\Entity\Calendar $calendar)
     {
-        $this->userId = $userId;
+        $this->calendar = $calendar;
     }
 
     /**
-     * Get userId
+     * Get calendar
      *
-     * @return integer 
+     * @return Acme\TaskBundle\Entity\Calendar 
      */
-    public function getUserId()
+    public function getCalendar()
     {
-        return $this->userId;
+        return $this->calendar;
     }
 }
