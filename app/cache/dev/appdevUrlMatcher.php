@@ -148,6 +148,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',  '_route' => 'AcmeDashBundle_ajax_panel',);
         }
 
+        // AcmeDashBundle_ajax_edit_date
+        if (0 === strpos($pathinfo, '/dash/ajax/edit') && preg_match('#^/dash/ajax/edit/(?P<date>\\d+)$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',)), array('_route' => 'AcmeDashBundle_ajax_edit_date'));
+        }
+
         // AcmeEventsBundle_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\EventsBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeEventsBundle_homepage'));

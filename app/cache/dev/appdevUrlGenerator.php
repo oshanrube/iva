@@ -34,6 +34,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_step' => true,
        '_configurator_final' => true,
        'AcmeDashBundle_ajax_panel' => true,
+       'AcmeDashBundle_ajax_edit_date' => true,
        'AcmeEventsBundle_homepage' => true,
        'AcmeNewsBundle_ajax_panel' => true,
        'AcmeLocationBundle_homepage' => true,
@@ -205,6 +206,11 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getAcmeDashBundle_ajax_panelRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/dash/ajax/panel',  ),));
+    }
+
+    private function getAcmeDashBundle_ajax_edit_dateRouteInfo()
+    {
+        return array(array (  0 => 'date',), array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',), array (  'date' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'date',  ),  1 =>   array (    0 => 'text',    1 => '/dash/ajax/edit',  ),));
     }
 
     private function getAcmeEventsBundle_homepageRouteInfo()
