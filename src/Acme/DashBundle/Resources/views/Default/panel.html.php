@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/Symfony/web/css/dashboard.css" type="text/css" media="screen">
 <?php
 $timestamp = mktime(0, 0, 0, date('m'), 1, date('Y'));
 $maxday = date("t",$timestamp);
@@ -10,7 +11,7 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 	if(($i % 7) == 0 ) echo "<tr>";
 	if($i < $startday) echo "<td></td>\n";
 	else{
-		 echo "<td><span class=\"border\"><div class=\"date\">". ($i - $startday + 1) . "</div><content onclick=\"zoomIn(this);\">";
+		 echo "<td><span class=\"border\"><div class=\"date\">". ($i - $startday + 1) . "</div><content date=\"".($i - $startday + 1)."\" onclick=\"zoomIn(this);\">";
 		 //print tasks
 		 if(isset($timeline[($i - $startday + 1)])){
 		 	echo '<ul>';

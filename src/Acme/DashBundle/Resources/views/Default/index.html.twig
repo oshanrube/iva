@@ -1,21 +1,4 @@
-<div id="dashboard"></div>
-<script type="text/javascript" >
-$('#dashboard').loading();
-$.ajax({
-	url: '{{ url('AcmeDashBundle_ajax_panel') }}',
-	success: function(r){
-			$('#dashboard').html(r.page);
-	}
-});
-$('#dashboard').parent().find("h2").click(function(){
-	$.ajax({
-		url: '{{ url('AcmeDashBundle_ajax_panel') }}',
-		success: function(r){
-			$('#dashboard').html(r.page);
-		}
-	});
-});
-</script>
+<iframe id="dashboard" src="{{ url('AcmeDashBundle_ajax_panel') }}"></iframe>
 <script type="text/javascript" >
 function zoomIn(that){
 	var date = $(that).attr('date');
