@@ -1,11 +1,11 @@
-table thead td{
+#dashboard table thead td{
 	font-weight: bold;
 }
-table tbody td{
+#dashboard table tbody td{
 	padding: 2px;
 	padding-bottom: 5px;
 }
-table tbody td .date{
+#dashboard table tbody td .date{
 	text-align: center;
 	background: #0099FF;
 	border-radius: 9px;
@@ -16,19 +16,74 @@ table tbody td .date{
 	font-weight: bold;
 	border: 1px solid #F90;
 }
-table tbody .border{
+#dashboard table tbody .border{
 	margin: 0px;
 	padding: 0px;
 	height: 120px;
 	overflow: hidden;
 	background: #A6CCE6;
 }
-table tbody td ul{
+#dashboard table tbody td ul{
 	list-style: none;
 	margin: 3px;
 	
 }
-table tbody td ul li{
+#dashboard table tbody td ul li{
 	color: white;
 	border-bottom: 1px solid;
+	line-height: 18px;
 }
+#dashboard table {
+	width: 100%;
+	margin-bottom: 18px;
+	padding: 0;
+	font-size: 13px;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+#dashboard table td {
+	vertical-align: top;
+	border-top: 1px solid #DDD;
+}
+#dashboard table th,#dashboard table td {
+	padding: 10px 10px 9px;
+	line-height: 18px;
+	text-align: left;
+}
+#dashboard h1,#dashboard h2,#dashboard h3,#dashboard h4,#dashboard h5,#dashboard h6,#dashboard p,#dashboard blockquote,#dashboard pre,#dashboard a,
+#dashboard abbr,#dashboard acronym,#dashboard address,#dashboard cite,#dashboard code,#dashboard del,#dashboard dfn,#dashboard em,#dashboard img,
+#dashboard q,#dashboard s,#dashboard samp,#dashboard small,#dashboard strike,#dashboard strong,#dashboard sub,#dashboard sup,#dashboard tt,
+#dashboard var,#dashboard dd,#dashboard dl,#dashboard dt,#dashboard li,#dashboard ol,#dashboard ul,#dashboard fieldset,#dashboard form,
+#dashboard label,#dashboard legend,#dashboard button,#dashboard table,#dashboard caption,#dashboard tbody,#dashboard tfoot,#dashboard thead,
+#dashboard tr,#dashboard th,#dashboard td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 100%;
+	line-height: 1;
+	font-family: inherit;
+	border-image: initial;
+}
+
+body #dashboard{
+	font: 13px Arial, Helvetica, sans-serif;
+	color: #888;
+	line-height: 20px;
+}
+
+#dashboard .border {
+	display: block;
+	padding: 4px;
+	line-height: 1;
+	border: 1px solid #DDD;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+	border-image: initial;
+}
+#dashboard .border:hover { border-color: #0088cc; -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); }

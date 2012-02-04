@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/Symfony/web/css/dashboard.css" type="text/css" media="screen">
+<div id="dashboard">
 <?php
 $timestamp = mktime(0, 0, 0, date('m'), 1, date('Y'));
 $maxday = date("t",$timestamp);
@@ -28,3 +29,4 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 echo "</tbody>";
 echo "</table>";
 ?>
+</div>
