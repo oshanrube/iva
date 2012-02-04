@@ -85,3 +85,8 @@
 [2012-02-03 21:58:52] Leanguage.ERROR: Search Text not found hey i have a Party tomorrow in IIT - 4LA [] []
 [2012-02-03 22:18:09] Leanguage.ERROR: Search Text not found Thres a Course to finish by Mondaasdasdy in IIT [] []
 [2012-02-03 22:18:09] Decode.ERROR: Time not found in thres a course to finish by mondaasdasdy iit [] []
+[2012-02-04 14:08:25] Leanguage.ERROR: Search Text not found hey i have a Meeting on 25th in IIT [] []
+[2012-02-04 14:08:26] Decode.ERROR: Time not found in hey i have a meeting 25th iit [] []
+[2012-02-04 14:09:52] Leanguage.ERROR: Search Text not found hey i have a Meeting on 25th in IIT [] []
+[2012-02-04 14:09:52] Decode.ERROR: Time not found in hey i have a meeting 25th iit [] []
+[2012-02-04 14:10:19] Leanguage.ERROR: Search Text not found hey i have a Meeting on 25th january in IIT [] []

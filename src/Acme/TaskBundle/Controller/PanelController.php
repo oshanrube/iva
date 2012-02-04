@@ -8,7 +8,7 @@ use Acme\TaskBundle\Entity\Task;
 use Acme\TaskBundle\Library\Decode;
 use Acme\TaskBundle\Library\Language;
 use Acme\TaskBundle\Library\Location;
-use Acme\CalendarBundle\Entity\Calendar;
+use Acme\TaskBundle\Entity\Calendar;
 
 
 class PanelController extends Controller
@@ -32,6 +32,9 @@ class PanelController extends Controller
 		{	
 			//flag variable initialize
 			$error=false;
+			$user = $this->get('security.context')->getToken()->getUser();
+			$em = $this->getDoctrine()->getEntityManager();
+			//get posted values
 			$quickTask = $request->request->get('task');
 			$lng = $request->request->get('lng');
 			$lat = $request->request->get('lat');
@@ -85,14 +88,13 @@ class PanelController extends Controller
 			}
 			//calendar
 			if($calendarName = Decode::getCalendarName($quickTask)){
-				$user = $this->get('security.context')->getToken()->getUser();
-				$em = $this->getDoctrine()->getEntityManager();
-				$calendar = $em->getRepository('AcmeCalendarBundle:Calendar')
+				$calendar = $em->getRepository('AcmeTaskBundle:Calendar')
             ->findOneByCalendarName($calendarName,$user);
-            $calendarId = $calendar[0]->getId();
-            $task->setCalendarId($calendarId);
+            $task->setCalendar($calendar);
 			} else {
-				$task->setCalendarId(0);
+				$calendar = $em->getRepository('AcmeTaskBundle:Calendar')
+				->findOneById(0);
+				$task->setCalendar($calendar);
 			}
 			//task
 			if(!$error){
@@ -112,8 +114,8 @@ class PanelController extends Controller
 			}
 			//End
 			if(!$error){
+				$task->setUserId($user->getId());
 				// saving the task to the database 
-				$em = $this->getDoctrine()->getEntityManager();
 				$em->persist($task);
 				$em->flush();
 				//send response

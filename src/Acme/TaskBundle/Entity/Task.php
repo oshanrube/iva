@@ -15,6 +15,11 @@ class Task
     private $id;
 
     /**
+     * @var integer $userId
+     */
+    private $userId;
+
+    /**
      * @var integer $calendarId
      */
     private $calendarId;
@@ -34,6 +39,26 @@ class Task
      */
     private $datetime;
 
+    /**
+     * @var string $location
+     */
+    private $location;
+
+    /**
+     * @var float $lng
+     */
+    private $lng;
+
+    /**
+     * @var float $lat
+     */
+    private $lat;
+
+    /**
+     * @var Acme\TaskBundle\Entity\Calendar
+     */
+    private $calendar;
+
 
     /**
      * Get id
@@ -43,6 +68,26 @@ class Task
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->userId;
     }
 
     /**
@@ -124,10 +169,6 @@ class Task
     {
         return $this->datetime;
     }
-    /**
-     * @var string $location
-     */
-    private $location;
 
     /**
      * Set location
@@ -148,17 +189,6 @@ class Task
     {
         return $this->location;
     }
-
-    /**
-     * @var float $lng
-     */
-    private $lng;
-
-    /**
-     * @var float $lat
-     */
-    private $lat;
-
 
     /**
      * Set lng
@@ -198,5 +228,25 @@ class Task
     public function getLat()
     {
         return $this->lat;
+    }
+
+    /**
+     * Set calendar
+     *
+     * @param Acme\TaskBundle\Entity\Calendar $calendar
+     */
+    public function setCalendar(\Acme\TaskBundle\Entity\Calendar $calendar)
+    {
+        $this->calendar = $calendar;
+    }
+
+    /**
+     * Get calendar
+     *
+     * @return Acme\TaskBundle\Entity\Calendar 
+     */
+    public function getCalendar()
+    {
+        return $this->calendar;
     }
 }

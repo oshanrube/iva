@@ -5,7 +5,7 @@ namespace Acme\CalendarBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Acme\CalendarBundle\Entity\Calendar;
+use Acme\TaskBundle\Entity\Calendar;
 
 class DefaultController extends Controller
 {
@@ -15,7 +15,7 @@ class DefaultController extends Controller
     	$user = $this->get('security.context')->getToken()->getUser();
     	//retrive the users calendars
 		$calendars = $this->getDoctrine()
-        ->getRepository('AcmeCalendarBundle:Calendar')
+        ->getRepository('AcmeTaskBundle:Calendar')
         ->findByOwnerId($user->getId());
     	return $this->render('AcmeCalendarBundle:Default:calendarWidget.html.php',array('calendars' => $calendars));
     	
@@ -57,7 +57,7 @@ class DefaultController extends Controller
 		}
     	//get calendar by id
     	$calendar = $this->getDoctrine()
-        ->getRepository('AcmeCalendarBundle:Calendar')
+        ->getRepository('AcmeTaskBundle:Calendar')
         ->findOneById($id);
       //enable or disable
       if($calendar->getEnabled() == 0){
@@ -79,7 +79,7 @@ class DefaultController extends Controller
 		}
     	//get calendar by id
     	$calendar = $this->getDoctrine()
-        ->getRepository('AcmeCalendarBundle:Calendar')
+        ->getRepository('AcmeTaskBundle:Calendar')
         ->findOneById($id);
     	$em = $this->getDoctrine()->getEntityManager();
 				$em->remove($calendar);

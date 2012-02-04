@@ -9,10 +9,20 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     
-	public function indexAction($name = 'guest')
-    {
-        return $this->render('AcmeTaskBundle:Default:index.html.twig', array('name' => $name));
-    }
+	public function deleteAction(Request $request)
+	{
+		$id = $request->request->get("id");
+		//get the task list from db
+		$user = $this->get('security.context')->getToken()->getUser();
+		$em = $this->getDoctrine()->getEntityManager();
+		$task = $em->getRepository('AcmeTaskBundle:Task')
+            		->findOneByDay($id,$user);
+		$em->remove($task);
+		$em->flush();
+		$this->get('session')->setFlash('success', 'Task has been successfully deleted');
+		return $this->redirect($this->generateUrl('AcmeDashBundle_ajax_panel'));
+	}
+	
 	public function newAction(Request $request)
 	{
 		// create a task and give it some dummy data for this example

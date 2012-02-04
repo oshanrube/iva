@@ -148,11 +148,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',  '_route' => 'AcmeDashBundle_ajax_panel',);
         }
 
-        // AcmeDashBundle_ajax_edit_date
-        if (0 === strpos($pathinfo, '/dash/ajax/edit') && preg_match('#^/dash/ajax/edit/(?P<date>\\d+)$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',)), array('_route' => 'AcmeDashBundle_ajax_edit_date'));
-        }
-
         // AcmeEventsBundle_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\EventsBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeEventsBundle_homepage'));
@@ -447,6 +442,16 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // AcmeTaskBundle_addnewtask
         if ($pathinfo === '/task/new') {
             return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\PanelController::addNewTaskAction',  '_route' => 'AcmeTaskBundle_addnewtask',);
+        }
+
+        // AcmeTaskBundle_edit_id
+        if (0 === strpos($pathinfo, '/task/edit') && preg_match('#^/task/edit/(?P<id>\\d+)$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DayController::editAction',)), array('_route' => 'AcmeTaskBundle_edit_id'));
+        }
+
+        // AcmeTaskBundle_delete
+        if ($pathinfo === '/task/delete') {
+            return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::deleteAction',  '_route' => 'AcmeTaskBundle_delete',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

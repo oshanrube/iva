@@ -17,20 +17,13 @@ class DefaultController extends Controller
     
     public function ajaxAction()
     {
-    	if(!$this->getRequest()->isXmlHttpRequest()){
-			return $this->redirect($this->generateUrl('error'));
-		}
 		//get tasks
 		$Task = $this->getDoctrine()->getRepository('AcmeTaskBundle:Task');
-		//$em = $this->doctrine->getEntityManager();
-		$timeline = $Task->findByThisMonth();
+		$user = $this->get('security.context')->getToken()->getUser();
+		$timeline = $Task->findByThisMonth($user);
 		$timeline = Decode::getCalendar($timeline);
 		//var_dump($timeline);exit();
 		//create template
-		$templating = $this->get('templating');
-    	$page = $templating->render('AcmeDashBundle:Default:panel.html.php', array('timeline' => $timeline));
-    	$response = new Response(json_encode(array('page' => $page)));
-		$response->headers->set('Content-Type', 'application/json');
-		return $response;
+    	return $this->render('AcmeDashBundle:Default:panel.html.php', array('timeline' => $timeline));
     }
 }

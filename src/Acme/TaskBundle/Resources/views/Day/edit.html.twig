@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="{{ asset('css/task-edit.css') }}" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-modal.js') }}"></script>
+
+<a class="btn pull-right"  href="{{ path('AcmeDashBundle_ajax_panel') }}" ><i class="icon-chevron-left"></i> Back</a>
+<div id="myModal" class="modal hide fade" style="display: none; ">
+   <div class="modal-header">
+     <a class="close" data-dismiss="modal">×</a>
+     <h3>Delete Task?</h3>
+   </div>
+   <div class="modal-body">
+     <p>Are you sure you want to delete this task?</p>
+   </div>
+   <div class="modal-footer">
+   <form action="{{ path('AcmeTaskBundle_delete') }}" method="POST">
+   	<input type="hidden" name="id" value="{{ id }}" />
+     <button type="submit" class="btn btn-primary">Save changes</button>
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+     </form>
+   </div>
+ </div>
+<a data-toggle="modal" href="#myModal" class="btn btn-danger" ><i class="icon-trash icon-white"></i> Delete</a>
+
+
+{% if suggestions is defined %}
+<script>
+	$(function() {
+		var suggestions = [{% autoescape false %}{{ suggestions }}{% endautoescape %}];
+		$( "#form_task" ).autocomplete({
+			source: suggestions
+		});
+	});
+</script>
+{% endif %}
+{% if venues is defined %}
+<script>
+	$(function() {
+		//delete old
+		deleteOverlays();
+		//add new venues
+		{% for loc in venues %}
+		addMarker("{{ loc.loc }}",{{ loc.lat }},{{ loc.lng }}, "{{ loc.name }}","{{ loc.id }}"); 
+		{% endfor %}
+		//declare new boudries
+		var bounds = new google.maps.LatLngBounds();
+		for (i in markersArray) {
+			bounds.extend(markersArray[i].position);
+		}
+		window.map.fitBounds( bounds );
+	});
+</script>
+{% endif %}
+<script>
+$(window).load(function() {
+	// check for Geolocation support
+if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(function(position) {
+		startPos = position;
+		$("#lat").val(startPos.coords.latitude);
+		$("#lng").val(startPos.coords.longitude);
+	}, function(error) {
+		alert("Error occurred. Error code: " + error.code);
+		// error.code can be:
+		//   0: unknown error
+		//   1: permission denied
+		//   2: position unavailable (error response from locaton provider)
+		//   3: timed out
+	});
+}
+});
+function didyoumean(that){
+	$('#form_task').val(that.innerHTML);
+	$(that).parent().remove();
+}
+$("#form_task").focus(function(){
+	$("#form_task").autocomplete( "search");
+});
+</script>
+
+{% if app.session.hasFlash('question') %}
+	<div class="info message">
+		<p>{{ app.session.flash('question') }}</p>
+	</div>
+{% endif %}
+
+{% form_theme form 'AcmeTaskBundle:Day:fields.html.twig' %}
+<form class="thumbnail form-horizontal" action="{{ path('AcmeTaskBundle_edit_id' , { "id": id}) }}" method="post" {{ form_enctype(form) }}>
+<fieldset>
+	<legend>Form control states</legend>
+	{{ form_widget(form) }}
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Save changes</button>
+		<button type="reset" class="btn">Cancel</button>
+	</div>
+</fieldset>    
+</form>
