@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/Symfony/web/css/dashboard.css" type="text/css" media="screen">
+<script type="text/javascript" src="/Symfony/web/js/jquery-1.6.js"></script>
 <div id="dashboard">
 <?php
 $timestamp = mktime(0, 0, 0, date('m'), 1, date('Y'));
@@ -30,3 +31,9 @@ echo "</tbody>";
 echo "</table>";
 ?>
 </div>
+<script type="text/javascript" >
+function zoomIn(that){
+	var date = $(that).attr('date');
+	alert(date);
+}
+</script>
