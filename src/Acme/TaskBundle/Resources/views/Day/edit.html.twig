@@ -1,0 +1,66 @@
+{% if suggestions is defined %}
+<script>
+	$(function() {
+		var suggestions = [{% autoescape false %}{{ suggestions }}{% endautoescape %}];
+		$( "#form_task" ).autocomplete({
+			source: suggestions
+		});
+	});
+</script>
+{% endif %}
+{% if venues is defined %}
+<script>
+	$(function() {
+		//delete old
+		deleteOverlays();
+		//add new venues
+		{% for loc in venues %}
+		  addMarker("{{ loc.loc }}",{{ loc.lat }},{{ loc.lng }}, "{{ loc.name }}","{{ loc.id }}"); 
+		{% endfor %}
+		//declare new boudries
+		var bounds = new google.maps.LatLngBounds();
+		for (i in markersArray) {
+			bounds.extend(markersArray[i].position);
+		}
+		window.map.fitBounds( bounds );
+	});
+</script>
+{% endif %}
+<script>
+$(window).load(function() {
+	// check for Geolocation support
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      startPos = position;
+      $("#lat").val(startPos.coords.latitude);
+      $("#lng").val(startPos.coords.longitude);
+    }, function(error) {
+      alert("Error occurred. Error code: " + error.code);
+      // error.code can be:
+      //   0: unknown error
+      //   1: permission denied
+      //   2: position unavailable (error response from locaton provider)
+      //   3: timed out
+    });
+  }
+});
+function didyoumean(that){
+	$('#form_task').val(that.innerHTML);
+	$(that).parent().remove();
+}
+$("#form_task").focus(function(){
+	$("#form_task").autocomplete( "search");
+});
+</script>
+
+{% if app.session.hasFlash('question') %}
+   <div class="info message">
+		<p>{{ app.session.flash('question') }}</p>
+	</div>
+{% endif %}
+
+<form action="{{ path('AcmeTaskBundle_addnewtask') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>

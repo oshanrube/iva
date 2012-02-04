@@ -9,3 +9,9 @@ AcmeTaskBundle_success:
 AcmeTaskBundle_addnewtask:
     pattern:  /task/new
     defaults: { _controller: AcmeTaskBundle:Panel:addNewTask }
+    
+AcmeTaskBundle_edit_id:
+    pattern:  /task/edit/{id}
+    defaults: { _controller: AcmeTaskBundle:Day:edit }
+    requirements:
+        id:  \d+

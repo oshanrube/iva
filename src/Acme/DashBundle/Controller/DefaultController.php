@@ -19,8 +19,8 @@ class DefaultController extends Controller
     {
 		//get tasks
 		$Task = $this->getDoctrine()->getRepository('AcmeTaskBundle:Task');
-		//$em = $this->doctrine->getEntityManager();
-		$timeline = $Task->findByThisMonth();
+		$user = $this->get('security.context')->getToken()->getUser();
+		$timeline = $Task->findByThisMonth($user);
 		$timeline = Decode::getCalendar($timeline);
 		//var_dump($timeline);exit();
 		//create template

@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="/Symfony/web/css/dashboard.css" type="text/css" media="screen">
-<script type="text/javascript" src="/Symfony/web/js/jquery-1.6.js"></script>
 <div id="dashboard">
 <?php
 $timestamp = mktime(0, 0, 0, date('m'), 1, date('Y'));
@@ -10,19 +9,22 @@ echo "<table>";
 echo "<thead><tr><td>Sunday</td><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td><td>Saturday</td></tr></thead>";
 echo "<tbody>";
 for ($i=0; $i<($maxday+$startday); $i++) {
+	$day = ($i - $startday + 1);
 	if(($i % 7) == 0 ) echo "<tr>";
 	if($i < $startday) echo "<td></td>\n";
 	else{
-		 echo "<td><span class=\"border\"><div class=\"date\">". ($i - $startday + 1) . "</div><content date=\"".($i - $startday + 1)."\" onclick=\"zoomIn(this);\">";
+		 echo "<td><span class=\"border\"><div class=\"date\">". ($i - $startday + 1) . "</div>";
 		 //print tasks
-		 if(isset($timeline[($i - $startday + 1)])){
+		 if(isset($timeline[$day])){
 		 	echo '<ul>';
-		 	foreach($timeline[($i - $startday + 1)] as $task){
+		 	foreach($timeline[$day] as $task){
+		 		echo "<a href=\"".$view['router']->generate('AcmeTaskBundle_edit_id', array('id' => $task->getId()))."\">";
 		 		echo '<li>'.$task->getDescription().'</li>';
+		 		echo "</a>";
 			}
 			echo '</ul>';
 		 }
-		 echo "</content></span></td>\n";
+		 echo "</span></td>\n";
 		 $timestamp =  strtotime("+1 day",$timestamp);
 	}
 	if(($i % 7) == 6 ) echo "</tr>\n";
@@ -31,9 +33,3 @@ echo "</tbody>";
 echo "</table>";
 ?>
 </div>
-<script type="text/javascript" >
-function zoomIn(that){
-	var date = $(that).attr('date');
-	alert(date);
-}
-</script>

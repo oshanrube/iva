@@ -199,4 +199,29 @@ class Task
     {
         return $this->lat;
     }
+    /**
+     * @var integer $userId
+     */
+    private $userId;
+
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
 }

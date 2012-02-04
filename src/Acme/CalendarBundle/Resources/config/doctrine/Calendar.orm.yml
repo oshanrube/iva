@@ -23,3 +23,7 @@ Acme\CalendarBundle\Entity\Calendar:
       type: string
       length: '7'
   lifecycleCallbacks: {  }
+  oneToMany:
+       task:
+            targetEntity: Task
+            mappedBy: calendar

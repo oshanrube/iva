@@ -8,6 +8,9 @@ Acme\TaskBundle\Entity\Task:
       id: true
       generator:
         strategy: AUTO
+    userId:
+      type: integer
+      length: '11'
     calendarId:
       type: integer
       length: '11'
@@ -30,3 +33,10 @@ Acme\TaskBundle\Entity\Task:
     lat:
       type: float
   lifecycleCallbacks: {  }
+  manyToOne:
+        calendar:
+            targetEntity: Calendar
+            inversedBy: calendars
+            joinColumn:
+                name: calendarId
+                referencedColumnName: id

@@ -32,6 +32,9 @@ class PanelController extends Controller
 		{	
 			//flag variable initialize
 			$error=false;
+			$user = $this->get('security.context')->getToken()->getUser();
+			$em = $this->getDoctrine()->getEntityManager();
+			//get posted values
 			$quickTask = $request->request->get('task');
 			$lng = $request->request->get('lng');
 			$lat = $request->request->get('lat');
@@ -85,8 +88,6 @@ class PanelController extends Controller
 			}
 			//calendar
 			if($calendarName = Decode::getCalendarName($quickTask)){
-				$user = $this->get('security.context')->getToken()->getUser();
-				$em = $this->getDoctrine()->getEntityManager();
 				$calendar = $em->getRepository('AcmeCalendarBundle:Calendar')
             ->findOneByCalendarName($calendarName,$user);
             $calendarId = $calendar[0]->getId();
@@ -112,8 +113,8 @@ class PanelController extends Controller
 			}
 			//End
 			if(!$error){
+				$task->setUserId($user->getId());
 				// saving the task to the database 
-				$em = $this->getDoctrine()->getEntityManager();
 				$em->persist($task);
 				$em->flush();
 				//send response
