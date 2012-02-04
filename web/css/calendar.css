@@ -2,7 +2,7 @@
 	left: 273px;
 	top: 200px;
 	position: absolute;
-	background: #CCC;
+	background: #9E9C91;
 	padding: 10px 10px 10px 5px;
 	height: 271px;
 	width: 200px;
@@ -23,12 +23,12 @@
 	display: inline-block;
 	height: 252px;
 	vertical-align: middle;
-	background: #AAA;
+	background: #EBEBEB;
 	cursor: pointer;
 	border:1px solid #CCC;
 }
 #calendar-panel #prev:hover,#calendar-panel #next:hover {
-	border:1px solid #000;
+	border:1px solid #FFFFFF;
 }
 #calendar-panel #middle {
 	display: inline-block;
