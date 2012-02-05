@@ -1,23 +1,24 @@
 <?php
 namespace Acme\WeatherBundle\Library\Includes;
+
 use Acme\WeatherBundle\Entity\WCondition;
 use Acme\WeatherBundle\Entity\Weather;
 
-
 class Googleweather {
-	private $cachePath,$doctrine;
+	
+	//Entity Manager
+	private $cachePath,$em;
 	private static $containerInstance = null; 
 	
-	public function __construct($doctrine)
+	public function __construct($em)
 	{
 		$this->cachePath = __DIR__.'/../../../../../app/cache/app/';
-		$this->doctrine = $doctrine;
+		$this->em = $em;
 	}
 
 	public function getWeather($location) {
 		$today = strtotime('today');
-		$Weather = $this->doctrine->getRepository('AcmeWeatherBundle:Weather');
-		$em = $this->doctrine->getEntityManager();
+		$Weather = $this->em->getRepository('AcmeWeatherBundle:Weather');
 		//check in database
 		if($w = $Weather->findOneByDatetimeAndLocation($today,$location)){
 			return $w;
@@ -54,9 +55,8 @@ class Googleweather {
 		return $xml['weather'][$today];
 	}
 	private function saveToDB($xml,$location) {
-		$Weather = $this->doctrine->getRepository('AcmeWeatherBundle:Weather');
-		$WCondition = $this->doctrine->getRepository('AcmeWeatherBundle:WCondition');
-		$em = $this->doctrine->getEntityManager();
+		$Weather = $this->em->getRepository('AcmeWeatherBundle:Weather');
+		$WCondition = $this->em->getRepository('AcmeWeatherBundle:WCondition');
 		//save data to DB
 		//loopthrough the results
 		foreach($xml['weather'] as $day => $weather){
@@ -69,6 +69,7 @@ class Googleweather {
 				$condition = new WCondition();
      			$condition->setName($weather['condition']);
      			$condition->setIcon($weather['icon']);
+     			$condition->setCriticality(1);
      			$em->persist($condition);
      			$em->flush();
 			}
@@ -77,8 +78,8 @@ class Googleweather {
 			$NewWeather->setLocation($location);
 			$NewWeather->setWcondition($condition);
 			
-    		$em->persist($NewWeather);
+    		$this->em->persist($NewWeather);
 		}
-		$em->flush();
+		$this->em->flush();
 	}
 }

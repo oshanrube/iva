@@ -1,6 +1,6 @@
 Acme\TaskBundle\Entity\Task:
   type: entity
-  repositoryClass: Acme\TaskBundle\Entity\TaskRepository
+  repositoryClass: Acme\TaskBundle\Repository\TaskRepository
   table: null
   fields:
     id:
@@ -33,6 +33,10 @@ Acme\TaskBundle\Entity\Task:
     lat:
       type: float
   lifecycleCallbacks: {  }
+  oneToOne:
+    notification:
+      targetEntity: Notification
+      mappedBy: task
   manyToOne:
         calendar:
             targetEntity: Calendar

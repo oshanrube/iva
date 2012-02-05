@@ -29,6 +29,21 @@ class User extends BaseUser
      * @Assert\MaxLength(limit="255", message="The name is too long.", groups={"Registration", "Profile"})
      */
     protected $name;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $avgspeed;
+    
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $lng;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $lat;
 
 	public function __construct()
 	{
@@ -42,8 +57,66 @@ class User extends BaseUser
 	public function setName($name) {
 		$this->name == $name;
 	}
-	
+	/**
+     * Set lng
+     *
+     * @param float $lng
+     */
+    public function setLng($lng)
+    {
+        $this->lng = $lng;
+    }
 
+    /**
+     * Get lng
+     *
+     * @return float 
+     */
+    public function getLng()
+    {
+        return $this->lng;
+    }
+
+    /**
+     * Set lat
+     *
+     * @param float $lat
+     */
+    public function setLat($lat)
+    {
+        $this->lat = $lat;
+    }
+
+    /**
+     * Get lat
+     *
+     * @return float 
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * Set avgspeed
+     *
+     * @param float $avgspeed
+     */
+    public function setAvgspeed($avgspeed)
+    {
+        $this->avgspeed = $avgspeed;
+    }
+
+    /**
+     * Get avgspeed
+     *
+     * @return float 
+     */
+    public function getAvgspeed()
+    {
+    	if($this->avgspeed == 0){return 60;}
+        return $this->avgspeed;
+    }
     /**
      * Get id
      *

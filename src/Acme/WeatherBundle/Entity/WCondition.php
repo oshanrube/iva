@@ -128,4 +128,29 @@ class WCondition
     {
         return $this->icon;
     }
+    /**
+     * @var float $criticality
+     */
+    private $criticality;
+
+
+    /**
+     * Set criticality
+     *
+     * @param float $criticality
+     */
+    public function setCriticality($criticality)
+    {
+        $this->criticality = $criticality;
+    }
+
+    /**
+     * Get criticality
+     *
+     * @return float 
+     */
+    public function getCriticality()
+    {
+        return $this->criticality;
+    }
 }

@@ -249,4 +249,29 @@ class Task
     {
         return $this->calendar;
     }
+    /**
+     * @var Acme\TaskBundle\Entity\notification
+     */
+    private $notification;
+
+
+    /**
+     * Set notification
+     *
+     * @param Acme\TaskBundle\Entity\notification $notification
+     */
+    public function setNotification(\Acme\TaskBundle\Entity\notification $notification)
+    {
+        $this->notification = $notification;
+    }
+
+    /**
+     * Get notification
+     *
+     * @return Acme\TaskBundle\Entity\notification 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
+    }
 }

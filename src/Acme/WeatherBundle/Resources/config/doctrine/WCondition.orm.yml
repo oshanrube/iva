@@ -13,6 +13,9 @@ Acme\WeatherBundle\Entity\WCondition:
     icon:
       type: string
       length: '255'
+    criticality:
+      type: float
+      length: 2
   lifecycleCallbacks: {  }
   oneToMany:
         weather:

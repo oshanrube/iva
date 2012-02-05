@@ -12,11 +12,7 @@ class DefaultController extends Controller
 {
 	public function indexAction()
 	{
-		//$this->doctrine = $this->getDoctrine();
-		//$product = $this->doctrine
-      //  ->getRepository('AcmeWeatherBundle:WCondition')
-      //  ->findOneByName('aaa');
-      $LibWeather = new LibWeather($this->getDoctrine());
+      $LibWeather = new LibWeather($this->getDoctrine()->getEntityManager());
 		$TodaysWeather = $LibWeather->getWeather('Colombo');
 		
 		return $this->render('AcmeWeatherBundle:Default:index.html.twig',array('todaysWeather' => $TodaysWeather));
