@@ -1,6 +1,7 @@
 <?php
 namespace Acme\NewsBundle\Library\Includes;
 use Acme\NewsBundle\Entity\News;
+use Acme\TaskBundle\Library\Log;
 
 class Adaderana {
 	private $doctrine;
@@ -15,9 +16,13 @@ class Adaderana {
 		//check in database
 		if($w = $News->findOneByDatetimeAndLocation($location)){
 			return $w;
+		} else {
+			$this->updateNews();
+			return $News->findOneByDatetimeAndLocation($location);
 		}
+		Log::err('adaDerana','News update failed');
       //return 
-		return $Adaderana->getTodaysNews($location);
+		return false;
 	}
 	public function updateNews() {
 		$News = $this->doctrine->getRepository('AcmeNewsBundle:News');

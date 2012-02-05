@@ -1,0 +1,39 @@
+Acme\TaskBundle\Entity\Notification:
+  type: entity
+  repositoryClass: Acme\TaskBundle\Repository\NotificationRepository
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    taskId:
+      type: integer
+      length: '11'
+    datetime:
+      type: integer
+      length: '11'
+    notified:
+      type: boolean
+      default: false
+    snooze:
+      type: boolean
+      default: false
+    email:
+      type: boolean
+      default: false
+    sms:
+      type: boolean
+      default: false
+    voicecall:
+      type: boolean
+      default: false
+  lifecycleCallbacks: {  }
+  oneToOne:
+    task:
+      targetEntity: Task
+      inversedBy: notification
+      joinColumn:
+        name: taskId
+        referencedColumnName: id

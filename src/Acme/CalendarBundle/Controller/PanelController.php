@@ -5,6 +5,7 @@ namespace Acme\CalendarBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Acme\TaskBundle\Entity\Calendar;
+use Acme\TaskBundle\Library\Decode;
 
 class PanelController extends Controller
 {
@@ -16,10 +17,15 @@ class PanelController extends Controller
     	elseif($nav == 'prevMonth') $month--;
 		elseif($nav == 'nextYear') $year++;
 		elseif($nav == 'prevYear') $year--;
-		
+		//get tasks
+		$Task = $this->getDoctrine()->getRepository('AcmeTaskBundle:Task');
+		$user = $this->get('security.context')->getToken()->getUser();
+		$timeline = $Task->findByThisMonth($user);
+		$timeline = Decode::getCalendar($timeline);
+		//
     	$timestamp = mktime(0,0,0,$month,1,$year);
     	$templating = $this->get('templating');
-    	$page = $templating->render('AcmeCalendarBundle:Panel:month.html.php',array('timestamp' => $timestamp));
+    	$page = $templating->render('AcmeCalendarBundle:Panel:month.html.php',array('timestamp' => $timestamp,'timeline' => $timeline));
 			
     	$response = new Response(json_encode(array('page' => $page,'month' => date('m',$timestamp),'year' => date('Y',$timestamp),'mon' => date('F',$timestamp))));
 		$response->headers->set('Content-Type', 'application/json');
