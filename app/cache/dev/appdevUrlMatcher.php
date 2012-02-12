@@ -154,6 +154,31 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::addAction',  '_route' => 'AcmeMobileBundle_addtask',);
             }
 
+            // AcmeMobileBundle_viewTodaysTasks
+            if ($pathinfo === '/mobile/view/today') {
+                return array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::viewTodaysAction',  '_route' => 'AcmeMobileBundle_viewTodaysTasks',);
+            }
+
+            // AcmeMobileBundle_viewCalendars
+            if ($pathinfo === '/mobile/view/calendars') {
+                return array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::browseAction',  '_route' => 'AcmeMobileBundle_viewCalendars',);
+            }
+
+            // AcmeMobileBundle_manageCalendars
+            if ($pathinfo === '/mobile/manage/calendars') {
+                return array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::listAction',  '_route' => 'AcmeMobileBundle_manageCalendars',);
+            }
+
+            // AcmeMobileBundle_viewCalendar
+            if (0 === strpos($pathinfo, '/mobile/view/calendar') && preg_match('#^/mobile/view/calendar/(?P<id>\\d+)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::viewCalendarAction',)), array('_route' => 'AcmeMobileBundle_viewCalendar'));
+            }
+
+            // AcmeMobileBundle_editCalendar
+            if (0 === strpos($pathinfo, '/mobile/edit/calendar') && preg_match('#^/mobile/edit/calendar/(?P<id>\\d+)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::editCalendarAction',)), array('_route' => 'AcmeMobileBundle_editCalendar'));
+            }
+
         }
 
         // AcmeDashBundle_ajax_panel

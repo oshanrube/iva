@@ -67,7 +67,7 @@ bug fixes with many thanks and much credit to http://www.punchkickinteractive.co
 class Mobile {
 	
 	public static function isMobile() {
-		//return true;
+		return true;
 		return Mobile::mobile_device_detect(true,false,true,true,true,true,true,false,false);
 	}
 	

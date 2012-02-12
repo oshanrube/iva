@@ -16,7 +16,7 @@ class DefaultController extends Controller
 		$user = $this->get('security.context')->getToken()->getUser();
 		$em = $this->getDoctrine()->getEntityManager();
 		$task = $em->getRepository('AcmeTaskBundle:Task')
-            		->findOneByDay($id,$user);
+            		->findOneByUserAndId($id,$user);
 		$em->remove($task);
 		$em->flush();
 		$this->get('session')->setFlash('success', 'Task has been successfully deleted');

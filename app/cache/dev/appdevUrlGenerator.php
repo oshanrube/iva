@@ -35,6 +35,11 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_final' => true,
        'AcmeMobileBundle_homepage' => true,
        'AcmeMobileBundle_addtask' => true,
+       'AcmeMobileBundle_viewTodaysTasks' => true,
+       'AcmeMobileBundle_viewCalendars' => true,
+       'AcmeMobileBundle_manageCalendars' => true,
+       'AcmeMobileBundle_viewCalendar' => true,
+       'AcmeMobileBundle_editCalendar' => true,
        'AcmeDashBundle_ajax_panel' => true,
        'AcmeEventsBundle_homepage' => true,
        'AcmeNewsBundle_ajax_panel' => true,
@@ -214,6 +219,31 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getAcmeMobileBundle_addtaskRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::addAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mobile/addtask',  ),));
+    }
+
+    private function getAcmeMobileBundle_viewTodaysTasksRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::viewTodaysAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mobile/view/today',  ),));
+    }
+
+    private function getAcmeMobileBundle_viewCalendarsRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::browseAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mobile/view/calendars',  ),));
+    }
+
+    private function getAcmeMobileBundle_manageCalendarsRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::listAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mobile/manage/calendars',  ),));
+    }
+
+    private function getAcmeMobileBundle_viewCalendarRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::viewCalendarAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/mobile/view/calendar',  ),));
+    }
+
+    private function getAcmeMobileBundle_editCalendarRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::editCalendarAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/mobile/edit/calendar',  ),));
     }
 
     private function getAcmeDashBundle_ajax_panelRouteInfo()

@@ -25,7 +25,19 @@ class TaskRepository extends EntityRepository
 			->getResult();
 	}
 	
-	public function findOneByDay($id, $user) {
+	public function findByToday($user) {
+		$today = mktime(0, 0, 0, date('m'), date('j'), date('Y'));
+		$tommorow = mktime(0, 0, 0, date('m'), date('j')+1, date('Y'));
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.datetime > :today AND t.datetime < :tommorow AND t.userId = :userId';
+		
+		return $this->getEntityManager()
+			->createQuery($query)
+			->setParameter('today', $today)
+			->setParameter('tommorow', $tommorow)
+			->setParameter('userId', $user->getId())
+			->getResult();
+	}
+	public function findOneByUserAndId($id, $user) {
 		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.id = :id AND t.userId = :userId';
 		
 		return $this->getEntityManager()

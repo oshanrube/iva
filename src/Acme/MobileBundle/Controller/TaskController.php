@@ -120,6 +120,8 @@ class TaskController extends Controller
 				// saving the task to the database 
 				$em->persist($task);
 				$em->flush();
+				//set flash 
+				$this->get('session')->setFlash('success', $task->getDescription().', Got It!!');
 				//send response
 				return $this->redirect($this->generateUrl('AcmeMobileBundle_homepage'));
 			} else {
@@ -141,4 +143,22 @@ class TaskController extends Controller
 		array('form' => $form->createView(),'task' => $task,'didyoumean' => ''));	
 		
     }
+    public function viewTodaysAction(Request $request)
+    {
+    	$Task = $this->getDoctrine()->getRepository('AcmeTaskBundle:Task');
+		$user = $this->get('security.context')->getToken()->getUser();
+		$tasklist = $Task->findByToday($user);
+		return $this->render('AcmeMobileBundle:Task:today.html.twig', 
+		array('tasklist' => $tasklist));
+    }
 }
+
+
+
+
+
+
+
+
+
+

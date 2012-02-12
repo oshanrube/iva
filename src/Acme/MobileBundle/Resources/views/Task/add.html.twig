@@ -1,7 +1,7 @@
 {% extends '::mobile-base.html.twig' %}
 
 {% block content%}
-	<form id="addNewTask" action="{{ path('AcmeMobileBundle_addtask') }}" method="post" {{ form_enctype(form) }}>
+<form id="addNewTask" action="{{ path('AcmeMobileBundle_addtask') }}" method="post" {{ form_enctype(form) }}>
 	<input type="text" x-webkit-speech autocomplete="off" spellcheck="false" x-webkit-grammar="builtin:search" lang="en" id="form_task" name="task" required="required" maxlength="255" pattern=".{3,255}" placeholder="What, Where, When" value="{{ task.task }}" />
 	<input type="hidden" id="lng" name="lng" value="{{ task.lng }}" />
 	<input type="hidden" id="lat" name="lat" value="{{ task.lat }}" />

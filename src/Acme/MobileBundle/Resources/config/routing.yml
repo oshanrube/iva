@@ -5,3 +5,27 @@ AcmeMobileBundle_homepage:
 AcmeMobileBundle_addtask:
     pattern:  /addtask
     defaults: { _controller: AcmeMobileBundle:Task:add }
+
+AcmeMobileBundle_viewTodaysTasks:
+    pattern:  /view/today
+    defaults: { _controller: AcmeMobileBundle:Task:viewTodays }
+    
+AcmeMobileBundle_viewCalendars:
+    pattern:  /view/calendars
+    defaults: { _controller: AcmeMobileBundle:Calendar:browse }
+
+AcmeMobileBundle_manageCalendars:
+    pattern:  /manage/calendars
+    defaults: { _controller: AcmeMobileBundle:Calendar:list }
+
+AcmeMobileBundle_viewCalendar:
+    pattern:  /view/calendar/{id}
+    defaults: { _controller: AcmeMobileBundle:Calendar:viewCalendar }
+    requirements:
+        id:  \d+
+
+AcmeMobileBundle_editCalendar:
+    pattern:  /edit/calendar/{id}
+    defaults: { _controller: AcmeMobileBundle:Calendar:editCalendar }
+    requirements:
+        id:  \d+

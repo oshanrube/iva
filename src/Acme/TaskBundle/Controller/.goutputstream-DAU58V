@@ -20,7 +20,7 @@ class DayController extends Controller
 		$user = $this->get('security.context')->getToken()->getUser();
 		$em = $this->getDoctrine()->getEntityManager();
 		$task = $em->getRepository('AcmeTaskBundle:Task')
-            		->findOneByDay($id,$user);
+            		->findOneByUserAndId($id,$user);
             		
       $form = $this->createFormBuilder($task)
       			->add('task')

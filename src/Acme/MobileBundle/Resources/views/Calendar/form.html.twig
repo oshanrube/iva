@@ -1,0 +1,9 @@
+{% extends '::mobile-base.html.twig' %}
+
+{% block content%}
+<form action="{{ path('AcmeMobileBundle_viewCalendar', {'id':id}) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <button type="submit" >save</button>
+</form>
+{% endblock %}

@@ -70,8 +70,8 @@ class Googleweather {
      			$condition->setName($weather['condition']);
      			$condition->setIcon($weather['icon']);
      			$condition->setCriticality(1);
-     			$em->persist($condition);
-     			$em->flush();
+     			$this->em->persist($condition);
+     			$this->em->flush();
 			}
 			$NewWeather = new Weather();
 			$NewWeather->setDatetime($day);
