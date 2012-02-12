@@ -1,0 +1,7 @@
+AcmeMobileBundle_homepage:
+    pattern:  /home
+    defaults: { _controller: AcmeMobileBundle:Default:index }
+
+AcmeMobileBundle_addtask:
+    pattern:  /addtask
+    defaults: { _controller: AcmeMobileBundle:Task:add }

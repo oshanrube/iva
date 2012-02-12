@@ -155,11 +155,11 @@ function initBinding()
 	});
 </script>
 <div id="calendar-panel" current="mycalendars" style="width: 0px;display: none;">
-	<div id="prev"><</div>
+	<div id="prev"></div>
 	<div id="middle">
 		<h3>My calendars</h3>
 	</div>
-	<div id="next">></div>
+	<div id="next"></div>
 </div>
 
 

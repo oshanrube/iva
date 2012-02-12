@@ -25,6 +25,8 @@ profile:
     show:
         username: Username
         email: Email
+        name: Name
+        phoneNum: Phone Number
     edit:
         submit: Update
     flash:
@@ -85,6 +87,13 @@ layout:
 fos_user_group_form_name: "Group name:"
 
 fos_user_profile_form_user_username: "Username:"
+fos_user_profile_form_user_name: "Name:"
+fos_user_profile_form_user_username: "Username:"
+fos_user_profile_form_user_lng: "Longitude:"
+fos_user_profile_form_user_lat: "Latitude:"
+fos_user_profile_form_user_avgspeed: "Avarages Speed:"
+fos_user_profile_form_user_deviceId: "Device Id:"
+fos_user_profile_form_user_phoneNum: "Phone Number:"
 fos_user_profile_form_user_email: "Email:"
 fos_user_profile_form_current: "Current Password:"
 

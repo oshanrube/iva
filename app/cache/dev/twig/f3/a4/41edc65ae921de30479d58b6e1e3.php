@@ -35,7 +35,7 @@ class __TwigTemplate_f3a441edc65ae921de30479d58b6e1e3 extends Twig_Template
         echo twig_escape_filter($this->env, $this->getContext($context, "id"), "html", null, true);
         echo "\">";
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($this->getContext($context, "id"), array(), "FOSUserBundle"), "html", null, true);
-        echo "</label>
+        echo "</label>aaaaaaa
 ";
         echo trim(preg_replace('/>\s+</', '><', ob_get_clean()));
     }

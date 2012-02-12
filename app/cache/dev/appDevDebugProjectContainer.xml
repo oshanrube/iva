@@ -18,7 +18,6 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="JMSSecurityExtraBundle">JMS\SecurityExtraBundle\JMSSecurityExtraBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
-      <parameter key="AcmeHelloBundle">Acme\HelloBundle\AcmeHelloBundle</parameter>
       <parameter key="AcmeProfileBundle">Acme\ProfileBundle\AcmeProfileBundle</parameter>
       <parameter key="AcmeStoreBundle">Acme\StoreBundle\AcmeStoreBundle</parameter>
       <parameter key="AcmeTaskBundle">Acme\TaskBundle\AcmeTaskBundle</parameter>
@@ -33,6 +32,7 @@
       <parameter key="AcmeEventsBundle">Acme\EventsBundle\AcmeEventsBundle</parameter>
       <parameter key="AcmeDashBundle">Acme\DashBundle\AcmeDashBundle</parameter>
       <parameter key="AcmeNotificationsBundle">Acme\NotificationsBundle\AcmeNotificationsBundle</parameter>
+      <parameter key="AcmeMobileBundle">Acme\MobileBundle\AcmeMobileBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -1687,7 +1687,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4f2e59eddd834</argument>
+            <argument>4f372a26b8e59</argument>
           </service>
         </argument>
       </argument>
@@ -1890,7 +1890,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4f2e59eddd834</argument>
+            <argument>4f372a26b8e59</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -3047,60 +3047,6 @@
               <argument type="service">
                 <service class="%assetic.directory_resource.class%" public="false">
                   <argument type="service" id="templating.loader"/>
-                  <argument>AcmeHelloBundle</argument>
-                  <argument>/var/www/html/Symfony/app/Resources/AcmeHelloBundle/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>AcmeHelloBundle</argument>
-                  <argument>/var/www/html/Symfony/src/Acme/HelloBundle/Resources/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.php"/>
-            <tag name="assetic.formula_resource" loader="php"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>AcmeHelloBundle</argument>
-                  <argument>/var/www/html/Symfony/app/Resources/AcmeHelloBundle/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>AcmeHelloBundle</argument>
-                  <argument>/var/www/html/Symfony/src/Acme/HelloBundle/Resources/views</argument>
-                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>php</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
                   <argument>AcmeProfileBundle</argument>
                   <argument>/var/www/html/Symfony/app/Resources/AcmeProfileBundle/views</argument>
                   <argument>/^[^.]+\.[^.]+\.twig$/</argument>
@@ -3840,6 +3786,60 @@
                   <argument type="service" id="templating.loader"/>
                   <argument>AcmeNotificationsBundle</argument>
                   <argument>/var/www/html/Symfony/src/Acme/NotificationsBundle/Resources/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>php</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.twig"/>
+            <tag name="assetic.formula_resource" loader="twig"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>AcmeMobileBundle</argument>
+                  <argument>/var/www/html/Symfony/app/Resources/AcmeMobileBundle/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>AcmeMobileBundle</argument>
+                  <argument>/var/www/html/Symfony/src/Acme/MobileBundle/Resources/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>twig</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.php"/>
+            <tag name="assetic.formula_resource" loader="php"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>AcmeMobileBundle</argument>
+                  <argument>/var/www/html/Symfony/app/Resources/AcmeMobileBundle/views</argument>
+                  <argument>/^[^.]+\.[^.]+\.php$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>AcmeMobileBundle</argument>
+                  <argument>/var/www/html/Symfony/src/Acme/MobileBundle/Resources/views</argument>
                   <argument>/^[^.]+\.[^.]+\.php$/</argument>
                 </service>
               </argument>

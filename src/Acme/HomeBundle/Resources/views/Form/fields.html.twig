@@ -2,12 +2,12 @@
 
 {% block field_row %}
 {% spaceless %}
-    <div class="clearfix">
-        {{ form_label(form) }}
-        {{ form_errors(form) }}
-        <div class="input">
-        {{ form_widget(form) }}
-        </div>
-    </div>
+	<div class="control-group">
+		{{ form_label(form) }}
+		<div class="controls">
+			{{ form_widget(form) }}
+         {{ form_errors(form) }}
+		</div>
+	</div>
 {% endspaceless %}
 {% endblock field_row %}

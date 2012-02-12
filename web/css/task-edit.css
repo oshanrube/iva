@@ -778,6 +778,7 @@ textarea[readonly] {
   background-color: #dff0d8;
   border-color: #468847;
 }
+.form-horizontal .control-group label.value{text-align: left;margin-left: 10px;font-weight: normal;}
 input:focus:required:invalid, textarea:focus:required:invalid, select:focus:required:invalid {
   color: #b94a48;
   border-color: #ee5f5b;
@@ -969,6 +970,7 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   width: 140px;
   padding-top: 5px;
   text-align: right;
+  font-weight: bold;
 }
 .form-horizontal .controls {
   margin-left: 160px;

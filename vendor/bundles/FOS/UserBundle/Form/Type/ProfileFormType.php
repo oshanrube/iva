@@ -57,6 +57,12 @@ class ProfileFormType extends AbstractType
     {
         $builder
             ->add('username')
+            ->add('name')
+				->add('lng')
+				->add('lat')
+				->add('avgspeed')
+				->add('deviceId')
+				->add('phoneNum')
             ->add('email', 'email')
         ;
     }

@@ -143,6 +143,19 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/mobile')) {
+            // AcmeMobileBundle_homepage
+            if ($pathinfo === '/mobile/home') {
+                return array (  '_controller' => 'Acme\\MobileBundle\\Controller\\DefaultController::indexAction',  '_route' => 'AcmeMobileBundle_homepage',);
+            }
+
+            // AcmeMobileBundle_addtask
+            if ($pathinfo === '/mobile/addtask') {
+                return array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::addAction',  '_route' => 'AcmeMobileBundle_addtask',);
+            }
+
+        }
+
         // AcmeDashBundle_ajax_panel
         if ($pathinfo === '/dash/ajax/panel') {
             return array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',  '_route' => 'AcmeDashBundle_ajax_panel',);
@@ -224,7 +237,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // member_menu
-        if (0 === strpos($pathinfo, '/member') && preg_match('#^/member/(?P<url>[^/]+?)$#xs', $pathinfo, $matches)) {
+        if (0 === strpos($pathinfo, '/member-menu') && preg_match('#^/member\\-menu/(?P<url>[^/]+?)$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\MenusBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'member_menu'));
         }
 
@@ -384,14 +397,14 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Acme\\HomeBundle\\Controller\\DefaultController::indexAction',  'name' => 'error',  '_route' => 'error',);
         }
 
-        // AcmeUserBundle_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\UserBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeUserBundle_homepage'));
+        // AcmeUserBundle_profile_edit
+        if ($pathinfo === '/member/profile/edit') {
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'AcmeUserBundle_profile_edit',);
         }
 
-        // AcmeHelloBundle_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello(?:/(?P<name>[^/]+?))?$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::indexAction',  'name' => 'guest',)), array('_route' => 'AcmeHelloBundle_homepage'));
+        // AcmeUserBundle_profile
+        if ($pathinfo === '/member/profile') {
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::profileAction',  '_route' => 'AcmeUserBundle_profile',);
         }
 
         // AcmeProfileBundle_homepage

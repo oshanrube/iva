@@ -19,13 +19,16 @@ class __TwigTemplate_cebd96120cc9ef4d110935ab0930a4c4 extends Twig_Template
 
     protected function doDisplay(array $context, array $blocks = array())
     {
+        // line 1
+        if ($this->getContext($context, "abtract")) {
+        }
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
+    // line 4
     public function block_fos_user_content($context, array $blocks = array())
     {
-        // line 4
+        // line 5
         $this->env->loadTemplate("FOSUserBundle:Profile:show_content.html.twig")->display($context);
     }
 

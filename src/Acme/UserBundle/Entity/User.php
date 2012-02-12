@@ -44,6 +44,14 @@ class User extends BaseUser
      * @ORM\Column(type="float")
      */
     private $lat;
+    /**
+     * @ORM\Column(type="string",length="16")
+     */
+    private $deviceId;
+    /**
+     * @ORM\Column(type="integer",length="11")
+     */
+    private $phoneNum;
 
 	public function __construct()
 	{
@@ -56,6 +64,20 @@ class User extends BaseUser
 	
 	public function setName($name) {
 		$this->name == $name;
+	}
+	public function getDeviceId() {
+		return $this->deviceId;
+	}
+	
+	public function setDeviceId($deviceId) {
+		$this->deviceId == $deviceId;
+	}
+	public function getPhoneNum() {
+		return $this->phoneNum;
+	}
+	
+	public function setPhoneNum($phoneNum) {
+		$this->phoneNum == $phoneNum;
 	}
 	/**
      * Set lng

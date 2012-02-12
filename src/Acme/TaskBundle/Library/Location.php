@@ -18,7 +18,7 @@ class Location{
 						return $venue;
 					}
 					//add replaced sentences
-					$this->sentences[] = str_replace($location,"<strong>".$venue->name."</strong>",$sentence);
+					$this->sentences[] = str_replace($location,$venue->name,$sentence);
 					//
 					
 					$loc = new \stdClass();

@@ -25,10 +25,7 @@ class __TwigTemplate_06282ec3618c10bc8ffb2313e6a07674 extends Twig_Template
         echo $this->env->getExtension('form')->renderWidget($this->getContext($context, "form"));
         echo "
 \t<button type=\"submit\" name=\"Submit\" class=\"btn register\">
-    ";
-        // line 6
-        echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("registration.submit", array(), "FOSUserBundle"), "html", null, true);
-        echo "
+    Add
     </button>
 </form>";
     }

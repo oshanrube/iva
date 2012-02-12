@@ -26,6 +26,8 @@
 	background: #EBEBEB;
 	cursor: pointer;
 	border:1px solid #CCC;
+	width: 8px;
+	border-radius: 5px;
 }
 #calendar-panel #prev:hover,#calendar-panel #next:hover {
 	border:1px solid #FFFFFF;

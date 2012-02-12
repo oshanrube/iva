@@ -1,3 +1,7 @@
-AcmeUserBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: AcmeUserBundle:Default:index }
+AcmeUserBundle_profile_edit:
+    pattern:  /member/profile/edit
+    defaults: { _controller: AcmeUserBundle:Profile:edit }
+
+AcmeUserBundle_profile:
+    pattern:  /member/profile
+    defaults: { _controller: AcmeUserBundle:Profile:profile }

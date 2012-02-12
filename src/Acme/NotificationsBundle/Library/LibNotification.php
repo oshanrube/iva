@@ -3,6 +3,9 @@ namespace Acme\NotificationsBundle\Library;
 
 use Acme\NotificationsBundle\Library\LibDistance;
 use Acme\TaskBundle\Entity\Notification;
+use Acme\NotificationsBundle\Library\Includes\GtalkNotifications;
+use Acme\NotificationsBundle\Library\Includes\Tokudu;
+use Acme\NotificationsBundle\Library\Includes\Sms;
 
 class LibNotification{
 	
@@ -53,5 +56,16 @@ class LibNotification{
      	
      	
       return $notification;
+	}
+	
+	public function pushNotification($user,$message) {
+		//$Gnoti = new GtalkNotifications();
+		//$Gnoti->sendNotification();
+		//tokudu
+		$Tokudu = new Tokudu();
+		$Tokudu->sendNotification($user,$message);
+		//sms
+		$Sms = new Sms();
+		$Sms->sendNotification($user,$message);
 	}
 }

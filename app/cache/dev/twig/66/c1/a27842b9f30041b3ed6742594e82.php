@@ -26,8 +26,8 @@ class __TwigTemplate_66c1a27842b9f30041b3ed6742594e82 extends Twig_Template
 });
 function loadnewsFeed(){
 \t\$('#news-feed').vTicker({ 
-\t\tspeed: 500,
-\t\tpause: 3000,
+\t\tspeed: 2000,
+\t\tpause: 6000,
 \t\tanimation: 'fade',
 \t\tmousePause: false,
 \t\tshowItems: 3,

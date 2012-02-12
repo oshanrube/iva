@@ -3,6 +3,6 @@
 <form onSubmit="ajaxSubmit(this);return false;" action="{{ path('AcmeCalendarBundle_ajaxnewcalendar') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 	<button type="submit" name="Submit" class="btn register">
-    {{ 'registration.submit'|trans({}, 'FOSUserBundle') }}
+    Add
     </button>
 </form>

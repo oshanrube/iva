@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="/Symfony/web/css/task-edit.css" type="text/css" media="screen">
+<style type="text/css">
+#fos_user_profile_form .controls{
+	margin-left: 0;
+} 
+#fos_user_profile_form .controls #fos_user_profile_form_user{
+	clear: both;
+}
+#fos_user_profile_form .controls #fos_user_profile_form_user .controls{
+	margin-left: 160px;
+}
+</style>
+
+<form class="thumbnail form-horizontal" action="{{ path('AcmeUserBundle_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+	<fieldset>
+	<legend>Hello !</legend>
+
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+    </fieldset>
+</form>

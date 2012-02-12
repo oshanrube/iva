@@ -18,7 +18,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
 			new FOS\UserBundle\FOSUserBundle(),
-            new Acme\HelloBundle\AcmeHelloBundle(),
             new Acme\ProfileBundle\AcmeProfileBundle(),
             new Acme\StoreBundle\AcmeStoreBundle(),
             new Acme\TaskBundle\AcmeTaskBundle(),
@@ -33,6 +32,7 @@ class AppKernel extends Kernel
             new Acme\EventsBundle\AcmeEventsBundle(),
             new Acme\DashBundle\AcmeDashBundle(),
             new Acme\NotificationsBundle\AcmeNotificationsBundle(),
+            new Acme\MobileBundle\AcmeMobileBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

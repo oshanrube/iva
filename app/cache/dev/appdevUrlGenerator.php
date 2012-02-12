@@ -33,6 +33,8 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_home' => true,
        '_configurator_step' => true,
        '_configurator_final' => true,
+       'AcmeMobileBundle_homepage' => true,
+       'AcmeMobileBundle_addtask' => true,
        'AcmeDashBundle_ajax_panel' => true,
        'AcmeEventsBundle_homepage' => true,
        'AcmeNewsBundle_ajax_panel' => true,
@@ -67,8 +69,8 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeHomeBundle_homepage' => true,
        'AcmeHomeBundle_ajax' => true,
        'error' => true,
-       'AcmeUserBundle_homepage' => true,
-       'AcmeHelloBundle_homepage' => true,
+       'AcmeUserBundle_profile_edit' => true,
+       'AcmeUserBundle_profile' => true,
        'AcmeProfileBundle_homepage' => true,
        'AcmeStoreBundle_homepage' => true,
        'AcmeStoreBundle_create' => true,
@@ -204,6 +206,16 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'Sensio\\Bundle\\DistributionBundle\\Controller\\ConfiguratorController::finalAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/_configurator/final',  ),));
     }
 
+    private function getAcmeMobileBundle_homepageRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mobile/home',  ),));
+    }
+
+    private function getAcmeMobileBundle_addtaskRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::addAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mobile/addtask',  ),));
+    }
+
     private function getAcmeDashBundle_ajax_panelRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/dash/ajax/panel',  ),));
@@ -286,7 +298,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
 
     private function getmember_menuRouteInfo()
     {
-        return array(array (  0 => 'url',), array (  '_controller' => 'Acme\\MenusBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'url',  ),  1 =>   array (    0 => 'text',    1 => '/member',  ),));
+        return array(array (  0 => 'url',), array (  '_controller' => 'Acme\\MenusBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'url',  ),  1 =>   array (    0 => 'text',    1 => '/member-menu',  ),));
     }
 
     private function getfos_user_security_loginRouteInfo()
@@ -374,14 +386,14 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'Acme\\HomeBundle\\Controller\\DefaultController::indexAction',  'name' => 'error',), array (), array (  0 =>   array (    0 => 'text',    1 => '/',  ),));
     }
 
-    private function getAcmeUserBundle_homepageRouteInfo()
+    private function getAcmeUserBundle_profile_editRouteInfo()
     {
-        return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\UserBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::editAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/profile/edit',  ),));
     }
 
-    private function getAcmeHelloBundle_homepageRouteInfo()
+    private function getAcmeUserBundle_profileRouteInfo()
     {
-        return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\HelloBundle\\Controller\\DefaultController::indexAction',  'name' => 'guest',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::profileAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/profile',  ),));
     }
 
     private function getAcmeProfileBundle_homepageRouteInfo()

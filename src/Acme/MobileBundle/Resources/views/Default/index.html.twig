@@ -1,0 +1,18 @@
+{% extends '::mobile-base.html.twig' %}
+
+{% if app.session.hasFlash('success') %}
+{% block header %}
+	<div data-role="header" data-theme="e" class="ui-header ui-bar-e" role="banner">
+		<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">{{ app.session.flash('success') }}</h1>
+	</div>
+{% endblock %}
+{% endif %}
+
+{% block content%}
+<ul data-role="listview" data-theme="g">
+	<li><a href="{{ path('AcmeMobileBundle_addtask') }}">Add New Task</a></li>
+	<li><a href="audi.html">View todays tasks</a></li>
+	<li><a href="bmw.html">View calendars</a></li>
+	<li><a href="{{ path('fos_user_security_logout') }}">Log Off</a></li>
+</ul>
+{% endblock %}

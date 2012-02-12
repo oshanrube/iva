@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/Symfony/web/css/task-edit.css" type="text/css" media="screen">
+<a data-toggle="modal" href="{{ url('AcmeUserBundle_profile_edit') }}" class="btn btn-danger"><i class="icon-trash icon-white"></i> Edit</a>
+
+<form class="thumbnail form-horizontal" action="" method="post">
+<fieldset>
+	<legend>Hello {{ user.username }}!</legend>
+	<div id="form">
+		<div class="control-group">
+			<label for="form_task" class="">{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}:</label>
+			<label for="form_task" class="value">{{ user.username }}</label>
+		</div>
+		<div class="control-group">
+			<label for="form_task" class="">{{ 'profile.show.name'|trans({}, 'FOSUserBundle') }}:</label>
+			<label for="form_task" class="value">{{ user.name }}</label>
+		</div>
+		<div class="control-group">
+			<label for="form_task" class="">{{ 'profile.show.phoneNum'|trans({}, 'FOSUserBundle') }}:</label>
+			<label for="form_task" class="value">{{ user.phoneNum }}</label>
+		</div>
+		<div class="control-group">
+			<label for="form_task" class="">{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}:</label>
+			<label for="form_task" class="value">{{ user.email }}</label>
+		</div>
+	</div>
+</fieldset>    
+</form>

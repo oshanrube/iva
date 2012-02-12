@@ -1,3 +1,7 @@
+AcmeMobileBundle:
+    resource: "@AcmeMobileBundle/Resources/config/routing.yml"
+    prefix:   /mobile
+
 AcmeDashBundle:
     resource: "@AcmeDashBundle/Resources/config/routing.yml"
     prefix:   /
@@ -58,10 +62,6 @@ AcmeHomeBundle:
 
 AcmeUserBundle:
     resource: "@AcmeUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
-AcmeHelloBundle:
-    resource: "@AcmeHelloBundle/Resources/config/routing.yml"
     prefix:   /
 
 AcmeProfileBundle:

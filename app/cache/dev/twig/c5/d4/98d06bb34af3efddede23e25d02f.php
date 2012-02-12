@@ -56,27 +56,40 @@ class __TwigTemplate_c5d498d06bb34af3efddede23e25d02f extends Twig_Template
 </div>
 <section class=\"col middle-col\">
 \t<header>
-\t\t<h2>Dashboard</h2>
+\t\t<h2>
+\t\tDashboard
+\t\t\t<navigation>
+\t\t\t\t<a href=\"";
+        // line 28
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("AcmeDashBundle_ajax_panel"), "html", null, true);
+        echo "\" class=\"nav\" target=\"dashboard\">Tasks</a>
+\t\t\t\t<a href=\"";
+        // line 29
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("AcmeUserBundle_profile"), "html", null, true);
+        echo "\" class=\"nav\" target=\"dashboard\">Profile</a>
+\t\t\t\t<a href=\"/tasks\" class=\"nav\" target=\"dashboard\">Calendars</a>
+\t\t\t</navigation>
+\t\t</h2>
 \t</header>
 \t\t";
-        // line 27
+        // line 34
         echo $this->env->getExtension('actions')->renderAction("AcmeDashBundle:Default:index", array(), array());
-        // line 28
+        // line 35
         echo "</section>
 <div class=\"col\" style=\"position: absolute;right: 35px;\">
 \t<div class=\"widget\">
 \t\t<h2>Weather</h2>
 \t\t\t";
-        // line 32
+        // line 39
         echo $this->env->getExtension('actions')->renderAction("AcmeWeatherBundle:Default:index", array(), array());
-        // line 33
+        // line 40
         echo "\t\t</div>
 \t\t<div class=\"widget\">
 \t\t<h2>News</h2>
 \t\t\t";
-        // line 36
+        // line 43
         echo $this->env->getExtension('actions')->renderAction("AcmeNewsBundle:Default:index", array(), array());
-        // line 37
+        // line 44
         echo "\t\t</div>
 \t</div>
 </div>

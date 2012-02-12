@@ -31,22 +31,22 @@ class __TwigTemplate_79348f17ca86ca0223904f26e0203a13 extends Twig_Template
         // line 4
         ob_start();
         // line 5
-        echo "    <div class=\"clearfix\">
-        ";
+        echo "\t<div class=\"control-group\">
+\t\t";
         // line 6
         echo $this->env->getExtension('form')->renderLabel($this->getContext($context, "form"));
         echo "
-        ";
-        // line 7
-        echo $this->env->getExtension('form')->renderErrors($this->getContext($context, "form"));
-        echo "
-        <div class=\"input\">
-        ";
-        // line 9
+\t\t<div class=\"controls\">
+\t\t\t";
+        // line 8
         echo $this->env->getExtension('form')->renderWidget($this->getContext($context, "form"));
         echo "
-        </div>
-    </div>
+         ";
+        // line 9
+        echo $this->env->getExtension('form')->renderErrors($this->getContext($context, "form"));
+        echo "
+\t\t</div>
+\t</div>
 ";
         echo trim(preg_replace('/>\s+</', '><', ob_get_clean()));
     }
