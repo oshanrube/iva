@@ -170,8 +170,8 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // AcmeMobileBundle_viewCalendar
-            if (0 === strpos($pathinfo, '/mobile/view/calendar') && preg_match('#^/mobile/view/calendar/(?P<id>\\d+)$#xs', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::viewCalendarAction',)), array('_route' => 'AcmeMobileBundle_viewCalendar'));
+            if (0 === strpos($pathinfo, '/mobile/view/calendar') && preg_match('#^/mobile/view/calendar/(?P<id>\\d+)(?:/(?P<year>\\d+)(?:/(?P<month>\\d+))?)?$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::viewCalendarAction',  'year' => NULL,  'month' => NULL,)), array('_route' => 'AcmeMobileBundle_viewCalendar'));
             }
 
             // AcmeMobileBundle_editCalendar

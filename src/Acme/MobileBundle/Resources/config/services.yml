@@ -5,3 +5,8 @@ services:
 #    acme_mobile.example:
 #        class: %acme_mobile.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+     acme_mobile.twig:
+         class: Acme\MobileBundle\Twig\Extension\MobileBundleExtension
+         public: false
+         tags:
+            -  { name: twig.extension }

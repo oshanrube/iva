@@ -19,10 +19,12 @@ AcmeMobileBundle_manageCalendars:
     defaults: { _controller: AcmeMobileBundle:Calendar:list }
 
 AcmeMobileBundle_viewCalendar:
-    pattern:  /view/calendar/{id}
-    defaults: { _controller: AcmeMobileBundle:Calendar:viewCalendar }
+    pattern:  /view/calendar/{id}/{year}/{month}
+    defaults: { _controller: AcmeMobileBundle:Calendar:viewCalendar, year:null,month:null }
     requirements:
-        id:  \d+
+        id:    \d+
+        year:  \d+
+        month: \d+
 
 AcmeMobileBundle_editCalendar:
     pattern:  /edit/calendar/{id}

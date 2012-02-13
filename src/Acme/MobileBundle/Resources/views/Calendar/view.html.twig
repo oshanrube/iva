@@ -1,29 +1,52 @@
 {% extends '::mobile-base.html.twig' %}
 
 {% block content%}
-{{ date("t",timestamp) }}
-<?php
-$maxday = date("t",$timestamp);
-$thismonth = getdate ($timestamp);
-$startday = $thismonth['wday'];
-for ($i=0; $i<($maxday+$startday); $i++) {
-	$day = ($i - $startday + 1);
-	if(($i % 7) == 0 ) echo "<tr>\n";
-	if($i < $startday) echo "<td></td>\n";
-	else{
-		 echo "<td align='center' valign='middle' height='20px' data-placement=\"below\" rel=\"popover\" data-content=\"";
-		 //print tasks
-		 if(isset($timeline[$day])){
-		 	foreach($timeline[$day] as $task){
-		 		echo $task->getDescription().",";
-			}
-		 }
-		 echo "\" data-original-title=\"".date('l (j)',$timestamp)."\" >". ($i - $startday + 1) . "</td>\n";
-		 $timestamp =  strtotime("+1 day",$timestamp);
-	}
-	if(($i % 7) == 6 ) echo "</tr>\n";
+{% set maxday = todate("t",timestamp) %}
+{% set thismonth = getdate(timestamp) %}
+{% set startday = thismonth['wday'] %}
+{% set endday = maxday+startday %}
+{% spaceless %}
+<div class="ui-datebox-gridheader">
+	<div class="ui-datebox-gridminus ui-btn ui-btn-up-a ui-btn-inline ui-btn-icon-notext ui-btn-corner-all ui-shadow" title="Previous Month" data-theme="a">
+		<span class="ui-btn-inner ui-btn-corner-all">
+			<a href="{{ path('AcmeMobileBundle_viewCalendar', {'id':nav['id'], 'year':nav['prev']['year'], 'month':nav['prev']['month']}) }}">
+				<span class="ui-icon ui-icon-minus ui-icon-shadow"></span>
+			</a>
+		</span>
+	</div>
+	<div class="ui-datebox-gridplus ui-btn ui-btn-inline ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-a" title="Next Month" data-theme="a">
+		<span class="ui-btn-inner ui-btn-corner-all">
+			<a href="{{ path('AcmeMobileBundle_viewCalendar', {'id':nav['id'], 'year':nav['nxt']['year'], 'month':nav['nxt']['month']}) }}">
+				<span class="ui-icon ui-icon-plus ui-icon-shadow"></span>
+			</a>
+		</span>
+	</div>
+	<div class="ui-datebox-gridlabel">
+		<h4>{{ date['month'] }} {{ date['year'] }}</h4>
+	</div>
+</div>
+<div class="ui-datebox-grid" style="margin: 0 auto;width: 276px;">
+	<div class="ui-datebox-gridrow">
+	<div class="ui-datebox-griddate ui-datebox-griddate-empty ui-datebox-griddate-label">Su</div>
+	<div class="ui-datebox-griddate ui-datebox-griddate-empty ui-datebox-griddate-label">Mo</div>
+	<div class="ui-datebox-griddate ui-datebox-griddate-empty ui-datebox-griddate-label">Tu</div>
+	<div class="ui-datebox-griddate ui-datebox-griddate-empty ui-datebox-griddate-label">We</div>
+	<div class="ui-datebox-griddate ui-datebox-griddate-empty ui-datebox-griddate-label">Th</div>
+	<div class="ui-datebox-griddate ui-datebox-griddate-empty ui-datebox-griddate-label">Fr</div>
+	<div class="ui-datebox-griddate ui-datebox-griddate-empty ui-datebox-griddate-label">Sa</div>
+	</div>
+{% for i in range (0,endday) %}
+	{% set day = (i - startday + 1) %}
+	{% if((i % 7) == 0 ) %}<div class="ui-datebox-gridrow">{% endif %}
+	{% if(i < startday ) %}
+		<div class="ui-datebox-griddate ui-datebox-griddate-empty"></div>
+	{% else %}
+		<div class="ui-datebox-griddate ui-corner-all ui-btn-up-{% if(timeline[day] is defined) %}e{% else %}a{% endif %}">{{ (i - startday + 1) }}</div>
+		 {% set timestamp =  totime("+1 day",timestamp) %}
+	{% endif %}
+	{% if((i % 7) == 6 ) %} </div> {% endif %}
 	
-}
-?>
+{% endfor %}
+</div>
+{% endspaceless %}
 {% endblock %}
-

@@ -3,14 +3,16 @@
 namespace Acme\MobileBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Acme\HomeBundle\Library\Mobile;
 
 class DefaultController extends Controller
 {
     
     public function indexAction()
     {
-       $user = $this->get('security.context')->getToken()->getUser();
+    	if(!Mobile::isMobile())return $this->render('AcmeMemberBundle:Default:index.html.twig');
+    	
+		$user = $this->get('security.context')->getToken()->getUser();
 		if($user == 'anon.'){
 			return $this->render('AcmeMobileBundle:Default:login.html.twig');
 		} else {

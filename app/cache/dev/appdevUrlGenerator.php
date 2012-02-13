@@ -238,7 +238,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
 
     private function getAcmeMobileBundle_viewCalendarRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::viewCalendarAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/mobile/view/calendar',  ),));
+        return array(array (  0 => 'id',  1 => 'year',  2 => 'month',), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::viewCalendarAction',  'year' => NULL,  'month' => NULL,), array (  'id' => '\\d+',  'year' => '\\d+',  'month' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'year',  ),  2 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  3 =>   array (    0 => 'text',    1 => '/mobile/view/calendar',  ),));
     }
 
     private function getAcmeMobileBundle_editCalendarRouteInfo()

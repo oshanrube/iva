@@ -40,15 +40,27 @@ class CalendarController extends Controller
 		return $this->render('AcmeMobileBundle:Calendar:browse.html.twig',
 		array('calendarlist' => $calendarlist));	
 	}
-	public function viewCalendarAction($id) { 
+	public function viewCalendarAction($id,$year,$month) {
+		//date
+		if(!$month || $month<1 || $month>12)$month = date('m');
+		if(!$year || $year<1996)$year = date('Y'); 
+		//date
+		$date['month'] = date('F',mktime(0, 0, 0, $month, 1, $year));
+		$date['year'] = $year;
+		//nav
+		$nav['id'] = $id;
+		$nav['prev']['month'] = date('m',strtotime('-1 month', mktime(0, 0, 0, $month, 1, $year)));
+		$nav['prev']['year'] = date('Y',strtotime('-1 month', mktime(0, 0, 0, $month, 1, $year)));
+		$nav['nxt']['month'] = date('m',strtotime('+1 month', mktime(0, 0, 0, $month, 1, $year)));
+		$nav['nxt']['year'] = date('Y',strtotime('+1 month', mktime(0, 0, 0, $month, 1, $year)));
 		//get tasks
 		$Task = $this->getDoctrine()->getRepository('AcmeTaskBundle:Task');
 		$user = $this->get('security.context')->getToken()->getUser();
-		$timeline = $Task->findByThisMonth($user);
-		$timeline = Decode::getCalendar($timeline);
-		//
-    	$timestamp = mktime(0, 0, 0, date('m'), 1, date('Y'));
-    	return $this->render('AcmeMobileBundle:Calendar:view.html.twig',array('timestamp' => $timestamp,'timeline' => $timeline));
+		$timeline = $Task->findByCalendarMonth($user,$year,$month,$id);
+		$timeline = Decode::getCalendar($timeline,$year,$month);
+		//		
+    	$timestamp = mktime(0, 0, 0, $month, 1, $year);
+    	return $this->render('AcmeMobileBundle:Calendar:view.html.twig',array('timestamp' => $timestamp,'timeline' => $timeline,'date' => $date,'nav' => $nav));
 	}
 	public function editCalendarAction($id, Request $request)
 	{

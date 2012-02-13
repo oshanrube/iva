@@ -30,7 +30,7 @@ class CalendarRepository extends EntityRepository
     }
     public function findByOwnerIdandEnabled($user) {
     	return $this->getEntityManager()
-            ->createQuery('SELECT c FROM AcmeTaskBundle:Calendar c WHERE c.ownerId	= '.$user->getId().' AND c.enabled = 1 ')
+            ->createQuery('SELECT c FROM AcmeTaskBundle:Calendar c WHERE c.ownerId = '.$user->getId().' AND c.enabled = 1 ')
             ->getResult();
     }
 }

@@ -5,16 +5,14 @@ use Acme\TaskBundle\Library\Includes\ProperNouns;
 use Acme\TaskBundle\Library\Log;
 
 class Decode{
-	public static function getCalendar($events) {
+	public static function getCalendar($events,$year,$month) {
 		$calendar = array();
-		$timestamp = mktime(0, 0, 0, date('m'), 1, date('Y'));
+		$timestamp = mktime(0, 0, 0, $month, 1, $year);
 		$maxday = date("t",$timestamp);
 		for ($i=1; $i<=$maxday; $i++) {
-			$today = mktime(0, 0, 0, date('m'), $i, date('Y'));
-			$tomorrow = mktime(0, 0, 0, date('m'), ($i+1), date('Y'));
+			$today = mktime(0, 0, 0, $month, $i, $year);
+			$tomorrow = mktime(0, 0, 0, $month, ($i+1), $year);
 			foreach($events as $e){
-				//echo $today.' '.$tomorrow.' '.$e->getDatetime()."\n";
-				//echo date("F j, Y",$today).' '.date("F j, Y",$tomorrow).' '.date("F j, Y",$e->getDatetime())."\n";
 				if($e->getDatetime() > $today && $e->getDatetime() < $tomorrow)
 				$calendar[($i)][] = $e; 
 			}

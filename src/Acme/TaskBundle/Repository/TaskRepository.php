@@ -25,6 +25,20 @@ class TaskRepository extends EntityRepository
 			->getResult();
 	}
 	
+	public function findByCalendarMonth($user,$year,$month,$id) {
+		$thisMonth = mktime(0, 0, 0, $month, 1, $year);
+		$nextMonth = mktime(0, 0, 0, ($month+1), 1, $year);
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.datetime > :thisMonth AND t.datetime < :nextMonth AND t.userId = :userId AND t.calendarId = :id';
+		
+		return $this->getEntityManager()
+			->createQuery($query)
+			->setParameter('thisMonth', $thisMonth)
+			->setParameter('nextMonth', $nextMonth)
+			->setParameter('id', $id)
+			->setParameter('userId', $user->getId())
+			->getResult();
+	}
+	
 	public function findByToday($user) {
 		$today = mktime(0, 0, 0, date('m'), date('j'), date('Y'));
 		$tommorow = mktime(0, 0, 0, date('m'), date('j')+1, date('Y'));

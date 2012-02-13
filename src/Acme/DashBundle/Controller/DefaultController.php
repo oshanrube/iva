@@ -20,7 +20,7 @@ class DefaultController extends Controller
 		$Task = $this->getDoctrine()->getRepository('AcmeTaskBundle:Task');
 		$user = $this->get('security.context')->getToken()->getUser();
 		$timeline = $Task->findByThisMonth($user);
-		$timeline = Decode::getCalendar($timeline);
+		$timeline = Decode::getCalendar($timeline,date('Y'),date('m'));
 		//create template
     	return $this->render('AcmeDashBundle:Default:panel.html.php', array('timeline' => $timeline));
     }
