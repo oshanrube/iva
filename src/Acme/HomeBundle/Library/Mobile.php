@@ -73,6 +73,7 @@ class Mobile {
 	public static function mobile_device_detect($iphone=true,$ipad=true,$android=true,$opera=true,$blackberry=true,$palm=true,$windows=true,$mobileredirect=false,$desktopredirect=false){
 	
 	  $mobile_browser   = false; // set mobile browser as false till we can prove otherwise
+	  if(!isset($_SERVER['HTTP_USER_AGENT']))return false;
 	  $user_agent       = $_SERVER['HTTP_USER_AGENT']; // get the user agent value - this should be cleaned to ensure no nefarious input gets executed
 	  $accept           = $_SERVER['HTTP_ACCEPT']; // get the content accept value - this should be cleaned to ensure no nefarious input gets executed
 	

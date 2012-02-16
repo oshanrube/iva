@@ -11,16 +11,13 @@ class __TwigTemplate_4c25ed26f37caf2ef869a14f938ade71 extends Twig_Template
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        if (isset($context["exception"])) { $_exception_ = $context["exception"]; } else { $_exception_ = null; }
-        if (twig_length_filter($this->env, $this->getAttribute($_exception_, "trace"))) {
+        if (twig_length_filter($this->env, $this->getAttribute($this->getContext($context, "exception"), "trace"))) {
             // line 2
-            if (isset($context["exception"])) { $_exception_ = $context["exception"]; } else { $_exception_ = null; }
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($_exception_, "trace"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "exception"), "trace"));
             foreach ($context['_seq'] as $context["_key"] => $context["trace"]) {
                 // line 3
-                if (isset($context["trace"])) { $_trace_ = $context["trace"]; } else { $_trace_ = null; }
-                $this->env->loadTemplate("TwigBundle:Exception:trace.txt.twig")->display(array("trace" => $_trace_));
+                $this->env->loadTemplate("TwigBundle:Exception:trace.txt.twig")->display(array("trace" => $this->getContext($context, "trace")));
                 // line 4
                 echo "
 ";

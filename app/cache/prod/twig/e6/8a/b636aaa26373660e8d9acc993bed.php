@@ -14,11 +14,9 @@ class __TwigTemplate_e68ab636aaa26373660e8d9acc993bed extends Twig_Template
         echo "/*
 ";
         // line 2
-        if (isset($context["status_code"])) { $_status_code_ = $context["status_code"]; } else { $_status_code_ = null; }
-        echo twig_escape_filter($this->env, $_status_code_, "html", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "status_code"), "html", null, true);
         echo " ";
-        if (isset($context["status_text"])) { $_status_text_ = $context["status_text"]; } else { $_status_text_ = null; }
-        echo twig_escape_filter($this->env, $_status_text_, "html", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "status_text"), "html", null, true);
         echo "
 
 */

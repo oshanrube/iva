@@ -28,14 +28,11 @@ class __TwigTemplate_3c0520dfc1e1251818be26aa5059300a extends Twig_Template
     {
         // line 4
         echo "    ";
-        if (isset($context["exception"])) { $_exception_ = $context["exception"]; } else { $_exception_ = null; }
-        echo twig_escape_filter($this->env, $this->getAttribute($_exception_, "message"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "exception"), "message"), "html", null, true);
         echo " (";
-        if (isset($context["status_code"])) { $_status_code_ = $context["status_code"]; } else { $_status_code_ = null; }
-        echo twig_escape_filter($this->env, $_status_code_, "html", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "status_code"), "html", null, true);
         echo " ";
-        if (isset($context["status_text"])) { $_status_text_ = $context["status_text"]; } else { $_status_text_ = null; }
-        echo twig_escape_filter($this->env, $_status_text_, "html", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "status_text"), "html", null, true);
         echo ")
 ";
     }

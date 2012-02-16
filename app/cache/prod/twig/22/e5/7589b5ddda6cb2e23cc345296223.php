@@ -36,20 +36,17 @@ class __TwigTemplate_22e57589b5ddda6cb2e23cc345296223 extends Twig_Template
         ob_start();
         // line 8
         echo "        ";
-        if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-        if ($this->getAttribute($_collector_, "user")) {
+        if ($this->getAttribute($this->getContext($context, "collector"), "user")) {
             // line 9
             echo "            ";
-            if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-            echo twig_escape_filter($this->env, $this->getAttribute($_collector_, "user"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "user"), "html", null, true);
             echo " ";
-            if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-            if ((!$this->getAttribute($_collector_, "authenticated"))) {
+            if ((!$this->getAttribute($this->getContext($context, "collector"), "authenticated"))) {
                 echo "<em>(not auth.)</em>";
             }
             // line 10
             echo "        ";
-        } elseif ($this->getAttribute($_collector_, "enabled")) {
+        } elseif ($this->getAttribute($this->getContext($context, "collector"), "enabled")) {
             // line 11
             echo "            not authenticated
         ";
@@ -63,8 +60,7 @@ class __TwigTemplate_22e57589b5ddda6cb2e23cc345296223 extends Twig_Template
         $context["text"] = new Twig_Markup(ob_get_clean());
         // line 16
         echo "    ";
-        if (isset($context["profiler_url"])) { $_profiler_url_ = $context["profiler_url"]; } else { $_profiler_url_ = null; }
-        $this->env->loadTemplate("WebProfilerBundle:Profiler:toolbar_item.html.twig")->display(array_merge($context, array("link" => $_profiler_url_)));
+        $this->env->loadTemplate("WebProfilerBundle:Profiler:toolbar_item.html.twig")->display(array_merge($context, array("link" => $this->getContext($context, "profiler_url"))));
     }
 
     // line 19
@@ -88,16 +84,14 @@ class __TwigTemplate_22e57589b5ddda6cb2e23cc345296223 extends Twig_Template
         echo "    <h2>Security</h2>
     ";
         // line 28
-        if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-        if ($this->getAttribute($_collector_, "user")) {
+        if ($this->getAttribute($this->getContext($context, "collector"), "user")) {
             // line 29
             echo "        <table>
             <tr>
                 <th>Username</th>
                 <td>";
             // line 32
-            if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-            echo twig_escape_filter($this->env, $this->getAttribute($_collector_, "user"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "user"), "html", null, true);
             echo "</td>
             </tr>
             <tr>
@@ -105,16 +99,14 @@ class __TwigTemplate_22e57589b5ddda6cb2e23cc345296223 extends Twig_Template
                 <td>
                     ";
             // line 37
-            if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-            if ($this->getAttribute($_collector_, "authenticated")) {
+            if ($this->getAttribute($this->getContext($context, "collector"), "authenticated")) {
                 // line 38
                 echo "                        yes
                     ";
             } else {
                 // line 40
                 echo "                        no ";
-                if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-                if ((!twig_length_filter($this->env, $this->getAttribute($_collector_, "roles")))) {
+                if ((!twig_length_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "roles")))) {
                     echo "<em>(probably because the user has no roles)</em>";
                 }
                 // line 41
@@ -127,13 +119,12 @@ class __TwigTemplate_22e57589b5ddda6cb2e23cc345296223 extends Twig_Template
                 <th>Roles</th>
                 <td>";
             // line 46
-            if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-            echo twig_escape_filter($this->env, $this->env->getExtension('yaml')->encode($this->getAttribute($_collector_, "roles")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('yaml')->encode($this->getAttribute($this->getContext($context, "collector"), "roles")), "html", null, true);
             echo "</td>
             </tr>
         </table>
     ";
-        } elseif ($this->getAttribute($_collector_, "enabled")) {
+        } elseif ($this->getAttribute($this->getContext($context, "collector"), "enabled")) {
             // line 50
             echo "        <p>
             <em>No token</em>

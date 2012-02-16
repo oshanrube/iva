@@ -16,11 +16,9 @@ class __TwigTemplate_9be7e253a9bd448c595b46ba57b2ae70 extends Twig_Template
 
 The server returned a \"";
         // line 4
-        if (isset($context["status_code"])) { $_status_code_ = $context["status_code"]; } else { $_status_code_ = null; }
-        echo twig_escape_filter($this->env, $_status_code_, "html", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "status_code"), "html", null, true);
         echo " ";
-        if (isset($context["status_text"])) { $_status_text_ = $context["status_text"]; } else { $_status_text_ = null; }
-        echo twig_escape_filter($this->env, $_status_text_, "html", null, true);
+        echo twig_escape_filter($this->env, $this->getContext($context, "status_text"), "html", null, true);
         echo "\".
 
 Please e-mail us at [email] and let us know what you were doing when this

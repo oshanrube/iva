@@ -11,29 +11,24 @@ class __TwigTemplate_0701e684069a025111cf74066158685a extends Twig_Template
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        if (isset($context["trace"])) { $_trace_ = $context["trace"]; } else { $_trace_ = null; }
-        if ($this->getAttribute($_trace_, "function")) {
+        if ($this->getAttribute($this->getContext($context, "trace"), "function")) {
             // line 2
             echo "    at
     <strong>
         <abbr title=\"";
             // line 4
-            if (isset($context["trace"])) { $_trace_ = $context["trace"]; } else { $_trace_ = null; }
-            echo twig_escape_filter($this->env, $this->getAttribute($_trace_, "class"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "trace"), "class"), "html", null, true);
             echo "\">";
-            if (isset($context["trace"])) { $_trace_ = $context["trace"]; } else { $_trace_ = null; }
-            echo twig_escape_filter($this->env, $this->getAttribute($_trace_, "short_class"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "trace"), "short_class"), "html", null, true);
             echo "</abbr>
         ";
             // line 5
-            if (isset($context["trace"])) { $_trace_ = $context["trace"]; } else { $_trace_ = null; }
-            echo twig_escape_filter($this->env, ($this->getAttribute($_trace_, "type") . $this->getAttribute($_trace_, "function")), "html", null, true);
+            echo twig_escape_filter($this->env, ($this->getAttribute($this->getContext($context, "trace"), "type") . $this->getAttribute($this->getContext($context, "trace"), "function")), "html", null, true);
             echo "
     </strong>
     (";
             // line 7
-            if (isset($context["trace"])) { $_trace_ = $context["trace"]; } else { $_trace_ = null; }
-            echo $this->env->getExtension('code')->formatArgs($this->getAttribute($_trace_, "args"));
+            echo $this->env->getExtension('code')->formatArgs($this->getAttribute($this->getContext($context, "trace"), "args"));
             echo ")
 ";
         }
@@ -41,73 +36,54 @@ class __TwigTemplate_0701e684069a025111cf74066158685a extends Twig_Template
         echo "
 ";
         // line 10
-        if (isset($context["trace"])) { $_trace_ = $context["trace"]; } else { $_trace_ = null; }
-        if (((($this->getAttribute($_trace_, "file", array(), "any", true, true) && $this->getAttribute($_trace_, "file")) && $this->getAttribute($_trace_, "line", array(), "any", true, true)) && $this->getAttribute($_trace_, "line"))) {
+        if (((($this->getAttribute($this->getContext($context, "trace", true), "file", array(), "any", true, true) && $this->getAttribute($this->getContext($context, "trace"), "file")) && $this->getAttribute($this->getContext($context, "trace", true), "line", array(), "any", true, true)) && $this->getAttribute($this->getContext($context, "trace"), "line"))) {
             // line 11
             echo "    ";
-            if (isset($context["trace"])) { $_trace_ = $context["trace"]; } else { $_trace_ = null; }
-            echo (($this->getAttribute($_trace_, "function")) ? ("<br />") : (""));
+            echo (($this->getAttribute($this->getContext($context, "trace"), "function")) ? ("<br />") : (""));
             echo "
     in ";
             // line 12
-            if (isset($context["trace"])) { $_trace_ = $context["trace"]; } else { $_trace_ = null; }
-            echo $this->env->getExtension('code')->formatFile($this->getAttribute($_trace_, "file"), $this->getAttribute($_trace_, "line"));
+            echo $this->env->getExtension('code')->formatFile($this->getAttribute($this->getContext($context, "trace"), "file"), $this->getAttribute($this->getContext($context, "trace"), "line"));
             echo "&nbsp;
     ";
             // line 13
             ob_start();
             // line 14
             echo "    <a href=\"#\" onclick=\"toggle('trace_";
-            if (isset($context["prefix"])) { $_prefix_ = $context["prefix"]; } else { $_prefix_ = null; }
-            if (isset($context["i"])) { $_i_ = $context["i"]; } else { $_i_ = null; }
-            echo twig_escape_filter($this->env, (($_prefix_ . "_") . $_i_), "html", null, true);
+            echo twig_escape_filter($this->env, (($this->getContext($context, "prefix") . "_") . $this->getContext($context, "i")), "html", null, true);
             echo "'); switchIcons('icon_";
-            if (isset($context["prefix"])) { $_prefix_ = $context["prefix"]; } else { $_prefix_ = null; }
-            if (isset($context["i"])) { $_i_ = $context["i"]; } else { $_i_ = null; }
-            echo twig_escape_filter($this->env, (($_prefix_ . "_") . $_i_), "html", null, true);
+            echo twig_escape_filter($this->env, (($this->getContext($context, "prefix") . "_") . $this->getContext($context, "i")), "html", null, true);
             echo "_open', 'icon_";
-            if (isset($context["prefix"])) { $_prefix_ = $context["prefix"]; } else { $_prefix_ = null; }
-            if (isset($context["i"])) { $_i_ = $context["i"]; } else { $_i_ = null; }
-            echo twig_escape_filter($this->env, (($_prefix_ . "_") . $_i_), "html", null, true);
+            echo twig_escape_filter($this->env, (($this->getContext($context, "prefix") . "_") . $this->getContext($context, "i")), "html", null, true);
             echo "_close'); return false;\">
         <img class=\"toggle\" id=\"icon_";
             // line 15
-            if (isset($context["prefix"])) { $_prefix_ = $context["prefix"]; } else { $_prefix_ = null; }
-            if (isset($context["i"])) { $_i_ = $context["i"]; } else { $_i_ = null; }
-            echo twig_escape_filter($this->env, (($_prefix_ . "_") . $_i_), "html", null, true);
+            echo twig_escape_filter($this->env, (($this->getContext($context, "prefix") . "_") . $this->getContext($context, "i")), "html", null, true);
             echo "_close\" alt=\"-\" src=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/framework/images/blue_picto_less.gif"), "html", null, true);
             echo "\" style=\"visibility: ";
-            if (isset($context["i"])) { $_i_ = $context["i"]; } else { $_i_ = null; }
-            echo (((0 == $_i_)) ? ("display") : ("hidden"));
+            echo (((0 == $this->getContext($context, "i"))) ? ("display") : ("hidden"));
             echo "\" />
         <img class=\"toggle\" id=\"icon_";
             // line 16
-            if (isset($context["prefix"])) { $_prefix_ = $context["prefix"]; } else { $_prefix_ = null; }
-            if (isset($context["i"])) { $_i_ = $context["i"]; } else { $_i_ = null; }
-            echo twig_escape_filter($this->env, (($_prefix_ . "_") . $_i_), "html", null, true);
+            echo twig_escape_filter($this->env, (($this->getContext($context, "prefix") . "_") . $this->getContext($context, "i")), "html", null, true);
             echo "_open\" alt=\"+\" src=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/framework/images/blue_picto_more.gif"), "html", null, true);
             echo "\" style=\"visibility: ";
-            if (isset($context["i"])) { $_i_ = $context["i"]; } else { $_i_ = null; }
-            echo (((0 == $_i_)) ? ("hidden") : ("display"));
+            echo (((0 == $this->getContext($context, "i"))) ? ("hidden") : ("display"));
             echo "; margin-left: -18px\" />
     </a>
     ";
             echo trim(preg_replace('/>\s+</', '><', ob_get_clean()));
             // line 19
             echo "    <div id=\"trace_";
-            if (isset($context["prefix"])) { $_prefix_ = $context["prefix"]; } else { $_prefix_ = null; }
-            if (isset($context["i"])) { $_i_ = $context["i"]; } else { $_i_ = null; }
-            echo twig_escape_filter($this->env, (($_prefix_ . "_") . $_i_), "html", null, true);
+            echo twig_escape_filter($this->env, (($this->getContext($context, "prefix") . "_") . $this->getContext($context, "i")), "html", null, true);
             echo "\" style=\"display: ";
-            if (isset($context["i"])) { $_i_ = $context["i"]; } else { $_i_ = null; }
-            echo (((0 == $_i_)) ? ("block") : ("none"));
+            echo (((0 == $this->getContext($context, "i"))) ? ("block") : ("none"));
             echo "\" class=\"trace\">
         ";
             // line 20
-            if (isset($context["trace"])) { $_trace_ = $context["trace"]; } else { $_trace_ = null; }
-            echo $this->env->getExtension('code')->fileExcerpt($this->getAttribute($_trace_, "file"), $this->getAttribute($_trace_, "line"));
+            echo $this->env->getExtension('code')->fileExcerpt($this->getAttribute($this->getContext($context, "trace"), "file"), $this->getAttribute($this->getContext($context, "trace"), "line"));
             echo "
     </div>
 ";

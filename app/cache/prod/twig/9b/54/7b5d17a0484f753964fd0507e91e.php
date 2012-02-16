@@ -36,18 +36,15 @@ class __TwigTemplate_9b547b5d17a0484f753964fd0507e91e extends Twig_Template
         ob_start();
         // line 8
         echo "        <span title=\"";
-        if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-        echo twig_escape_filter($this->env, sprintf("%0.2f", ($this->getAttribute($_collector_, "time") * 1000)), "html", null, true);
+        echo twig_escape_filter($this->env, sprintf("%0.2f", ($this->getAttribute($this->getContext($context, "collector"), "time") * 1000)), "html", null, true);
         echo " ms\">";
-        if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-        echo twig_escape_filter($this->env, $this->getAttribute($_collector_, "querycount"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "querycount"), "html", null, true);
         echo "</span>
     ";
         $context["text"] = new Twig_Markup(ob_get_clean());
         // line 10
         echo "    ";
-        if (isset($context["profiler_url"])) { $_profiler_url_ = $context["profiler_url"]; } else { $_profiler_url_ = null; }
-        $this->env->loadTemplate("WebProfilerBundle:Profiler:toolbar_item.html.twig")->display(array_merge($context, array("link" => $_profiler_url_)));
+        $this->env->loadTemplate("WebProfilerBundle:Profiler:toolbar_item.html.twig")->display(array_merge($context, array("link" => $this->getContext($context, "profiler_url"))));
     }
 
     // line 13
@@ -63,13 +60,11 @@ class __TwigTemplate_9b547b5d17a0484f753964fd0507e91e extends Twig_Template
     <span class=\"count\">
         <span>";
         // line 18
-        if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-        echo twig_escape_filter($this->env, $this->getAttribute($_collector_, "querycount"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "querycount"), "html", null, true);
         echo "</span>
         <span>";
         // line 19
-        if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-        echo twig_escape_filter($this->env, sprintf("%0.0f", ($this->getAttribute($_collector_, "time") * 1000)), "html", null, true);
+        echo twig_escape_filter($this->env, sprintf("%0.0f", ($this->getAttribute($this->getContext($context, "collector"), "time") * 1000)), "html", null, true);
         echo " ms</span>
     </span>
 </span>
@@ -84,8 +79,7 @@ class __TwigTemplate_9b547b5d17a0484f753964fd0507e91e extends Twig_Template
 
     ";
         // line 27
-        if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-        if ((!$this->getAttribute($_collector_, "querycount"))) {
+        if ((!$this->getAttribute($this->getContext($context, "collector"), "querycount"))) {
             // line 28
             echo "        <p>
             <em>No queries.</em>
@@ -96,32 +90,27 @@ class __TwigTemplate_9b547b5d17a0484f753964fd0507e91e extends Twig_Template
             echo "        <ul class=\"alt\">
             ";
             // line 33
-            if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($_collector_, "queries"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "collector"), "queries"));
             foreach ($context['_seq'] as $context["i"] => $context["query"]) {
                 // line 34
                 echo "                <li class=\"";
-                if (isset($context["i"])) { $_i_ = $context["i"]; } else { $_i_ = null; }
-                echo ((($_i_ % 2 == 1)) ? ("odd") : ("even"));
+                echo ((($this->getContext($context, "i") % 2 == 1)) ? ("odd") : ("even"));
                 echo "\">
                     <div>
                         <code>";
                 // line 36
-                if (isset($context["query"])) { $_query_ = $context["query"]; } else { $_query_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_query_, "sql"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "query"), "sql"), "html", null, true);
                 echo "</code>
                     </div>
                     <small>
                         <strong>Parameters</strong>: ";
                 // line 39
-                if (isset($context["query"])) { $_query_ = $context["query"]; } else { $_query_ = null; }
-                echo twig_escape_filter($this->env, $this->env->getExtension('yaml')->encode($this->getAttribute($_query_, "params")), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('yaml')->encode($this->getAttribute($this->getContext($context, "query"), "params")), "html", null, true);
                 echo "<br />
                         <strong>Time</strong>: ";
                 // line 40
-                if (isset($context["query"])) { $_query_ = $context["query"]; } else { $_query_ = null; }
-                echo twig_escape_filter($this->env, sprintf("%0.2f", ($this->getAttribute($_query_, "executionMS") * 1000)), "html", null, true);
+                echo twig_escape_filter($this->env, sprintf("%0.2f", ($this->getAttribute($this->getContext($context, "query"), "executionMS") * 1000)), "html", null, true);
                 echo " ms
                     </small>
                 </li>
@@ -140,8 +129,7 @@ class __TwigTemplate_9b547b5d17a0484f753964fd0507e91e extends Twig_Template
 
     ";
         // line 49
-        if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-        if ($this->getAttribute($_collector_, "connections")) {
+        if ($this->getAttribute($this->getContext($context, "collector"), "connections")) {
             // line 50
             echo "        <table>
             <tr>
@@ -150,21 +138,18 @@ class __TwigTemplate_9b547b5d17a0484f753964fd0507e91e extends Twig_Template
             </tr>
             ";
             // line 55
-            if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($_collector_, "connections"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "collector"), "connections"));
             foreach ($context['_seq'] as $context["name"] => $context["service"]) {
                 // line 56
                 echo "                <tr>
                     <th>";
                 // line 57
-                if (isset($context["name"])) { $_name_ = $context["name"]; } else { $_name_ = null; }
-                echo twig_escape_filter($this->env, $_name_, "html", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "name"), "html", null, true);
                 echo "</th>
                     <td>";
                 // line 58
-                if (isset($context["service"])) { $_service_ = $context["service"]; } else { $_service_ = null; }
-                echo twig_escape_filter($this->env, $_service_, "html", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "service"), "html", null, true);
                 echo "</td>
                 </tr>
             ";
@@ -188,8 +173,7 @@ class __TwigTemplate_9b547b5d17a0484f753964fd0507e91e extends Twig_Template
 
     ";
         // line 70
-        if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
-        if ($this->getAttribute($_collector_, "managers")) {
+        if ($this->getAttribute($this->getContext($context, "collector"), "managers")) {
             // line 71
             echo "        <table>
             <tr>
@@ -198,21 +182,18 @@ class __TwigTemplate_9b547b5d17a0484f753964fd0507e91e extends Twig_Template
             </tr>
             ";
             // line 76
-            if (isset($context["collector"])) { $_collector_ = $context["collector"]; } else { $_collector_ = null; }
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($_collector_, "managers"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "collector"), "managers"));
             foreach ($context['_seq'] as $context["name"] => $context["service"]) {
                 // line 77
                 echo "                <tr>
                     <th>";
                 // line 78
-                if (isset($context["name"])) { $_name_ = $context["name"]; } else { $_name_ = null; }
-                echo twig_escape_filter($this->env, $_name_, "html", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "name"), "html", null, true);
                 echo "</th>
                     <td>";
                 // line 79
-                if (isset($context["service"])) { $_service_ = $context["service"]; } else { $_service_ = null; }
-                echo twig_escape_filter($this->env, $_service_, "html", null, true);
+                echo twig_escape_filter($this->env, $this->getContext($context, "service"), "html", null, true);
                 echo "</td>
                 </tr>
             ";

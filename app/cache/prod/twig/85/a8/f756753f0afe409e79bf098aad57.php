@@ -14,21 +14,18 @@ class __TwigTemplate_85a8f756753f0afe409e79bf098aad57 extends Twig_Template
         echo "<ol class=\"traces logs\">
     ";
         // line 2
-        if (isset($context["logs"])) { $_logs_ = $context["logs"]; } else { $_logs_ = null; }
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($_logs_);
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "logs"));
         foreach ($context['_seq'] as $context["_key"] => $context["log"]) {
             // line 3
             echo "        <li";
-            if (isset($context["log"])) { $_log_ = $context["log"]; } else { $_log_ = null; }
-            if (twig_in_filter($this->getAttribute($_log_, "priorityName"), array(0 => "EMERG", 1 => "ERR", 2 => "CRIT", 3 => "ALERT", 4 => "ERROR", 5 => "CRITICAL"))) {
+            if (twig_in_filter($this->getAttribute($this->getContext($context, "log"), "priorityName"), array(0 => "EMERG", 1 => "ERR", 2 => "CRIT", 3 => "ALERT", 4 => "ERROR", 5 => "CRITICAL"))) {
                 echo " class=\"error\"";
             }
             echo ">
             ";
             // line 4
-            if (isset($context["log"])) { $_log_ = $context["log"]; } else { $_log_ = null; }
-            echo twig_escape_filter($this->env, $this->getAttribute($_log_, "message"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "log"), "message"), "html", null, true);
             echo "
         </li>
     ";

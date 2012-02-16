@@ -28,7 +28,7 @@
 	</div>
 {% endif %}
 
-{% form_theme form 'AcmeTaskBundle:Day:fields.html.twig' %}
+{% form_theme form 'AcmeTaskBundle:Dash:fields.html.twig' %}
 <form class="thumbnail form-horizontal" action="{{ path('AcmeCalendarBundle_dash_edit_calendar' , { "id": id}) }}" method="post" {{ form_enctype(form) }}>
 <fieldset>
 	<legend>Edit Calendar</legend>

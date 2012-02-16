@@ -34,7 +34,29 @@ header {width:100%;overflow:hidden}
 #icons li {float:left;padding-right:13px;list-style: none;}
 .call {float:right;font-size:21px;color:#888;line-height:1.2em;padding:4px 3px 0 0}
 .call span {color:#fff}
-#logo {display:block;background:url(../images/logo.png) 0 0 no-repeat;width:281px;height:84px;text-indent:-9999px}
+/*#logo {display:block;background:url(../images/logo.png) 0 0 no-repeat;width:281px;height:84px;text-indent:-9999px}*/
+#logo {
+margin-top: 9px;
+height: 42px;
+width: 99px;
+border-width: 1px;
+line-height: 42px;
+text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+border-radius: 5px;
+-moz-border-radius: 5px;
+background: rgba(91,171,203,1);
+background : -webkit-gradient(linear, left top, left bottom, from(rgba(91,171,203,1)), to(rgba(12,101,150,1)));
+background : -moz-linear-gradient(top, rgba(91,171,203,1), rgba(12,101,150,1));
+color: #1F1F1F;
+text-align: center;
+border-color: #074b6f;
+border-style: solid;
+font-weight: bold;
+font-size: 46px;
+box-shadow: 0 0 4px rgba(0,0,0,0.4);
+-moz-box-shadow: 0 0 4px rgba(0,0,0,0.4);
+-webkit-box-shadow: 0 0 4px rgba(0,0,0,0.4);	
+}
 #menu {padding:58px 3px 0 0;float:right}
 #menu li {float:left;padding-left:18px;margin-left:17px;background:url(../images/menu_line.gif) 0 3px no-repeat;list-style: none;}
 #menu li a {display:block;font-size:21px;color:#CCC;line-height:1.2em;text-decoration:none;letter-spacing:-1px;background: inherit;}

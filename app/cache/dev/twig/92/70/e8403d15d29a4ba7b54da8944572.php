@@ -15,20 +15,17 @@ class __TwigTemplate_9270e8403d15d29a4ba7b54da8944572 extends Twig_Template
 \t<div id=\"panel\">
 \t\t<div class=\"content clearfix\">
 \t\t\t<div class=\"left\">
-\t\t\t\t<ul id=\"menu\">
-\t\t\t\t\t<li id=\"menu_active\"><a href=\"home\">Home</a></li>
-\t\t\t\t\t<li><a href=\"features\">Features</a></li>
-\t\t\t\t\t<li><a href=\"about\">About</a></li>
-\t\t\t\t\t<li><a href=\"support\">Support</a></li>
-\t\t\t\t\t<li><a href=\"contacts\">Contacts</a></li>
-\t\t\t\t</ul>
+\t\t\t\t<img title=\"IVA\" style=\"width: 278px;\" src=\"";
+        // line 5
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo.png"), "html", null, true);
+        echo "\" />
 \t\t\t</div>
 \t\t\t<div class=\"left\">
 \t\t\t\t<!-- Login Form -->
 \t\t\t\t";
-        // line 15
+        // line 9
         echo $this->env->getExtension('actions')->renderAction("FOSUserBundle:Security:login", array("quick" => true), array());
-        // line 16
+        // line 10
         echo "\t\t\t</div>
 \t\t\t<div class=\"left right\">\t\t\t
 \t\t\t\t<!-- Register Form -->
@@ -37,9 +34,9 @@ class __TwigTemplate_9270e8403d15d29a4ba7b54da8944572 extends Twig_Template
 \t\t\t\t\t<div class=\"container\" style=\"position:relative;width: 280px;top: 0px;margin: 0;padding: 0;float:left;\">
 \t\t\t\t\t<div class=\"content\" style=\"clear:both;width: inherit;\">
             ";
-        // line 23
+        // line 17
         echo $this->env->getExtension('actions')->renderAction("FOSUserBundle:Registration:register", array("quick" => true), array());
-        // line 24
+        // line 18
         echo "\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"dragger_container\">
@@ -65,25 +62,25 @@ class __TwigTemplate_9270e8403d15d29a4ba7b54da8944572 extends Twig_Template
 \t\t<ul class=\"login\">
 \t\t\t<li class=\"left\">&nbsp;</li>
 \t\t\t";
-        // line 48
+        // line 42
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 49
+            // line 43
             echo "         \t<li>";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "user"), "username")), "FOSUserBundle"), "html", null, true);
             echo "</li>
          ";
         } else {
-            // line 51
+            // line 45
             echo "            <li>Hello Guest!</li>
          ";
         }
-        // line 53
+        // line 47
         echo "\t\t\t<li class=\"sep\">|</li>
 \t\t\t<li id=\"toggle\">
 \t\t\t";
-        // line 55
+        // line 49
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 56
+            // line 50
             echo "         \t<a class=\"open\" href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("fos_user_security_logout"), "html", null, true);
             echo "\"> ";
@@ -91,11 +88,11 @@ class __TwigTemplate_9270e8403d15d29a4ba7b54da8944572 extends Twig_Template
             echo "</a>
          ";
         } else {
-            // line 58
+            // line 52
             echo "            <span id=\"open\" class=\"open\">Log In | Register</span>
          ";
         }
-        // line 60
+        // line 54
         echo "\t\t\t\t<span id=\"close\" style=\"display: none;\" class=\"close\">Close Panel</span>\t\t\t
 \t\t\t</li>
 \t\t\t<li class=\"right\">&nbsp;</li>
