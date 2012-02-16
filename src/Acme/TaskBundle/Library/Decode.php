@@ -13,7 +13,7 @@ class Decode{
 			$today = mktime(0, 0, 0, $month, $i, $year);
 			$tomorrow = mktime(0, 0, 0, $month, ($i+1), $year);
 			foreach($events as $e){
-				if($e->getDatetime() > $today && $e->getDatetime() < $tomorrow)
+				if($e->getStartTime() > $today && $e->getStartTime() < $tomorrow)
 				$calendar[($i)][] = $e; 
 			}
 		}
@@ -77,5 +77,26 @@ class Decode{
 		//get array with proper nouns
 		return implode('',$pn->get($task));
 		
+	}
+	
+	public static function getTaskType($task,$taskTypeRepo) {
+		//get it to lower case
+		$task = strtolower($task);
+		//find task type
+		if($tasktype = $taskTypeRepo->findOneByTask($task)){
+			return $tasktype;
+		} else {
+			//other task type
+			return $taskTypeRepo->findOneByTitle('Other');
+		}
+	}
+	
+	public static function getEndtime($tasktype,$startTime,$task) {
+		//check all day event
+		if(date('Hi', $startTime) == 1200 && !preg_match('/12/',$task) && !preg_match('/noon/',$task)){
+			return false;
+		}
+		//if specified time
+		return strtotime('+'.$tasktype->getDuration().'Minutes', $startTime);
 	}
 }

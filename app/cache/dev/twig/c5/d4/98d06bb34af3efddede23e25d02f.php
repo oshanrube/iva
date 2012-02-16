@@ -67,7 +67,10 @@ class __TwigTemplate_c5d498d06bb34af3efddede23e25d02f extends Twig_Template
         // line 29
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("AcmeUserBundle_profile"), "html", null, true);
         echo "\" class=\"nav\" target=\"dashboard\">Profile</a>
-\t\t\t\t<a href=\"/tasks\" class=\"nav\" target=\"dashboard\">Calendars</a>
+\t\t\t\t<a href=\"";
+        // line 30
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("AcmeCalendarBundle_dash_list_calendars"), "html", null, true);
+        echo "\" class=\"nav\" target=\"dashboard\">Calendars</a>
 \t\t\t</navigation>
 \t\t</h2>
 \t</header>

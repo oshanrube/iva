@@ -1,3 +1,3 @@
 AcmeDashBundle_ajax_panel:
-    pattern:  /dash/ajax/panel
+    pattern:  /ajax/panel
     defaults: { _controller: AcmeDashBundle:Default:ajax }

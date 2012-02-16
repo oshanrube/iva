@@ -14,7 +14,12 @@
 	border-top-right-radius: 2px;
 	color: #EEE;
 	font-weight: bold;
-	border: 1px solid #F90;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0099FF), to(#0bf));
+background-image: -webkit-linear-gradient(#0099FF, #0bf);
+background-image: -moz-linear-gradient(#0099FF, #0bf);
+background-image: -ms-linear-gradient(#0099FF, #0bf);
+background-image: -o-linear-gradient(#0099FF, #0bf);
+background-image: linear-gradient(#0099FF, #0bf);
 }
 #dashboard table tbody .border{
 	margin: 0px;
@@ -30,8 +35,11 @@
 }
 #dashboard table tbody td ul li{
 	color: white;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #AAA;
 	line-height: 18px;
+}
+#dashboard table tbody td ul li:hover{
+		border-bottom: 1px solid #FFF;
 }
 #dashboard table {
 	width: 100%;

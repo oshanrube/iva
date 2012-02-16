@@ -25,7 +25,7 @@ profile:
     show:
         username: Username
         email: Email
-        name: Name
+        name: Full Name
         phoneNum: Phone Number
     edit:
         submit: Update
@@ -87,7 +87,7 @@ layout:
 fos_user_group_form_name: "Group name:"
 
 fos_user_profile_form_user_username: "Username:"
-fos_user_profile_form_user_name: "Name:"
+fos_user_profile_form_user_name: "Full Name:"
 fos_user_profile_form_user_username: "Username:"
 fos_user_profile_form_user_lng: "Longitude:"
 fos_user_profile_form_user_lat: "Latitude:"

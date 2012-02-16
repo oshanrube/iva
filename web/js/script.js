@@ -14,9 +14,15 @@ function closeAlert(that){
 	$(that).parent().hide();
 }
 function ajaxSubmit(that){
+	$(that).find("*").hide();
+	$(that).append('<div id="loadingContainer" style="display:none"><div id="loading"><span></span><strong>loading...</strong></div></div>');
+	$(that).find("#loadingContainer").slideDown('slow');
 	//var url = that.action;
 	$(that).ajaxSubmit(function(r) {
 		if(r.response == 'success'){
+			//remove loading
+			$(that).find("#loadingContainer").remove();
+			$(that).find("*").show();
 			//reset the form
 			$(that).resetForm();
 			//delete 

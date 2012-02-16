@@ -55,6 +55,8 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeCalendarBundle_ajaxnewcalendar' => true,
        'AcmeCalendarBundle_ajaxtickcalendar' => true,
        'AcmeCalendarBundle_ajaxdeletecalendar' => true,
+       'AcmeCalendarBundle_dash_list_calendars' => true,
+       'AcmeCalendarBundle_dash_edit_calendar' => true,
        'AcmeMemberBundle_dashboard' => true,
        'member_menu' => true,
        'fos_user_security_login' => true,
@@ -83,7 +85,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeStoreBundle_show' => true,
        'AcmeStoreBundle_update' => true,
        'AcmeStoreBundle_delete' => true,
-       'AcmeTaskBundle_homepage' => true,
        'AcmeTaskBundle_success' => true,
        'AcmeTaskBundle_addnewtask' => true,
        'AcmeTaskBundle_edit_id' => true,
@@ -321,6 +322,16 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::deleteCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/deletecalendar',  ),));
     }
 
+    private function getAcmeCalendarBundle_dash_list_calendarsRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::listAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/calendar/dash/calendars',  ),));
+    }
+
+    private function getAcmeCalendarBundle_dash_edit_calendarRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::editAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/dash/editcalendar',  ),));
+    }
+
     private function getAcmeMemberBundle_dashboardRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\MemberBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member',  ),));
@@ -461,11 +472,6 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\StoreBundle\\Controller\\DefaultController::deleteAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/store/delete',  ),));
     }
 
-    private function getAcmeTaskBundle_homepageRouteInfo()
-    {
-        return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
-    }
-
     private function getAcmeTaskBundle_successRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/task/success',  ),));
@@ -478,7 +484,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
 
     private function getAcmeTaskBundle_edit_idRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DayController::editAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/task/edit',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DashController::editAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/task/edit',  ),));
     }
 
     private function getAcmeTaskBundle_deleteRouteInfo()

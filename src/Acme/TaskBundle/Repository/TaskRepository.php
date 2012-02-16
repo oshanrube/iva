@@ -12,10 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class TaskRepository extends EntityRepository
 {
-	public function findByThisMonth($user) {
-		$thisMonth = mktime(0, 0, 0, date('m'), 1, date('Y'));
-		$nextMonth = mktime(0, 0, 0, (date('m')+1), 1, date('Y'));
-		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.datetime > :thisMonth AND t.datetime < :nextMonth AND t.userId = :userId';
+	public function findByThisMonth($user,$year,$month) {
+		$thisMonth = mktime(0, 0, 0, $month, 1, $year);
+		$nextMonth = mktime(0, 0, 0, ($month+1), 1, $year);
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.startTime > :thisMonth AND t.startTime < :nextMonth AND t.userId = :userId';
 		
 		return $this->getEntityManager()
 			->createQuery($query)
@@ -28,7 +28,7 @@ class TaskRepository extends EntityRepository
 	public function findByCalendarMonth($user,$year,$month,$id) {
 		$thisMonth = mktime(0, 0, 0, $month, 1, $year);
 		$nextMonth = mktime(0, 0, 0, ($month+1), 1, $year);
-		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.datetime > :thisMonth AND t.datetime < :nextMonth AND t.userId = :userId AND t.calendarId = :id';
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.startTime > :thisMonth AND t.startTime < :nextMonth AND t.userId = :userId AND t.calendarId = :id';
 		
 		return $this->getEntityManager()
 			->createQuery($query)
@@ -42,7 +42,7 @@ class TaskRepository extends EntityRepository
 	public function findByToday($user) {
 		$today = mktime(0, 0, 0, date('m'), date('j'), date('Y'));
 		$tommorow = mktime(0, 0, 0, date('m'), date('j')+1, date('Y'));
-		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.datetime > :today AND t.datetime < :tommorow AND t.userId = :userId';
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.startTime > :today AND t.startTime < :tommorow AND t.userId = :userId';
 		
 		return $this->getEntityManager()
 			->createQuery($query)
@@ -70,7 +70,7 @@ class TaskRepository extends EntityRepository
 	
 	//select all the task which is before the given datetime which belongs to the given user id and ALSO NOT EXPIRED YET 
 	public function findOneByOneBefore($datetime,$userId) {
-		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.datetime < :datetime AND t.datetime > :now AND t.userId = :userId ORDER BY t.datetime DESC';
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.startTime < :datetime AND t.startTime > :now AND t.userId = :userId ORDER BY t.startTime DESC';
 		
 		try{
 			return $this->getEntityManager()

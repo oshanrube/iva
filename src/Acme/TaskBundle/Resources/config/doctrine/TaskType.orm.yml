@@ -1,0 +1,21 @@
+Acme\TaskBundle\Entity\TaskType:
+  type: entity
+  repositoryClass: Acme\TaskBundle\Repository\TaskTypeRepository
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    title:
+      type: string
+      length: '255'
+    duration:
+      type: integer
+      length: '11'
+  lifecycleCallbacks: {  }
+  oneToMany:
+       task:
+            targetEntity: Task
+            mappedBy: tasktype

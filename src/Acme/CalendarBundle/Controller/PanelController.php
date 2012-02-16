@@ -20,7 +20,7 @@ class PanelController extends Controller
 		//get tasks
 		$Task = $this->getDoctrine()->getRepository('AcmeTaskBundle:Task');
 		$user = $this->get('security.context')->getToken()->getUser();
-		$timeline = $Task->findByThisMonth($user);
+		$timeline = $Task->findByThisMonth($user,$year,$month);
 		$timeline = Decode::getCalendar($timeline,$year,$month);
 		//
     	$timestamp = mktime(0,0,0,$month,1,$year);

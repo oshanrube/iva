@@ -25,6 +25,11 @@ class Task
     private $calendarId;
 
     /**
+     * @var integer $taskTypeId
+     */
+    private $taskTypeId;
+
+    /**
      * @var string $task
      */
     private $task;
@@ -35,9 +40,14 @@ class Task
     private $description;
 
     /**
-     * @var integer $datetime
+     * @var integer $startTime
      */
-    private $datetime;
+    private $startTime;
+
+    /**
+     * @var integer $endTime
+     */
+    private $endTime;
 
     /**
      * @var string $location
@@ -54,6 +64,16 @@ class Task
      */
     private $lat;
 
+    /**
+     * @var Acme\TaskBundle\Entity\Notification
+     */
+    private $notification;
+    
+    /**
+     * @var Acme\TaskBundle\Entity\TaskType
+     */
+    private $tasktype;
+    
     /**
      * @var Acme\TaskBundle\Entity\Calendar
      */
@@ -111,6 +131,26 @@ class Task
     }
 
     /**
+     * Set taskTypeId
+     *
+     * @param integer $taskTypeId
+     */
+    public function setTaskTypeId($taskTypeId)
+    {
+        $this->taskTypeId = $taskTypeId;
+    }
+
+    /**
+     * Get taskTypeId
+     *
+     * @return integer 
+     */
+    public function getTaskTypeId()
+    {
+        return $this->taskTypeId;
+    }
+
+    /**
      * Set task
      *
      * @param string $task
@@ -151,23 +191,43 @@ class Task
     }
 
     /**
-     * Set datetime
+     * Set startTime
      *
-     * @param integer $datetime
+     * @param integer $startTime
      */
-    public function setDatetime($datetime)
+    public function setStartTime($startTime)
     {
-        $this->datetime = $datetime;
+        $this->startTime = $startTime;
     }
 
     /**
-     * Get datetime
+     * Get startTime
      *
      * @return integer 
      */
-    public function getDatetime()
+    public function getStartTime()
     {
-        return $this->datetime;
+        return $this->startTime;
+    }
+
+    /**
+     * Set endTime
+     *
+     * @param integer $endTime
+     */
+    public function setEndTime($endTime)
+    {
+        $this->endTime = $endTime;
+    }
+
+    /**
+     * Get endTime
+     *
+     * @return integer 
+     */
+    public function getEndTime()
+    {
+        return $this->endTime;
     }
 
     /**
@@ -231,6 +291,46 @@ class Task
     }
 
     /**
+     * Set notification
+     *
+     * @param Acme\TaskBundle\Entity\Notification $notification
+     */
+    public function setNotification(\Acme\TaskBundle\Entity\Notification $notification)
+    {
+        $this->notification = $notification;
+    }
+
+    /**
+     * Get notification
+     *
+     * @return Acme\TaskBundle\Entity\Notification 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
+    }
+
+    /**
+     * Set taskType
+     *
+     * @param Acme\TaskBundle\Entity\TaskType $taskType
+     */
+    public function setTaskType(\Acme\TaskBundle\Entity\TaskType $taskType)
+    {
+        $this->taskType = $taskType;
+    }
+
+    /**
+     * Get taskType
+     *
+     * @return Acme\TaskBundle\Entity\TaskType 
+     */
+    public function getTaskType()
+    {
+        return $this->taskType;
+    }
+    
+    /**
      * Set calendar
      *
      * @param Acme\TaskBundle\Entity\Calendar $calendar
@@ -248,30 +348,5 @@ class Task
     public function getCalendar()
     {
         return $this->calendar;
-    }
-    /**
-     * @var Acme\TaskBundle\Entity\notification
-     */
-    private $notification;
-
-
-    /**
-     * Set notification
-     *
-     * @param Acme\TaskBundle\Entity\notification $notification
-     */
-    public function setNotification(\Acme\TaskBundle\Entity\notification $notification)
-    {
-        $this->notification = $notification;
-    }
-
-    /**
-     * Get notification
-     *
-     * @return Acme\TaskBundle\Entity\notification 
-     */
-    public function getNotification()
-    {
-        return $this->notification;
     }
 }

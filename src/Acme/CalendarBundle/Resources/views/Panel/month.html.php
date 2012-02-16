@@ -7,7 +7,9 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 	if(($i % 7) == 0 ) echo "<tr>\n";
 	if($i < $startday) echo "<td></td>\n";
 	else{
-		 echo "<td align='center' valign='middle' height='20px' data-placement=\"below\" rel=\"popover\" data-content=\"";
+		 echo "<td align='center' valign='middle' ";
+		 if(isset($timeline[$day])){ echo "class=\"actv\"";}
+		 echo " height='20px' data-placement=\"below\" rel=\"popover\" data-content=\"";
 		 //print tasks
 		 if(isset($timeline[$day])){
 		 	foreach($timeline[$day] as $task){

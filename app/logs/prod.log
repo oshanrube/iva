@@ -23,3 +23,6 @@
 [2012-02-11 21:18:50] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /css/images/ajax-loader.png" (uncaught exception) at /var/www/html/Symfony/app/cache/prod/classes.php line 4560 [] []
 [2012-02-12 06:55:12] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /" (uncaught exception) at /var/www/html/Symfony/app/cache/prod/classes.php line 4560 [] []
 [2012-02-12 06:55:14] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /" (uncaught exception) at /var/www/html/Symfony/app/cache/prod/classes.php line 4560 [] []
+[2012-02-15 20:47:40] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /css/task-edit.css" (uncaught exception) at /var/www/html/Symfony/app/cache/prod/classes.php line 4560 [] []
+[2012-02-15 20:48:19] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /css/task-edit.css" (uncaught exception) at /var/www/html/Symfony/app/cache/prod/classes.php line 4560 [] []
+[2012-02-15 22:04:42] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /css/task-edit.css" (uncaught exception) at /var/www/html/Symfony/app/cache/prod/classes.php line 4560 [] []

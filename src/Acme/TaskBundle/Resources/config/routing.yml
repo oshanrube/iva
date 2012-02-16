@@ -1,21 +1,17 @@
-AcmeTaskBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: AcmeTaskBundle:Default:index }
-
 AcmeTaskBundle_success:
-    pattern:  /task/success
+    pattern:  /success
     defaults: { _controller: AcmeTaskBundle:Default:index }
 
 AcmeTaskBundle_addnewtask:
-    pattern:  /task/new
+    pattern:  /new
     defaults: { _controller: AcmeTaskBundle:Panel:addNewTask }
     
 AcmeTaskBundle_edit_id:
-    pattern:  /task/edit/{id}
-    defaults: { _controller: AcmeTaskBundle:Day:edit }
+    pattern:  /edit/{id}
+    defaults: { _controller: AcmeTaskBundle:Dash:edit }
     requirements:
         id:  \d+
         
 AcmeTaskBundle_delete:
-    pattern:  /task/delete
+    pattern:  /delete
     defaults: { _controller: AcmeTaskBundle:Default:delete }

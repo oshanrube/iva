@@ -4,6 +4,3 @@ Acme\TaskBundle\Entity\Task:
         task:
             - NotBlank: ~
             - MinLength: { limit: 3, message: "Your name must have at least {{ limit }} characters." }
-        datetime:
-            - NotBlank: ~
-            - Type: \DateTime

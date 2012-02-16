@@ -42,3 +42,10 @@ AcmeCalendarBundle_ajaxdeletecalendar:
     pattern:  /calendar/panel/ajax/deletecalendar/{id}
     defaults: { _controller: AcmeCalendarBundle:Default:deleteCalendar , id:0 }
 
+AcmeCalendarBundle_dash_list_calendars:
+    pattern:  /calendar/dash/calendars
+    defaults: { _controller: AcmeCalendarBundle:Dash:list }
+
+AcmeCalendarBundle_dash_edit_calendar:
+    pattern:  /calendar/dash/editcalendar/{id}
+    defaults: { _controller: AcmeCalendarBundle:Dash:edit , id:0 }

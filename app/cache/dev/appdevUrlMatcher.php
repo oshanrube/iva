@@ -256,6 +256,16 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::deleteCalendarAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_ajaxdeletecalendar'));
         }
 
+        // AcmeCalendarBundle_dash_list_calendars
+        if ($pathinfo === '/calendar/dash/calendars') {
+            return array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::listAction',  '_route' => 'AcmeCalendarBundle_dash_list_calendars',);
+        }
+
+        // AcmeCalendarBundle_dash_edit_calendar
+        if (0 === strpos($pathinfo, '/calendar/dash/editcalendar') && preg_match('#^/calendar/dash/editcalendar(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::editAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_dash_edit_calendar'));
+        }
+
         // AcmeMemberBundle_dashboard
         if ($pathinfo === '/member') {
             return array (  '_controller' => 'Acme\\MemberBundle\\Controller\\DefaultController::indexAction',  '_route' => 'AcmeMemberBundle_dashboard',);
@@ -467,29 +477,27 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\StoreBundle\\Controller\\DefaultController::deleteAction',)), array('_route' => 'AcmeStoreBundle_delete'));
         }
 
-        // AcmeTaskBundle_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeTaskBundle_homepage'));
-        }
+        if (0 === strpos($pathinfo, '/task')) {
+            // AcmeTaskBundle_success
+            if ($pathinfo === '/task/success') {
+                return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::indexAction',  '_route' => 'AcmeTaskBundle_success',);
+            }
 
-        // AcmeTaskBundle_success
-        if ($pathinfo === '/task/success') {
-            return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::indexAction',  '_route' => 'AcmeTaskBundle_success',);
-        }
+            // AcmeTaskBundle_addnewtask
+            if ($pathinfo === '/task/new') {
+                return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\PanelController::addNewTaskAction',  '_route' => 'AcmeTaskBundle_addnewtask',);
+            }
 
-        // AcmeTaskBundle_addnewtask
-        if ($pathinfo === '/task/new') {
-            return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\PanelController::addNewTaskAction',  '_route' => 'AcmeTaskBundle_addnewtask',);
-        }
+            // AcmeTaskBundle_edit_id
+            if (0 === strpos($pathinfo, '/task/edit') && preg_match('#^/task/edit/(?P<id>\\d+)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DashController::editAction',)), array('_route' => 'AcmeTaskBundle_edit_id'));
+            }
 
-        // AcmeTaskBundle_edit_id
-        if (0 === strpos($pathinfo, '/task/edit') && preg_match('#^/task/edit/(?P<id>\\d+)$#xs', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DayController::editAction',)), array('_route' => 'AcmeTaskBundle_edit_id'));
-        }
+            // AcmeTaskBundle_delete
+            if ($pathinfo === '/task/delete') {
+                return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::deleteAction',  '_route' => 'AcmeTaskBundle_delete',);
+            }
 
-        // AcmeTaskBundle_delete
-        if ($pathinfo === '/task/delete') {
-            return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::deleteAction',  '_route' => 'AcmeTaskBundle_delete',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

@@ -9,4 +9,11 @@ class Log{
 		$logger->pushHandler(new StreamHandler('/var/www/html/Symfony/app/logs/custom.log', Logger::WARNING));
 		$logger->addError($message);
 	}
+	public static function bench($file,$start,$function) {
+		$time = microtime() - $start;
+		$message = $function.': '.$time;		
+		$logger = new Logger($file);
+		$logger->pushHandler(new StreamHandler(__DIR__.'/../../../../app/logs/bench.log', Logger::WARNING));
+		$logger->addError($message);
+	}
 }

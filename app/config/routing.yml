@@ -4,7 +4,7 @@ AcmeMobileBundle:
 
 AcmeDashBundle:
     resource: "@AcmeDashBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /dash
 
 AcmeEventsBundle:
     resource: "@AcmeEventsBundle/Resources/config/routing.yml"
@@ -74,7 +74,7 @@ AcmeStoreBundle:
 
 AcmeTaskBundle:
     resource: "@AcmeTaskBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /task
 
 # Internal routing configuration to handle ESI
 #_internal:

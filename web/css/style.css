@@ -309,6 +309,20 @@ table.calendar th,table.calendar td{
 table.calendar tbody td{
 -webkit-background-clip: padding-box; background-attachment: scroll; background-clip: padding-box; background-color: #EEE; background-image: -webkit-linear-gradient(top, rgb(253, 253, 253), rgb(238, 238, 238)); background-origin: padding-box; border-bottom-color: #CCC; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; border-bottom-style: solid; border-bottom-width: 1px; border-left-color: #CCC; border-left-style: solid; border-left-width: 1px; border-right-color: #CCC; border-right-style: solid; border-right-width: 1px; border-top-color: #CCC; border-top-left-radius: 7px; border-top-right-radius: 7px; border-top-style: solid; border-top-width: 1px; color: #444; font-family: Helvetica, Arial, sans-serif; font-size: 12px; font-weight: bold; line-height: 30px; text-align: center; text-decoration: none; text-shadow: #F6F6F6 0px 1px 1px; height: 30px; vertical-align: middle; width: 31px; zoom: 1;
 }
+table.calendar tbody td.actv{
+	border: 1px solid #F7C942;
+background: #FADB4E;
+font-weight: bold;
+color: #333;
+text-shadow: 0 1px 0 white;
+background-image: -webkit-gradient(linear,left top,left bottom,from(#fceda7),to(#fadb4e));
+background-image: -webkit-linear-gradient(#fceda7,#fadb4e);
+background-image: -moz-linear-gradient(#fceda7,#fadb4e);
+background-image: -ms-linear-gradient(#fceda7,#fadb4e);
+background-image: -o-linear-gradient(#fceda7,#fadb4e);
+background-image: linear-gradient(#fceda7,#fadb4e);
+border-image: initial;
+	}
 table.calendar th:hover,table.calendar td:hover{
 	opacity:0.7;
 	border-color: #000;

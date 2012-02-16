@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/Symfony/web/css/task-edit.css" type="text/css" media="screen">
+<link rel="stylesheet" href="/Symfony/web/css/bootstrap.css" type="text/css" media="screen">
 <style type="text/css">
 #fos_user_profile_form .controls{
 	margin-left: 0;
@@ -16,8 +16,9 @@
 	<legend>Hello !</legend>
 
     {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
-    </div>
+   <div class="form-actions">
+		<button type="submit" class="btn btn-primary">Save changes</button>
+		<button type="reset" class="btn">Cancel</button>
+	</div>
     </fieldset>
 </form>

@@ -15,14 +15,22 @@ Acme\TaskBundle\Entity\Task:
       type: integer
       length: '11'
       nullable: true
-      default: 0      
+      default: 0   
+    taskTypeId:
+      type: integer
+      length: '11'
+      nullable: true
+      default: 0     
     task:
       type: string
       length: '255'
     description:
       type: text
       length: null
-    datetime:
+    startTime:
+      type: integer
+      length: '11'
+    endTime:
       type: integer
       length: '11'
     location:
@@ -37,6 +45,13 @@ Acme\TaskBundle\Entity\Task:
     notification:
       targetEntity: Notification
       mappedBy: task
+  manyToOne:
+        tasktype:
+            targetEntity: TaskType
+            inversedBy: tasktypes
+            joinColumn:
+                name: taskTypeId
+                referencedColumnName: id
   manyToOne:
         calendar:
             targetEntity: Calendar

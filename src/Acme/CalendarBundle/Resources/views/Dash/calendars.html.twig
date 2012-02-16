@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" media="screen" />
+{% if app.session.hasFlash('question') %}
+	<div class="info message">
+		<p>{{ app.session.flash('question') }}</p>
+	</div>
+{% endif %}
+<style type="text/css">
+#calendar-list{
+	margin: 0 auto;
+	float: none;
+	background-color: #F2F1ED; 
+}
+</style>
+<span class="span6 thumbnail" id="calendar-list">
+<fieldset>
+	<legend>My calendars</legend>
+<ul>
+{% for calendar in calendars %}
+<li><a href="{{ url('AcmeCalendarBundle_dash_edit_calendar' , { 'id' : calendar.id }) }}" >{{ calendar.title }}</a></li>
+{% endfor %}
+</ul>
+</fieldset>
+</span>
