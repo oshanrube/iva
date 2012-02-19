@@ -14,13 +14,14 @@ class LibDistance{
 		$this->em = $em;
 	}
 	
-	public function getTravelTime($origin,$destination,$user) {
+	public function getTravelTime($origin,$destination,$user,$datetime) {
 		// from google of course:D
 		$ggl = New GoogleDistancematrix();
 		//get Routes
 		$routes = $ggl->getRoutes($origin,$destination);
 		//get best route
 		$route = $ggl->getBestRoute($routes);
+		if(!isset($route)){return 0;}
 		//check with the weather
       //1st get Location
       $loc = new LibLocation($this->em);
@@ -28,7 +29,7 @@ class LibDistance{
       //then work on weather check
       $weather = new LibWeather($this->em);
       //get criticality level
-      $level	= $weather->getWeatherCritic($location);
+      $level	= $weather->getWeatherCritic($location,$datetime);
      	//get users avarage speed kmph
 		$avg = $user->getAvgspeed();
 		//calc avg speed with weather criticaliity

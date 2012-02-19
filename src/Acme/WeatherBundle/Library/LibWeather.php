@@ -16,9 +16,11 @@ class LibWeather{
       //return 
 		return $Gweather->getWeather($location);
 	}
-	
-	public function getWeatherCritic($location) {
-		$weather = $this->getWeather($location);
-		return $weather->getWcondition()->getCriticality();
+	public function getWeatherCritic($location,$datetime) {
+		$Weather = $this->em->getRepository('AcmeWeatherBundle:Weather')
+						->findOneByDatetimeAndLocation($datetime,$location);
+		if($Weather){
+			return $weather->getWcondition()->getCriticality();
+		}else {return false;}
 	}
 }

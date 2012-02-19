@@ -3,7 +3,7 @@
 <script type="text/javascript" src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap-modal.js') }}"></script>
 
-<a class="btn pull-right"  href="{{ path('AcmeDashBundle_ajax_panel') }}" ><i class="icon-chevron-left"></i> Back</a>
+<a class="btn pull-right"  href="{{ path('AcmeCalendarBundle_dash_list_calendars') }}" ><i class="icon-chevron-left"></i> Back</a>
 <div id="myModal" class="modal hide fade" style="display: none; ">
    <div class="modal-header">
      <a class="close" data-dismiss="modal">×</a>
@@ -20,7 +20,7 @@
      </form>
    </div>
  </div>
-<a data-toggle="modal" href="#myModal" class="btn btn-danger" ><i class="icon-trash icon-white"></i> Delete</a>
+<a data-toggle="modal" href="#myModal" style="float: left;" class="btn btn-danger" ><i class="icon-trash icon-white"></i> Delete</a>
 
 {% if app.session.hasFlash('question') %}
 	<div class="info message">

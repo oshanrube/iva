@@ -1,0 +1,7 @@
+<?php
+namespace Acme\CalendarBundle\Library\Includes;
+
+class Facebook
+{
+  
+}

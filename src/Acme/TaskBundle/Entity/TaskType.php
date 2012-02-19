@@ -15,65 +15,15 @@ class TaskType
     private $id;
 
     /**
-     * @var string $type
+     * @var string $title
      */
-    private $type;
+    private $title;
 
     /**
-     * @var text $description
+     * @var integer $duration
      */
-    private $description;
+    private $duration;
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set description
-     *
-     * @param text $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * Get description
-     *
-     * @return text 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
     /**
      * @var Acme\TaskBundle\Entity\Task
      */
@@ -85,29 +35,14 @@ class TaskType
     }
     
     /**
-     * Add task
+     * Get id
      *
-     * @param Acme\TaskBundle\Entity\Task $task
+     * @return integer 
      */
-    public function addTask(\Acme\TaskBundle\Entity\Task $task)
+    public function getId()
     {
-        $this->task[] = $task;
+        return $this->id;
     }
-
-    /**
-     * Get task
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getTask()
-    {
-        return $this->task;
-    }
-    /**
-     * @var string $title
-     */
-    private $title;
-
 
     /**
      * Set title
@@ -128,16 +63,11 @@ class TaskType
     {
         return $this->title;
     }
-    /**
-     * @var text $duration
-     */
-    private $duration;
-
 
     /**
      * Set duration
      *
-     * @param text $duration
+     * @param integer $duration
      */
     public function setDuration($duration)
     {
@@ -147,10 +77,55 @@ class TaskType
     /**
      * Get duration
      *
-     * @return text 
+     * @return integer 
      */
     public function getDuration()
     {
         return $this->duration;
+    }
+
+    /**
+     * Add task
+     *
+     * @param Acme\TaskBundle\Entity\Task $task
+     */
+    public function addTask(\Acme\TaskBundle\Entity\Task $task)
+    {
+        $this->task[] = $task;
+    }
+
+    /**
+     * Get task
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTask()
+    {
+        return $this->task;
+    }
+    /**
+     * @var integer $prepair
+     */
+    private $prepair;
+
+
+    /**
+     * Set prepair
+     *
+     * @param integer $prepair
+     */
+    public function setPrepair($prepair)
+    {
+        $this->prepair = $prepair;
+    }
+
+    /**
+     * Get prepair
+     *
+     * @return integer 
+     */
+    public function getPrepair()
+    {
+        return $this->prepair;
     }
 }

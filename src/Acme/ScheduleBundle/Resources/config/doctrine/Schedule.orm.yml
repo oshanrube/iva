@@ -1,0 +1,16 @@
+Acme\ScheduleBundle\Entity\Schedule:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    datetime:
+      type: integer
+      length: '11'
+    command:
+      type: string
+      length: '63'
+  lifecycleCallbacks: {  }

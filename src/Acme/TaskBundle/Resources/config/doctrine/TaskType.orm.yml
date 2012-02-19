@@ -14,6 +14,9 @@ Acme\TaskBundle\Entity\TaskType:
     duration:
       type: integer
       length: '11'
+    prepair:
+      type: integer
+      length: '11'
   lifecycleCallbacks: {  }
   oneToMany:
        task:

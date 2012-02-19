@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 class SecurityController extends ContainerAware
 {
-	public function loginAction($quick = false)
+	public function loginAction($quick = false,$mobile = false)
     {
         $request = $this->container->get('request');
         /* @var $request \Symfony\Component\HttpFoundation\Request */
@@ -45,6 +45,12 @@ class SecurityController extends ContainerAware
 
 		if($quick){
 			return $this->container->get('templating')->renderResponse('FOSUserBundle:Security:quickLogin.html.'.$this->container->getParameter('fos_user.template.engine'), array(
+            'last_username' => $lastUsername,
+            'error'         => $error,
+            'csrf_token' => $csrfToken,
+			));
+		} elseif($mobile){
+			return $this->container->get('templating')->renderResponse('FOSUserBundle:Security:mobile.html.'.$this->container->getParameter('fos_user.template.engine'), array(
             'last_username' => $lastUsername,
             'error'         => $error,
             'csrf_token' => $csrfToken,

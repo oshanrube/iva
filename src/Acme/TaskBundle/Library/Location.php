@@ -7,7 +7,7 @@ use Acme\TaskBundle\Library\Includes\Foursquare;
 class Location{
 	private $sentences = array();
 	
-	public function searchLocation($sentence,$locations,$long,$lat,$accurate = true) {
+	public function searchLocation($sentence,$locations,$long,$lat,$accurate = true,$suggestions = false) {
 		//loop thro the location list
 		foreach($locations as $key => $location){
 			//check in foursquare
@@ -17,10 +17,11 @@ class Location{
 					if($venue->name == $location){
 						return $venue;
 					}
-					//add replaced sentences
-					$this->sentences[] = str_replace($location,$venue->name,$sentence);
+					if($suggestions) {
+						//add replaced sentences
+						$this->sentences[] = str_replace($location,$venue->name,$sentence);
+					}
 					//
-					
 					$loc = new \stdClass();
 					$loc->loc = $location;
 					$loc->name = $venue->name;

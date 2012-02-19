@@ -16,8 +16,9 @@
 		$(that).parent().remove();
 	}
 	function selectLocation(name,id){
-		$('#form_task').val(name);
 		$('#form_task_loc_id').val(id);
+		$('#venues-list').find('li').remove();
+		$('#venues-list').append($('<li>Location: '+name+'</li>'));
 	}
 	</script>
 </head>

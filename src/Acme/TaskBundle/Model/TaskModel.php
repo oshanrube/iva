@@ -10,6 +10,7 @@ use Acme\TaskBundle\Library\Decode;
 use Acme\TaskBundle\Library\Language;
 use Acme\TaskBundle\Library\Location;
 use Acme\TaskBundle\Library\Log;
+use Acme\ScheduleBundle\Entity\Schedule;
 
 class TaskModel{
 	//Entity Manager
@@ -92,7 +93,7 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 				} else {$accurate=true;}
 				//search the locations list and get alternative sentences
 				$location = new Location();
-				if(!$taskLocation = $location->searchLocation($this->quickTask,$locations,$lng,$lat,$accurate)){
+				if(!$taskLocation = $location->searchLocation($this->quickTask,$locations,$lng,$lat,$accurate,$suggestions = true)){
 					//add to suggetions
 					$this->suggestions = $location->improveSentence();
 					//add Venues
@@ -113,8 +114,7 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 			if($calendarName = Decode::getCalendarName($this->quickTask)){
 				$calendar = $this->em->getRepository('AcmeTaskBundle:Calendar')
             				->findOneByCalendarName($calendarName,$user);
-            $calendarId = $calendar[0]->getId();
-            $task->setCalendarId($calendarId);
+            $task->setCalendar($calendar[0]);
 			} else {
 				$task->setCalendarId(0);
 			}
@@ -140,10 +140,123 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 				$desc = Language::CreateDescription($task);
 				$this->description = $desc;
 				$task->setDescription($desc);
-			// saving the task to the database 
+				// saving the task to the database 
 				$this->em->persist($task);
+				//shedule a update
+				$schedule = new Schedule();
+				$schedule->setDatetime(time());
+				$schedule->setCommand('notifications:create');
+				// saving the task to the database 
+				$this->em->persist($schedule);
 				$this->em->flush();
 			//finish
-			return true;
+		return true;
+	}
+
+	public function addFacebookEvent($user,$event) {
+		//add the task
+		$task = new Task();
+		$task->setTask($event->name);
+		$task->setDescription('http://www.facebook.com/events/'.$event->id);
+		$task->setStartTime(strtotime($event->start_time));
+		$task->setEndtime(strtotime($event->end_time));
+		$task->setTaskRepeatId(0);
+		//
+		$locations = array($event->location);
+		$lng = $user->getLng();
+		$lat = $user->getLat();
+		//search location 
+		$location = new Location();
+		if(!$taskLocation = $location->searchLocation('',$locations,$lng,$lat,$accurate = false)){
+			//add Venues
+			$venues = $location->getVenues();
+			//get the best result
+			$task->setLocation($venues[0]->name);
+			$task->setLng($venues[0]->lng);
+			$task->setLat($venues[0]->lat);
+		} else {
+			$task->setLocation($taskLocation->name);
+			$task->setLng($taskLocation->location->lng);
+			$task->setLat($taskLocation->location->lat); 
+		}
+		
+		//task type
+		$taskType = Decode::getTaskType($event->name,$this->em->getRepository('AcmeTaskBundle:TaskType'));
+		if(!$Endtime = Decode::getEndtime($taskType,strtotime($event->start_time),$event->name)){
+			//all day event
+			$taskType = $this->em->getRepository('AcmeTaskBundle:TaskType')->findOneByTitle('All Day');
+		}
+		$task->setTaskType($taskType);
+		//add the task
+		$task->setUserId($user->getId());
+		//get calendar
+		$fbcalendar = $this->em->getRepository('AcmeTaskBundle:Calendar')->findOneByTitle('Facebook-events');
+		if(!$fbcalendar){//if such calendar does not exsist creat one
+			$fbcalendar = new Calendar();
+			$fbcalendar->setTitle('Facebook-events');
+			$fbcalendar->setEnabled(true);
+			$fbcalendar->setDescription('Events synced from facebook');
+			$fbcalendar->setOwnerId($user->getId());
+			$fbcalendar->setPrivacyType('private');
+			$this->em->persist($fbcalendar);
+			$this->em->flush();
+		}
+		$task->setCalendar($fbcalendar);
+		//search for the task
+		$tsk = $this->em->getRepository('AcmeTaskBundle:Task')->findOneByTitleandTime($task->getTask(),$task->getStartTime());
+		if(!$tsk){
+			$this->em->persist($task);
+			$this->em->flush();
+		}
+	}
+	public function addFacebookBirthday($user,$profile) {
+		//add the task
+		$task = new Task();
+		$task->setTask($profile->name.'\'s Birthday');
+		$task->setDescription('##'.$profile->name.'##');
+		$task->setStartTime(strtotime($profile->birthday));
+		$task->setEndtime(0);
+		$task->setLocation('');
+		$task->setLng(0);
+		$task->setLat(0);
+		$task->setUserId($user->getId());
+		//task type to bday
+		$taskType = $this->em->getRepository('AcmeTaskBundle:TaskType')->findOneByTitle('Birthday');
+		$task->setTaskType($taskType);
+		//task repeat to anual
+		$taskRepeat = $this->em->getRepository('AcmeTaskBundle:TaskRepeat')->findOneByTitle('Yearly');
+		$task->setTaskRepeat($taskRepeat);
+		//get calendar
+		$fbcalendar = $this->em->getRepository('AcmeTaskBundle:Calendar')->findOneByTitle('Facebook-Birthdays');
+		if(!$fbcalendar){//if such calendar does not exsist creat one
+			$fbcalendar = new Calendar();
+			$fbcalendar->setTitle('Facebook-Birthdays');
+			$fbcalendar->setEnabled(true);
+			$fbcalendar->setDescription('Birthdays synced from facebook');
+			$fbcalendar->setOwnerId($user->getId());
+			$fbcalendar->setPrivacyType('private');
+			$this->em->persist($fbcalendar);
+			$this->em->flush();
+		}
+		$task->setCalendar($fbcalendar);
+		//search for the task
+		$tsk = $this->em->getRepository('AcmeTaskBundle:Task')->findOneByTitleandTime($task->getTask(),$task->getStartTime());
+		if(!$tsk){
+			$this->em->persist($task);
+			$this->em->flush();
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

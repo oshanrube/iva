@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap-modal.js') }}"></script>
+
+<a class="btn pull-right"  href="{{ path('AcmeCalendarBundle_dash_list_calendars') }}" ><i class="icon-chevron-left"></i> Back</a>
+
+{% if app.session.hasFlash('error') %}
+	<div class="alert alert-error">
+		<strong>{{ app.session.flash('error') }}</strong>
+	</div>
+{% endif %}
+
+{% form_theme form 'AcmeTaskBundle:Dash:fields.html.twig' %}
+<form class="thumbnail form-horizontal" action="{{ path('AcmeCalendarBundle_dash_share_calendar' , { "id": id}) }}" method="post" {{ form_enctype(form) }}>
+<fieldset>
+	<legend>Share Calendar: {{ title }}</legend>
+	{{ form_widget(form) }}
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Save changes</button>
+		<button type="reset" class="btn">Cancel</button>
+	</div>
+</fieldset>    
+</form>

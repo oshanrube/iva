@@ -31,16 +31,20 @@ AcmeCalendarBundle_ajaxcurrentpanel:
     defaults: { _controller: AcmeCalendarBundle:Panel:ajaxPanel , nav:next,current:mycalendars }
     
 AcmeCalendarBundle_ajaxnewcalendar:
-    pattern:  /calendar/panel/ajax/addnewcalendar
+    pattern:  /calendar/action/add
     defaults: { _controller: AcmeCalendarBundle:Default:addNewCalendar }
 
 AcmeCalendarBundle_ajaxtickcalendar:
-    pattern:  /calendar/panel/ajax/tickcalendar/{id}
+    pattern:  /calendar/action/tick/{id}
     defaults: { _controller: AcmeCalendarBundle:Default:tickCalendar , id:0 }
 
 AcmeCalendarBundle_ajaxdeletecalendar:
-    pattern:  /calendar/panel/ajax/deletecalendar/{id}
+    pattern:  /calendar/action/delete/{id}
     defaults: { _controller: AcmeCalendarBundle:Default:deleteCalendar , id:0 }
+
+AcmeCalendarBundle_sync_calendar_facebook:
+    pattern:  /calendar/action/sync/facebook
+    defaults: { _controller: AcmeCalendarBundle:Default:syncFacebook }
 
 AcmeCalendarBundle_dash_list_calendars:
     pattern:  /calendar/dash/calendars
@@ -49,3 +53,7 @@ AcmeCalendarBundle_dash_list_calendars:
 AcmeCalendarBundle_dash_edit_calendar:
     pattern:  /calendar/dash/editcalendar/{id}
     defaults: { _controller: AcmeCalendarBundle:Dash:edit , id:0 }
+
+AcmeCalendarBundle_dash_share_calendar:
+    pattern:  /calendar/dash/sharecalendar/{id}
+    defaults: { _controller: AcmeCalendarBundle:Dash:share , id:0 }

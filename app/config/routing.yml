@@ -1,3 +1,7 @@
+AcmeScheduleBundle:
+    resource: "@AcmeScheduleBundle/Resources/config/routing.yml"
+    prefix:   /
+
 AcmeMobileBundle:
     resource: "@AcmeMobileBundle/Resources/config/routing.yml"
     prefix:   /mobile

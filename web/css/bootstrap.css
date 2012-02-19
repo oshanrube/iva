@@ -1,5 +1,5 @@
 form.form-horizontal{
-	width: 400px;
+	width: 435px;
 	margin: 0 auto;	
 	background-color: #F2F1ED;
 }
@@ -104,6 +104,9 @@ a {
 a:hover {
   color: #005580;
   text-decoration: underline;
+}
+#form{
+	padding-top: 10px;
 }
 .row {
   margin-left: -20px;

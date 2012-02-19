@@ -12,7 +12,7 @@
    </span>
 </form>
 {% if venues is defined %}
-<ul data-role="listview" data-theme="g" style="margin-top: 5px;">
+<ul id="venues-list" data-role="listview" data-theme="g" style="margin-top: 5px;">
 	<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-btn ui-bar-b ui-btn-up-undefined">Suggestions</li>
 {% for venue in venues %} 
 	<li><a href="#" onClick="selectLocation('{{ venue.name }}','{{ venue.id }}')">{{ venue.name }} <small> ({{ venue.lat }},{{ venue.lng }})</small></a></li>

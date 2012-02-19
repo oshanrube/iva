@@ -10,14 +10,67 @@
 	float: none;
 	background-color: #F2F1ED; 
 }
+#calendar-list .share{
+	float: right;
+	width: 90px;
+	padding: 10px 0;
+}
+#calendar-list .link{
+	line-height: 31px;
+	width: 357px;
+	display: inline-block;
+	padding: 0 0 0 5px;
+	margin-bottom: 5px;	
+	text-align:left;
+}
+.button.minimal {
+	background: #e3e3e3; border: 1px solid #bbb; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: inset 0 0 1px 1px #f6f6f6; -moz-box-shadow: inset 0 0 1px 1px #f6f6f6; -ms-box-shadow: inset 0 0 1px 1px #f6f6f6; -o-box-shadow: inset 0 0 1px 1px #f6f6f6; box-shadow: inset 0 0 1px 1px #f6f6f6; color: #333; font: bold 12px "helvetica neue", helvetica, arial, sans-serif; line-height: 1; padding: 8px 0 9px; text-align: center; text-shadow: 0 1px 0 #fff; width: 150px;  text-decoration:none;
+}
+.button.minimal:hover {
+	background: #d9d9d9; -webkit-box-shadow: inset 0 0 1px 1px #eaeaea; -moz-box-shadow: inset 0 0 1px 1px #eaeaea; -ms-box-shadow: inset 0 0 1px 1px #eaeaea; -o-box-shadow: inset 0 0 1px 1px #eaeaea; box-shadow: inset 0 0 1px 1px #eaeaea; color: #222; cursor: pointer; 
+}
+.button.minimal:active {
+	background: #d0d0d0; -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3; -moz-box-shadow: inset 0 0 1px 1px #e3e3e3; -ms-box-shadow: inset 0 0 1px 1px #e3e3e3; -o-box-shadow: inset 0 0 1px 1px #e3e3e3; box-shadow: inset 0 0 1px 1px #e3e3e3; color: #000; 
+}
+.button.clean-gray {
+	background-color: #eeeeee; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #cccccc)); background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc); background-image: -moz-linear-gradient(top, #eeeeee, #cccccc); background-image: -ms-linear-gradient(top, #eeeeee, #cccccc); background-image: -o-linear-gradient(top, #eeeeee, #cccccc); background-image: linear-gradient(top, #eeeeee, #cccccc); border: 1px solid #ccc; border-bottom: 1px solid #bbb; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; color: #333; font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif; line-height: 1; padding: 8px 0; text-align: center; text-shadow: 0 1px 0 #eee; width: 150px; 
+}
+.button.clean-gray:hover {
+	background-color: #dddddd; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #bbbbbb)); background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb); background-image: -moz-linear-gradient(top, #dddddd, #bbbbbb); background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb); background-image: -o-linear-gradient(top, #dddddd, #bbbbbb); background-image: linear-gradient(top, #dddddd, #bbbbbb); border: 1px solid #bbb; border-bottom: 1px solid #999; cursor: pointer; text-shadow: 0 1px 0 #ddd; 
+}
+.button.clean-gray:active {
+	border: 1px solid #aaa; border-bottom: 1px solid #888; -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; -ms-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; -o-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+}
+#facebook{
+	background: #3B5998;color: white;text-shadow: none;
+}
+.share.button.clean-gray.disabled {
+	background-color: whiteSmoke;border-color: #DDD;cursor: not-allowed;
+}
 </style>
+{% if app.session.hasFlash('success') %}
+	<div class="alert alert-success">
+		<strong>Well done!</strong> {{ app.session.flash('success') }}
+	</div>
+{% endif %}
+      
 <span class="span6 thumbnail" id="calendar-list">
 <fieldset>
 	<legend>My calendars</legend>
-<ul>
 {% for calendar in calendars %}
-<li><a href="{{ url('AcmeCalendarBundle_dash_edit_calendar' , { 'id' : calendar.id }) }}" >{{ calendar.title }}</a></li>
+		<a href="{{ url('AcmeCalendarBundle_dash_edit_calendar' , { 'id' : calendar.id }) }}" class="link button minimal" >{{ calendar.title }}</a>
+		<a href="{{ url('AcmeCalendarBundle_dash_share_calendar' , { 'id' : calendar.id }) }}" class="share button clean-gray" >Share</a>
 {% endfor %}
-</ul>
+
+{% if facebook.synced %}
+	<span class="link button minimal" id="facebook" >Facebook</span>
+	<span class="share button clean-gray disabled" >Scheduled</span>
+{% elseif facebook.token is defined %}
+	<a href="" class="link button minimal" id="facebook" >Facebook</a>
+	<a href="{{ url('AcmeCalendarBundle_sync_calendar_facebook') }}" class="share button clean-gray" >Sync</a>
+{% else %}	
+	<a href="" class="link button minimal" >Facebook</a>
+	<a href="{{ facebook.addurl }}" class="share button clean-gray" >Add</a>
+{% endif %}
 </fieldset>
 </span>

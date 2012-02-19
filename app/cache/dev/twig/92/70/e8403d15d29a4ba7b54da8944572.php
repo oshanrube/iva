@@ -15,7 +15,7 @@ class __TwigTemplate_9270e8403d15d29a4ba7b54da8944572 extends Twig_Template
 \t<div id=\"panel\">
 \t\t<div class=\"content clearfix\">
 \t\t\t<div class=\"left\">
-\t\t\t\t<img title=\"IVA\" style=\"width: 278px;\" src=\"";
+\t\t\t\t<img title=\"IVA\" class=\"border\" style=\"width: 272px;\" src=\"";
         // line 5
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/logo.png"), "html", null, true);
         echo "\" />

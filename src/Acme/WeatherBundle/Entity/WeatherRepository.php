@@ -14,11 +14,13 @@ class WeatherRepository extends EntityRepository
 {
 	public function findOneByDatetimeAndLocation($day,$location)
 	{
+		
+		$datetime = mktime($hour = null, $minute = null, $second = null, date("n",$day),  date("j",$day), date("Y",$day));
 		$query = 'SELECT w FROM AcmeWeatherBundle:Weather w WHERE w.datetime = :date AND w.location = :location';
 		try{
 		$w = $this->getEntityManager()
 			->createQuery($query)
-			->setParameter('date', $day)
+			->setParameter('date', $datetime)
 			->setParameter('location', $location)
 			->getSingleResult();
 		} catch (\Doctrine\ORM\NoResultException $e) {

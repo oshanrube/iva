@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Acme\TaskBundle\Entity\Calendar;
+use Acme\CalendarBundle\Library\Sync;
+use Acme\ScheduleBundle\Entity\Schedule;
 
 class DefaultController extends Controller
 {
@@ -88,4 +90,31 @@ class DefaultController extends Controller
 		$response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
+    //sync with facebook
+    public function syncFacebookAction() {
+    	//get user
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	//shedule a update
+		$schedule = new Schedule();
+		$schedule->setDatetime(time());
+		$schedule->setCommand('calendar:syncfacebook '.$user->getUsername());
+		// saving the task to the database
+		$em = $this->getDoctrine()->getEntityManager(); 
+		$em->persist($schedule);
+		$em->flush();
+		//set flash
+		$this->get('session')->setFlash('success', 'Your facebook events are sheduled to be synced with IVA!');
+		//redirect
+		return $this->redirect($this->generateUrl('AcmeCalendarBundle_dash_list_calendars'));
+    }
 }
+
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,7 @@ use Acme\TaskBundle\Entity\Notification;
 use Acme\NotificationsBundle\Library\Includes\GtalkNotifications;
 use Acme\NotificationsBundle\Library\Includes\Tokudu;
 use Acme\NotificationsBundle\Library\Includes\Sms;
+use Acme\NotificationsBundle\Model\TaskRepeatModel;
 
 class LibNotification{
 	
@@ -17,31 +18,44 @@ class LibNotification{
 	
 	public function getNotification($task) {
 		//get location and datetime
-		$datetime 	= $task->getDatetime();
+		$datetime 	= $task->getStartTime();
 		$dest['lat']= $task->getLat();
 		$dest['lng']= $task->getLng();
 		$userId 		= $task->getUserId();
 		$taskId 		= $task->getId();
+		$taskType 	= $task->getTaskType();
+		$taskRepeat	= $task->getTaskRepeat();
 		//1st get the user
       $user = 	$this->em->getRepository('AcmeUserBundle:User')
       			->findOneById($userId);
-		//get the task before it
-    	$taskBefore = 	$this->em->getRepository('AcmeTaskBundle:Task')
-            			->findOneByOneBefore($datetime,$userId);
-      //if there is no task before this
-      if(!$taskBefore){
-      	//get the users last known location
-      	$origin['lat'] = $user->getLat();
-      	$origin['lng'] = $user->getLng();
-      //else get the task before location
-      } else {
-      	$origin['lat'] = $taskBefore->getLat();
-      	$origin['lng'] = $taskBefore->getLng();
+     	//if task is a repeat
+      if($taskRepeat->getId() != 1){
+      	//get next notifiction
+      	$datetime = TaskRepeatModel::getNextRepeat($task);
       }
-      //calculate the distance
-      $distance = new LibDistance($this->em);
-      //get the travel time
-      $mins = $distance->getTravelTime($origin,$dest,$user);
+      //get the time which takes to prepair
+      $mins = $taskType->getPrepair();
+      /** calculate distance **/
+      if($dest['lat'] != 0 && $dest['lng'] != 0){//if location matters
+			//get the task before it
+	    	$taskBefore = 	$this->em->getRepository('AcmeTaskBundle:Task')
+	            			->findOneByOneBefore($datetime,$userId);
+	      //if there is no task before this
+	      if(!$taskBefore){
+	      	//get the users last known location
+	      	$origin['lat'] = $user->getLat();
+	      	$origin['lng'] = $user->getLng();
+	      //else get the task before location
+	      } else {
+	      	$origin['lat'] = $taskBefore->getLat();
+	      	$origin['lng'] = $taskBefore->getLng();
+	      }
+	      //calculate the distance
+      	$distance = new LibDistance($this->em);
+      	//get the travel time
+      	$mins += $distance->getTravelTime($origin,$dest,$user,$datetime);
+      }
+      
       //get the notify time
       $timestamp = strtotime(' -'.$mins.' minutes',$datetime);
       //create a notification

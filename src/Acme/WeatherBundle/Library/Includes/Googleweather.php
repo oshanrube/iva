@@ -3,6 +3,7 @@ namespace Acme\WeatherBundle\Library\Includes;
 
 use Acme\WeatherBundle\Entity\WCondition;
 use Acme\WeatherBundle\Entity\Weather;
+use Acme\ScheduleBundle\Entity\Schedule;
 
 class Googleweather {
 	
@@ -22,9 +23,25 @@ class Googleweather {
 		//check in database
 		if($w = $Weather->findOneByDatetimeAndLocation($today,$location)){
 			return $w;
+		} else {
+			//shedule a update
+			$schedule = new Schedule();
+			$schedule->setDatetime(time());
+			$schedule->setCommand('weather:update '.$location);
+			// saving the task to the database 
+			$this->em->persist($schedule);
+			$this->em->flush();
+			//dummy data
+			$xml['weather'][$today]['condition'] = 'Clear';
+			$xml['weather'][$today]['icon'] = 'http://www.google.com/ig/images/weather/sunny.gif';
+			return $xml['weather'][$today];
 		}
+	}
+	public function update($location) {
+		$host = 'http://www.google.com/ig/api?weather='.$location;
+		//run
 		$doc = new \DOMDocument();
-		$doc->load( 'http://www.google.com/ig/api?weather='.$location );
+		$doc->load( $host );
 		
 		$forecast_information = $doc->getElementsByTagName( "forecast_information" );
 		$forecast_date = $forecast_information->item(0)->getElementsByTagName( "forecast_date" )->item(0)->getAttribute("data");
@@ -51,8 +68,7 @@ class Googleweather {
 			$xml['weather'][$date]['condition'] = $condition->getElementsByTagName( "condition" )->item(0)->getAttribute("data"); 
 		}
 		$this->saveToDB($xml,$location);
-		
-		return $xml['weather'][$today];
+		return ;
 	}
 	private function saveToDB($xml,$location) {
 		$Weather = $this->em->getRepository('AcmeWeatherBundle:Weather');

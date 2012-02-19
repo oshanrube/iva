@@ -36,6 +36,11 @@ class User extends BaseUser
     private $avgspeed;
     
     /**
+     * @ORM\Column(type="string",length="255")
+     */
+    private $fbToken;
+    
+    /**
      * @ORM\Column(type="float")
      */
     private $lng;
@@ -138,6 +143,25 @@ class User extends BaseUser
     {
     	if($this->avgspeed == 0){return 60;}
         return $this->avgspeed;
+    }
+    /**
+     * Set fbToken
+     *
+     * @param string $fbToken
+     */
+    public function setFbToken($fbToken)
+    {
+        $this->fbToken = $fbToken;
+    }
+
+    /**
+     * Get fbToken
+     *
+     * @return string 
+     */
+    public function getFbToken()
+    {
+        return $this->fbToken;
     }
     /**
      * Get id

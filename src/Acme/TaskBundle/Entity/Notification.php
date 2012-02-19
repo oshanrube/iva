@@ -49,6 +49,11 @@ class Notification
      */
     private $voicecall;
 
+    /**
+     * @var Acme\TaskBundle\Entity\Task
+     */
+    private $task;
+
 
     /**
      * Get id
@@ -199,11 +204,6 @@ class Notification
     {
         return $this->voicecall;
     }
-    /**
-     * @var Acme\TaskBundle\Entity\Task
-     */
-    private $task;
-
 
     /**
      * Set task

@@ -190,6 +190,10 @@ footer a:hover{}
 	height: 353px;
 	border-image: initial;
 }
+#ajax_content h2{
+	color: white;
+	border-bottom: 2px solid #CCC;
+}
 .label_check,
 .label_radio { padding-left: 34px; }
 .label_radio { background: url(radio-off.png) no-repeat; }

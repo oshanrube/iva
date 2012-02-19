@@ -1,0 +1,20 @@
+Acme\TaskBundle\Entity\TaskRepeat:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    title:
+      type: string
+      length: '255'
+    description:
+      type: text
+      length: null
+  lifecycleCallbacks: {  }
+  oneToMany:
+       task:
+            targetEntity: Task
+            mappedBy: taskrepeat

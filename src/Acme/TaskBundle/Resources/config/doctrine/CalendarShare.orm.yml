@@ -1,0 +1,19 @@
+Acme\TaskBundle\Entity\CalendarShare:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    calendarId:
+      type: integer
+      length: '11'
+    username:
+      type: string
+      length: '255'
+    description:
+      type: text
+      length: null
+  lifecycleCallbacks: {  }

@@ -2,31 +2,29 @@
 
 namespace Acme\TaskBundle\Tests\Controller;
 
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
+	protected function getClientWithAuthentication($firewallName, array $options = array(), array $server = array())
+	{
+      $client = $this->createClient($options, $server);
+      $client->getCookieJar()->set(new \Symfony\Component\BrowserKit\Cookie(session_name(), true));
+
+      $token = new UsernamePasswordToken('oshan', 'lomino', $firewallName, array('ROLE_USER'));
+      self::$kernel->getContainer()->get('session')->set('_security_' . $firewallName, serialize($token));
+      return $client;
+	}
+	
 	public function testIndex()
 	{
-$client = static::createClient(array('debug'       => false), array(
-	'PHP_AUTH_USER' => 'oshan',
-	'PHP_AUTH_PW'   => 'lomino',
-	'HTTP_HOST'       => 'en.example.com',
-	'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7',
-	'HTTP_ACCEPT'		=>'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-	//'CONTENT_TYPE' => 'application/json',
-	//'HTTP_REFERER' => '/foo/bar',
-));
-$client->request(
-	'GET',
-	'/member',
-	array(),
-	array(),
-	array(
-		'CONTENT_TYPE' => 'application/json',
-		'HTTP_REFERER' => '/foo/bar',
-	)
-);
+		//$authClient = new AuthClient();
+$client = $this->getClientWithAuthentication('oshan'); 
+//var_dump(self::$kernel->getContainer()->get('session'));
+
+//exit();
+$client->request('GET', '/member'); 
 		echo $client->getResponse()->getContent();exit();
 		//
 		$this->assertTrue($crawler->filter('form')->count() > 0);

@@ -28,9 +28,9 @@ class ProfileController extends Controller
 	
 		$process = $formHandler->process($user);
 		if ($process) {
-				$this->setFlash('fos_user_success', 'profile.flash.updated');
+				$this->get('session')->setFlash('fos_user_success', 'profile.flash.updated');
 	
-				return new RedirectResponse($this->container->get('router')->generate('fos_user_profile_show'));
+				return new RedirectResponse($this->container->get('router')->generate('AcmeUserBundle_profile'));
 		}
 		return $this->render('AcmeUserBundle:Profile:edit-profile.html.twig', 
 			array('form' => $form->createView(), 'theme' => $this->container->getParameter('fos_user.template.theme'))

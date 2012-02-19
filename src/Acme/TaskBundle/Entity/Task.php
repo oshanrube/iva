@@ -30,6 +30,11 @@ class Task
     private $taskTypeId;
 
     /**
+     * @var integer $taskRepeatId
+     */
+    private $taskRepeatId;
+
+    /**
      * @var string $task
      */
     private $task;
@@ -68,12 +73,17 @@ class Task
      * @var Acme\TaskBundle\Entity\Notification
      */
     private $notification;
-    
+
     /**
      * @var Acme\TaskBundle\Entity\TaskType
      */
     private $tasktype;
-    
+
+    /**
+     * @var Acme\TaskBundle\Entity\TaskRepeat
+     */
+    private $taskrepeat;
+
     /**
      * @var Acme\TaskBundle\Entity\Calendar
      */
@@ -148,6 +158,26 @@ class Task
     public function getTaskTypeId()
     {
         return $this->taskTypeId;
+    }
+
+    /**
+     * Set taskRepeatId
+     *
+     * @param integer $taskRepeatId
+     */
+    public function setTaskRepeatId($taskRepeatId)
+    {
+        $this->taskRepeatId = $taskRepeatId;
+    }
+
+    /**
+     * Get taskRepeatId
+     *
+     * @return integer 
+     */
+    public function getTaskRepeatId()
+    {
+        return $this->taskRepeatId;
     }
 
     /**
@@ -311,25 +341,45 @@ class Task
     }
 
     /**
-     * Set taskType
+     * Set tasktype
      *
-     * @param Acme\TaskBundle\Entity\TaskType $taskType
+     * @param Acme\TaskBundle\Entity\TaskType $tasktype
      */
-    public function setTaskType(\Acme\TaskBundle\Entity\TaskType $taskType)
+    public function setTasktype(\Acme\TaskBundle\Entity\TaskType $tasktype)
     {
-        $this->taskType = $taskType;
+        $this->tasktype = $tasktype;
     }
 
     /**
-     * Get taskType
+     * Get tasktype
      *
      * @return Acme\TaskBundle\Entity\TaskType 
      */
-    public function getTaskType()
+    public function getTasktype()
     {
-        return $this->taskType;
+        return $this->tasktype;
     }
-    
+
+    /**
+     * Set taskrepeat
+     *
+     * @param Acme\TaskBundle\Entity\TaskRepeat $taskrepeat
+     */
+    public function setTaskrepeat(\Acme\TaskBundle\Entity\TaskRepeat $taskrepeat)
+    {
+        $this->taskrepeat = $taskrepeat;
+    }
+
+    /**
+     * Get taskrepeat
+     *
+     * @return Acme\TaskBundle\Entity\TaskRepeat 
+     */
+    public function getTaskrepeat()
+    {
+        return $this->taskrepeat;
+    }
+
     /**
      * Set calendar
      *

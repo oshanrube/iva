@@ -143,6 +143,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // AcmeScheduleBundle_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\ScheduleBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeScheduleBundle_homepage'));
+        }
+
         if (0 === strpos($pathinfo, '/mobile')) {
             // AcmeMobileBundle_homepage
             if ($pathinfo === '/mobile/home') {
@@ -242,18 +247,23 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // AcmeCalendarBundle_ajaxnewcalendar
-        if ($pathinfo === '/calendar/panel/ajax/addnewcalendar') {
+        if ($pathinfo === '/calendar/action/add') {
             return array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::addNewCalendarAction',  '_route' => 'AcmeCalendarBundle_ajaxnewcalendar',);
         }
 
         // AcmeCalendarBundle_ajaxtickcalendar
-        if (0 === strpos($pathinfo, '/calendar/panel/ajax/tickcalendar') && preg_match('#^/calendar/panel/ajax/tickcalendar(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
+        if (0 === strpos($pathinfo, '/calendar/action/tick') && preg_match('#^/calendar/action/tick(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::tickCalendarAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_ajaxtickcalendar'));
         }
 
         // AcmeCalendarBundle_ajaxdeletecalendar
-        if (0 === strpos($pathinfo, '/calendar/panel/ajax/deletecalendar') && preg_match('#^/calendar/panel/ajax/deletecalendar(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
+        if (0 === strpos($pathinfo, '/calendar/action/delete') && preg_match('#^/calendar/action/delete(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::deleteCalendarAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_ajaxdeletecalendar'));
+        }
+
+        // AcmeCalendarBundle_sync_calendar_facebook
+        if ($pathinfo === '/calendar/action/sync/facebook') {
+            return array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::syncFacebookAction',  '_route' => 'AcmeCalendarBundle_sync_calendar_facebook',);
         }
 
         // AcmeCalendarBundle_dash_list_calendars
@@ -266,8 +276,16 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::editAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_dash_edit_calendar'));
         }
 
+        // AcmeCalendarBundle_dash_share_calendar
+        if (0 === strpos($pathinfo, '/calendar/dash/sharecalendar') && preg_match('#^/calendar/dash/sharecalendar(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::shareAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_dash_share_calendar'));
+        }
+
         // AcmeMemberBundle_dashboard
-        if ($pathinfo === '/member') {
+        if (rtrim($pathinfo, '/') === '/member') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'AcmeMemberBundle_dashboard');
+            }
             return array (  '_controller' => 'Acme\\MemberBundle\\Controller\\DefaultController::indexAction',  '_route' => 'AcmeMemberBundle_dashboard',);
         }
 

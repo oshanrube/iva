@@ -349,4 +349,74 @@ class Task
     {
         return $this->calendar;
     }
+    /**
+     * @var integer $taskRepeatId
+     */
+    private $taskRepeatId;
+
+
+    /**
+     * Set taskRepeatId
+     *
+     * @param integer $taskRepeatId
+     */
+    public function setTaskRepeatId($taskRepeatId)
+    {
+        $this->taskRepeatId = $taskRepeatId;
+    }
+
+    /**
+     * Get taskRepeatId
+     *
+     * @return integer 
+     */
+    public function getTaskRepeatId()
+    {
+        return $this->taskRepeatId;
+    }
+    /**
+     * @var Acme\TaskBundle\Entity\TaskRepeat
+     */
+    private $taskrepeat;
+
+
+    /**
+     * Set tasktype
+     *
+     * @param Acme\TaskBundle\Entity\TaskType $tasktype
+     */
+    public function setTasktype(\Acme\TaskBundle\Entity\TaskType $tasktype)
+    {
+        $this->tasktype = $tasktype;
+    }
+
+    /**
+     * Get tasktype
+     *
+     * @return Acme\TaskBundle\Entity\TaskType 
+     */
+    public function getTasktype()
+    {
+        return $this->tasktype;
+    }
+
+    /**
+     * Set taskrepeat
+     *
+     * @param Acme\TaskBundle\Entity\TaskRepeat $taskrepeat
+     */
+    public function setTaskrepeat(\Acme\TaskBundle\Entity\TaskRepeat $taskrepeat)
+    {
+        $this->taskrepeat = $taskrepeat;
+    }
+
+    /**
+     * Get taskrepeat
+     *
+     * @return Acme\TaskBundle\Entity\TaskRepeat 
+     */
+    public function getTaskrepeat()
+    {
+        return $this->taskrepeat;
+    }
 }

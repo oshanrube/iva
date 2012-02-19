@@ -20,7 +20,12 @@ Acme\TaskBundle\Entity\Task:
       type: integer
       length: '11'
       nullable: true
-      default: 0     
+      default: 0
+    taskRepeatId:
+      type: integer
+      length: '11'
+      nullable: true
+      default: 0 
     task:
       type: string
       length: '255'
@@ -52,7 +57,12 @@ Acme\TaskBundle\Entity\Task:
             joinColumn:
                 name: taskTypeId
                 referencedColumnName: id
-  manyToOne:
+        taskrepeat:
+            targetEntity: TaskRepeat
+            inversedBy: taskrepeat
+            joinColumn:
+                name: taskRepeatId
+                referencedColumnName: id
         calendar:
             targetEntity: Calendar
             inversedBy: calendars

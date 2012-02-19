@@ -15,11 +15,14 @@ class TaskTypeRepository extends EntityRepository
 	public function findOneByTask($task) {
 		
 		$query = 'SELECT tt FROM AcmeTaskBundle:TaskType tt WHERE LOWER(tt.title) LIKE :task ';
-		
+		try {
 		return $this->getEntityManager()
 			->createQuery($query)
 			->setParameter('task', $task)
 			->getSingleResult();
+    	} catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    	}
 	}
 	
 }

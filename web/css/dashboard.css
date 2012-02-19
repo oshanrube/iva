@@ -31,7 +31,8 @@ background-image: linear-gradient(#0099FF, #0bf);
 #dashboard table tbody td ul{
 	list-style: none;
 	margin: 3px;
-	
+	height: 98px;
+	overflow: auto;
 }
 #dashboard table tbody td ul li{
 	color: white;

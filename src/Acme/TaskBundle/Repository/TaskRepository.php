@@ -3,7 +3,7 @@
 namespace Acme\TaskBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-
+use Acme\NotificationsBundle\Model\TaskRepeatModel;
 /**
  * TaskRepository
  *
@@ -13,16 +13,30 @@ use Doctrine\ORM\EntityRepository;
 class TaskRepository extends EntityRepository
 {
 	public function findByThisMonth($user,$year,$month) {
+		//get no repeat
 		$thisMonth = mktime(0, 0, 0, $month, 1, $year);
 		$nextMonth = mktime(0, 0, 0, ($month+1), 1, $year);
-		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.startTime > :thisMonth AND t.startTime < :nextMonth AND t.userId = :userId';
-		
-		return $this->getEntityManager()
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE (t.startTime > :thisMonth AND t.startTime < :nextMonth AND t.taskRepeatId = 1) AND t.userId = :userId';
+		$month = $this->getEntityManager()
 			->createQuery($query)
 			->setParameter('thisMonth', $thisMonth)
 			->setParameter('nextMonth', $nextMonth)
 			->setParameter('userId', $user->getId())
 			->getResult();
+		//get repeats
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE (t.taskRepeatId != 1 AND t.userId = :userId)';
+		$events = $this->getEntityManager()
+					->createQuery($query)
+					->setParameter('userId', $user->getId())
+					->getResult();
+		//echo count($events);exit();
+		foreach($events as $event){
+			if($evnts = TaskRepeatModel::getRepeatFor($event,$thisMonth,$nextMonth)){
+				$month = array_merge($month,$events);
+			}
+		}
+		//
+		return $month;
 	}
 	
 	public function findByCalendarMonth($user,$year,$month,$id) {
@@ -78,6 +92,20 @@ class TaskRepository extends EntityRepository
 				->setParameter('datetime', $datetime)
 				->setParameter('userId', $userId)
 				->setParameter('now', time())
+				->setMaxResults(1)
+				->getSingleResult();
+		} catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    	}
+	}
+	public function findOneByTitleandTime($task,$startTime) {
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.startTime = :startTime AND t.task = :task';
+		
+		try{
+			return $this->getEntityManager()
+				->createQuery($query)
+				->setParameter('task', $task)
+				->setParameter('startTime', $startTime)
 				->setMaxResults(1)
 				->getSingleResult();
 		} catch (\Doctrine\ORM\NoResultException $e) {

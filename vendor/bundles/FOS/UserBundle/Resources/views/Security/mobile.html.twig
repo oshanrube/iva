@@ -1,0 +1,33 @@
+<form class="clearfix" action="{{ path("fos_user_security_check") }}" method="post"  id="form-login">
+  <h1>Member Login</h1>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" /> 
+	<div data-role="fieldcontain">
+		<input class="field" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" />
+	</div>  
+	<div data-role="fieldcontain">
+		<input class="field" type="password" id="password" name="_password" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" />
+	</div>
+	<div data-role="fieldcontain">
+	 	<fieldset data-role="controlgroup">
+			<input type="checkbox" name="_remember_me" id="rememberme" class="custom" />
+			<label for="rememberme">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+	    </fieldset>
+	</div>
+	
+    <div class="clear"></div>
+    <button type="submit" name="Submit" class="btn">
+    {{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}
+    </button>
+    <button type="submit" id="google_login" name="Submit" class="btn" onclick="window.location.href='http://192.168.1.10/rbs//?option=com_gapi';">
+      <img src="{{ asset('images/google_login.png') }}">
+        <span>Login Using Google</span>
+      </button>
+    <div class="clear"></div>
+    <a class="lost-pwd" href="/rbs/edit-profile?layout=default&amp;view=reset">
+    Lost your password?
+    </a>
+    <span class="lost-pwd"> | </span>
+    <a class="lost-pwd" href="/rbs/edit-profile?view=remind">
+      Forgot your username?
+    </a>
+</form>        

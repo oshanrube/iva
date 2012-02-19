@@ -26,7 +26,7 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 		 	echo '<ul>';
 		 	foreach($timeline[$day] as $task){
 		 		echo "<a href=\"".$view['router']->generate('AcmeTaskBundle_edit_id', array('id' => $task->getId()))."\">";
-		 		echo '<li>'.$task->getDescription().'</li>';
+		 		echo '<li>'.$task->getTask().'</li>';
 		 		echo "</a>";
 			}
 			echo '</ul>';
