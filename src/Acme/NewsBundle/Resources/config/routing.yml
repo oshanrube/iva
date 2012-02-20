@@ -1,6 +1,6 @@
-#AcmeNewsBundl_test:
-#    pattern:  /news/test
-#    defaults: { _controller: AcmeNewsBundle:Default:index }
+AcmeNewsBundl_test:
+    pattern:  /news/test
+    defaults: { _controller: AcmeNewsBundle:Default:index }
 
 AcmeNewsBundle_ajax_panel:
     pattern:  /news/ajax/panel

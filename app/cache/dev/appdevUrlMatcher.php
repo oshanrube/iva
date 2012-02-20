@@ -196,6 +196,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\EventsBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeEventsBundle_homepage'));
         }
 
+        // AcmeNewsBundl_test
+        if ($pathinfo === '/news/test') {
+            return array (  '_controller' => 'Acme\\NewsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'AcmeNewsBundl_test',);
+        }
+
         // AcmeNewsBundle_ajax_panel
         if ($pathinfo === '/news/ajax/panel') {
             return array (  '_controller' => 'Acme\\NewsBundle\\Controller\\DefaultController::ajaxAction',  '_route' => 'AcmeNewsBundle_ajax_panel',);

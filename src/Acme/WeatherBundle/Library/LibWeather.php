@@ -20,7 +20,7 @@ class LibWeather{
 		$Weather = $this->em->getRepository('AcmeWeatherBundle:Weather')
 						->findOneByDatetimeAndLocation($datetime,$location);
 		if($Weather){
-			return $weather->getWcondition()->getCriticality();
+			return $Weather->getWcondition()->getCriticality();
 		}else {return false;}
 	}
 }

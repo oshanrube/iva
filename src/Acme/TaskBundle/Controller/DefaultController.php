@@ -17,6 +17,10 @@ class DefaultController extends Controller
 		$em = $this->getDoctrine()->getEntityManager();
 		$task = $em->getRepository('AcmeTaskBundle:Task')
             		->findOneByUserAndId($id,$user);
+      //get noti
+      $notification = $em->getRepository('AcmeTaskBundle:Notification')
+            			->findOneByTaskId($task->getId());
+      $em->remove($notification);
 		$em->remove($task);
 		$em->flush();
 		$this->get('session')->setFlash('success', 'Task has been successfully deleted');

@@ -74,21 +74,39 @@ class DefaultController extends Controller
 		$response->headers->set('Content-Type', 'application/json');
 		return $response;
     }
+    
     //delete a calendar
-    function deleteCalendarAction($id) {
-    	if(!$this->getRequest()->isXmlHttpRequest()){
+    function deleteCalendarAction(Request $request,$id) {
+    	if(!$this->getRequest()->isXmlHttpRequest() && $request->getMethod() != 'POST'){
 			return $this->redirect($this->generateUrl('error'));
 		}
+		$em = $this->getDoctrine()->getEntityManager();
     	//get calendar by id
     	$calendar = $this->getDoctrine()
-        ->getRepository('AcmeTaskBundle:Calendar')
-        ->findOneById($id);
-    	$em = $this->getDoctrine()->getEntityManager();
+        			->getRepository('AcmeTaskBundle:Calendar')
+        			->findOneById($id);
+      //get events
+      $events = $this->getDoctrine()
+        			->getRepository('AcmeTaskBundle:Task')
+        			->findByCalendarId($calendar->getId());
+      if($events){
+      	foreach($events as $event){
+      		$notification = $this->getDoctrine()
+      					->getRepository('AcmeTaskBundle:Notification')
+            			->findOneByTaskId($event->getId());
+      		$em->remove($notification);
+				$em->remove($event);	
+      	}
+      }
 				$em->remove($calendar);
 				$em->flush();
-   	$response = new Response(json_encode(array('response' => 'success')));
-		$response->headers->set('Content-Type', 'application/json');
-		return $response;
+		if($this->getRequest()->isXmlHttpRequest()){
+   		$response = new Response(json_encode(array('response' => 'success')));
+			$response->headers->set('Content-Type', 'application/json');
+			return $response;
+		} else {
+			return $this->redirect($this->generateUrl('AcmeCalendarBundle_dash_list_calendars'));
+		}
     }
     //sync with facebook
     public function syncFacebookAction() {

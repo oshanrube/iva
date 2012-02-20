@@ -7,16 +7,16 @@ $(function(){
 				$('#news-feed').html(r.page);
 		}
 	},loadnewsFeed());
+	setInterval(loadnewsFeed, 1500);
+	//$("#news-feed").click(function(){loadnewsFeed();});
 });
 function loadnewsFeed(){
-	$('#news-feed').vTicker({ 
-		speed: 2000,
-		pause: 6000,
-		animation: 'fade',
-		mousePause: false,
-		showItems: 3,
-		height: 300
-	});
+
+	var scroll = $("#news-feed").scrollTop()+25;
+	if(230 <= scroll){scroll=0;}
+	$("#news-feed").stop().animate({
+			scrollTop: scroll
+		}, 1500,'easeInOutExpo');
 }
 </script>
-<div id="news-feed" class="border"></div>
+<div id="news-feed"  style="height: 200px;overflow: hidden;margin-bottom: 0;" class="border"></div>

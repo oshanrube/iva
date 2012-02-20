@@ -32,7 +32,7 @@ class TaskRepository extends EntityRepository
 		//echo count($events);exit();
 		foreach($events as $event){
 			if($evnts = TaskRepeatModel::getRepeatFor($event,$thisMonth,$nextMonth)){
-				$month = array_merge($month,$events);
+				$month = array_merge($month,$evnts);
 			}
 		}
 		//

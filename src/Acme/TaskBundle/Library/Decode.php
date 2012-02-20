@@ -13,7 +13,7 @@ class Decode{
 			$today = mktime(0, 0, 0, $month, $i, $year);
 			$tomorrow = mktime(0, 0, 0, $month, ($i+1), $year);
 			foreach($events as $e){
-				if($e->getStartTime() > $today && $e->getStartTime() < $tomorrow)
+				if($e->getStartTime() >= $today && $e->getStartTime() < $tomorrow)
 				$calendar[($i)][] = $e; 
 			}
 		}
