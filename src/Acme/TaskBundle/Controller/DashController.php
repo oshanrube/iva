@@ -9,6 +9,7 @@ use Acme\TaskBundle\Library\Decode;
 use Acme\TaskBundle\Library\Language;
 use Acme\TaskBundle\Library\Location;
 use Acme\TaskBundle\Entity\Calendar;
+use Acme\TaskBundle\Entity\Notification;
 use Acme\TaskBundle\Form\TaskType;
 
 class DashController extends Controller
@@ -47,7 +48,19 @@ class DashController extends Controller
             	->add('lat','hidden')
       			->add('calendarId', 'choice', array( 'choices' => $calendars ))
       			->add('taskTypeId', 'choice', array( 'choices' => $tasktypes , 'attr' => array('onchange' => 'checkAllDay(this)' )))
-					->getForm(); 
+					->getForm();					
+		//Notification
+		//get notification
+		$notification = $em->getRepository('AcmeTaskBundle:Notification')
+            		->findOneByTaskId($task->getId());
+      if($notification){
+      	$notification_form = $this->createFormBuilder($notification)
+      								->add('datetime','text')
+      								->getForm()
+      								->createView();
+      } else {
+      	$notification_form = '';
+      }
       //save?
       if ($request->getMethod() == 'POST') 
 		{
@@ -63,6 +76,6 @@ class DashController extends Controller
         		return $this->redirect($this->generateUrl('AcmeDashBundle_ajax_panel'));
         	}
 		}  
-			return $this->render('AcmeTaskBundle:Dash:edit.html.twig', array('id' => $id, 'form' => $form->createView()));
+			return $this->render('AcmeTaskBundle:Dash:edit.html.twig', array('id' => $id, 'form' => $form->createView(),'notification_form' => $notification_form));
 	}
 }

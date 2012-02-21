@@ -34,7 +34,7 @@ class LibNotification{
       	$datetime = TaskRepeatModel::getNextRepeat($task);
       }
       //get the time which takes to prepair
-      $mins = $taskType->getPrepair();
+      $mins = $taskType->getPrepare();
       /** calculate distance **/
       if($dest['lat'] != 0 && $dest['lng'] != 0){//if location matters
 			//get the task before it

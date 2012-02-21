@@ -14,6 +14,15 @@ Acme\TaskBundle\Entity\Notification:
     datetime:
       type: integer
       length: '11'
+    prepare:
+      type: integer
+      length: '3'
+    travelTime:
+      type: integer
+      length: '3'
+    wConditionId:
+      type: integer
+      length: '11'
     notified:
       type: boolean
       default: false
@@ -37,3 +46,10 @@ Acme\TaskBundle\Entity\Notification:
       joinColumn:
         name: taskId
         referencedColumnName: id
+  manyToOne:
+        wcondition:
+            targetEntity: Acme\WeatherBundle\Entity\WCondition
+            inversedBy: wcondition
+            joinColumn:
+                name: wConditionId
+                referencedColumnName: id

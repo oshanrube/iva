@@ -25,6 +25,11 @@ class TaskType
     private $duration;
 
     /**
+     * @var integer $prepare
+     */
+    private $prepare;
+
+    /**
      * @var Acme\TaskBundle\Entity\Task
      */
     private $task;
@@ -85,6 +90,26 @@ class TaskType
     }
 
     /**
+     * Set prepare
+     *
+     * @param integer $prepare
+     */
+    public function setPrepare($prepare)
+    {
+        $this->prepare = $prepare;
+    }
+
+    /**
+     * Get prepare
+     *
+     * @return integer 
+     */
+    public function getPrepare()
+    {
+        return $this->prepare;
+    }
+
+    /**
      * Add task
      *
      * @param Acme\TaskBundle\Entity\Task $task
@@ -102,30 +127,5 @@ class TaskType
     public function getTask()
     {
         return $this->task;
-    }
-    /**
-     * @var integer $prepair
-     */
-    private $prepair;
-
-
-    /**
-     * Set prepair
-     *
-     * @param integer $prepair
-     */
-    public function setPrepair($prepair)
-    {
-        $this->prepair = $prepair;
-    }
-
-    /**
-     * Get prepair
-     *
-     * @return integer 
-     */
-    public function getPrepair()
-    {
-        return $this->prepair;
     }
 }

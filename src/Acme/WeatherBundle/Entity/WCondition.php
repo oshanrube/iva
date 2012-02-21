@@ -15,11 +15,36 @@ class WCondition
     private $id;
 
     /**
-     * @var string $condition
+     * @var string $name
      */
-    private $condition;
+    private $name;
 
+    /**
+     * @var string $icon
+     */
+    private $icon;
 
+    /**
+     * @var float $criticality
+     */
+    private $criticality;
+
+    /**
+     * @var Acme\WeatherBundle\Entity\Weather
+     */
+    private $weather;
+
+    /**
+     * @var Acme\TaskBundle\Entity\Notification
+     */
+    private $wcondition;
+
+    public function __construct()
+    {
+        $this->weather = new \Doctrine\Common\Collections\ArrayCollection();
+    $this->wcondition = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -30,40 +55,6 @@ class WCondition
         return $this->id;
     }
 
-    /**
-     * Set condition
-     *
-     * @param string $condition
-     */
-    public function setCondition($condition)
-    {
-        $this->condition = $condition;
-    }
-
-    /**
-     * Get condition
-     *
-     * @return string 
-     */
-    public function getCondition()
-    {
-        return $this->condition;
-    }
-    /**
-     * @var string $name
-     */
-    private $name;
-
-    /**
-     * @var Acme\WeatherBundle\Entity\Weather
-     */
-    private $weather;
-
-    public function __construct()
-    {
-        $this->weather = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
     /**
      * Set name
      *
@@ -85,31 +76,6 @@ class WCondition
     }
 
     /**
-     * Add weather
-     *
-     * @param Acme\WeatherBundle\Entity\Weather $weather
-     */
-    public function addWeather(\Acme\WeatherBundle\Entity\Weather $weather)
-    {
-        $this->weather[] = $weather;
-    }
-
-    /**
-     * Get weather
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getWeather()
-    {
-        return $this->weather;
-    }
-    /**
-     * @var string $icon
-     */
-    private $icon;
-
-
-    /**
      * Set icon
      *
      * @param string $icon
@@ -128,11 +94,6 @@ class WCondition
     {
         return $this->icon;
     }
-    /**
-     * @var float $criticality
-     */
-    private $criticality;
-
 
     /**
      * Set criticality
@@ -152,5 +113,45 @@ class WCondition
     public function getCriticality()
     {
         return $this->criticality;
+    }
+
+    /**
+     * Add weather
+     *
+     * @param Acme\WeatherBundle\Entity\Weather $weather
+     */
+    public function addWeather(\Acme\WeatherBundle\Entity\Weather $weather)
+    {
+        $this->weather[] = $weather;
+    }
+
+    /**
+     * Get weather
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getWeather()
+    {
+        return $this->weather;
+    }
+
+    /**
+     * Add wcondition
+     *
+     * @param Acme\TaskBundle\Entity\Notification $wcondition
+     */
+    public function addNotification(\Acme\TaskBundle\Entity\Notification $wcondition)
+    {
+        $this->wcondition[] = $wcondition;
+    }
+
+    /**
+     * Get wcondition
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getWcondition()
+    {
+        return $this->wcondition;
     }
 }

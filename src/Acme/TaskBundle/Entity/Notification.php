@@ -25,6 +25,21 @@ class Notification
     private $datetime;
 
     /**
+     * @var integer $prepare
+     */
+    private $prepare;
+
+    /**
+     * @var integer $travelTime
+     */
+    private $travelTime;
+
+    /**
+     * @var integer $wConditionId
+     */
+    private $wConditionId;
+
+    /**
      * @var boolean $notified
      */
     private $notified;
@@ -53,6 +68,11 @@ class Notification
      * @var Acme\TaskBundle\Entity\Task
      */
     private $task;
+
+    /**
+     * @var Acme\WeatherBundle\Entity\WCondition
+     */
+    private $wcondition;
 
 
     /**
@@ -103,6 +123,66 @@ class Notification
     public function getDatetime()
     {
         return $this->datetime;
+    }
+
+    /**
+     * Set prepare
+     *
+     * @param integer $prepare
+     */
+    public function setPrepare($prepare)
+    {
+        $this->prepare = $prepare;
+    }
+
+    /**
+     * Get prepare
+     *
+     * @return integer 
+     */
+    public function getPrepare()
+    {
+        return $this->prepare;
+    }
+
+    /**
+     * Set travelTime
+     *
+     * @param integer $travelTime
+     */
+    public function setTravelTime($travelTime)
+    {
+        $this->travelTime = $travelTime;
+    }
+
+    /**
+     * Get travelTime
+     *
+     * @return integer 
+     */
+    public function getTravelTime()
+    {
+        return $this->travelTime;
+    }
+
+    /**
+     * Set wConditionId
+     *
+     * @param integer $wConditionId
+     */
+    public function setWConditionId($wConditionId)
+    {
+        $this->wConditionId = $wConditionId;
+    }
+
+    /**
+     * Get wConditionId
+     *
+     * @return integer 
+     */
+    public function getWConditionId()
+    {
+        return $this->wConditionId;
     }
 
     /**
@@ -223,5 +303,25 @@ class Notification
     public function getTask()
     {
         return $this->task;
+    }
+
+    /**
+     * Set wcondition
+     *
+     * @param Acme\WeatherBundle\Entity\WCondition $wcondition
+     */
+    public function setWcondition(\Acme\WeatherBundle\Entity\WCondition $wcondition)
+    {
+        $this->wcondition = $wcondition;
+    }
+
+    /**
+     * Get wcondition
+     *
+     * @return Acme\WeatherBundle\Entity\WCondition 
+     */
+    public function getWcondition()
+    {
+        return $this->wcondition;
     }
 }

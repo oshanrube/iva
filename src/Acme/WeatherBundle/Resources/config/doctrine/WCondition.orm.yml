@@ -21,3 +21,6 @@ Acme\WeatherBundle\Entity\WCondition:
         weather:
             targetEntity: Weather
             mappedBy: condition
+        wcondition:
+            targetEntity: Acme\TaskBundle\Entity\Notification
+            mappedBy: wcondition
