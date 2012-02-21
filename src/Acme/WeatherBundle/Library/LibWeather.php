@@ -6,7 +6,7 @@ use Acme\WeatherBundle\Library\Includes\Googleweather;
 class LibWeather{
 	
 	//Entity Manager
-	private $em;
+	private $em,$wCondition;
 	
 	public function __construct($em) {
 		$this->em = $em;
@@ -20,7 +20,12 @@ class LibWeather{
 		$Weather = $this->em->getRepository('AcmeWeatherBundle:Weather')
 						->findOneByDatetimeAndLocation($datetime,$location);
 		if($Weather){
+			$this->wCondition = $Weather->getWcondition();
 			return $Weather->getWcondition()->getCriticality();
 		}else {return false;}
+	}
+	
+	public function getWCondition() {
+		return $this->wCondition;
 	}
 }

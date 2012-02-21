@@ -523,6 +523,19 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/notification')) {
+            // AcmeNotificationsBundle_homepage
+            if (0 === strpos($pathinfo, '/notification/hello') && preg_match('#^/notification/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeNotificationsBundle_homepage'));
+            }
+
+            // AcmeNotificationsBundle_edit_id
+            if (0 === strpos($pathinfo, '/notification/edit') && preg_match('#^/notification/edit/(?P<id>\\d+)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DashController::editAction',)), array('_route' => 'AcmeNotificationsBundle_edit_id'));
+            }
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

@@ -7,7 +7,7 @@ use Acme\WeatherBundle\Library\LibWeather;
 
 class LibDistance{
 	//Entity Manager
-	private $em,$distance;
+	private $em,$distance,$wCondition;
 	
 	public function __construct($em)
 	{
@@ -30,6 +30,7 @@ class LibDistance{
       $weather = new LibWeather($this->em);
       //get criticality level
       $level	= $weather->getWeatherCritic($location,$datetime);
+      $this->wCondition = $weather->getWCondition();
      	//get users avarage speed kmph
 		$avg = $user->getAvgspeed();
 		//calc avg speed with weather criticaliity
@@ -45,5 +46,8 @@ class LibDistance{
 	}
 	public function getDistance() {
 		return $this->distance;	
+	}
+	public function getWCondition() {
+		return $this->wCondition;
 	}
 }

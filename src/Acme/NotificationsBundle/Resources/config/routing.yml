@@ -1,3 +1,9 @@
 AcmeNotificationsBundle_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: AcmeNotificationsBundle:Default:index }
+
+AcmeNotificationsBundle_edit_id:
+    pattern:  /edit/{id}
+    defaults: { _controller: AcmeNotificationsBundle:Dash:edit }
+    requirements:
+        id:  \d+

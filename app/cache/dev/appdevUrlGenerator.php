@@ -93,6 +93,8 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeTaskBundle_addnewtask' => true,
        'AcmeTaskBundle_edit_id' => true,
        'AcmeTaskBundle_delete' => true,
+       'AcmeNotificationsBundle_homepage' => true,
+       'AcmeNotificationsBundle_edit_id' => true,
     );
 
     /**
@@ -514,5 +516,15 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getAcmeTaskBundle_deleteRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::deleteAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/task/delete',  ),));
+    }
+
+    private function getAcmeNotificationsBundle_homepageRouteInfo()
+    {
+        return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/notification/hello',  ),));
+    }
+
+    private function getAcmeNotificationsBundle_edit_idRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DashController::editAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/notification/edit',  ),));
     }
 }

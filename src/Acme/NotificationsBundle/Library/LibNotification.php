@@ -34,7 +34,7 @@ class LibNotification{
       	$datetime = TaskRepeatModel::getNextRepeat($task);
       }
       //get the time which takes to prepair
-      $mins = $taskType->getPrepare();
+      $prepareTime = $taskType->getPrepare();
       /** calculate distance **/
       if($dest['lat'] != 0 && $dest['lng'] != 0){//if location matters
 			//get the task before it
@@ -53,11 +53,21 @@ class LibNotification{
 	      //calculate the distance
       	$distance = new LibDistance($this->em);
       	//get the travel time
-      	$mins += $distance->getTravelTime($origin,$dest,$user,$datetime);
+      	$travelTime = $distance->getTravelTime($origin,$dest,$user,$datetime);
+      	//get weather condition
+      	$wCondition = $distance->getWCondition();
+      	//calc total time estimate
+      	$totalTime = $travelTime + $prepareTime;
+      } else {
+      	$travelTime = 0;
+      } 
+      if(!isset($wCondition)){
+      	$wCondition = $this->em->getRepository('AcmeWeatherBundle:WCondition')
+								->findOneByName('Mostly Sunny');
       }
       
       //get the notify time
-      $timestamp = strtotime(' -'.$mins.' minutes',$datetime);
+      $timestamp = strtotime(' -'.$travelTime.' minutes',$datetime);
       //create a notification
       $notification = new Notification();
       $notification->setDatetime($timestamp);
@@ -67,6 +77,10 @@ class LibNotification{
       $notification->setSms(false);
       $notification->setVoicecall(false);
       $notification->setTask($task);
+      $notification->setPrepare($prepareTime);
+      $notification->setTravelTime($travelTime);
+      $notification->setWCondition($wCondition);
+      
      	
      	
       return $notification;

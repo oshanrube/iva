@@ -80,6 +80,10 @@ AcmeTaskBundle:
     resource: "@AcmeTaskBundle/Resources/config/routing.yml"
     prefix:   /task
 
+AcmeNotificationsBundle:
+    resource: "@AcmeNotificationsBundle/Resources/config/routing.yml"
+    prefix:   /notification
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

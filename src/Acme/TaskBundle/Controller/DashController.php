@@ -53,13 +53,18 @@ class DashController extends Controller
 		//get notification
 		$notification = $em->getRepository('AcmeTaskBundle:Notification')
             		->findOneByTaskId($task->getId());
-      if($notification){
+      if($notification && !$notification->getNotified()){
+      	$datetime = $notification->getDateTime();
+      	$notification->setDateTime(date('j-n-Y g:ia', $datetime));
       	$notification_form = $this->createFormBuilder($notification)
       								->add('datetime','text')
+      								->add('prepare','text',array('label' => 'Time to prepare'))
+      								->add('travelTime','text',array('label' => 'Travel Time'))
+      								//->add('WCondition')
       								->getForm()
       								->createView();
       } else {
-      	$notification_form = '';
+      	return $this->redirect($this->generateUrl('AcmeDashBundle_ajax_panel'));
       }
       //save?
       if ($request->getMethod() == 'POST') 
@@ -73,6 +78,7 @@ class DashController extends Controller
 				$em = $this->getDoctrine()->getEntityManager();
 				$em->persist($task);
 				$em->flush();
+				$this->get('session')->setFlash('success', 'Your changes were saved!');
         		return $this->redirect($this->generateUrl('AcmeDashBundle_ajax_panel'));
         	}
 		}  

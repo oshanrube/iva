@@ -22,6 +22,9 @@
    </div>
  </div>
 <a data-toggle="modal" href="#myModal" class="btn btn-danger" ><i class="icon-trash icon-white"></i> Delete</a>
+{% if notification_form != '' %}
+<a class="btn btn-inverse"  href="{{ path('AcmeNotificationsBundle_edit_id' , { "id": id}) }}" ><i class="icon-volume-up"></i> Change Notification</a>
+{% endif %}
 
 
 {% if suggestions is defined %}
@@ -96,15 +99,3 @@ $("#form_task").focus(function(){
 	</div>
 </fieldset>    
 </form>
-{% if notification_form != '' %}
-<form class="thumbnail form-horizontal" action="{{ path('AcmeTaskBundle_edit_id' , { "id": id}) }}" method="post" {{ form_enctype(notification_form) }}>
-<fieldset>
-	<legend>Notification</legend>
-	{{ form_widget(notification_form) }}
-	<div class="form-actions">
-		<button type="submit" class="btn btn-primary">Save changes</button>
-		<button type="reset" class="btn">Cancel</button>
-	</div>
-</fieldset>    
-</form>
-{% endif %}
