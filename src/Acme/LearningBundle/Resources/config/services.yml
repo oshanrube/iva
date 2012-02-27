@@ -1,0 +1,7 @@
+parameters:
+#    acme_learning.example.class: Acme\LearningBundle\Example
+
+services:
+#    acme_learning.example:
+#        class: %acme_learning.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

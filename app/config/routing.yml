@@ -1,3 +1,7 @@
+AcmeLearningBundle:
+    resource: "@AcmeLearningBundle/Resources/config/routing.yml"
+    prefix:   /member/learning
+
 AcmeScheduleBundle:
     resource: "@AcmeScheduleBundle/Resources/config/routing.yml"
     prefix:   /

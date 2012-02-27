@@ -143,6 +143,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // AcmeLearningBundle_homepage
+        if ($pathinfo === '/member/learning/hello') {
+            return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\MobileController::indexAction',  '_route' => 'AcmeLearningBundle_homepage',);
+        }
+
         // AcmeScheduleBundle_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\ScheduleBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeScheduleBundle_homepage'));

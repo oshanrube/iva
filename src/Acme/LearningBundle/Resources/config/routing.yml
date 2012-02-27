@@ -1,0 +1,3 @@
+AcmeLearningBundle_homepage:
+    pattern:  /hello
+    defaults: { _controller: AcmeLearningBundle:Mobile:index }

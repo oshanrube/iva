@@ -51,6 +51,14 @@
 {% endif %}
 {% endblock %}
 
+{% block navigation %}
+<div data-role="navbar">
+	<ul>
+		<li><a href="{{ path('AcmeMobileBundle_homepage') }}" {% if app.request.attributes.get('_route') == 'AcmeMobileBundle_homepage' %}class="ui-btn-active"{% endif %}>Run</a></li>
+		<li><a href="{{ path('AcmeLearningBundle_homepage') }}" {% if app.request.attributes.get('_route') == 'AcmeLearningBundle_homepage' %}class="ui-btn-active"{% endif %}>Learn</a></li>
+	</ul>
+</div><!-- /navbar -->
+{% endblock %}
 	<div data-role="content">
 			{% block content %}{% endblock %}
 	</div>		
