@@ -1,0 +1,17 @@
+Acme\LearningBundle\Entity\SampleLocation:
+  type: entity
+  table: null
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    title:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+  lifecycleCallbacks: {  }

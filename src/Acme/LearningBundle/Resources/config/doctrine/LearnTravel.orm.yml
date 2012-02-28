@@ -1,0 +1,16 @@
+Acme\LearningBundle\Entity\LearnTravel:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    userId:
+      type: integer
+      length: '11'
+    route:
+      type: text
+      length: null
+  lifecycleCallbacks: {  }

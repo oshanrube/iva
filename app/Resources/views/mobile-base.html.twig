@@ -21,9 +21,10 @@
 		$('#venues-list').append($('<li>Location: '+name+'</li>'));
 	}
 	</script>
+	{% block scripts %}{% endblock %}
 </head>
 <body>
-<div data-role="page" >
+<div data-role="page" id="{% block pageId %}main{% endblock %}">
 {% block header %}
 {% if app.session.hasFlash('success') %}
 	<div data-role="header" data-theme="e" class="ui-header ui-bar-e" role="banner">

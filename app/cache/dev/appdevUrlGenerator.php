@@ -34,6 +34,13 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_configurator_step' => true,
        '_configurator_final' => true,
        'AcmeLearningBundle_homepage' => true,
+       'AcmeLearningBundle_learnLocation' => true,
+       'AcmeLearningBundle_addLocation' => true,
+       'AcmeLearningBundle_editLocation' => true,
+       'AcmeLearningBundle_learnWeather' => true,
+       'AcmeLearningBundle_addWeather' => true,
+       'AcmeLearningBundle_learnTravel' => true,
+       'AcmeLearningBundle_saveTravel' => true,
        'AcmeScheduleBundle_homepage' => true,
        'AcmeMobileBundle_homepage' => true,
        'AcmeMobileBundle_addtask' => true,
@@ -221,7 +228,42 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
 
     private function getAcmeLearningBundle_homepageRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\MobileController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/hello',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\MobileController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/index',  ),));
+    }
+
+    private function getAcmeLearningBundle_learnLocationRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::listLocationsAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/locations/list',  ),));
+    }
+
+    private function getAcmeLearningBundle_addLocationRouteInfo()
+    {
+        return array(array (  0 => 'title',), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::addLocationAction',  'title' => '',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'title',  ),  1 =>   array (    0 => 'text',    1 => '/member/learning/locations/add',  ),));
+    }
+
+    private function getAcmeLearningBundle_editLocationRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::editLocationAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/member/learning/locations/edit',  ),));
+    }
+
+    private function getAcmeLearningBundle_learnWeatherRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\WeatherController::listWeatherAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/weather/list',  ),));
+    }
+
+    private function getAcmeLearningBundle_addWeatherRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\WeatherController::addWeatherAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/member/learning/weather/add',  ),));
+    }
+
+    private function getAcmeLearningBundle_learnTravelRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\TravelController::learnAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/travel/learn',  ),));
+    }
+
+    private function getAcmeLearningBundle_saveTravelRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\TravelController::saveAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/travel/save',  ),));
     }
 
     private function getAcmeScheduleBundle_homepageRouteInfo()

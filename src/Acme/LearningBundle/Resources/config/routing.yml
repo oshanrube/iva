@@ -1,3 +1,43 @@
 AcmeLearningBundle_homepage:
-    pattern:  /hello
+    pattern:  /index
     defaults: { _controller: AcmeLearningBundle:Mobile:index }
+
+#####################
+#location############
+#####################
+
+AcmeLearningBundle_learnLocation:
+    pattern:  /locations/list
+    defaults: { _controller: AcmeLearningBundle:Location:listLocations }
+
+AcmeLearningBundle_addLocation:
+    pattern:  /locations/add/{title}
+    defaults: { _controller: AcmeLearningBundle:Location:addLocation , 'title':'' }
+    
+AcmeLearningBundle_editLocation:
+    pattern:  /locations/edit/{id}
+    defaults: { _controller: AcmeLearningBundle:Location:editLocation }
+
+#####################
+#weather#############
+#####################
+
+AcmeLearningBundle_learnWeather:
+    pattern:  /weather/list
+    defaults: { _controller: AcmeLearningBundle:Weather:listWeather }
+
+AcmeLearningBundle_addWeather:
+    pattern:  /weather/add/{id}
+    defaults: { _controller: AcmeLearningBundle:Weather:addWeather }
+
+#####################
+#travel##############
+#####################
+
+AcmeLearningBundle_learnTravel:
+    pattern:  /travel/learn
+    defaults: { _controller: AcmeLearningBundle:Travel:learn }
+
+AcmeLearningBundle_saveTravel:
+    pattern:  /travel/save
+    defaults: { _controller: AcmeLearningBundle:Travel:save }

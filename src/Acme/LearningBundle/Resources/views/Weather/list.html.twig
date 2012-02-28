@@ -1,0 +1,10 @@
+{% extends '::mobile-base.html.twig' %}
+
+
+{% block content%}
+<ul data-role="listview" data-theme="g">
+{% for wcondition in wconditions %}
+	<li><a href="{{ path('AcmeLearningBundle_addWeather' , { 'id' : wcondition.id } ) }}" data-ajax="false" >{{ wcondition.name }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

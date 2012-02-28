@@ -1,0 +1,77 @@
+{% extends '::mobile-base.html.twig' %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ asset('js/googleMaps.mobile.js') }}"></script>
+{% endblock %}
+
+{% block content%}
+<button data-theme="d" id="Action" onClick="startRec(this)">Start</button>
+<div id="map_canvas" style="width: 100%;height: 200px;"></div>
+<form action="{{ path('AcmeLearningBundle_saveTravel' ) }}" method="post">
+	<input type="hidden" name="form[route]" id="latlng" />
+	<button type="submit" data-theme="a" id="saveButton" onClick="updateTravel()">Save</button>
+</form>
+<script>
+$(window).load(function() {
+	// check for Geolocation support
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      startPos = position;
+      //set the map center
+      var darwin = new google.maps.LatLng(startPos.coords.latitude, startPos.coords.longitude);
+		map.setCenter(darwin);
+		marker.setPosition(darwin);
+    }, function(error) {
+      alert("Error occurred. Error code: " + error.code);
+      // error.code can be:
+      //   0: unknown error
+      //   1: permission denied
+      //   2: position unavailable (error response from locaton provider)
+      //   3: timed out
+    });
+  }
+});
+var map,marker,geocoder,timeouts;
+var infowindow = new google.maps.InfoWindow();
+$(function() { 
+$('#saveButton').closest('.ui-btn').hide();
+	var center = new google.maps.LatLng(-34.397, 150.644);
+	var myOptions = {
+		center: center,zoom: 15,mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	geocoder = new google.maps.Geocoder();
+	map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+	marker = new google.maps.Marker({position: center,map: map,title:"Here"});
+});
+function startRec(that){
+	$(that).parent().find("span.ui-btn-text").html("Stop");
+	$(that).attr("onClick","stopRec(this)");
+	var unix = Math.round(+new Date()/1000);
+	localStorage['latlng'] = unix+"="+startPos.coords.latitude+","+startPos.coords.longitude;
+	timeouts = setTimeout("recPath()",3000);
+}
+function stopRec(that){
+	clearTimeout(timeouts);
+	$(that).parent().find("span.ui-btn-text").html("Start");
+	$(that).attr('onClick','startRec(this)');
+	$('#saveButton').closest('.ui-btn').show();
+}
+function supportsLocalStorage() {
+  try {
+    return 'localStorage' in window && window['localStorage'] !== null;
+  } catch (e) {
+    return false;
+  }
+}
+function recPath(){
+	if (!supportsLocalStorage()) { return false; }
+	navigator.geolocation.getCurrentPosition(function(position) {
+		var unix = Math.round(+new Date()/5000);
+		localStorage['latlng'] += "::"+unix+"="+position.coords.latitude+","+position.coords.longitude;
+	});
+}
+function updateTravel(){
+	$("#latlng").val(localStorage['latlng']);
+}
+</script>
+{% endblock %}

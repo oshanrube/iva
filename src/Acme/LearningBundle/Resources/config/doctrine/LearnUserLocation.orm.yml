@@ -1,0 +1,32 @@
+Acme\LearningBundle\Entity\LearnUserLocation:
+  type: entity
+  repositoryClass: Acme\LearningBundle\Repository\LearnUserLocationRepository
+  table: LearnUserLocation
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    userId:
+      type: integer
+      unsigned: false
+      nullable: false
+      column: userId
+    title:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    description:
+      type: text
+      nullable: true
+    lng:
+      type: float
+      nullable: false
+    lat:
+      type: float
+      nullable: false
+  lifecycleCallbacks: {  }

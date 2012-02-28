@@ -1,0 +1,25 @@
+Acme\LearningBundle\Entity\LearnWeatherCondition:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    userId:
+      type: integer
+      length: '11'
+    wConditionId:
+      type: integer
+      length: '11'
+    city:
+      type: text
+      length: null
+    lng:
+      type: float
+      length: null
+    lat:
+      type: float
+      length: null
+  lifecycleCallbacks: {  }

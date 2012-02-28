@@ -1,0 +1,88 @@
+{% extends '::mobile-base.html.twig' %}
+
+{% block pageId %}editLocation{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ asset('js/googleMaps.mobile.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+{% if app.session.hasFlash('success') %}
+	<div data-role="header" data-theme="e" class="ui-header ui-bar-e" role="banner">
+		<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">{{ app.session.flash('success') }}</h1>
+	</div>
+{% else %}
+{{ parent() }}
+{% endif %}
+{% endblock %}
+
+{% block content%}
+<form action="{{ path('AcmeLearningBundle_addWeather' , { 'id' : id }) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <span class="note">select the marker to point a position</span>
+	<button type="submit" data-theme="a" class="ui-btn-hidden" aria-disabled="false">Submit</button>
+</form>
+<div id="map_canvas" style="width: 100%;height: 200px;"></div>
+<script>
+$(window).load(function() {
+	// check for Geolocation support
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      startPos = position;
+      $("#form_lat").val(startPos.coords.latitude);
+      $("#form_lng").val(startPos.coords.longitude);
+      //set the map center
+      var darwin = new google.maps.LatLng(startPos.coords.latitude, startPos.coords.longitude);
+		map.setCenter(darwin);
+		marker.setPosition(darwin);
+		codeLatLng(startPos.coords.latitude, startPos.coords.longitude);
+    }, function(error) {
+      alert("Error occurred. Error code: " + error.code);
+      // error.code can be:
+      //   0: unknown error
+      //   1: permission denied
+      //   2: position unavailable (error response from locaton provider)
+      //   3: timed out
+    });
+  }
+});
+var map,marker,geocoder;
+var infowindow = new google.maps.InfoWindow();
+$(function() { 
+	if($("#form_lat").val() && $("#form_lng").val()){
+		var center = new google.maps.LatLng($("#form_lat").val(), $("#form_lng").val());
+	} else {
+		var center = new google.maps.LatLng(-34.397, 150.644);
+	}
+	var myOptions = {
+		center: center,zoom: 15,mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	geocoder = new google.maps.Geocoder();
+	map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+	marker = new google.maps.Marker({position: center,map: map,title:"Here"});
+   google.maps.event.addListener(map, 'click', function(event) {
+		var myLatLng = event.latLng;var lat = myLatLng.lat();var lng = myLatLng.lng();
+		var pos = new google.maps.LatLng(lat,lng);
+		marker.setPosition(pos);
+		$("#form_lat").val(lat);
+      $("#form_lng").val(lng);
+      codeLatLng(lat,lng)
+	});
+});
+function codeLatLng(lat,lng) {
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+          marker.setPosition(latlng);
+          infowindow.setContent(results[1].formatted_address);
+          infowindow.open(map, marker);
+          $("#form_city").val(results[2].address_components[0].long_name);
+        }
+      } else {
+        alert("Geocoder failed due to: " + status);
+      }
+    });
+  }
+</script>
+{% endblock %}

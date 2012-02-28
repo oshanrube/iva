@@ -143,9 +143,47 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // AcmeLearningBundle_homepage
-        if ($pathinfo === '/member/learning/hello') {
-            return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\MobileController::indexAction',  '_route' => 'AcmeLearningBundle_homepage',);
+        if (0 === strpos($pathinfo, '/member/learning')) {
+            // AcmeLearningBundle_homepage
+            if ($pathinfo === '/member/learning/index') {
+                return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\MobileController::indexAction',  '_route' => 'AcmeLearningBundle_homepage',);
+            }
+
+            // AcmeLearningBundle_learnLocation
+            if ($pathinfo === '/member/learning/locations/list') {
+                return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::listLocationsAction',  '_route' => 'AcmeLearningBundle_learnLocation',);
+            }
+
+            // AcmeLearningBundle_addLocation
+            if (0 === strpos($pathinfo, '/member/learning/locations/add') && preg_match('#^/member/learning/locations/add(?:/(?P<title>[^/]+?))?$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::addLocationAction',  'title' => '',)), array('_route' => 'AcmeLearningBundle_addLocation'));
+            }
+
+            // AcmeLearningBundle_editLocation
+            if (0 === strpos($pathinfo, '/member/learning/locations/edit') && preg_match('#^/member/learning/locations/edit/(?P<id>[^/]+?)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::editLocationAction',)), array('_route' => 'AcmeLearningBundle_editLocation'));
+            }
+
+            // AcmeLearningBundle_learnWeather
+            if ($pathinfo === '/member/learning/weather/list') {
+                return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\WeatherController::listWeatherAction',  '_route' => 'AcmeLearningBundle_learnWeather',);
+            }
+
+            // AcmeLearningBundle_addWeather
+            if (0 === strpos($pathinfo, '/member/learning/weather/add') && preg_match('#^/member/learning/weather/add/(?P<id>[^/]+?)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\LearningBundle\\Controller\\WeatherController::addWeatherAction',)), array('_route' => 'AcmeLearningBundle_addWeather'));
+            }
+
+            // AcmeLearningBundle_learnTravel
+            if ($pathinfo === '/member/learning/travel/learn') {
+                return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\TravelController::learnAction',  '_route' => 'AcmeLearningBundle_learnTravel',);
+            }
+
+            // AcmeLearningBundle_saveTravel
+            if ($pathinfo === '/member/learning/travel/save') {
+                return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\TravelController::saveAction',  '_route' => 'AcmeLearningBundle_saveTravel',);
+            }
+
         }
 
         // AcmeScheduleBundle_homepage
