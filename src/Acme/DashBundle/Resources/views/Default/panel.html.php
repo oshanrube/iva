@@ -24,10 +24,15 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 		 //print tasks
 		 if(isset($timeline[$day])){
 		 	echo '<ul>';
-		 	foreach($timeline[$day] as $task){
+		 	foreach($timeline[$day]['evnts'] as $task){
 		 		echo "<a href=\"".$view['router']->generate('AcmeTaskBundle_edit_id', array('id' => $task->getId()))."\">";
 		 		echo '<li>'.$task->getTask().'</li>';
 		 		echo "</a>";
+			}
+			if(isset($timeline[$day]['noti'])){
+				foreach($timeline[$day]['noti'] as $noti){
+		 			echo '<li class="noti">Noti:'.$noti->getTask()->getTask().'</li>';
+				}
 			}
 			echo '</ul>';
 		 }

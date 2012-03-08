@@ -12,7 +12,7 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 		 echo " height='20px' data-placement=\"below\" rel=\"popover\" data-content=\"";
 		 //print tasks
 		 if(isset($timeline[$day])){
-		 	foreach($timeline[$day] as $task){
+		 	foreach($timeline[$day]['evnts'] as $task){
 		 		echo $task->getDescription().",";
 			}
 		 }

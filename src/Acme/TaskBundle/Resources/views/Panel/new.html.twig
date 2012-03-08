@@ -34,8 +34,10 @@ $(window).load(function() {
       startPos = position;
       $("#lat").val(startPos.coords.latitude);
       $("#lng").val(startPos.coords.longitude);
+      $("#locDetError").hide();
     }, function(error) {
-      alert("Error occurred. Error code: " + error.code);
+    	 $("#locDetError").html("Automatic location detector failed..");
+      //alert("Error occurred. Error code: " + error.code);
       // error.code can be:
       //   0: unknown error
       //   1: permission denied
@@ -67,4 +69,5 @@ $("#form_task").focus(function(){
    <span>
    {% if didyoumean is not empty %}Did you mean? "<span id="did-you-mean" onClick="didyoumean(this)">{{ didyoumean }}</span>"{% endif %}
    </span>
+   <span id="locDetError">Automatic location Detector is working...</span>
 </form>

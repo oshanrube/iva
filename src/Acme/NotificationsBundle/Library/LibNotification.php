@@ -5,6 +5,7 @@ use Acme\NotificationsBundle\Library\LibDistance;
 use Acme\TaskBundle\Entity\Notification;
 use Acme\NotificationsBundle\Library\Includes\GtalkNotifications;
 use Acme\NotificationsBundle\Library\Includes\Tokudu;
+use Acme\NotificationsBundle\Library\Includes\UrbanAirship;
 use Acme\NotificationsBundle\Library\Includes\Sms;
 use Acme\NotificationsBundle\Model\TaskRepeatModel;
 
@@ -90,10 +91,13 @@ class LibNotification{
 		//$Gnoti = new GtalkNotifications();
 		//$Gnoti->sendNotification();
 		//tokudu
-		$Tokudu = new Tokudu();
-		$Tokudu->sendNotification($user,$message);
+		//$Tokudu = new Tokudu();
+		//$Tokudu->sendNotification($user,$message);
+		//UrbanAirship
+		$UrbanAirship = new UrbanAirship();
+		$UrbanAirship->sendNotification($user,$message);
 		//sms
-		$Sms = new Sms();
-		$Sms->sendNotification($user,$message);
+//		$Sms = new Sms();
+//		$Sms->sendNotification($user,$message);
 	}
 }

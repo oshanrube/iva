@@ -14,7 +14,7 @@ class NotificationRepository extends EntityRepository
 {
 	public function findByPendingNotifications() {
 		$now = mktime(date("H"), date("i"), 0, date("m"), date("d"), date("Y"));
-		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime = :now';
+		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :now';
 		
 		try{
 			return $this->getEntityManager()
@@ -24,5 +24,25 @@ class NotificationRepository extends EntityRepository
 		} catch (\Doctrine\ORM\NoResultException $e) {
         return null;
     	}
+	}
+	public function findByThisMonth($user,$year,$month) {
+		//get no repeat
+		$thisMonth = mktime(0, 0, 0, $month, 1, $year);
+		$nextMonth = mktime(0, 0, 0, ($month+1), 1, $year);
+		$query = 'SELECT n FROM AcmeTaskBundle:Notification n , AcmeTaskBundle:Task t
+						WHERE ((n.datetime > :thisMonth AND n.datetime < :nextMonth)
+							AND (t.userId = :userId))';
+		/*$query = 'SELECT t FROM AcmeTaskBundle:Notification n , AcmeTaskBundle:Task t
+						WHERE 
+							(n.datetime > :thisMonth AND n.datetime < :nextMonth)
+							';*/
+		$month = $this->getEntityManager()
+			->createQuery($query)
+			->setParameter('thisMonth', $thisMonth)
+			->setParameter('nextMonth', $nextMonth)
+			->setParameter('userId', $user->getId())
+			->getResult();
+		//
+		return $month;
 	}
 }

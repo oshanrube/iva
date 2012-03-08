@@ -5,7 +5,7 @@ use Acme\TaskBundle\Library\Includes\ProperNouns;
 use Acme\TaskBundle\Library\Log;
 
 class Decode{
-	public static function getCalendar($events,$year,$month) {
+	public static function getCalendar($events, $notifications, $year, $month) {
 		$calendar = array();
 		$timestamp = mktime(0, 0, 0, $month, 1, $year);
 		$maxday = date("t",$timestamp);
@@ -14,7 +14,11 @@ class Decode{
 			$tomorrow = mktime(0, 0, 0, $month, ($i+1), $year);
 			foreach($events as $e){
 				if($e->getStartTime() >= $today && $e->getStartTime() < $tomorrow)
-				$calendar[($i)][] = $e; 
+				$calendar[($i)]['evnts'][] = $e; 
+			}
+			foreach($notifications as $n){
+				if($n->getDateTime() >= $today && $n->getDateTime() < $tomorrow)
+				$calendar[($i)]['noti'][] = $n; 
 			}
 		}
 		return $calendar;
