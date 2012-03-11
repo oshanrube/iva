@@ -1,5 +1,11 @@
-<link rel="stylesheet" href="/Symfony/web/css/dashboard.css" type="text/css" media="screen">
-<link rel="stylesheet" href="/Symfony/web/css/notifications.css" type="text/css" media="screen">
+<link rel="stylesheet" href="<?php echo $view['assets']->getUrl('css/dashboard.css') ?>" type="text/css" media="screen">
+<link rel="stylesheet" href="<?php echo $view['assets']->getUrl('css/notifications.css') ?>" type="text/css" media="screen">
+
+<!--bootstrap-->
+<link rel="stylesheet/less" type="text/css" href="<?php echo $view['assets']->getUrl('bootstrap/lib/bootstrap.less') ?>">
+<script src="<?php echo $view['assets']->getUrl('js/less.js') ?>" type="text/javascript"></script>
+
+
 <div id="dashboard">
 <?php
 $timestamp = mktime(0, 0, 0, date('m'), 1, date('Y'));
@@ -26,7 +32,7 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 		 	echo '<ul>';
 		 	foreach($timeline[$day]['evnts'] as $task){
 		 		echo "<a href=\"".$view['router']->generate('AcmeTaskBundle_edit_id', array('id' => $task->getId()))."\">";
-		 		echo '<li>'.$task->getTask().'</li>';
+		 		echo '<li title="'.$task->getDuration().'" Style="background-color:#'.$task->getTaskColour()->getCode().'" >'.$task->getTask().'</li>';
 		 		echo "</a>";
 			}
 			if(isset($timeline[$day]['noti'])){

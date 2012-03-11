@@ -13,7 +13,7 @@
 
 <form class="thumbnail form-horizontal" action="{{ path('AcmeUserBundle_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
 	<fieldset>
-	<legend>Hello !</legend>
+	<legend>Hello {{ user.username }}!</legend>
 
     {{ form_widget(form) }}
    <div class="form-actions">

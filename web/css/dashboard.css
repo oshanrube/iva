@@ -38,13 +38,18 @@ background-image: linear-gradient(#0099FF, #0bf);
 	color: white;
 	border-bottom: 1px solid #AAA;
 	line-height: 18px;
+	height: 20px;
+	overflow: hidden;
 }
 #dashboard table tbody td ul li:hover{
-		border-bottom: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	height: inherit;
+}
+#dashboard table tbody td ul li{
+	padding-left: 3px;
 }
 #dashboard table tbody td ul li.noti{
 	background-color: silver;
-	padding-left: 3px;
 }
 #dashboard table {
 	width: 100%;

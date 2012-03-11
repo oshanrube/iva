@@ -55,7 +55,14 @@ class Decode{
 		//log
 		if($output == 0)
 			Log::err('Decode','Time not found in '.$string);
-		
+		//check for morning
+		if(date('Gi',$output) == '1200' ) {
+			$day = date('d',$output);
+			$month = date('m',$output);
+			$year = date('Y',$output);
+			$output = mktime(0, 0, 0, $day, $month, $year);
+		}
+		//return 
 		return $output;
 	}
 	public static function getCalendarName($string) {

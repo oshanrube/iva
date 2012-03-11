@@ -4,36 +4,43 @@ use Acme\NewsBundle\Entity\News;
 use Acme\TaskBundle\Library\Log;
 
 class Adaderana {
-	private $doctrine;
+	private $em;
 	
-	public function __construct($doctrine) {
-		$this->doctrine = $doctrine;
+	public function __construct($em) {
+		$this->em = $em;
 	}
 	
 	public function getTodaysNews($location) {
-		$News = $this->doctrine->getRepository('AcmeNewsBundle:News');
-		$em = $this->doctrine->getEntityManager();
+		$News = $this->em->getRepository('AcmeNewsBundle:News');
 		//check in database
 		if($w = $News->findOneByDatetimeAndLocation($location)){
 			return $w;
 		} else {
-			$this->updateNews();
-			return $News->findOneByDatetimeAndLocation($location);
+			//shedule a update
+			$schedule = new Schedule();
+			$schedule->setDatetime(time());
+			$schedule->setCommand('weather:update '.$location);
+			// saving the task to the database 
+			$this->em->persist($schedule);
+			$this->em->flush();
+			//empty news 
+			$news = new News();
+			$news->setTitle('No news updates found,please check again later');
+			return array($news);
 		}
 		Log::err('adaDerana','News update failed');
       //return 
 		return false;
 	}
 	public function updateNews() {
-		$News = $this->doctrine->getRepository('AcmeNewsBundle:News');
-		$em = $this->doctrine->getEntityManager();
+		$News = $this->em->getRepository('AcmeNewsBundle:News');
 		//load rss feed
 		$doc = new \DOMDocument();
 		$doc->load( 'http://www.adaderana.lk/rss.php' );
 		//get all items
 		$items = $doc->getElementsByTagName( "item" );
 		//loop thro
-		foreach($items as $item){
+		foreach($items as $item) {
 			$title = $item->getElementsByTagName( "title" )->item(0)->nodeValue;
 			if(!$News->findOneByTitle($title)){
 				$news = new News();
@@ -42,10 +49,10 @@ class Adaderana {
 				$news->setDescription( $item->getElementsByTagName( "description" )->item(0)->nodeValue );
 				//retrive location from news and category is still to be implimented
 				$news->setLocation( 'Colombo' );
-				$em->persist($news);
+				$this->em->persist($news);
 			}
 		}
-		$em->flush();
+		$this->em->flush();
 		return true;
 	}
 }

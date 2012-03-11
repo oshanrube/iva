@@ -22,7 +22,7 @@
    </div>
  </div>
 <a data-toggle="modal" href="#myModal" class="btn btn-danger" ><i class="icon-trash icon-white"></i> Delete</a>
-{% if notification_form != '' %}
+{% if notification.id != '' %}
 <a class="btn btn-inverse"  href="{{ path('AcmeNotificationsBundle_edit_id' , { "id": id}) }}" ><i class="icon-volume-up"></i> Change Notification</a>
 {% endif %}
 
@@ -99,3 +99,7 @@ $("#form_task").focus(function(){
 	</div>
 </fieldset>    
 </form>
+<script type="text/javascript" >
+var tt  = document.getElementById("form_taskTypeId");
+checkAllDay(tt);
+</script>

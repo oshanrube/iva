@@ -28,11 +28,20 @@ class Language{
 		}
 		return $sentence;
 	}
-	public static function getEasyLocation($string) {
+	public static function getEasyLocation($string,$userLocations) {
+		//check for user locations
+		foreach($userLocations as $location){
+			//check for custom locations
+			if(preg_match("/".$location->getTitle()."/i",$string)){
+				//if found return
+				return array('userlocation' => $location);
+			}
+		}
+		//check for new locations
 		$combos = array("at ([1-z]+)","in ([1-z]+)","venue ([1-z]+)");
 		$matches = array();
 		foreach($combos as $combo){
-			preg_match_all("/".$combo."/",$string,$match);
+			preg_match_all("/".$combo."/i",$string,$match);
 			$matches = array_merge($matches,$match[1]);
 		}
 		foreach($matches as $key => $match){

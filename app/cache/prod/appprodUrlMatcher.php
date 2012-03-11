@@ -25,6 +25,54 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $allow = array();
         $pathinfo = urldecode($pathinfo);
 
+        if (0 === strpos($pathinfo, '/member/learning')) {
+            // AcmeLearningBundle_homepage
+            if ($pathinfo === '/member/learning/index') {
+                return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\MobileController::indexAction',  '_route' => 'AcmeLearningBundle_homepage',);
+            }
+
+            // AcmeLearningBundle_learnLocation
+            if ($pathinfo === '/member/learning/locations/list') {
+                return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::listLocationsAction',  '_route' => 'AcmeLearningBundle_learnLocation',);
+            }
+
+            // AcmeLearningBundle_addLocation
+            if (0 === strpos($pathinfo, '/member/learning/locations/add') && preg_match('#^/member/learning/locations/add(?:/(?P<title>[^/]+?))?$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::addLocationAction',  'title' => '',)), array('_route' => 'AcmeLearningBundle_addLocation'));
+            }
+
+            // AcmeLearningBundle_editLocation
+            if (0 === strpos($pathinfo, '/member/learning/locations/edit') && preg_match('#^/member/learning/locations/edit/(?P<id>[^/]+?)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::editLocationAction',)), array('_route' => 'AcmeLearningBundle_editLocation'));
+            }
+
+            // AcmeLearningBundle_learnWeather
+            if ($pathinfo === '/member/learning/weather/list') {
+                return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\WeatherController::listWeatherAction',  '_route' => 'AcmeLearningBundle_learnWeather',);
+            }
+
+            // AcmeLearningBundle_addWeather
+            if (0 === strpos($pathinfo, '/member/learning/weather/add') && preg_match('#^/member/learning/weather/add/(?P<id>[^/]+?)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\LearningBundle\\Controller\\WeatherController::addWeatherAction',)), array('_route' => 'AcmeLearningBundle_addWeather'));
+            }
+
+            // AcmeLearningBundle_learnTravel
+            if ($pathinfo === '/member/learning/travel/learn') {
+                return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\TravelController::learnAction',  '_route' => 'AcmeLearningBundle_learnTravel',);
+            }
+
+            // AcmeLearningBundle_saveTravel
+            if ($pathinfo === '/member/learning/travel/save') {
+                return array (  '_controller' => 'Acme\\LearningBundle\\Controller\\TravelController::saveAction',  '_route' => 'AcmeLearningBundle_saveTravel',);
+            }
+
+        }
+
+        // AcmeScheduleBundle_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\ScheduleBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeScheduleBundle_homepage'));
+        }
+
         if (0 === strpos($pathinfo, '/mobile')) {
             // AcmeMobileBundle_homepage
             if ($pathinfo === '/mobile/home') {
@@ -71,6 +119,11 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         // AcmeEventsBundle_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\EventsBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeEventsBundle_homepage'));
+        }
+
+        // AcmeNewsBundl_test
+        if ($pathinfo === '/news/test') {
+            return array (  '_controller' => 'Acme\\NewsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'AcmeNewsBundl_test',);
         }
 
         // AcmeNewsBundle_ajax_panel
@@ -124,18 +177,23 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         }
 
         // AcmeCalendarBundle_ajaxnewcalendar
-        if ($pathinfo === '/calendar/panel/ajax/addnewcalendar') {
+        if ($pathinfo === '/calendar/action/add') {
             return array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::addNewCalendarAction',  '_route' => 'AcmeCalendarBundle_ajaxnewcalendar',);
         }
 
         // AcmeCalendarBundle_ajaxtickcalendar
-        if (0 === strpos($pathinfo, '/calendar/panel/ajax/tickcalendar') && preg_match('#^/calendar/panel/ajax/tickcalendar(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
+        if (0 === strpos($pathinfo, '/calendar/action/tick') && preg_match('#^/calendar/action/tick(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::tickCalendarAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_ajaxtickcalendar'));
         }
 
         // AcmeCalendarBundle_ajaxdeletecalendar
-        if (0 === strpos($pathinfo, '/calendar/panel/ajax/deletecalendar') && preg_match('#^/calendar/panel/ajax/deletecalendar(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
+        if (0 === strpos($pathinfo, '/calendar/action/delete') && preg_match('#^/calendar/action/delete(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::deleteCalendarAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_ajaxdeletecalendar'));
+        }
+
+        // AcmeCalendarBundle_sync_calendar_facebook
+        if ($pathinfo === '/calendar/action/sync/facebook') {
+            return array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::syncFacebookAction',  '_route' => 'AcmeCalendarBundle_sync_calendar_facebook',);
         }
 
         // AcmeCalendarBundle_dash_list_calendars
@@ -148,8 +206,16 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::editAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_dash_edit_calendar'));
         }
 
+        // AcmeCalendarBundle_dash_share_calendar
+        if (0 === strpos($pathinfo, '/calendar/dash/sharecalendar') && preg_match('#^/calendar/dash/sharecalendar(?:/(?P<id>[^/]+?))?$#xs', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::shareAction',  'id' => 0,)), array('_route' => 'AcmeCalendarBundle_dash_share_calendar'));
+        }
+
         // AcmeMemberBundle_dashboard
-        if ($pathinfo === '/member') {
+        if (rtrim($pathinfo, '/') === '/member') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'AcmeMemberBundle_dashboard');
+            }
             return array (  '_controller' => 'Acme\\MemberBundle\\Controller\\DefaultController::indexAction',  '_route' => 'AcmeMemberBundle_dashboard',);
         }
 
@@ -378,6 +444,19 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             // AcmeTaskBundle_delete
             if ($pathinfo === '/task/delete') {
                 return array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::deleteAction',  '_route' => 'AcmeTaskBundle_delete',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/notification')) {
+            // AcmeNotificationsBundle_homepage
+            if (0 === strpos($pathinfo, '/notification/hello') && preg_match('#^/notification/hello/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeNotificationsBundle_homepage'));
+            }
+
+            // AcmeNotificationsBundle_edit_id
+            if (0 === strpos($pathinfo, '/notification/edit') && preg_match('#^/notification/edit/(?P<id>\\d+)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DashController::editAction',)), array('_route' => 'AcmeNotificationsBundle_edit_id'));
             }
 
         }

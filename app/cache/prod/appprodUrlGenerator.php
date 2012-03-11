@@ -13,6 +13,15 @@ use Symfony\Component\Routing\Exception\RouteNotFoundException;
 class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerator
 {
     static private $declaredRouteNames = array(
+       'AcmeLearningBundle_homepage' => true,
+       'AcmeLearningBundle_learnLocation' => true,
+       'AcmeLearningBundle_addLocation' => true,
+       'AcmeLearningBundle_editLocation' => true,
+       'AcmeLearningBundle_learnWeather' => true,
+       'AcmeLearningBundle_addWeather' => true,
+       'AcmeLearningBundle_learnTravel' => true,
+       'AcmeLearningBundle_saveTravel' => true,
+       'AcmeScheduleBundle_homepage' => true,
        'AcmeMobileBundle_homepage' => true,
        'AcmeMobileBundle_addtask' => true,
        'AcmeMobileBundle_viewTodaysTasks' => true,
@@ -22,6 +31,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'AcmeMobileBundle_editCalendar' => true,
        'AcmeDashBundle_ajax_panel' => true,
        'AcmeEventsBundle_homepage' => true,
+       'AcmeNewsBundl_test' => true,
        'AcmeNewsBundle_ajax_panel' => true,
        'AcmeLocationBundle_homepage' => true,
        'AcmeCalendarBundle_ajaxcurrentmonth' => true,
@@ -35,8 +45,10 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'AcmeCalendarBundle_ajaxnewcalendar' => true,
        'AcmeCalendarBundle_ajaxtickcalendar' => true,
        'AcmeCalendarBundle_ajaxdeletecalendar' => true,
+       'AcmeCalendarBundle_sync_calendar_facebook' => true,
        'AcmeCalendarBundle_dash_list_calendars' => true,
        'AcmeCalendarBundle_dash_edit_calendar' => true,
+       'AcmeCalendarBundle_dash_share_calendar' => true,
        'AcmeMemberBundle_dashboard' => true,
        'member_menu' => true,
        'fos_user_security_login' => true,
@@ -69,6 +81,8 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'AcmeTaskBundle_addnewtask' => true,
        'AcmeTaskBundle_edit_id' => true,
        'AcmeTaskBundle_delete' => true,
+       'AcmeNotificationsBundle_homepage' => true,
+       'AcmeNotificationsBundle_edit_id' => true,
     );
 
     /**
@@ -90,6 +104,51 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
         list($variables, $defaults, $requirements, $tokens) = $this->{'get'.$escapedName.'RouteInfo'}();
 
         return $this->doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $absolute);
+    }
+
+    private function getAcmeLearningBundle_homepageRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\MobileController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/index',  ),));
+    }
+
+    private function getAcmeLearningBundle_learnLocationRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::listLocationsAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/locations/list',  ),));
+    }
+
+    private function getAcmeLearningBundle_addLocationRouteInfo()
+    {
+        return array(array (  0 => 'title',), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::addLocationAction',  'title' => '',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'title',  ),  1 =>   array (    0 => 'text',    1 => '/member/learning/locations/add',  ),));
+    }
+
+    private function getAcmeLearningBundle_editLocationRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\LocationController::editLocationAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/member/learning/locations/edit',  ),));
+    }
+
+    private function getAcmeLearningBundle_learnWeatherRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\WeatherController::listWeatherAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/weather/list',  ),));
+    }
+
+    private function getAcmeLearningBundle_addWeatherRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\WeatherController::addWeatherAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/member/learning/weather/add',  ),));
+    }
+
+    private function getAcmeLearningBundle_learnTravelRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\TravelController::learnAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/travel/learn',  ),));
+    }
+
+    private function getAcmeLearningBundle_saveTravelRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\LearningBundle\\Controller\\TravelController::saveAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/learning/travel/save',  ),));
+    }
+
+    private function getAcmeScheduleBundle_homepageRouteInfo()
+    {
+        return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\ScheduleBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
     }
 
     private function getAcmeMobileBundle_homepageRouteInfo()
@@ -135,6 +194,11 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
     private function getAcmeEventsBundle_homepageRouteInfo()
     {
         return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\EventsBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
+    }
+
+    private function getAcmeNewsBundl_testRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\NewsBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/news/test',  ),));
     }
 
     private function getAcmeNewsBundle_ajax_panelRouteInfo()
@@ -189,17 +253,22 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
 
     private function getAcmeCalendarBundle_ajaxnewcalendarRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::addNewCalendarAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/addnewcalendar',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::addNewCalendarAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/calendar/action/add',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxtickcalendarRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::tickCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/tickcalendar',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::tickCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/action/tick',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxdeletecalendarRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::deleteCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/deletecalendar',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::deleteCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/action/delete',  ),));
+    }
+
+    private function getAcmeCalendarBundle_sync_calendar_facebookRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::syncFacebookAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/calendar/action/sync/facebook',  ),));
     }
 
     private function getAcmeCalendarBundle_dash_list_calendarsRouteInfo()
@@ -212,9 +281,14 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
         return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::editAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/dash/editcalendar',  ),));
     }
 
+    private function getAcmeCalendarBundle_dash_share_calendarRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::shareAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/dash/sharecalendar',  ),));
+    }
+
     private function getAcmeMemberBundle_dashboardRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\MemberBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\MemberBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/',  ),));
     }
 
     private function getmember_menuRouteInfo()
@@ -370,5 +444,15 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
     private function getAcmeTaskBundle_deleteRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\TaskBundle\\Controller\\DefaultController::deleteAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/task/delete',  ),));
+    }
+
+    private function getAcmeNotificationsBundle_homepageRouteInfo()
+    {
+        return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/notification/hello',  ),));
+    }
+
+    private function getAcmeNotificationsBundle_edit_idRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DashController::editAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/notification/edit',  ),));
     }
 }

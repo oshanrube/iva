@@ -30,6 +30,18 @@ class DashController extends Controller
     	foreach($taskTypes as $tasktype){
     		$tasktypes[$tasktype->getId()] = $tasktype->getTitle();
     	}
+    	$taskColours = $em->getRepository('AcmeTaskBundle:TaskColour')
+            		->findAll();
+		$taskcolours = array( 0 => '--Select--' );
+    	foreach($taskColours as $taskColour){
+    		$taskcolours[$taskColour->getId()] = $taskColour->getColour();
+    	}
+    	$TaskPrioritys = $em->getRepository('AcmeTaskBundle:TaskPriority')
+            		->findAll();
+		$taskprioritys = array( 0 => '--Select--' );
+    	foreach($TaskPrioritys as $TaskPriority){
+    		$taskprioritys[$TaskPriority->getId()] = $TaskPriority->getDescription();
+    	}
     	//set
     	$startTime = $task->getStartTime();
     	$endTime = $task->getEndTime();
@@ -41,13 +53,15 @@ class DashController extends Controller
       			->add('userId','hidden')
             	->add('task')
             	->add('description')
-            	->add('startTime', 'text')
-            	->add('endTime', 'text')
-            	->add('location', 'hidden')
-            	->add('lng','hidden')
-            	->add('lat','hidden')
-      			->add('calendarId', 'choice', array( 'choices' => $calendars ))
-      			->add('taskTypeId', 'choice', array( 'choices' => $tasktypes , 'attr' => array('onchange' => 'checkAllDay(this)' )))
+            	->add('startTime', 'text', array( 'label'  => 'Start Time'))
+            	->add('endTime', 'text', array( 'label'  => 'End Time'))
+            	->add('location', 'text')            	
+            	->add('lng','text', array( 'label'  => 'Longitude'))
+            	->add('lat','text', array( 'label'  => 'Latitude'))
+      			->add('calendarId', 'choice', array( 'label'  => 'Task Calendar', 'choices' => $calendars ))
+      			->add('taskTypeId', 'choice', array( 'label'  => 'Task Type', 'choices' => $tasktypes , 'attr' => array('onchange' => 'checkAllDay(this)' )))
+      			->add('taskColourId', 'choice', array( 'label'  => 'Task Colour', 'choices' => $taskcolours ))
+      			->add('taskPriorityId', 'choice', array( 'label'  => 'Task Priority Level', 'choices' => $taskprioritys ))
 					->getForm();					
 		//Notification
 		//get notification
@@ -55,16 +69,8 @@ class DashController extends Controller
             		->findOneByTaskId($task->getId());
       if($notification && !$notification->getNotified()){
       	$datetime = $notification->getDateTime();
-      	$notification->setDateTime(date('j-n-Y g:ia', $datetime));
-      	$notification_form = $this->createFormBuilder($notification)
-      								->add('datetime','text')
-      								->add('prepare','text',array('label' => 'Time to prepare'))
-      								->add('travelTime','text',array('label' => 'Travel Time'))
-      								//->add('WCondition')
-      								->getForm()
-      								->createView();
       } else {
-      	return $this->redirect($this->generateUrl('AcmeDashBundle_ajax_panel'));
+      	$notification = new Notification();
       }
       //save?
       if ($request->getMethod() == 'POST') 
@@ -82,6 +88,6 @@ class DashController extends Controller
         		return $this->redirect($this->generateUrl('AcmeDashBundle_ajax_panel'));
         	}
 		}  
-			return $this->render('AcmeTaskBundle:Dash:edit.html.twig', array('id' => $id, 'form' => $form->createView(),'notification_form' => $notification_form));
+			return $this->render('AcmeTaskBundle:Dash:edit.html.twig', array('id' => $id, 'form' => $form->createView(),'notification' => $notification));
 	}
 }

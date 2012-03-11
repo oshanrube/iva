@@ -29,9 +29,12 @@ class NotificationRepository extends EntityRepository
 		//get no repeat
 		$thisMonth = mktime(0, 0, 0, $month, 1, $year);
 		$nextMonth = mktime(0, 0, 0, ($month+1), 1, $year);
-		$query = 'SELECT n FROM AcmeTaskBundle:Notification n , AcmeTaskBundle:Task t
-						WHERE ((n.datetime > :thisMonth AND n.datetime < :nextMonth)
-							AND (t.userId = :userId))';
+		$query = '
+			SELECT n
+			FROM AcmeTaskBundle:Notification n, AcmeTaskBundle:Task t
+				WHERE (n.datetime > :thisMonth AND n.datetime < :nextMonth)
+					AND t.userId = :userId
+					AND n.taskId = t.id';
 		/*$query = 'SELECT t FROM AcmeTaskBundle:Notification n , AcmeTaskBundle:Task t
 						WHERE 
 							(n.datetime > :thisMonth AND n.datetime < :nextMonth)

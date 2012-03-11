@@ -10,18 +10,20 @@ $(document).ready(function() {
 	CenterPanel();
 });
 $(window).bind('resize', function () { CenterPanel();});
+
 function closeAlert(that){
-	$(that).parent().hide();
+	$(that).parent().remove();
 }
 function ajaxSubmit(that){
 	$(that).find("*").hide();
-	$(that).append('<div id="loadingContainer" style="display:none"><div id="loading"><span></span><strong>loading...</strong></div></div>');
+	$(that).append('<div id="loadingContainer" style="display:none"><div id="loading"><span></span><strong>loading...</strong></div></div><div onClick="closeLoadingContainer();" id="loadingContainerClose"></div>');
 	$(that).find("#loadingContainer").slideDown('slow');
 	//var url = that.action;
 	$(that).ajaxSubmit(function(r) {
 		if(r.response == 'success'){
 			//remove loading
 			$(that).find("#loadingContainer").remove();
+			$(that).find("#loadingContainerClose").remove();
 			$(that).find("*").show();
 			//reset the form
 			$(that).resetForm();
@@ -39,6 +41,12 @@ function ajaxSubmit(that){
 		} 
 	});
 	return false;
+}
+
+function closeLoadingContainer(){
+	$("#addNewTask").find("#loadingContainer").remove();
+	$("#addNewTask").find("#loadingContainerClose").remove();
+	$("#addNewTask").find("*").show();
 }
 
 function checkCheckbox(that){

@@ -319,6 +319,27 @@ class Task
     {
         return $this->lat;
     }
+    
+    /**
+     * Get Duration
+     *
+     * @return String
+     */
+    public function getDuration()
+    {
+    	//start
+    	$startTime = date("F j, Y, g:i a",$this->startTime);
+    	//finish
+    	$endTime = date("F j, Y, g:i a",$this->endTime);
+    	if($this->tasktype->getTitle() == "Birthday" ){
+    		$string = "On ".date("F j, Y",$this->startTime);
+    	} elseif($startTime != $endTime){
+    		$string = "From ".$startTime." to ".$endTime;
+    	} else {
+    		$string = "From ".$startTime." onwards ";
+    	}
+    	return $string;
+    }
 
     /**
      * Set notification
@@ -398,5 +419,105 @@ class Task
     public function getCalendar()
     {
         return $this->calendar;
+    }
+    /**
+     * @var integer $taskColourId
+     */
+    private $taskColourId;
+
+    /**
+     * @var Acme\TaskBundle\Entity\TaskColour
+     */
+    private $taskColour;
+
+
+    /**
+     * Set taskColourId
+     *
+     * @param integer $taskColourId
+     */
+    public function setTaskColourId($taskColourId)
+    {
+        $this->taskColourId = $taskColourId;
+    }
+
+    /**
+     * Get taskColourId
+     *
+     * @return integer 
+     */
+    public function getTaskColourId()
+    {
+        return $this->taskColourId;
+    }
+
+    /**
+     * Set taskColour
+     *
+     * @param Acme\TaskBundle\Entity\TaskColour $taskColour
+     */
+    public function setTaskColour(\Acme\TaskBundle\Entity\TaskColour $taskColour)
+    {
+        $this->taskColour = $taskColour;
+    }
+
+    /**
+     * Get taskColour
+     *
+     * @return Acme\TaskBundle\Entity\TaskColour 
+     */
+    public function getTaskColour()
+    {
+        return $this->taskColour;
+    }
+    /**
+     * @var integer $taskPriorityId
+     */
+    private $taskPriorityId;
+
+
+    /**
+     * Set taskPriorityId
+     *
+     * @param integer $taskPriorityId
+     */
+    public function setTaskPriorityId($taskPriorityId)
+    {
+        $this->taskPriorityId = $taskPriorityId;
+    }
+
+    /**
+     * Get taskPriorityId
+     *
+     * @return integer 
+     */
+    public function getTaskPriorityId()
+    {
+        return $this->taskPriorityId;
+    }
+    /**
+     * @var Acme\TaskBundle\Entity\TaskPriority
+     */
+    private $taskPriority;
+
+
+    /**
+     * Set taskPriority
+     *
+     * @param Acme\TaskBundle\Entity\TaskPriority $taskPriority
+     */
+    public function setTaskPriority(\Acme\TaskBundle\Entity\TaskPriority $taskPriority)
+    {
+        $this->taskPriority = $taskPriority;
+    }
+
+    /**
+     * Get taskPriority
+     *
+     * @return Acme\TaskBundle\Entity\TaskPriority 
+     */
+    public function getTaskPriority()
+    {
+        return $this->taskPriority;
     }
 }

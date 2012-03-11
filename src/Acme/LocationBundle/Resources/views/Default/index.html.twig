@@ -1,3 +1,11 @@
 <div id="map_canvas" class="border" style="height: 256px;"></div>
-
+<script type="text/javascript">
+function loadScript() {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	//script.src = "{{ asset('js/googleMaps.js') }}";
+	script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyD_N10SQIDRPnhGaC0OCu70ZXNfwohwlxk&sensor=false&callback=initialize";
+	document.body.appendChild(script);
+}
+</script>
 <script type="text/javascript" src="{{ asset('js/src-maps.js') }}"></script>

@@ -10,6 +10,7 @@ use Acme\TaskBundle\Library\Decode;
 use Acme\TaskBundle\Library\Language;
 use Acme\TaskBundle\Library\Location;
 use Acme\TaskBundle\Library\Log;
+use Acme\LearningBundle\Entity\LearnUserLocation;
 use Acme\ScheduleBundle\Entity\Schedule;
 
 class TaskModel{
@@ -74,6 +75,9 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 			}
 			
 			//get location
+			//get user locations
+			$userLocations = $this->em->getRepository('AcmeLearningBundle:LearnUserLocation')
+            				->findByUserId($user->getId());
 			//check for location id
 			if($locId != ''){
 				$location = new Location();
@@ -83,7 +87,7 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 				$task->setLng($taskLocation->location->lng);
 				$task->setLat($taskLocation->location->lat);
 				//search for locations in the text
-			} elseif($locations = Language::getEasyLocation($this->quickTask)) {
+			} elseif($locations = Language::getEasyLocation($this->quickTask,$userLocations)) {
 				if(!$lng || !$lat){
 					if($_SERVER['REMOTE_ADDR'] == '192.168.1.100'){$_SERVER['REMOTE_ADDR'] ='112.134.98.178'; }
 					$rec = geoip_record_by_name ($_SERVER['REMOTE_ADDR']);
@@ -93,12 +97,17 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 				} else {$accurate=true;}
 				//search the locations list and get alternative sentences
 				$location = new Location();
-				if(!$taskLocation = $location->searchLocation($this->quickTask,$locations,$lng,$lat,$accurate,$suggestions = true)){
+				//if its a user location
+				if(count($locations) == 1 && isset($locations['userlocation'])){
+					$task->setLocation($locations['userlocation']->getTitle());
+					$task->setLng($locations['userlocation']->getLng());
+					$task->setLat($locations['userlocation']->getLat()); 
+				} elseif(!$taskLocation = $location->searchLocation($this->quickTask,$locations,$lng,$lat,$accurate,$suggestions = true)){
 					//add to suggetions
 					$this->suggestions = $location->improveSentence();
 					//add Venues
 					$this->venues = $location->getVenues();
-					$this->question = 'Hey system couldnt figure out the "Whersssse" part(Location), please help out!!';
+					$this->question = 'Hey system couldnt figure out the "Where" part(Location), please help out!!';
 					return false;
 				} else {
 					$task->setLocation($taskLocation->name);
@@ -106,7 +115,7 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 					$task->setLat($taskLocation->location->lat); 
 				}
 			} else {
-				$this->question = 'Hey system couldnt figure out the "Where" aaapart(Location), please help out!!';
+				$this->question = 'Hey system couldnt figure out the "Where" part(Location), please help out!!';
 				return false;
 			}
 			
@@ -116,12 +125,14 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
             				->findOneByCalendarName($calendarName,$user);
             $task->setCalendar($calendar[0]);
 			} else {
-				$task->setCalendarId(0);
+				$calendar = $this->em->getRepository('AcmeTaskBundle:Calendar')
+            				->findOneByTitle('default');
+            $task->setCalendar($calendar);
 			}
 			// fill  the task
-				$CleanedTask = Language::removePronouns($this->quickTask);
+				$CleanedTask = Language::removePronouns($this->requestTask);
 				$CleanedTask = Decode::removeTime($CleanedTask);
-				$CleanedTask = Decode::removeLocation($CleanedTask,$taskLocation->name);
+				$CleanedTask = Decode::removeLocation($CleanedTask,$task->getLocation());
 				if(!$tsk = Decode::getTask($CleanedTask)){
 					$this->question = 'Hey system couldnt figure out the "What" part(Task), please help out!!';
 					return false;
@@ -136,6 +147,12 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 				$task->setUserId($user->getId());
 				$task->setTaskType($taskType);
 				$task->setEndtime($Endtime);
+				$taskRepeat = $this->em->getRepository('AcmeTaskBundle:TaskRepeat')->findOneByTitle('No Repeat');
+				$task->setTaskRepeat($taskRepeat);
+				$TaskColour = $this->em->getRepository('AcmeTaskBundle:TaskColour')->findOneByColour('Default');
+				$task->setTaskColour($TaskColour);
+				$TaskPriority = $this->em->getRepository('AcmeTaskBundle:TaskPriority')->findOneByDescription('No Priority');
+				$task->setTaskPriority($TaskPriority);
 				//create description
 				$desc = Language::CreateDescription($task);
 				$this->description = $desc;
@@ -160,7 +177,8 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 		$task->setDescription('http://www.facebook.com/events/'.$event->id);
 		$task->setStartTime(strtotime($event->start_time));
 		$task->setEndtime(strtotime($event->end_time));
-		$task->setTaskRepeatId(0);
+		$taskRepeat = $this->em->getRepository('AcmeTaskBundle:TaskRepeat')->findOneByTitle('No Repeat');
+		$task->setTaskRepeat($taskRepeat);
 		//
 		$locations = array($event->location);
 		$lng = $user->getLng();
@@ -213,7 +231,7 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 		//add the task
 		$task = new Task();
 		$task->setTask($profile->name.'\'s Birthday');
-		$task->setDescription('##'.$profile->name.'##');
+		$task->setDescription($profile->name.'\'s Birthday');
 		$task->setStartTime(strtotime($profile->birthday));
 		$task->setEndtime(0);
 		$task->setLocation('');

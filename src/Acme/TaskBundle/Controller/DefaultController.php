@@ -20,7 +20,8 @@ class DefaultController extends Controller
       //get noti
       $notification = $em->getRepository('AcmeTaskBundle:Notification')
             			->findOneByTaskId($task->getId());
-      $em->remove($notification);
+		if($notification)
+      	$em->remove($notification);
 		$em->remove($task);
 		$em->flush();
 		$this->get('session')->setFlash('success', 'Task has been successfully deleted');

@@ -33,7 +33,7 @@ class ProfileController extends Controller
 				return new RedirectResponse($this->container->get('router')->generate('AcmeUserBundle_profile'));
 		}
 		return $this->render('AcmeUserBundle:Profile:edit-profile.html.twig', 
-			array('form' => $form->createView(), 'theme' => $this->container->getParameter('fos_user.template.theme'))
+			array('form' => $form->createView(), 'theme' => $this->container->getParameter('fos_user.template.theme'), 'user' => $user)
 		);
 	}
 

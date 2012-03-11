@@ -11,6 +11,14 @@ Acme\TaskBundle\Entity\Task:
     userId:
       type: integer
       length: '11'
+    taskColourId:
+      type: integer
+      length: '11'
+      nullable: true
+      default: 1
+    taskPriorityId:
+      type: integer
+      length: '11'
     calendarId:
       type: integer
       length: '11'
@@ -69,3 +77,15 @@ Acme\TaskBundle\Entity\Task:
             joinColumn:
                 name: calendarId
                 referencedColumnName: id
+        taskColour:
+            targetEntity: TaskColour
+            inversedBy: tasks
+            joinColumn:
+                name: taskColourId
+                referencedColumnName: id 
+        taskPriority:
+            targetEntity: TaskPriority
+            inversedBy: taskPrioritys
+            joinColumn:
+                name: taskPriorityId
+                referencedColumnName: id 

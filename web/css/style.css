@@ -280,6 +280,11 @@ label.r_on { background: url(radio-on.png) no-repeat; }
 		background: #414C52;
 		padding: 40px 0;
 	}
+	#loadingContainerClose{
+		height: 10px;
+		background-color: #CCC;
+	}
+	
 /*******/
 /*Forms*/
 /*******/
@@ -300,6 +305,9 @@ form .actions{
 }
 form label{
 	color: #EEE;
+}
+#addNewTask {
+	margin-bottom: 0px;
 }
 
 /***********/

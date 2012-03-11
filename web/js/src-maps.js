@@ -17,14 +17,6 @@ function initialize() {
 	window.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);	
 }
 
-function loadScript() {
-	var script = document.createElement("script");
-	script.type = "text/javascript";
-	//script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyD_N10SQIDRPnhGaC0OCu70ZXNfwohwlxk&sensor=false&callback=initialize";
-	script.src = "../js/googleMaps.js";
-	document.body.appendChild(script);
-}
-
 $(window).load(loadScript);
 
 
