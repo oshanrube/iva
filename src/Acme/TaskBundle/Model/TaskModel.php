@@ -16,7 +16,7 @@ use Acme\ScheduleBundle\Entity\Schedule;
 class TaskModel{
 	//Entity Manager
 	private $em;
-	private $question,$description,$suggestions,$requestTask,$quickTask,$venues;
+	private $question,$description,$suggestions,$requestTask,$quickTask,$venues,$tasks;
 	
 	public function __construct($em) {
 		$this->em = $em;
@@ -51,20 +51,32 @@ class TaskModel{
 			return array();
 		}
 	}
+	public function getTasks() {
+		if(isset($this->tasks)){
+			return $this->tasks;
+		} else {
+			return array();
+		}
+	}
 	
 	public function AddNewTask(Request $request,$user)
 	{	
 $time_start = microtime();
 			//flag variable initialize
 			$task = new Task();
-			$this->requestTask 		= $request->request->get('task');
+			$this->requestTask= $request->request->get('task');
 			$this->quickTask 	= $request->request->get('task');
 			$lng 					= $request->request->get('lng');
 			$lat 					= $request->request->get('lat');
 			$locId 				= $request->request->get('loc_id');
+			$taskPriority 		= $request->request->get('highPriority');
 Log::bench('AddNewTask',$time_start,'variable initialize');$time_start = microtime();
 			$this->quickTask 	= Language::improveSentence($this->quickTask);
 Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime();
+
+			/*********************/
+			/*Time****************/
+			/*********************/
 			//get time
 			$startTime = Decode::getDateTime($this->quickTask);
 			if($startTime == 0){
@@ -73,8 +85,10 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 			} else {
 				$task->setStartTime($startTime);
 			}
-			
-			//get location
+			 				
+			/*********************/
+			/*Location************/
+			/*********************/
 			//get user locations
 			$userLocations = $this->em->getRepository('AcmeLearningBundle:LearnUserLocation')
             				->findByUserId($user->getId());
@@ -107,7 +121,7 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 					$this->suggestions = $location->improveSentence();
 					//add Venues
 					$this->venues = $location->getVenues();
-					$this->question = 'Hey system couldnt figure out the "Where" part(Location), please help out!!';
+					$this->question = 'Hey system couldnt figure out the "Where" part(Location), please help out from the map!!';
 					return false;
 				} else {
 					$task->setLocation($taskLocation->name);
@@ -119,7 +133,10 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 				return false;
 			}
 			
-			//calendar
+			/*********************/
+			/*Calendar************/
+			/*********************/
+			
 			if($calendarName = Decode::getCalendarName($this->quickTask)){
 				$calendar = $this->em->getRepository('AcmeTaskBundle:Calendar')
             				->findOneByCalendarName($calendarName,$user);
@@ -129,6 +146,11 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
             				->findOneByTitle('default');
             $task->setCalendar($calendar);
 			}
+			
+			/*********************/
+			/*Task****************/
+			/*********************/
+			
 			// fill  the task
 				$CleanedTask = Language::removePronouns($this->requestTask);
 				$CleanedTask = Decode::removeTime($CleanedTask);
@@ -137,26 +159,65 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 					$this->question = 'Hey system couldnt figure out the "What" part(Task), please help out!!';
 					return false;
 				} 
-				$taskType = Decode::getTaskType($tsk,$this->em->getRepository('AcmeTaskBundle:TaskType'));
-				if(!$Endtime = Decode::getEndtime($taskType,$startTime,$this->quickTask)){
-					//all day event
-					$taskType = $this->em->getRepository('AcmeTaskBundle:TaskType')->findOneByTitle('All Day');
-				}
-				//add the task
 				$task->setTask($tsk);
+				
+			/*********************/
+			/*Task Type***********/
+			/*********************/
+			 $taskTypeRepo = $this->em->getRepository('AcmeTaskBundle:TaskType');
+				if(!$taskType = Decode::getTaskType($tsk, $taskTypeRepo))//other task type
+					$taskType = $taskTypeRepo->findOneByTitle('Other');
+				
+				$Endtime = Decode::getEndtime($taskType,$startTime,$this->quickTask);
+				$task->setEndtime($Endtime);
+				if(!$Endtime)
+					$Endtime = strtotime('+1Day', $startTime);
+		
+				//check for available time
+				$this->tasks = $this->em->getRepository('AcmeTaskBundle:Task')
+							->findByCurrentStartTime($user,$startTime,$Endtime,$taskPriority);
+				//if tasks
+				if($this->tasks){
+					$lvl = 0;
+					//get the highest priority
+					foreach($this->tasks as $tsk){
+						if($tsk->getTaskPriority()->getLevel() > $lvl){
+							$lvl = $tsk->getTaskPriority()->getLevel();
+						}
+					}
+					$lvl++;
+					$this->question = 'Hey you already have assigned that time for the following, Mark this high priority?<span id="markPriority" class="nav" onClick="moveHighPriority('.$lvl.')">Yes</span>';
+					return false;
+				}
+				
+			/*********************/
+			/*Task extras*********/
+			/*********************/
 				$task->setUserId($user->getId());
 				$task->setTaskType($taskType);
-				$task->setEndtime($Endtime);
+				
+			
+			/*********************/
+			/*Task Defaults*******/
+			/*********************/
 				$taskRepeat = $this->em->getRepository('AcmeTaskBundle:TaskRepeat')->findOneByTitle('No Repeat');
 				$task->setTaskRepeat($taskRepeat);
 				$TaskColour = $this->em->getRepository('AcmeTaskBundle:TaskColour')->findOneByColour('Default');
 				$task->setTaskColour($TaskColour);
 				$TaskPriority = $this->em->getRepository('AcmeTaskBundle:TaskPriority')->findOneByDescription('No Priority');
 				$task->setTaskPriority($TaskPriority);
+				
+			/*********************/
+			/*Task Description****/
+			/*********************/
 				//create description
 				$desc = Language::CreateDescription($task);
 				$this->description = $desc;
 				$task->setDescription($desc);
+				
+			/*********************/
+			/*Save****************/
+			/*********************/
 				// saving the task to the database 
 				$this->em->persist($task);
 				//shedule a update

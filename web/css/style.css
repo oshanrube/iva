@@ -309,7 +309,52 @@ form label{
 #addNewTask {
 	margin-bottom: 0px;
 }
-
+#addNew #help {
+	margin: 10px;
+	text-align: center;
+}
+#addNew #help span{
+	padding: 3px;
+	background-color: black;
+	border-radius: 5px;
+}
+#addNew #help span b{
+	color:red;
+}
+#addNew #help span c{
+	color:#56FF56;
+}
+#addNew #help #label{
+	background-color: red;
+	color:white;
+}
+#addNewAdvance {
+	height: 10px;
+	background-image: -moz-linear-gradient(top, #0081ac, #005b79); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #0081ac),color-stop(1, #005b79));
+	margin-top: 10px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	cursor:pointer;
+}
+#tasks {
+	margin: 0;
+	margin-left: 18px;
+	background: #CCC;
+	padding: 5px;
+	border-radius: 5px;
+}
+#tasks li{
+	color: white;
+}
+#markPriority.nav{
+	height: 20px;
+	margin-top: 0;
+	padding-top: 0;
+	line-height: 20px;
+}
+#markPriority.nav::before {
+	height: 20px;
+}
 /***********/
 /*dashboard*/
 /***********/

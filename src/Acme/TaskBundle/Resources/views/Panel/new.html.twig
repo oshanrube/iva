@@ -57,13 +57,32 @@ $("#form_task").focus(function(){
 
 {% if app.session.hasFlash('question') %}
    <div class="info message">
-		<p>{{ app.session.flash('question') }}</p>
+		<p>{% autoescape false %}{{ app.session.flash('question') }}{% endautoescape %}</p>
 	</div>
 {% endif %}
+
+{% if tasks is defined %}
+{% if tasks|length != 0 %}
+	<ul id="tasks">
+	{% for task in tasks %}
+		<li>{{ task.description }}</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+{% endif %}
+
+{% if app.session.hasFlash('question') %}
+<div id="help">Try :
+	<span id="label">Syntax</span>
+	<span> <c>{</c>Event / Task<c>}</c> <b>on</b> <c>{</c>Date / Time<c>}</c> <b>at</b> <c>{</c>Location<c>}</c> (<i>optional</i> <b>to:</b> <c>{</c>Calendar<c>}</c>)</span>
+</div>
+{% endif %}
+
 <form id="addNewTask"  data-ajax="false" onsubmit="ajaxSubmit(this);return false;" action="{{ path('AcmeTaskBundle_addnewtask') }}" method="post" {{ form_enctype(form) }}>
 	<input type="text" x-webkit-speech autocomplete="off" spellcheck="false" x-webkit-grammar="builtin:search" lang="en" id="form_task" name="task" required="required" maxlength="255" pattern=".{3,255}" placeholder="What, Where, When" value="{{ task.task }}" />
 	<input type="hidden" id="lng" name="lng" value="{{ task.lng }}" />
 	<input type="hidden" id="lat" name="lat" value="{{ task.lat }}" />
+	<input type="hidden" id="highPriority" name="highPriority" value="0" />
 	<input type="hidden" id="form_task_loc_id" name="loc_id" />
    <button type="submit" class="btn primary">Add</button>
    <span>
@@ -71,3 +90,4 @@ $("#form_task").focus(function(){
    </span>
    <span id="locDetError">Automatic location Detector is working...</span>
 </form>
+<div id="addNewAdvance"></div>

@@ -12,7 +12,7 @@ AcmeMobileBundle:
 
 AcmeDashBundle:
     resource: "@AcmeDashBundle/Resources/config/routing.yml"
-    prefix:   /dash
+    prefix:   /member/dash
 
 AcmeEventsBundle:
     resource: "@AcmeEventsBundle/Resources/config/routing.yml"
@@ -20,19 +20,19 @@ AcmeEventsBundle:
 
 AcmeNewsBundle:
     resource: "@AcmeNewsBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /member/
 
 AcmeWeatherBundle:
     resource: "@AcmeWeatherBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /member/
 
 AcmeLocationBundle:
     resource: "@AcmeLocationBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /member/
 
 AcmeCalendarBundle:
     resource: "@AcmeCalendarBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /member/
 
 AcmeMemberBundle:
     resource: "@AcmeMemberBundle/Resources/config/routing.yml"
@@ -40,7 +40,7 @@ AcmeMemberBundle:
 
 AcmeMenusBundle:
     resource: "@AcmeMenusBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /member/
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

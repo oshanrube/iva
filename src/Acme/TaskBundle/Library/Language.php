@@ -21,8 +21,9 @@ class Language{
 		$sentence = '';
 		preg_match_all("/[1-z]+/",$string,$matches);
 		$words = unserialize(file_get_contents(__DIR__.'/pronouns.list.ser'));
+		$words = "(".implode('|',$words).")";
 		foreach($matches[0] as $word){
-			if(!array_search($word , $words)){//&& !strtotime($word)
+			if(!preg_match("/".$word."/i",$words)){//&& !strtotime($word)
 				$sentence .= ' '.$word;
 			}
 		}

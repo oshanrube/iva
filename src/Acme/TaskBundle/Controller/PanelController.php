@@ -53,9 +53,11 @@ class PanelController extends Controller
 				$panel = $templating->render('AcmeTaskBundle:Panel:new.html.twig', 
 							array(
 								'form' => $form->createView(),
-								'task' => $task,'didyoumean' => $taskmodel->getDidyoumean(),
+								'task' => $task,
+								'didyoumean' => $taskmodel->getDidyoumean(),
 								'suggestions' => $taskmodel->getSuggestions(),
-								'venues' => $taskmodel->getVenues()
+								'venues' => $taskmodel->getVenues(),
+								'tasks' => $taskmodel->getTasks()
 								)
 							);
 				//send response

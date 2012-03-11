@@ -3,6 +3,7 @@
 namespace Acme\TaskBundle\Library;
 use Acme\TaskBundle\Library\Includes\ProperNouns;
 use Acme\TaskBundle\Library\Log;
+use Acme\TaskBundle\Library\Language;
 
 class Decode{
 	public static function getCalendar($events, $notifications, $year, $month) {
@@ -56,11 +57,11 @@ class Decode{
 		if($output == 0)
 			Log::err('Decode','Time not found in '.$string);
 		//check for morning
-		if(date('Gi',$output) == '1200' ) {
+		if(date('Gi',$output) == '1200' && !preg_match('/12/',$string) && !preg_match('/noon/',$string)) {
 			$day = date('d',$output);
 			$month = date('m',$output);
 			$year = date('Y',$output);
-			$output = mktime(0, 0, 0, $day, $month, $year);
+			$output = mktime(0, 0, 0, $month, $day, $year);
 		}
 		//return 
 		return $output;
@@ -80,31 +81,36 @@ class Decode{
 		return implode(' ',$matches[0]);
 	}
 	public static function removeLocation($task,$location) {
-		return str_replace(strtolower($location),'',$task);	
+		return preg_replace("/".$location."/i",'',$task);	
 	}
 	public static function getTask($task) {
 		//create instance from pronous class
 		$pn = new ProperNouns();
 		//get array with proper nouns
-		return implode('',$pn->get($task));
+		$str = implode('',$pn->get($task));
+		if($str == ''){
+			$task = Language::improveSentence($task);
+			return $task;
+		}
+		return $str;
 		
 	}
 	
 	public static function getTaskType($task,$taskTypeRepo) {
-		//get it to lower case
-		$task = strtolower($task);
-		//find task type
-		if($tasktype = $taskTypeRepo->findOneByTask($task)){
-			return $tasktype;
-		} else {
-			//other task type
-			return $taskTypeRepo->findOneByTitle('Other');
+		//get all task types
+		$taskTypes = $taskTypeRepo->findAll();
+		
+		foreach($taskTypes as $taskType){
+			if(preg_match("/".$taskType->getTitle()."/i",$task)) {
+				return $taskType;
+			}
 		}
+		
 	}
 	
 	public static function getEndtime($tasktype,$startTime,$task) {
 		//check all day event
-		if(date('Hi', $startTime) == 1200 && !preg_match('/12/',$task) && !preg_match('/noon/',$task)){
+		if(date('Hi', $startTime) == 0000 && !preg_match('/12/',$task) && !preg_match('/noon/',$task)){
 			return false;
 		}
 		//if specified time

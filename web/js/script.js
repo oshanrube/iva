@@ -24,6 +24,8 @@ function ajaxSubmit(that){
 			//remove loading
 			$(that).find("#loadingContainer").remove();
 			$(that).find("#loadingContainerClose").remove();
+			$(that).find("#tasks").remove();
+			$(that).find("#html").remove();
 			$(that).find("*").show();
 			//reset the form
 			$(that).resetForm();
@@ -76,7 +78,10 @@ function CenterPanel(){
       $(".col.middle-col").width(width-517);
   }
 }
-
+function moveHighPriority(lvl){
+	$("#highPriority").val(lvl);
+	$("#markPriority").remove();
+}
 
 
 

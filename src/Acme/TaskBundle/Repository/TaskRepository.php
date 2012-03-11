@@ -16,7 +16,13 @@ class TaskRepository extends EntityRepository
 		//get no repeat
 		$thisMonth = mktime(0, 0, 0, $month, 1, $year);
 		$nextMonth = mktime(0, 0, 0, ($month+1), 1, $year);
-		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE (t.startTime > :thisMonth AND t.startTime < :nextMonth AND t.taskRepeatId = 1) AND t.userId = :userId';
+		$query = 'SELECT t 
+					FROM AcmeTaskBundle:Task t 
+					WHERE (
+						t.startTime > :thisMonth AND 
+						t.startTime < :nextMonth AND 
+						t.taskRepeatId = 1 ) 
+						AND t.userId = :userId';
 		$month = $this->getEntityManager()
 			->createQuery($query)
 			->setParameter('thisMonth', $thisMonth)
@@ -29,7 +35,6 @@ class TaskRepository extends EntityRepository
 					->createQuery($query)
 					->setParameter('userId', $user->getId())
 					->getResult();
-		//echo count($events);exit();
 		foreach($events as $event){
 			if($evnts = TaskRepeatModel::getRepeatFor($event,$thisMonth,$nextMonth)){
 				$month = array_merge($month,$evnts);
@@ -112,5 +117,26 @@ class TaskRepository extends EntityRepository
         return null;
     	}
 	}
-	
+	public function findByCurrentStartTime($user, $startTime, $endTime, $taskPriority) {
+		
+		$query = 'SELECT t 
+					FROM AcmeTaskBundle:Task t 
+					WHERE 
+						t.startTime >= :startTime AND 
+						t.startTime <= :endTime AND 
+						t.userId = :userId AND
+						t.taskPriorityId != 1 AND
+						t.taskPriorityId > :taskPriority';
+		try{
+			return $this->getEntityManager()
+				->createQuery($query)
+				->setParameter('startTime', $startTime)				
+				->setParameter('endTime', $endTime)
+				->setParameter('userId', $user->getId())
+				->setParameter('taskPriority', $taskPriority)
+				->getResult();
+		} catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    	}
+	}
 }

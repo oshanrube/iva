@@ -48,5 +48,8 @@ function setLocationId(name,venue,id){
 	var task = $("#form_task").val()+"";
 	$("#form_task").val(task.replace(name,venue));
 	$("#form_task_loc_id").val(id);
+	$("#addNew .info.message").remove();
+	$("#addNew #help").remove();
+	deleteOverlays();
 }
 
