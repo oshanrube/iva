@@ -10,7 +10,7 @@ class DefaultController extends Controller
     
     public function indexAction()
     {
-    	if(!Mobile::isMobile())return $this->render('AcmeMemberBundle:Default:index.html.twig');
+    	if(!Mobile::isMobile())return $this->redirect($this->generateUrl('AcmeHomeBundle_homepage'));
     	
 		$user = $this->get('security.context')->getToken()->getUser();
 		if($user == 'anon.'){

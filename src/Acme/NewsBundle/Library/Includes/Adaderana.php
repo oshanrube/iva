@@ -2,6 +2,7 @@
 namespace Acme\NewsBundle\Library\Includes;
 use Acme\NewsBundle\Entity\News;
 use Acme\TaskBundle\Library\Log;
+use Acme\ScheduleBundle\Entity\Schedule;
 
 class Adaderana {
 	private $em;

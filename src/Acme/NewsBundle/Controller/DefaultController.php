@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Acme\NewsBundle\Library\LibNews;
 
+
 class DefaultController extends Controller
 {
 	public function indexAction()
@@ -14,10 +15,10 @@ class DefaultController extends Controller
 	}
 	public function ajaxAction()
 	{
-		if(!$this->getRequest()->isXmlHttpRequest()){
-			return $this->redirect($this->generateUrl('error'));
-		}
-		$news = new LibNews($this->getDoctrine());
+		//if(!$this->getRequest()->isXmlHttpRequest())
+		//	return $this->redirect($this->generateUrl('error'));
+		
+		$news = new LibNews($this->getDoctrine()->getEntityManager());
 		$feed = $news->getTodaysNews('Colombo');
 		//
 		$templating = $this->get('templating');
