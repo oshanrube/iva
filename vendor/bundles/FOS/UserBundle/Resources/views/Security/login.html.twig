@@ -3,7 +3,12 @@
 {% block fos_user_content %}
 <form action="{{ path("fos_user_security_check") }}" method="post">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
+{% if not error is empty %}
+<div id="message">
+<dd class="error message">{{ error }}</dd>
+</div>
+{% endif %}
+			
 	<div class="clearfix">
 		<label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
 		<div class=="input">

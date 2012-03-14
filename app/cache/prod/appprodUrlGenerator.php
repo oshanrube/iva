@@ -70,6 +70,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'error' => true,
        'AcmeUserBundle_profile_edit' => true,
        'AcmeUserBundle_profile' => true,
+       'AcmeUserBundle_login_fail' => true,
        'AcmeProfileBundle_homepage' => true,
        'AcmeStoreBundle_homepage' => true,
        'AcmeStoreBundle_create' => true,
@@ -188,7 +189,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
 
     private function getAcmeDashBundle_ajax_panelRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/dash/ajax/panel',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\DashBundle\\Controller\\DefaultController::ajaxAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/dash/ajax/panel',  ),));
     }
 
     private function getAcmeEventsBundle_homepageRouteInfo()
@@ -198,92 +199,92 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
 
     private function getAcmeNewsBundl_testRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\NewsBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/news/test',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\NewsBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/news/test',  ),));
     }
 
     private function getAcmeNewsBundle_ajax_panelRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\NewsBundle\\Controller\\DefaultController::ajaxAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/news/ajax/panel',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\NewsBundle\\Controller\\DefaultController::ajaxAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/news/ajax/panel',  ),));
     }
 
     private function getAcmeLocationBundle_homepageRouteInfo()
     {
-        return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\LocationBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/hello',  ),));
+        return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\LocationBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/member/hello',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxcurrentmonthRouteInfo()
     {
-        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'currentMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/currentmonth',  ),));
+        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'currentMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/member/calendar/month/ajax/currentmonth',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxnextmonthRouteInfo()
     {
-        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/nextmonth',  ),));
+        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/member/calendar/month/ajax/nextmonth',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxprevmonthRouteInfo()
     {
-        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/prevmonth',  ),));
+        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevMonth',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/member/calendar/month/ajax/prevmonth',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxnextyearRouteInfo()
     {
-        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextYear',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/nextyear',  ),));
+        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'nextYear',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/member/calendar/month/ajax/nextyear',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxprevyearRouteInfo()
     {
-        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevYear',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/calendar/month/ajax/prevyear',  ),));
+        return array(array (  0 => 'year',  1 => 'month',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxMonthAction',  'year' => 2011,  'month' => 1,  'nav' => 'prevYear',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'month',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'year',  ),  2 =>   array (    0 => 'text',    1 => '/member/calendar/month/ajax/prevyear',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxprevpanelRouteInfo()
     {
-        return array(array (  0 => 'current',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxPanelAction',  'nav' => 'prev',  'current' => 'mycalendars',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'current',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/prev',  ),));
+        return array(array (  0 => 'current',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxPanelAction',  'nav' => 'prev',  'current' => 'mycalendars',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'current',  ),  1 =>   array (    0 => 'text',    1 => '/member/calendar/panel/ajax/prev',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxnextpanelRouteInfo()
     {
-        return array(array (  0 => 'current',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxPanelAction',  'nav' => 'next',  'current' => 'mycalendars',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'current',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/next',  ),));
+        return array(array (  0 => 'current',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxPanelAction',  'nav' => 'next',  'current' => 'mycalendars',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'current',  ),  1 =>   array (    0 => 'text',    1 => '/member/calendar/panel/ajax/next',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxcurrentpanelRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxPanelAction',  'nav' => 'next',  'current' => 'mycalendars',), array (), array (  0 =>   array (    0 => 'text',    1 => '/calendar/panel/ajax/next/newcalendar',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\PanelController::ajaxPanelAction',  'nav' => 'next',  'current' => 'mycalendars',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/calendar/panel/ajax/next/newcalendar',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxnewcalendarRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::addNewCalendarAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/calendar/action/add',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::addNewCalendarAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/calendar/action/add',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxtickcalendarRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::tickCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/action/tick',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::tickCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/member/calendar/action/tick',  ),));
     }
 
     private function getAcmeCalendarBundle_ajaxdeletecalendarRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::deleteCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/action/delete',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::deleteCalendarAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/member/calendar/action/delete',  ),));
     }
 
     private function getAcmeCalendarBundle_sync_calendar_facebookRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::syncFacebookAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/calendar/action/sync/facebook',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DefaultController::syncFacebookAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/calendar/action/sync/facebook',  ),));
     }
 
     private function getAcmeCalendarBundle_dash_list_calendarsRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::listAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/calendar/dash/calendars',  ),));
+        return array(array (), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::listAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/calendar/dash/calendars',  ),));
     }
 
     private function getAcmeCalendarBundle_dash_edit_calendarRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::editAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/dash/editcalendar',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::editAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/member/calendar/dash/editcalendar',  ),));
     }
 
     private function getAcmeCalendarBundle_dash_share_calendarRouteInfo()
     {
-        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::shareAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/calendar/dash/sharecalendar',  ),));
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\CalendarBundle\\Controller\\DashController::shareAction',  'id' => 0,), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/member/calendar/dash/sharecalendar',  ),));
     }
 
     private function getAcmeMemberBundle_dashboardRouteInfo()
@@ -293,7 +294,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
 
     private function getmember_menuRouteInfo()
     {
-        return array(array (  0 => 'url',), array (  '_controller' => 'Acme\\MenusBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'url',  ),  1 =>   array (    0 => 'text',    1 => '/member-menu',  ),));
+        return array(array (  0 => 'url',), array (  '_controller' => 'Acme\\MenusBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'url',  ),  1 =>   array (    0 => 'text',    1 => '/member/member-menu',  ),));
     }
 
     private function getfos_user_security_loginRouteInfo()
@@ -389,6 +390,11 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
     private function getAcmeUserBundle_profileRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::profileAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/profile',  ),));
+    }
+
+    private function getAcmeUserBundle_login_failRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\DefaultController::loginFailureAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/user/login_check',  ),));
     }
 
     private function getAcmeProfileBundle_homepageRouteInfo()

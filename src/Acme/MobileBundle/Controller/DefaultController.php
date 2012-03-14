@@ -14,7 +14,7 @@ class DefaultController extends Controller
     	
 		$user = $this->get('security.context')->getToken()->getUser();
 		if($user == 'anon.'){
-			return $this->render('AcmeMobileBundle:Default:login.html.twig');
+			return $this->redirect($this->generateUrl('fos_user_security_login'));
 		} else {
 			return $this->render('AcmeMobileBundle:Default:index.html.twig');	
 		}

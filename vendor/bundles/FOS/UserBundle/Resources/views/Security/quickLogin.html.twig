@@ -1,6 +1,12 @@
 <form class="clearfix" action="{{ path("fos_user_security_check") }}" method="post"  id="form-login">
   <h1>Member Login</h1>
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    
+{% if not error is empty %}
+<div id="message">
+<dd class="error message">{{ error }}</dd>
+</div>
+{% endif %}
 
     <input class="field" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" />
     <input class="field" type="password" id="password" name="_password" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" />

@@ -90,6 +90,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'error' => true,
        'AcmeUserBundle_profile_edit' => true,
        'AcmeUserBundle_profile' => true,
+       'AcmeUserBundle_login_fail' => true,
        'AcmeProfileBundle_homepage' => true,
        'AcmeStoreBundle_homepage' => true,
        'AcmeStoreBundle_create' => true,
@@ -509,6 +510,11 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getAcmeUserBundle_profileRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::profileAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/member/profile',  ),));
+    }
+
+    private function getAcmeUserBundle_login_failRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\DefaultController::loginFailureAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/user/login_check',  ),));
     }
 
     private function getAcmeProfileBundle_homepageRouteInfo()

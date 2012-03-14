@@ -23,13 +23,13 @@ Acme\TaskBundle\Entity\Notification:
     wConditionId:
       type: integer
       length: '11'
-    notified:
+    updatable:
       type: boolean
       default: false
     snooze:
       type: boolean
       default: false
-    email:
+    push:
       type: boolean
       default: false
     sms:

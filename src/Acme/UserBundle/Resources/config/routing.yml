@@ -5,3 +5,7 @@ AcmeUserBundle_profile_edit:
 AcmeUserBundle_profile:
     pattern:  /member/profile
     defaults: { _controller: AcmeUserBundle:Profile:profile }
+    
+AcmeUserBundle_login_fail:
+    pattern:  /user/login_check
+    defaults: { _controller: AcmeUserBundle:Default:loginFailure }

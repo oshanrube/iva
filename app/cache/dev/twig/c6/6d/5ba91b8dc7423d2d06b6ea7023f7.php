@@ -33,15 +33,28 @@ class __TwigTemplate_c66d5ba91b8dc7423d2d06b6ea7023f7 extends Twig_Template
         // line 5
         echo twig_escape_filter($this->env, $this->getContext($context, "csrf_token"), "html", null, true);
         echo "\" />
-
+";
+        // line 6
+        if ((!twig_test_empty($this->getContext($context, "error")))) {
+            // line 7
+            echo "<div id=\"message\">
+<dd class=\"error message\">";
+            // line 8
+            echo twig_escape_filter($this->env, $this->getContext($context, "error"), "html", null, true);
+            echo "</dd>
+</div>
+";
+        }
+        // line 11
+        echo "\t\t\t
 \t<div class=\"clearfix\">
 \t\t<label for=\"username\">";
-        // line 8
+        // line 13
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.username", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
 \t\t<div class==\"input\">
 \t\t\t<input type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 10
+        // line 15
         echo twig_escape_filter($this->env, $this->getContext($context, "last_username"), "html", null, true);
         echo "\" />
 \t\t</div>
@@ -49,7 +62,7 @@ class __TwigTemplate_c66d5ba91b8dc7423d2d06b6ea7023f7 extends Twig_Template
 
 \t<div class=\"clearfix\">
 \t\t<label for=\"password\">";
-        // line 15
+        // line 20
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.password", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
 \t\t<div class==\"input\">
@@ -60,13 +73,13 @@ class __TwigTemplate_c66d5ba91b8dc7423d2d06b6ea7023f7 extends Twig_Template
 \t<div class=\"clearfix\">
 \t\t<input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" style=\"margin: 10px;\" />
 \t\t<label for=\"remember_me\">";
-        // line 23
+        // line 28
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.remember_me", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
 \t</div>
     <div class=\"actions\">
 \t\t<button type=\"submit\" class=\"btn primary\">";
-        // line 26
+        // line 31
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "</button>
     </div>

@@ -324,4 +324,79 @@ class Notification
     {
         return $this->wcondition;
     }
+    /**
+     * @var boolean $update
+     */
+    private $update;
+
+    /**
+     * @var boolean $push
+     */
+    private $push;
+
+
+    /**
+     * Set update
+     *
+     * @param boolean $update
+     */
+    public function setUpdate($update)
+    {
+        $this->update = $update;
+    }
+
+    /**
+     * Get update
+     *
+     * @return boolean 
+     */
+    public function getUpdate()
+    {
+        return $this->update;
+    }
+
+    /**
+     * Set push
+     *
+     * @param boolean $push
+     */
+    public function setPush($push)
+    {
+        $this->push = $push;
+    }
+
+    /**
+     * Get push
+     *
+     * @return boolean 
+     */
+    public function getPush()
+    {
+        return $this->push;
+    }
+    /**
+     * @var boolean $updatable
+     */
+    private $updatable;
+
+
+    /**
+     * Set updatable
+     *
+     * @param boolean $updatable
+     */
+    public function setUpdatable($updatable)
+    {
+        $this->updatable = $updatable;
+    }
+
+    /**
+     * Get updatable
+     *
+     * @return boolean 
+     */
+    public function getUpdatable()
+    {
+        return $this->updatable;
+    }
 }

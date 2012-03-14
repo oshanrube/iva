@@ -14,10 +14,11 @@ namespace FOS\UserBundle\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Acme\HomeBundle\Library\Mobile;
 
 class SecurityController extends ContainerAware
 {
-	public function loginAction($quick = false,$mobile = false)
+	public function loginAction($quick = false)
     {
         $request = $this->container->get('request');
         /* @var $request \Symfony\Component\HttpFoundation\Request */
@@ -42,7 +43,9 @@ class SecurityController extends ContainerAware
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
 
         $csrfToken = $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate');
-
+			
+			$mobile = Mobile::isMobile();
+			
 		if($quick){
 			return $this->container->get('templating')->renderResponse('FOSUserBundle:Security:quickLogin.html.'.$this->container->getParameter('fos_user.template.engine'), array(
             'last_username' => $lastUsername,

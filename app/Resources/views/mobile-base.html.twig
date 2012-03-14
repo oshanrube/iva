@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="{{ asset('css/iva.min.css') }}" /></link>
 	<script type="text/javascript" src="{{ asset('js/jquery.mob.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/jquery.mobile-1.0.1.min.js') }}"></script>
+	{% block scripts %}{% endblock %}
 	<script type="text/javascript" >
 	function didyoumean(that){
 		$('#form_task').val(that.innerHTML);
@@ -20,8 +21,9 @@
 		$('#venues-list').find('li').remove();
 		$('#venues-list').append($('<li>Location: '+name+'</li>'));
 	}
+	{% block js %}{% endblock %}
 	</script>
-	{% block scripts %}{% endblock %}
+	
 </head>
 <body>
 <div data-role="page" id="{% block pageId %}main{% endblock %}">
@@ -36,7 +38,7 @@
 			</span>
 		</a>
 	</div>
-{% else %}
+{% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 	<div data-role="header" data-theme="a">
 		{% if app.request.attributes.get('_route') != 'AcmeMobileBundle_homepage' %}
 		<a href='#' class='ui-btn-left' data-icon='arrow-l' onclick="history.back(); return false">Back</a>
@@ -49,9 +51,14 @@
 			</span>
 		</a>
 	</div>
+{% else %}
+	<div data-role="header" data-theme="a">
+		<h1>IVA</h1>
+	</div>
 {% endif %}
 {% endblock %}
 
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 {% block navigation %}
 <div data-role="navbar">
 	<ul>
@@ -60,6 +67,7 @@
 	</ul>
 </div><!-- /navbar -->
 {% endblock %}
+{% endif %}
 	<div data-role="content">
 			{% block content %}{% endblock %}
 	</div>		
