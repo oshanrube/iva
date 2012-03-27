@@ -43,5 +43,8 @@
     <button type="submit" name="Submit" class="btn">
     {{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}
     </button>
+    <button type="button" data-icon="google" id="google_login" name="Submit" class="btn" onclick="window.location.href='{{ url('AcmeUserBundle_google_login') }}';">
+        Login Using Google
+    </button>
 </form>        
 {% endblock content %}
