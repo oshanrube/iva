@@ -91,6 +91,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeUserBundle_profile_edit' => true,
        'AcmeUserBundle_profile' => true,
        'AcmeUserBundle_login_fail' => true,
+       'AcmeUserBundle_google_login' => true,
        'AcmeProfileBundle_homepage' => true,
        'AcmeStoreBundle_homepage' => true,
        'AcmeStoreBundle_create' => true,
@@ -515,6 +516,11 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getAcmeUserBundle_login_failRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\DefaultController::loginFailureAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/user/login_check',  ),));
+    }
+
+    private function getAcmeUserBundle_google_loginRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\GoogleController::loginAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/user/google/login',  ),));
     }
 
     private function getAcmeProfileBundle_homepageRouteInfo()

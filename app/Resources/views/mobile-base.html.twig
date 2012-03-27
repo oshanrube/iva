@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="{{ asset('css/iva.min.css') }}" /></link>
 	<script type="text/javascript" src="{{ asset('js/jquery.mob.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/jquery.mobile-1.0.1.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/googleMaps.mobile.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/mobile.js') }}"></script>
 	{% block scripts %}{% endblock %}
 	<script type="text/javascript" >
 	function didyoumean(that){
@@ -31,6 +33,16 @@
 {% if app.session.hasFlash('success') %}
 	<div data-role="header" data-theme="e" class="ui-header ui-bar-e" role="banner">
 		<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">{{ app.session.flash('success') }}</h1>
+		<a href="{{ path('AcmeMobileBundle_homepage') }}" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-f" title="Home" data-theme="f">
+			<span class="ui-btn-inner ui-btn-corner-all">
+				<span class="ui-btn-text">Home</span>
+				<span class="ui-icon ui-icon-home ui-icon-shadow"></span>
+			</span>
+		</a>
+	</div>
+{% elseif app.session.hasFlash('error') %}
+	<div data-role="header" data-theme="e" class="ui-header ui-bar-e" role="banner">
+		<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">{{ app.session.flash('error') }}</h1>
 		<a href="{{ path('AcmeMobileBundle_homepage') }}" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-f" title="Home" data-theme="f">
 			<span class="ui-btn-inner ui-btn-corner-all">
 				<span class="ui-btn-text">Home</span>
@@ -74,6 +86,11 @@
 
 </div>
 {% block javascripts %}{% endblock %}
+<script type="text/javascript" >
+	if (window.android){
+		window.android.loadCompleate();
+	}
+</script>
 </body>
 </html>
 ​

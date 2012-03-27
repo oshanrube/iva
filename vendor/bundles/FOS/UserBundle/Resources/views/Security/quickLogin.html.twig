@@ -20,7 +20,7 @@
     <button type="submit" name="Submit" class="btn">
     {{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}
     </button>
-    <button type="submit" id="google_login" name="Submit" class="btn" onclick="window.location.href='http://192.168.1.10/rbs//?option=com_gapi';">
+    <button type="button" id="google_login" name="Submit" class="btn" onclick="window.location.href='{{ url('AcmeUserBundle_google_login') }}';">
       <img src="{{ asset('images/google_login.png') }}">
         <span>Login Using Google</span>
       </button>

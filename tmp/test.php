@@ -1,46 +1,47 @@
 <?php
+include('enc.class.php');
 
+$text = 'To Sherlock Holmes she isdddasddddddddddddddddddddddddddddd  thaaaaaaaaaae woman. I have seldom heard him mention her under an other name. In his eyes she eclipses and predominates the whole of her sex. ';
+$text = file_get_contents('book.txt');
+$key = "this is a secret key";
 
-// Your testing data
-$APP_MASTER_SECRET = 'zPGL_u2pTQ6Jvjhp1G1vLg';
-$APP_KEY = 'c90dgermSm6nID5Dh4GCeA';
-$TEST_DEVICE_TOKEN = '95e06683-ef77-482c-a12c-337d5d6bc2bf';
+//set key
+$time_start = microtime(true);
+$count = 1;
+$originalTextLength = strlen($text);
+/*encryption**************************************/
+for($x = 0; $x < $count; $x++){
+	$ENC = new ENC($key);
+	$text = $ENC->encrypt($text,true);
+}
+/*************************************************/
+$encryptedText = $text;
+$encryptedTextLength = strlen($text);
 
+$encryptionTime = microtime(true) - $time_start;
+$de_time_start = microtime(true);
 
-        // create the contents of the android field
-        $android = array();
-        $android['alert'] = 'heyyyy';
-        $android['extra'] = 'nulll';
+/*decryption**************************************/
+for($x = 0; $x < $count; $x++){
+	$ENC = new ENC($key);
+	$encryptedText = $ENC->decrypt($encryptedText);
+}
+/*************************************************/
 
-        // create the contents of the main json object
-        $dictionary = array();
-        $dictionary['android'] = $android;
-        $dictionary['apids'] = array($TEST_DEVICE_TOKEN); // The specific android urban airship phone id
+echo "/**********************************Decrypted Text**********************************/";
+echo "\n\n\n";
+echo  $encryptedText;
 
-        // convert the dictionary to a json string
-        $data = json_encode($dictionary);
+$decryptionTime = microtime(true) - $de_time_start;
+$time = microtime(true) - $time_start;
 
-        // open connection
-        $ch = curl_init();
-
-        // the url and credentials for posting to urban airship
-        $url = "https://go.urbanairship.com/api/push/";
-
-        // set the url, number of POST vars, POST data
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json",));
-        curl_setopt($ch, CURLOPT_USERPWD,"$APP_KEY:$APP_MASTER_SECRET");
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        // execute post
-        $result = curl_exec($ch);
-
-        // close connection
-        $res = curl_close($ch);
-        if($res == 1){
-                print "Success";
-        } else {
-                print "Error";
-        }
+echo "\n\n\n";
+echo "/**********************************    Stats     **********************************/";
+echo "\n\n";
+echo "Encryption time			: $encryptionTime seconds\n";
+echo "Decryption time			: $decryptionTime seconds\n";
+echo "Encryption decryption time	: $time seconds\n";
+echo "Encrypted number of times	: $count\n";
+echo "Original text length		: $originalTextLength\n";
+echo "Encrypted text length		: $encryptedTextLength\n";
+/*********************************************/

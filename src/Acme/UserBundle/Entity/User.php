@@ -36,25 +36,30 @@ class User extends BaseUser
     private $avgspeed;
     
     /**
-     * @ORM\Column(type="string",length="255")
+     * @ORM\Column(type="string",length="255", nullable=true)
      */
     private $fbToken;
     
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string",length="25", nullable=true)
+     */
+    private $loginType;
+    
+    /**
+     * @ORM\Column(type="float", nullable=true)
      */
     private $lng;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $lat;
     /**
-     * @ORM\Column(type="string",length="16")
+     * @ORM\Column(type="string",length="16", nullable=true)
      */
     private $deviceId;
     /**
-     * @ORM\Column(type="integer",length="11")
+     * @ORM\Column(type="integer",length="11", nullable=true)
      */
     private $phoneNum;
 
@@ -68,21 +73,21 @@ class User extends BaseUser
 	}
 	
 	public function setName($name) {
-		$this->name == $name;
+		$this->name = $name;
 	}
 	public function getDeviceId() {
 		return $this->deviceId;
 	}
 	
 	public function setDeviceId($deviceId) {
-		$this->deviceId == $deviceId;
+		$this->deviceId = $deviceId;
 	}
 	public function getPhoneNum() {
 		return $this->phoneNum;
 	}
 	
 	public function setPhoneNum($phoneNum) {
-		$this->phoneNum == $phoneNum;
+		$this->phoneNum = $phoneNum;
 	}
 	/**
      * Set lng
@@ -162,6 +167,25 @@ class User extends BaseUser
     public function getFbToken()
     {
         return $this->fbToken;
+    }
+    /**
+     * Set loginType
+     *
+     * @param string $loginType
+     */
+    public function setLoginType($loginType)
+    {
+        $this->loginType = $loginType;
+    }
+
+    /**
+     * Get loginType
+     *
+     * @return string 
+     */
+    public function getLoginType()
+    {
+        return $this->loginType;
     }
     /**
      * Get id

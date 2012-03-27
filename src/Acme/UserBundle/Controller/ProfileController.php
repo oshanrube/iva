@@ -36,5 +36,4 @@ class ProfileController extends Controller
 			array('form' => $form->createView(), 'theme' => $this->container->getParameter('fos_user.template.theme'), 'user' => $user)
 		);
 	}
-
 }

@@ -398,6 +398,11 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return array (  '_controller' => 'Acme\\UserBundle\\Controller\\DefaultController::loginFailureAction',  '_route' => 'AcmeUserBundle_login_fail',);
         }
 
+        // AcmeUserBundle_google_login
+        if ($pathinfo === '/user/google/login') {
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\GoogleController::loginAction',  '_route' => 'AcmeUserBundle_google_login',);
+        }
+
         // AcmeProfileBundle_homepage
         if (preg_match('#^/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\ProfileBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeProfileBundle_homepage'));

@@ -1,0 +1,20 @@
+Acme\TaskBundle\Entity\TaskPriority:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    level:
+      type: integer
+      length: '2'
+    description:
+      type: text
+      length: null
+  lifecycleCallbacks: {  }
+  oneToMany:
+       taskPrioritys:
+            targetEntity: Task
+            mappedBy: taskPriority

@@ -15,11 +15,11 @@
 <ul data-role="listview" data-theme="g">
 	<li><a href="{{ path('AcmeLearningBundle_addLocation') }}">Add New Location</a></li>
 {% for location in locations %}
-	<li><a href="{{ path('AcmeLearningBundle_addLocation' , { 'title' : location.title } ) }}" data-ajax="false" >{{ location.title }}</a></li>
+	<li><a href="{{ path('AcmeLearningBundle_addLocation' , { 'title' : location.title } ) }}" >{{ location.title }}</a></li>
 {% endfor %}
 	<li data-role="list-divider" role="heading">My Custom Locations</li>
 {% for location in mylocations %}
-	<li><a href="{{ path('AcmeLearningBundle_editLocation' , { 'id' : location.id } ) }}" data-ajax="false" >{{ location.title }}</a></li>
+	<li><a href="{{ path('AcmeLearningBundle_editLocation' , { 'id' : location.id } ) }}" >{{ location.title }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

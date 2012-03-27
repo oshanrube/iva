@@ -9,3 +9,7 @@ AcmeUserBundle_profile:
 AcmeUserBundle_login_fail:
     pattern:  /user/login_check
     defaults: { _controller: AcmeUserBundle:Default:loginFailure }
+    
+AcmeUserBundle_google_login:
+    pattern:  /user/google/login
+    defaults: { _controller: AcmeUserBundle:Google:login }

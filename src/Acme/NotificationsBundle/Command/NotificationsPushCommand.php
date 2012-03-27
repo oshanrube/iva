@@ -37,10 +37,8 @@ class NotificationsPushCommand extends ContainerAwareCommand
     		$userId=$noti->getTask()->getUserId();
     		$user = 	$em->getRepository('AcmeUserBundle:User')
       			->findOneById($userId);
-      	//prepair the message
-    		$message = 'REMINDER: '.$noti->getTask()->getDescription().' At '.date("D M j G:i:s",$noti->getTask()->getStartTime());	    		 
-			//process and SEND notification
-			$libNotification->pushNotification($user,$message);
+      	//process and SEND notification
+			$libNotification->pushNotification($user,$noti);
 		}
       $output->writeln('Done');
     }

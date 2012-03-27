@@ -60,7 +60,10 @@ class __TwigTemplate_c5a072c2bbd7fb21b5bfdb57bcf9ba37 extends Twig_Template
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.submit", array(), "FOSUserBundle"), "html", null, true);
         echo "
     </button>
-    <button type=\"submit\" id=\"google_login\" name=\"Submit\" class=\"btn\" onclick=\"window.location.href='http://192.168.1.10/rbs//?option=com_gapi';\">
+    <button type=\"button\" id=\"google_login\" name=\"Submit\" class=\"btn\" onclick=\"window.location.href='";
+        // line 23
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("AcmeUserBundle_google_login"), "html", null, true);
+        echo "';\">
       <img src=\"";
         // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/google_login.png"), "html", null, true);

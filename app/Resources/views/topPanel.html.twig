@@ -1,4 +1,5 @@
 <div id="toppanel">
+	{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 	<div id="panel">
 		<div class="content clearfix">
 			<div class="left">
@@ -33,14 +34,18 @@
 					</noscript>
 			</div>
 		</div>
-</div> <!-- /login -->	
-
+	</div> <!-- /login -->	
+	{% endif %}
 	<!-- The tab on top -->	
 	<div class="tab">
 		<ul class="login">
 			<li class="left">&nbsp;</li>
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				{% if app.user.loginType == 'google' %}
+				<li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.name}, 'FOSUserBundle') }}</li>
+				{% else %}
          	<li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</li>
+         	{% endif %}
          {% else %}
             <li>Hello Guest!</li>
          {% endif %}

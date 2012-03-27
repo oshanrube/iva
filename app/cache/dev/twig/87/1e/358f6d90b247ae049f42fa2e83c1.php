@@ -217,15 +217,15 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
         echo " >
 \t<div class=\"span4\">
 \t\t<ul id=\"icons\">
-\t\t\t<li><a href=\"<?php echo JURI::base(); ?>\"><img src=\"";
+\t\t\t<li><a href=\"\"><img src=\"";
         // line 75
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icon1.gif"), "html", null, true);
         echo "\" alt=\"\"></a></li>
-\t\t\t<li><a href=\"<?php echo JURI::base(); ?>sitemap\"><img src=\"";
+\t\t\t<li><a href=\"sitemap\"><img src=\"";
         // line 76
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icon2.gif"), "html", null, true);
         echo "\" alt=\"\"></a></li>
-\t\t\t<li><a href=\"<?php echo JURI::base(); ?>contacts\"><img src=\"";
+\t\t\t<li><a href=\"contacts\"><img src=\"";
         // line 77
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/icon3.gif"), "html", null, true);
         echo "\" alt=\"\"></a></li>
@@ -255,8 +255,8 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
             echo "\" class=\"info\">About</a></li>
 \t\t\t\t<li><a href=\"";
             // line 90
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "support")), "html", null, true);
-            echo "\" class=\"wrench\">Support</a></li>
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "mobile")), "html", null, true);
+            echo "\" class=\"wrench\">Mobile</a></li>
 \t\t\t\t<li><a href=\"";
             // line 91
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("AcmeHomeBundle_ajax", array("article" => "contact-us")), "html", null, true);
@@ -368,7 +368,7 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
         // line 150
         echo "<script>
 \tjQuery(document).ready(function(\$) {
-\t\t\$('#form_1').jqTransform({imgPath:'jqtransformplugin/img/'});\t
+\t\t\$('#form_1').jqTransform({imgPath:'jqtransformplugin/img/'});
 \t});
 </script>
 <script src=\"";
@@ -377,7 +377,7 @@ class __TwigTemplate_871e358f6d90b247ae049f42fa2e83c1 extends Twig_Template
         echo "\" type=\"text/javascript\"></script>
 
 </body>
-<footer><small style=\"float: left;margin-left: 41px;font-size: 10px;\">The imformation in this page is for demostration purposes only!</small> OshanR Presents...</footer>
+<footer><small style=\"float: left;margin-left: 41px;font-size: 10px;\">The information in this page is strictly for demostration purposes only!</small> OshanR Presents...</footer>
 </html>";
     }
 

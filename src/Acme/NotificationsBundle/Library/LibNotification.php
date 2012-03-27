@@ -87,7 +87,7 @@ class LibNotification{
       return $notification;
 	}
 	
-	public function pushNotification($user,$message) {
+	public function pushNotification($user,$notification) {
 		//$Gnoti = new GtalkNotifications();
 		//$Gnoti->sendNotification();
 		//tokudu
@@ -95,7 +95,7 @@ class LibNotification{
 		//$Tokudu->sendNotification($user,$message);
 		//UrbanAirship
 		$UrbanAirship = new UrbanAirship();
-		$UrbanAirship->sendNotification($user,$message);
+		$UrbanAirship->sendNotification($user,$notification);
 		//sms
 //		$Sms = new Sms();
 //		$Sms->sendNotification($user,$message);

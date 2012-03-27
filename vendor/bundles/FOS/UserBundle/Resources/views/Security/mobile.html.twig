@@ -1,5 +1,21 @@
 {% extends '::mobile-base.html.twig' %}
 
+{% block header %}
+{% if not error is empty %}
+<div data-role="header" data-theme="e" class="ui-header ui-bar-e" role="banner">
+	<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">{{ error }}</h1>
+	<a href="{{ path('AcmeMobileBundle_homepage') }}" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home ui-btn ui-btn-icon-notext ui-btn-corner-all ui-shadow ui-btn-up-f" title="Home" data-theme="f">
+		<span class="ui-btn-inner ui-btn-corner-all">
+			<span class="ui-btn-text">Home</span>
+			<span class="ui-icon ui-icon-home ui-icon-shadow"></span>
+		</span>
+	</a>
+</div>
+{% else %}
+	{{ parent() }}
+{% endif %}
+{% endblock %}
+
 {% block content%}
 <form class="clearfix" action="{{ path("fos_user_security_check") }}" method="post"  id="form-login">
   <h1>Member Login</h1>

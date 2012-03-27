@@ -1,10 +1,6 @@
 {% extends '::mobile-base.html.twig' %}
 
-{% block pageId %}editLocation{% endblock %}
-
-{% block scripts %}
-<script type="text/javascript" src="{{ asset('js/googleMaps.mobile.js') }}"></script>
-{% endblock %}
+{% block pageId %}edit_location{% endblock %}
 
 {% block header %}
 {% if app.session.hasFlash('success') %}
@@ -24,26 +20,4 @@
 	<button type="submit" name="action" value="delete" data-role="button" data-icon="delete">Delete</button>
 </form>
 <div id="map_canvas" style="width: 100%;height: 200px;"></div>
-<script>
-var map,marker;
-$(function() { 
-	if($("#form_lat").val() && $("#form_lng").val()){
-		var center = new google.maps.LatLng($("#form_lat").val(), $("#form_lng").val());
-	} else {
-		var center = new google.maps.LatLng(-34.397, 150.644);
-	}
-	var myOptions = {
-		center: center,zoom: 15,mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-	marker = new google.maps.Marker({position: center,map: map,title:"Here"});
-   google.maps.event.addListener(map, 'click', function(event) {
-		var myLatLng = event.latLng;var lat = myLatLng.lat();var lng = myLatLng.lng();
-		var pos = new google.maps.LatLng(lat,lng);
-		marker.setPosition(pos);
-		$("#form_lat").val(lat);
-      $("#form_lng").val(lng);
-	});
-});
-</script>
 {% endblock %}

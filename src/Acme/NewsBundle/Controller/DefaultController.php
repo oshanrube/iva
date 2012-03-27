@@ -15,8 +15,8 @@ class DefaultController extends Controller
 	}
 	public function ajaxAction()
 	{
-		//if(!$this->getRequest()->isXmlHttpRequest())
-		//	return $this->redirect($this->generateUrl('error'));
+		if(!$this->getRequest()->isXmlHttpRequest())
+			return $this->redirect($this->generateUrl('error'));
 		
 		$news = new LibNews($this->getDoctrine()->getEntityManager());
 		$feed = $news->getTodaysNews('Colombo');

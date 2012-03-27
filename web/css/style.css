@@ -299,6 +299,21 @@ padding: 20px;
 border-radius: 10px;
 background: #586166;
 }
+#ajax_content form .control-group .controls{
+	width: 230px;
+	display: inline-block;
+	margin-left: 5px;
+}
+#ajax_content form .control-group .controls input{
+	width: 230px;
+}
+#ajax_content form .control-group {
+	margin-top: 10px;
+}
+#ajax_content form .form-actions {
+	margin-top: 20px;
+	margin-left: 136px;
+}
 form .actions{
 	background: inherit;
 	padding: 10px 0 0 150px;

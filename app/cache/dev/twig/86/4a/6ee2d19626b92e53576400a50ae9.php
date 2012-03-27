@@ -11,9 +11,7 @@ class __TwigTemplate_864a6ee2d19626b92e53576400a50ae9 extends Twig_Template
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "Hello ";
-        echo twig_escape_filter($this->env, $this->getContext($context, "name"), "html", null, true);
-        echo "!
+        echo "asdsad
 ";
     }
 
@@ -24,6 +22,6 @@ class __TwigTemplate_864a6ee2d19626b92e53576400a50ae9 extends Twig_Template
 
     public function isTraitable()
     {
-        return false;
+        return true;
     }
 }

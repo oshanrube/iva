@@ -1,5 +1,8 @@
 {% extends '::mobile-base.html.twig' %}
 {% block navigation %}{% endblock %}
+
+{% block pageId %}add_new_task{% endblock %}
+
 {% block content%}
 <form id="addNewTask" action="{{ path('AcmeMobileBundle_addtask') }}" method="post" {{ form_enctype(form) }}>
 	<input type="text" x-webkit-speech autocomplete="off" spellcheck="false" x-webkit-grammar="builtin:search" lang="en" id="form_task" name="task" required="required" maxlength="255" pattern=".{3,255}" placeholder="What, Where, When" value="{{ task.task }}" />
@@ -10,6 +13,7 @@
    <span>
    {% if didyoumean is not empty %}Did you mean? "<span id="did-you-mean" onClick="didyoumean(this)">{{ didyoumean }}</span>"{% endif %}
    </span>
+   <span id="locDetError">Automatic location Detector is working...</span>
 </form>
 {% if venues is defined %}
 <ul id="venues-list" data-role="listview" data-theme="g" style="margin-top: 5px;">
@@ -19,23 +23,4 @@
 {% endfor %} 
 </ul>
 {% endif %}
-<script>
-$(window).load(function() {
-	// check for Geolocation support
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      startPos = position;
-      $("#lat").val(startPos.coords.latitude);
-      $("#lng").val(startPos.coords.longitude);
-    }, function(error) {
-      alert("Error occurred. Error code: " + error.code);
-      // error.code can be:
-      //   0: unknown error
-      //   1: permission denied
-      //   2: position unavailable (error response from locaton provider)
-      //   3: timed out
-    });
-  }
-});
-</script>
 {% endblock %}
