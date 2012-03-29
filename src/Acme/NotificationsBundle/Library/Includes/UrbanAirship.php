@@ -11,7 +11,7 @@ class UrbanAirship{
 	public function sendNotification($user,$notification) {
 		//prepair the message
 		$message = 'REMINDER: '.$notification->getTask()->getDescription().' At '.date("D M j G:i:s",$notification->getTask()->getStartTime());
-    	$colour = $notification->getTask()->getTaskColour()->getColour();
+		$colour = $notification->getTask()->getTaskColour()->getColour();
     	if($colour == "Default"){$colour = '000000';}
     	$datetime = date('l jS \of F Y h:i:s A',$notification->getTask()->getStartTime());
 		// create the contents of the android field
@@ -20,12 +20,16 @@ class UrbanAirship{
       $android['extra'] = new \stdClass();
       $android['extra']->colour = '#'.$colour;
       $android['extra']->datetime = $datetime;
+      $android['extra']->lng = (String) $notification->getTask()->getLng();
+      $android['extra']->lat = (String) $notification->getTask()->getLat();
+      $android['extra']->location = $notification->getTask()->getLocation();
+      
 
       // create the contents of the main json object
       $dictionary = array();
       $dictionary['android'] = $android;
       $dictionary['apids'] = array($this->getDeviceId($user)); // The specific android urban airship phone id
-      
+      echo "pushed to ".$this->getDeviceId($user)."\n";
       // convert the dictionary to a json string
       $this->vars = json_encode($dictionary);
 		//send
@@ -49,14 +53,14 @@ class UrbanAirship{
       curl_setopt($ch, CURLOPT_POSTFIELDS, $this->vars);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       // execute post
-      if(curl_exec($ch) == null)
+      if(!$res = curl_exec($ch))
 		{
 			// close connection
       	curl_close($ch);
 		   echo 'Curl error: ' . curl_error($ch);
 		   return false;
 		}
-		exit();
+		echo $res."\n";
 		// close connection
       curl_close($ch);
 		return true;

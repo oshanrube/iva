@@ -2,25 +2,17 @@ $('#add_new_task').live('pageshow', function () { addnewtask(); });
 $('#learn_travel').live('pageshow', function () { learntravel(); });
 $('#add_location').live('pageshow', function () { locationadd(); });
 $('#edit_location').live('pageshow', function () { locationedit(); });
+var watchID = null;
 
-var CurrPosition;
 function loadLocation(){
 	// check for Geolocation support
 if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(function(position) {
-		CurrPosition = position;
 		$("#lat").val(position.coords.latitude);
 		$("#lng").val(position.coords.longitude);
 		$("#locDetError").hide();
-	}, function(error) {
-		$("#locDetError").html("Automatic location detector failed..");
-		// error.code can be:
-		//   0: unknown error
-		//   1: permission denied
-		//   2: position unavailable (error response from locaton provider)
-		//   3: timed out
-	});
-}	
+	}, onError);
+	}
 }
 
 function addnewtask(){
@@ -31,28 +23,12 @@ function learntravel(){
 	// check for Geolocation support
 if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(function(position) {
-		CurrPosition = position;
 		//set the map center
 		var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 		map.setCenter(latlng);
 		marker.setPosition(latlng);
 		onSuccess(position);
-	}, function(error) {
-		if(error.code == 0) {
-			alert("unknown error");
-		} else if(error.code == 1) {
-			alert("permission denied");
-		} else if(error.code == 2) {
-			alert("Position unavailable");
-		} else {
-			alert("timed out");
-		}
-		// error.code can be:
-		//   0: unknown error
-		//   1: permission denied
-		//   2: position unavailable (error response from locaton provider)
-		//   3: timed out
-	});
+	}, onError);
 }
 	var map,marker,geocoder,timeouts;
 	var infowindow = new google.maps.InfoWindow();
@@ -71,12 +47,15 @@ if (navigator.geolocation) {
 function startRec(that){
 	$(that).parent().find("span.ui-btn-text").html("Stop");
 	$(that).attr("onClick","stopRec(this)");
-	var unix = Math.round(+new Date()/1000);
-	localStorage['latlng'] = unix+"="+CurrPosition.coords.latitude+","+CurrPosition.coords.longitude;
-	timeouts = setTimeout("recPath()",3000);
+	// Update every 3 seconds
+   var options = { frequency: 3000 };
+   watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
 }
 function stopRec(that){
-	clearTimeout(timeouts);
+	if (watchID != null) {
+      navigator.geolocation.clearWatch(watchID);
+      watchID = null;
+  }
 	$(that).parent().find("span.ui-btn-text").html("Start");
 	$(that).attr('onClick','startRec(this)');
 	$('#saveButton').closest('.ui-btn').show();
@@ -88,13 +67,6 @@ try {
 	return false;
 }
 }
-function recPath(){
-	if (!supportsLocalStorage()) { return false; }
-	navigator.geolocation.getCurrentPosition(function(position) {
-		var unix = Math.round(+new Date()/5000);
-		localStorage['latlng'] += "::"+unix+"="+position.coords.latitude+","+position.coords.longitude;
-	});
-}
 function updateTravel(){
 	$("#latlng").val(localStorage['latlng']);
 }
@@ -103,21 +75,13 @@ function locationadd(){
 // check for Geolocation support
 if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(function(position) {
-		CurrPosition = position;
 		$("#form_lat").val(position.coords.latitude);
 		$("#form_lng").val(position.coords.longitude);
 		//set the map center
 		var darwin = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 		map.setCenter(darwin);
 		marker.setPosition(darwin);
-	}, function(error) {
-		alert("Error occurred. Error code: " + error.code);
-		// error.code can be:
-		//   0: unknown error
-		//   1: permission denied
-		//   2: position unavailable (error response from locaton provider)
-		//   3: timed out
-	});
+	}, onError);
 }
 var map,marker;
 	if($("#form_lat").val() && $("#form_lng").val()){
@@ -160,6 +124,9 @@ var map,marker;
 }
 
 function onSuccess(position) {
+	var unix = Math.round(+new Date()/1000);
+	localStorage['latlng'] = unix+"="+position.coords.latitude+","+position.coords.longitude;
+	
 	var element = document.getElementById('geolocation');
 	element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
 								'Longitude: '          + position.coords.longitude             + '<br />' +
@@ -169,4 +136,11 @@ function onSuccess(position) {
 								'Heading: '            + position.coords.heading               + '<br />' +
 								'Speed: '              + position.coords.speed                 + '<br />' +
 								'Timestamp: '          + new Date(position.timestamp)          + '<br />';
+}
+
+// onError Callback receives a PositionError object
+//
+function onError(error) {
+	alert('code: '    + error.code    + '\n' +
+   		'message: ' + error.message + '\n');
 }

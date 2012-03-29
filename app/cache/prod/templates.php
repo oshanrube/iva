@@ -149,5 +149,4 @@
   '::header.html.twig' => '/var/www/html/Symfony/app/Resources/views/header.html.twig',
   '::layout.html.twig' => '/var/www/html/Symfony/app/Resources/views/layout.html.twig',
   '::topPanel.html.twig' => '/var/www/html/Symfony/app/Resources/views/topPanel.html.twig',
-  '::base.html.twig~' => '/var/www/html/Symfony/app/Resources/views/base.html.twig~',
 );

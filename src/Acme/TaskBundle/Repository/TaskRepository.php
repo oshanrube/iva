@@ -61,14 +61,26 @@ class TaskRepository extends EntityRepository
 	public function findByToday($user) {
 		$today = mktime(0, 0, 0, date('m'), date('j'), date('Y'));
 		$tommorow = mktime(0, 0, 0, date('m'), date('j')+1, date('Y'));
-		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.startTime > :today AND t.startTime < :tommorow AND t.userId = :userId';
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.startTime > :today AND t.startTime < :tommorow AND t.userId = :userId AND t.taskRepeatId = 1';
 		
-		return $this->getEntityManager()
+		$today = $this->getEntityManager()
 			->createQuery($query)
 			->setParameter('today', $today)
 			->setParameter('tommorow', $tommorow)
 			->setParameter('userId', $user->getId())
 			->getResult();
+		//get repeats
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE (t.taskRepeatId != 1 AND t.userId = :userId)';
+		$events = $this->getEntityManager()
+					->createQuery($query)
+					->setParameter('userId', $user->getId())
+					->getResult();
+		foreach($events as $event){
+			if($evnts = TaskRepeatModel::getRepeatFor($event,$today,$tommorow)){
+				$today = array_merge($today,$evnts);
+			}
+		}
+		return $today;
 	}
 	public function findOneByUserAndId($id, $user) {
 		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.id = :id AND t.userId = :userId';
