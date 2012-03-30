@@ -9,6 +9,10 @@ AcmeMobileBundle_addtask:
 AcmeMobileBundle_viewTodaysTasks:
     pattern:  /view/today
     defaults: { _controller: AcmeMobileBundle:Task:viewTodays }
+
+AcmeMobileBundle_viewTask:
+    pattern:  /view/today/{id}
+    defaults: { _controller: AcmeMobileBundle:Task:viewTask }
     
 AcmeMobileBundle_viewCalendars:
     pattern:  /view/calendars

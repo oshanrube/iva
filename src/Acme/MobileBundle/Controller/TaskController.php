@@ -58,9 +58,9 @@ class TaskController extends Controller
 			}
 		}
 		return $this->render('AcmeMobileBundle:Task:add.html.twig', 
-		array('form' => $form->createView(),'task' => $task,'didyoumean' => ''));	
-		
+		array('form' => $form->createView(),'task' => $task,'didyoumean' => ''));			
 	}
+	
 	public function viewTodaysAction(Request $request)
 	{
 		$Task = $this->getDoctrine()->getRepository('AcmeTaskBundle:Task');
@@ -68,6 +68,17 @@ class TaskController extends Controller
 		$tasklist = $Task->findByToday($user);
 		return $this->render('AcmeMobileBundle:Task:today.html.twig', 
 		array('tasklist' => $tasklist));
+	}
+	
+	public function viewTaskAction(Request $request,$id)
+	{
+		$task = $this	->getDoctrine()->getRepository('AcmeTaskBundle:Task')
+							->findOneById($id);
+		$user = $this->get('security.context')->getToken()->getUser();
+		if($task->getUserId() != $user->getId())
+			throw $this->createNotFoundException('The task does not exist');
+		
+		return $this->render('AcmeMobileBundle:Task:task.html.twig', array('task' => $task));
 	}
 }
 

@@ -59,13 +59,13 @@ class TaskRepository extends EntityRepository
 	}
 	
 	public function findByToday($user) {
-		$today = mktime(0, 0, 0, date('m'), date('j'), date('Y'));
+		$todayDateTime = mktime(0, 0, 0, date('m'), date('j'), date('Y'));
 		$tommorow = mktime(0, 0, 0, date('m'), date('j')+1, date('Y'));
 		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.startTime > :today AND t.startTime < :tommorow AND t.userId = :userId AND t.taskRepeatId = 1';
 		
 		$today = $this->getEntityManager()
 			->createQuery($query)
-			->setParameter('today', $today)
+			->setParameter('today', $todayDateTime)
 			->setParameter('tommorow', $tommorow)
 			->setParameter('userId', $user->getId())
 			->getResult();
@@ -76,7 +76,7 @@ class TaskRepository extends EntityRepository
 					->setParameter('userId', $user->getId())
 					->getResult();
 		foreach($events as $event){
-			if($evnts = TaskRepeatModel::getRepeatFor($event,$today,$tommorow)){
+			if($evnts = TaskRepeatModel::getRepeatFor($event,$todayDateTime,$tommorow)){
 				$today = array_merge($today,$evnts);
 			}
 		}

@@ -1,5 +1,6 @@
 Acme\ScheduleBundle\Entity\Schedule:
   type: entity
+  repositoryClass: Acme\ScheduleBundle\Repository\ScheduleRepository
   table: null
   fields:
     id:

@@ -207,6 +207,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::viewTodaysAction',  '_route' => 'AcmeMobileBundle_viewTodaysTasks',);
             }
 
+            // AcmeMobileBundle_viewTask
+            if (0 === strpos($pathinfo, '/mobile/view/today') && preg_match('#^/mobile/view/today/(?P<id>[^/]+?)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::viewTaskAction',)), array('_route' => 'AcmeMobileBundle_viewTask'));
+            }
+
             // AcmeMobileBundle_viewCalendars
             if ($pathinfo === '/mobile/view/calendars') {
                 return array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::browseAction',  '_route' => 'AcmeMobileBundle_viewCalendars',);

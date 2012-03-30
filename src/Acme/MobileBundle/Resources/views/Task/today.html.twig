@@ -3,7 +3,7 @@
 {% block content%}
 <ul data-role="listview" data-theme="g" style="margin-top: 5px;">
 {% for task in tasklist %} 
-	<li><a href="#" >{{ task }})</a></li>
+	<li><a href="{{ path('AcmeMobileBundle_viewTask', {'id' : task.id }) }}" >{{ task.task }}</a></li>
 {% endfor %}
 {% if tasklist|length == 0%}
 <li>No tasks found</li>

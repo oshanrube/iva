@@ -9,6 +9,7 @@ class TaskRepeatModel{
 		if(!$today)$today = time();
 		$datetime 	= $task->getStartTime();
 		$taskRepeat	= $task->getTaskRepeat();
+		
 		switch($taskRepeat->getTitle()) {
 			case 'Daily':
 				return mktime($hour, $minute, $second, date("n",$today), date("j",$today)+1, date("Y",$today));
@@ -37,11 +38,13 @@ class TaskRepeatModel{
 				$hour = date("H",$datetime);
 				$minute = date("i",$datetime);
 				$second = date("s",$datetime);
-				//echo date('c',$today);
-				if($month == date('n',$today) && $day > date('j',$today)){
-					return mktime($hour, $minute, $second, $month, $day, date("Y",$today));
+				$datetime = mktime($hour, $minute, $second, $month, $day, date("Y",$today));
+				
+				if($datetime >= $today){
+					return $datetime;
+				} else {
+					return strtotime("+1 year",$datetime);
 				}
-				return mktime($hour, $minute, $second, date("n",$today), $day, date("Y",$today)+1);
 				break;
 		}
 	}
@@ -60,27 +63,10 @@ class TaskRepeatModel{
 			$datetime = TaskRepeatModel::getNextRepeat($event,$datetime);
 			if($datetime == $tmpTime)break;
 		}
+		
 		if(isset($cal))
 			return $cal;
 		else
 			return null;
 	}	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

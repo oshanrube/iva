@@ -105,7 +105,7 @@ class Decode{
 				return $taskType;
 			}
 		}
-		
+		return $taskTypeRepo->findOneByTitle("Other");
 	}
 	
 	public static function getEndtime($tasktype,$startTime,$task) {

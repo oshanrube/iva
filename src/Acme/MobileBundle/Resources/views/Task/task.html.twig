@@ -1,0 +1,27 @@
+{% extends '::mobile-base.html.twig' %}
+{% block navigation %}{% endblock %}
+
+{% block pageId %}view_task{% endblock %}
+
+{% block content%}
+<h2>{{ task.task }}</h2>
+<p>{{ task.description }}</p>
+<div data-role="fieldcontain">
+	<label>From:</label>
+	{{ task.startTime|date("F j, Y, g:i a") }}
+</div>
+{% if task.endTime != 0 %}
+<div data-role="fieldcontain">
+	<label>Until:</label>
+	{{ task.endTime|date("F j, Y, g:i a") }}
+</div>
+{% endif %}
+{% if task.location %}
+<div data-role="fieldcontain">
+	<label>Location:</label>
+	{{ task.location }}
+</div>
+
+<a data-role="button" href="geo:0,0?q={{ task.lat }},{{ task.lng }}({{task.location}})" >Open the map</a>
+{% endif %}
+{% endblock %}

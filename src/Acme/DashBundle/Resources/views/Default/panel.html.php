@@ -28,7 +28,7 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 	else{
 		 echo "<td><span class=\"border\"><div class=\"date\">". ($i - $startday + 1) . "</div>";
 		 //print tasks
-		 if(isset($timeline[$day])){
+		 if(isset($timeline[$day]['evnts'])){
 		 	echo '<ul>';
 		 	foreach($timeline[$day]['evnts'] as $task){
 		 		echo "<a href=\"".$view['router']->generate('AcmeTaskBundle_edit_id', array('id' => $task->getId()))."\">";
