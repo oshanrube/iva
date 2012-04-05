@@ -26,6 +26,10 @@ class GoogleController extends Controller
 			return new RedirectResponse($url);
 		}
 		$accesstokenRes = $googleapi->getAccessToken($code);
+		if(!$accesstokenRes) {
+			 $this->get('session')->setFlash('error', 'Error accesing your google account please try again later!');
+			return new RedirectResponse($this->generateUrl('AcmeHomeBundle_homepage'));
+		}
 		$profile = $googleapi->getProfile($accesstokenRes->access_token);		
 		//cross reference the database with user id
 		$userManager = $this->get('fos_user.user_manager'); 

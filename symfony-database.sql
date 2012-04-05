@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.18, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.21, for Linux (x86_64)
 --
 -- Host: localhost    Database: symfony
 -- ------------------------------------------------------
--- Server version	5.5.18
+-- Server version	5.5.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -115,7 +115,7 @@ CREATE TABLE `LearnTravel` (
 
 LOCK TABLES `LearnTravel` WRITE;
 /*!40000 ALTER TABLE `LearnTravel` DISABLE KEYS */;
-INSERT INTO `LearnTravel` VALUES (1,1,'1330448645=6.878075,79.896879::266089730=6.878075,79.896879'),(2,1,'1330451113=6.878075,79.896879'),(3,1,'1332046338=6.878075,79.896879::266409268=6.878075,79.896879');
+INSERT INTO `LearnTravel` VALUES (1,1,'1333002000=6.921315,79.846444::1333002020=6.922614,79.846058::1333002040=6.923956,79.845414::1333002060=6.926565,79.844524::1333002080=6.928046,79.843558::1333002100=6.929111,79.842882'),(2,1,'1330451113=6.878075,79.896879'),(3,1,'1332046338=6.878075,79.896879::266409268=6.878075,79.896879');
 /*!40000 ALTER TABLE `LearnTravel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,7 +352,7 @@ CREATE TABLE `Schedule` (
   `datetime` int(11) NOT NULL,
   `command` varchar(63) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=273 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,7 +361,7 @@ CREATE TABLE `Schedule` (
 
 LOCK TABLES `Schedule` WRITE;
 /*!40000 ALTER TABLE `Schedule` DISABLE KEYS */;
-INSERT INTO `Schedule` VALUES (1,1329534410,'weather:update Colombo'),(2,1329535781,'weather:update Colombo'),(3,1329535857,'weather:update Colombo'),(4,1329535972,'weather:update Colombo'),(5,1329562790,'weather:update Colombo'),(6,1329574470,'weather:update Colombo'),(7,1329574605,'weather:update Colombo'),(8,1329575811,'weather:update Colombo'),(9,1329617169,'weather:update Colombo'),(10,1329619795,'weather:update Colombo'),(11,1329621908,'weather:update Colombo'),(12,1329643692,'calendar:syncfacebook osh'),(13,1329644518,'calendar:syncfacebook osh'),(14,1329644606,'calendar:syncfacebook osh'),(15,1329644734,'calendar:syncfacebook oshan'),(16,1329645031,'weather:update Colombo'),(17,1329647327,'weather:update Colombo'),(18,1329661370,'weather:update Colombo'),(19,1329663605,'weather:update Western Province'),(20,1330273682,'weather:update Colombo'),(21,1330273787,'weather:update Colombo'),(22,1330273804,'weather:update Colombo'),(23,1330358352,'weather:update Colombo'),(24,1330358917,'weather:update Colombo'),(25,1330358994,'weather:update Colombo'),(26,1331118184,'weather:update Colombo'),(27,1331147083,'weather:update Colombo'),(28,1331148662,'weather:update Colombo'),(29,1331169871,'weather:update Colombo'),(30,1331169967,'weather:update Colombo'),(31,1331170815,'weather:update Colombo'),(32,1331170816,'weather:update Colombo'),(33,1331170933,'weather:update Colombo'),(34,1331170984,'weather:update Colombo'),(35,1331171096,'weather:update Colombo'),(36,1331171140,'weather:update Colombo'),(37,1331172070,'weather:update Colombo'),(38,1331173442,'weather:update Colombo'),(39,1331173481,'weather:update Colombo'),(40,1331185240,'weather:update Colombo'),(41,1331185710,'weather:update Colombo'),(42,1331185868,'weather:update Colombo'),(43,1331186250,'weather:update Colombo'),(44,1331186321,'weather:update Colombo'),(45,1331187049,'weather:update Colombo'),(46,1331187105,'weather:update Colombo'),(47,1331188616,'weather:update Colombo'),(48,1331188776,'weather:update Colombo'),(49,1331189019,'weather:update Colombo'),(50,1331189336,'weather:update Colombo'),(51,1331213518,'weather:update Colombo'),(52,1331215853,'weather:update Colombo'),(53,1331215911,'weather:update Colombo'),(54,1331306775,'weather:update Colombo'),(55,1331306816,'weather:update Colombo'),(56,1331307882,'weather:update Colombo'),(57,1331307914,'weather:update Colombo'),(58,1331307954,'weather:update Colombo'),(59,1331342271,'weather:update Colombo'),(60,1331342552,'weather:update Colombo'),(61,1331346384,'notifications:create'),(62,1331361495,'weather:update Colombo'),(63,1331361531,'weather:update Colombo'),(64,1331362299,'weather:update Colombo'),(65,1331362349,'weather:update Colombo'),(66,1331362351,'weather:update Colombo'),(67,1331362352,'weather:update Colombo'),(68,1331362483,'weather:update Colombo'),(69,1331362484,'weather:update Colombo'),(70,1331362486,'weather:update Colombo'),(71,1331362488,'weather:update Colombo'),(72,1331362490,'weather:update Colombo'),(73,1331362694,'weather:update Colombo'),(74,1331362695,'weather:update Colombo'),(75,1331362696,'weather:update Colombo'),(76,1331362791,'weather:update Colombo'),(77,1331362793,'weather:update Colombo'),(78,1331362795,'weather:update Colombo'),(79,1331364680,'weather:update Colombo'),(80,1331366293,'weather:update Colombo'),(81,1331370731,'notifications:create'),(82,1331371476,'notifications:create'),(83,1331372097,'notifications:create'),(84,1331372293,'notifications:create'),(85,1331372450,'notifications:create'),(86,1331372541,'weather:update Colombo'),(87,1331373812,'notifications:create'),(88,1331373946,'notifications:create'),(89,1331374059,'weather:update Colombo'),(90,1331374060,'weather:update Colombo'),(91,1331374114,'notifications:create'),(92,1331374139,'notifications:create'),(93,1331374157,'weather:update Colombo'),(94,1331380219,'weather:update Colombo'),(95,1331380282,'notifications:create'),(96,1331389832,'weather:update Colombo'),(97,1331429724,'weather:update Colombo'),(98,1331430271,'weather:update Colombo'),(99,1331431602,'weather:update Colombo'),(100,1331431741,'weather:update Colombo'),(101,1331431802,'weather:update Colombo'),(102,1331431915,'weather:update Colombo'),(103,1331433169,'weather:update Colombo'),(104,1331433214,'weather:update Colombo'),(105,1331433524,'weather:update Colombo'),(106,1331433612,'weather:update Colombo'),(107,1331437062,'notifications:create'),(108,1331437388,'weather:update Colombo'),(109,1331437507,'weather:update Colombo'),(110,1331437643,'weather:update Colombo'),(111,1331437703,'weather:update Colombo'),(112,1331437996,'weather:update Colombo'),(113,1331439353,'weather:update Colombo'),(114,1331440755,'weather:update Colombo'),(115,1331448445,'weather:update Colombo'),(116,1331449094,'weather:update Colombo'),(117,1331449095,'weather:update Colombo'),(118,1331449096,'weather:update Colombo'),(119,1331449134,'weather:update Colombo'),(120,1331449135,'weather:update Colombo'),(121,1331449216,'weather:update Colombo'),(122,1331449217,'weather:update Colombo'),(123,1331449298,'weather:update Colombo'),(124,1331449310,'weather:update Colombo'),(125,1331451400,'weather:update Colombo'),(126,1331451407,'weather:update Colombo'),(127,1331452447,'weather:update Colombo'),(128,1331452448,'weather:update Colombo'),(129,1331452450,'weather:update Colombo'),(130,1331452452,'weather:update Colombo'),(131,1331452980,'weather:update Colombo'),(132,1331452986,'weather:update Colombo'),(133,1331453136,'notifications:create'),(134,1331453285,'weather:update Colombo'),(135,1331453304,'notifications:create'),(136,1331453686,'weather:update Colombo'),(137,1331458017,'notifications:create'),(138,1331458439,'notifications:create'),(139,1331458444,'notifications:create'),(140,1331458539,'weather:update Colombo'),(141,1331459074,'weather:update Colombo'),(142,1331459084,'weather:update Colombo'),(143,1331459448,'weather:update Colombo'),(144,1331459459,'weather:update Colombo'),(145,1331459557,'notifications:create'),(146,1331459616,'weather:update Colombo'),(147,1331460530,'weather:update Colombo'),(148,1331460538,'weather:update Colombo'),(149,1331460630,'notifications:create'),(150,1331460797,'notifications:create'),(151,1331460812,'weather:update Colombo'),(152,1331460824,'weather:update Colombo'),(153,1331460854,'notifications:create'),(154,1331461879,'weather:update Colombo'),(155,1331461880,'weather:update Colombo'),(156,1331461881,'weather:update Colombo'),(157,1331477422,'weather:update Colombo'),(158,1331600507,'weather:update Colombo'),(159,1331653782,'weather:update Colombo'),(160,1331693123,'weather:update Colombo'),(161,1331693288,'weather:update Colombo'),(162,1331693514,'weather:update Colombo'),(163,1331693521,'weather:update Colombo'),(164,1331693522,'weather:update Colombo'),(165,1331693540,'weather:update Colombo'),(166,1331693545,'weather:update Colombo'),(167,1331693829,'weather:update Colombo'),(168,1331693830,'weather:update Colombo'),(169,1331696195,'weather:update Colombo'),(170,1331696200,'weather:update Colombo'),(171,1332080926,'weather:update Colombo'),(172,1332080933,'weather:update Colombo'),(173,1332675906,'weather:update Colombo'),(174,1332675915,'weather:update Colombo'),(175,1332675936,'weather:update Colombo'),(176,1332675940,'weather:update Colombo'),(177,1332682503,'weather:update Colombo'),(178,1332682511,'weather:update Colombo'),(179,1332867219,'weather:update Colombo'),(180,1332867227,'weather:update Colombo'),(181,1332870814,'weather:update Colombo'),(182,1332870816,'weather:update Colombo'),(183,1332870848,'weather:update Colombo'),(184,1332870849,'weather:update Colombo'),(185,1332871473,'weather:update Colombo'),(186,1332871475,'weather:update Colombo'),(187,1332871822,'weather:update Colombo'),(188,1332871824,'weather:update Colombo'),(189,1332871923,'weather:update Colombo'),(190,1332871924,'weather:update Colombo'),(191,1332871941,'weather:update Colombo'),(192,1332871943,'weather:update Colombo'),(193,1332871958,'weather:update Colombo'),(194,1332871960,'weather:update Colombo'),(195,1332872102,'weather:update Colombo'),(196,1332872104,'weather:update Colombo'),(197,1332872330,'weather:update Colombo'),(198,1332872410,'weather:update Colombo'),(199,1332872431,'weather:update Colombo'),(200,1332872547,'weather:update Colombo'),(201,1332872738,'weather:update Colombo'),(202,1332873674,'weather:update Colombo'),(203,1332873677,'weather:update Colombo'),(204,1332874876,'weather:update Colombo'),(205,1332874880,'weather:update Colombo'),(206,1332876397,'weather:update Colombo'),(207,1332876400,'weather:update Colombo'),(208,1332908459,'weather:update Colombo'),(209,1332908467,'weather:update Colombo'),(210,1332908470,'weather:update Colombo'),(211,1332990360,'weather:update Colombo'),(212,1332990367,'weather:update Colombo');
+INSERT INTO `Schedule` VALUES (231,1333140864,'weather:update Colombo'),(232,1361212200,'weather:update Colombo'),(233,1361212200,'weather:update Colombo'),(234,1361212200,'weather:update Colombo'),(235,1361212200,'weather:update Colombo'),(236,1361212200,'weather:update Colombo'),(237,1361212200,'weather:update Colombo'),(238,1361212200,'weather:update Colombo'),(239,1361212200,'weather:update Colombo'),(240,1361212200,'weather:update Colombo'),(241,1361212200,'weather:update Colombo'),(242,1361212200,'weather:update Colombo'),(243,1361212200,'weather:update Colombo'),(244,1361212200,'weather:update Colombo'),(245,1361212200,'weather:update Colombo'),(246,1361212200,'weather:update Colombo'),(247,1361212200,'weather:update Colombo'),(248,1361212200,'weather:update Colombo'),(249,1361212200,'weather:update Colombo'),(250,1361212200,'weather:update Colombo'),(251,1361212200,'weather:update Colombo'),(252,1361212200,'weather:update Colombo'),(253,1361212200,'weather:update Colombo'),(254,1361212200,'weather:update Colombo'),(255,1361212200,'weather:update Colombo'),(256,1361212200,'weather:update Colombo'),(257,1361212200,'weather:update Colombo'),(258,1361212200,'weather:update Colombo'),(259,1361212200,'weather:update Colombo'),(260,1361212200,'weather:update Colombo'),(261,1361212200,'weather:update Colombo'),(262,1361212200,'weather:update Colombo'),(263,1361212200,'weather:update Colombo'),(264,1361212200,'weather:update Colombo'),(265,1361212200,'weather:update Colombo'),(266,1361212200,'weather:update Colombo'),(267,1361212200,'weather:update Colombo'),(268,1361212200,'weather:update Colombo'),(269,1361212200,'weather:update Colombo'),(270,1361212200,'weather:update Colombo'),(271,1361212200,'weather:update Colombo'),(272,1361212200,'weather:update Colombo');
 /*!40000 ALTER TABLE `Schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -557,7 +557,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'oshan','oshan','drkmafia@gmail.com','drkmafia@gmail.com',1,'sn1m7o1c400wkkgsc0488g4c044w4wc','wfsJywVFIijL+I2oRaMlDMG7Criw7QaBotSohllGrv8sbjY/83T5oC5wGLFZzQ2xojJMX6G4ofQT+AplKMBapA==','2012-03-29 08:36:32',0,0,NULL,NULL,NULL,'a:0:{}',0,NULL,'Oshan Rubesinghe',80.079,6.576,60,'d4b4dab12fcaecdb',776566978,'AAADWwOa7ZB8EBAGul5ZBvOti67wBmnqO0nt0mrCRkAambNw16tH6iZAx7x0ue0gnghAszZC1pNASiT3r5mXuU98LxJwhfzhM8oMaJSqD3ST18Fp0deTS',NULL),(2,'root','root','root@iva.com','root@iva.com',1,'pirbvxe7llc8w0woo4wgw0kogkcccws','q96JCjnV2pHEagrsTbOcpC6o5Pggc6gDq3VRw8FF7nVjaZ5eDGbfttwd5aGKZUsG+j6S5UoclK/1AsPv1z2ENA==','2012-03-09 20:56:12',0,0,NULL,'31726ecle2m848k40swgogg0s8gcg4wssw84wgsok40800o0sw',NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'',0,0,0,'',0,'0',NULL);
+INSERT INTO `Users` VALUES (1,'oshan','oshan','drkmafia@gmail.com','drkmafia@gmail.com',1,'sn1m7o1c400wkkgsc0488g4c044w4wc','wfsJywVFIijL+I2oRaMlDMG7Criw7QaBotSohllGrv8sbjY/83T5oC5wGLFZzQ2xojJMX6G4ofQT+AplKMBapA==','2012-03-30 21:59:24',0,0,NULL,NULL,NULL,'a:0:{}',0,NULL,'Oshan Rubesinghe',80.079,6.576,30.6,'d4b4dab12fcaecdb',776566978,'AAADWwOa7ZB8EBAGul5ZBvOti67wBmnqO0nt0mrCRkAambNw16tH6iZAx7x0ue0gnghAszZC1pNASiT3r5mXuU98LxJwhfzhM8oMaJSqD3ST18Fp0deTS',NULL),(2,'root','root','root@iva.com','root@iva.com',1,'pirbvxe7llc8w0woo4wgw0kogkcccws','q96JCjnV2pHEagrsTbOcpC6o5Pggc6gDq3VRw8FF7nVjaZ5eDGbfttwd5aGKZUsG+j6S5UoclK/1AsPv1z2ENA==','2012-03-09 20:56:12',0,0,NULL,'31726ecle2m848k40swgogg0s8gcg4wssw84wgsok40800o0sw',NULL,'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}',0,NULL,'',0,0,0,'',0,'0',NULL);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -574,7 +574,7 @@ CREATE TABLE `WCondition` (
   `icon` varchar(255) NOT NULL,
   `criticality` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -583,7 +583,7 @@ CREATE TABLE `WCondition` (
 
 LOCK TABLES `WCondition` WRITE;
 /*!40000 ALTER TABLE `WCondition` DISABLE KEYS */;
-INSERT INTO `WCondition` VALUES (14,'Cloudy','http://www.google.com/ig/images/weather/cloudy.gif',1),(15,'Chance of Storm','http://www.google.com/ig/images/weather/chance_of_storm.gif',1.02),(16,'Mostly Sunny','http://www.google.com/ig/images/weather/mostly_sunny.gif',1),(17,'Clear','http://www.google.com/ig/images/weather/sunny.gif',1);
+INSERT INTO `WCondition` VALUES (14,'Cloudy','http://www.google.com/ig/images/weather/cloudy.gif',1),(15,'Chance of Storm','http://www.google.com/ig/images/weather/chance_of_storm.gif',1.02),(16,'Mostly Sunny','http://www.google.com/ig/images/weather/mostly_sunny.gif',1),(17,'Clear','http://www.google.com/ig/images/weather/sunny.gif',1),(18,'Partly Cloudy','http://www.google.com/ig/images/weather/partly_cloudy.gif',1);
 /*!40000 ALTER TABLE `WCondition` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -602,7 +602,7 @@ CREATE TABLE `Weather` (
   PRIMARY KEY (`id`),
   KEY `IDX_836DEAF2887793B6` (`condition_id`),
   CONSTRAINT `FK_836DEAF2887793B6` FOREIGN KEY (`condition_id`) REFERENCES `WCondition` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -611,7 +611,7 @@ CREATE TABLE `Weather` (
 
 LOCK TABLES `Weather` WRITE;
 /*!40000 ALTER TABLE `Weather` DISABLE KEYS */;
-INSERT INTO `Weather` VALUES (21,14,1328207400,'Colombo'),(22,15,1328293800,'Colombo'),(23,15,1328380200,'Colombo'),(24,16,1328466600,'Colombo'),(25,15,1328553000,'Colombo'),(26,15,1328639400,'Colombo'),(27,15,1328725800,'Colombo'),(28,15,1328812200,'Colombo'),(29,15,1328898600,'Colombo'),(30,17,1328985000,'Colombo'),(31,17,1329071400,'Colombo'),(32,17,1329157800,'Colombo'),(33,16,1329244200,'Colombo'),(34,15,1329330600,'Colombo'),(35,17,1329589800,'Colombo'),(36,16,1329676200,'Colombo'),(37,16,1329762600,'Colombo'),(38,16,1329849000,'Colombo'),(39,16,1329935400,'Colombo');
+INSERT INTO `Weather` VALUES (21,14,1328207400,'Colombo'),(22,15,1328293800,'Colombo'),(23,15,1328380200,'Colombo'),(24,16,1328466600,'Colombo'),(25,15,1328553000,'Colombo'),(26,15,1328639400,'Colombo'),(27,15,1328725800,'Colombo'),(28,15,1328812200,'Colombo'),(29,15,1328898600,'Colombo'),(30,17,1328985000,'Colombo'),(31,17,1329071400,'Colombo'),(32,17,1329157800,'Colombo'),(33,16,1329244200,'Colombo'),(34,15,1329330600,'Colombo'),(35,17,1329589800,'Colombo'),(36,16,1329676200,'Colombo'),(37,16,1329762600,'Colombo'),(38,16,1329849000,'Colombo'),(39,16,1329935400,'Colombo'),(40,18,1333045800,'Colombo'),(41,16,1333132200,'Colombo'),(42,15,1333218600,'Colombo'),(43,16,1333305000,'Colombo'),(44,15,1333391400,'Colombo');
 /*!40000 ALTER TABLE `Weather` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -624,4 +624,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-03-29  9:08:46
+-- Dump completed on 2012-03-31 14:42:34

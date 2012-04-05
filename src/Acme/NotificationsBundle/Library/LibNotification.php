@@ -93,9 +93,12 @@ class LibNotification{
 		//tokudu
 		//$Tokudu = new Tokudu();
 		//$Tokudu->sendNotification($user,$message);
-		//UrbanAirship
+		//UrbanAirship//
 		$UrbanAirship = new UrbanAirship();
 		$UrbanAirship->sendNotification($user,$notification);
+		//sms
+		$UrbanAirship->sendSms($user,$notification);
+		exit();
 		//sms
 //		$Sms = new Sms();
 //		$Sms->sendNotification($user,$message);

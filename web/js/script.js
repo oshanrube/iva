@@ -6,7 +6,7 @@ jQuery.fn.loading = function() {
 
 $(document).ready(function() {
 	initBinding();
-	$('#addNew header').click(function(){ $('#addNew content').slideToggle(); });
+	$('#addNew header').click(function(){ $('#addNew #content').slideToggle(); });
 	CenterPanel();
 });
 $(window).bind('resize', function () { CenterPanel();});

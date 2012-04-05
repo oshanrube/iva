@@ -30,12 +30,12 @@ class __TwigTemplate_c5d498d06bb34af3efddede23e25d02f extends Twig_Template
 \t<header>
 \t\t<h2>Quick Add</h2>
 \t</header>
-\t<content>
+\t<div id=\"content\">
 \t\t";
         // line 9
         echo $this->env->getExtension('actions')->renderAction("AcmeTaskBundle:Panel:AddNewTask", array(), array());
         // line 10
-        echo "\t</content>
+        echo "\t</div>
 </section>
 <div class=\"\">
 \t<div class=\"col\">

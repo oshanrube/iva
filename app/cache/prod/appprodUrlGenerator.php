@@ -25,6 +25,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'AcmeMobileBundle_homepage' => true,
        'AcmeMobileBundle_addtask' => true,
        'AcmeMobileBundle_viewTodaysTasks' => true,
+       'AcmeMobileBundle_viewTask' => true,
        'AcmeMobileBundle_viewCalendars' => true,
        'AcmeMobileBundle_manageCalendars' => true,
        'AcmeMobileBundle_viewCalendar' => true,
@@ -166,6 +167,11 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
     private function getAcmeMobileBundle_viewTodaysTasksRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::viewTodaysAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mobile/view/today',  ),));
+    }
+
+    private function getAcmeMobileBundle_viewTaskRouteInfo()
+    {
+        return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::viewTaskAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/mobile/view/today',  ),));
     }
 
     private function getAcmeMobileBundle_viewCalendarsRouteInfo()
