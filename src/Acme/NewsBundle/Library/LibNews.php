@@ -1,6 +1,7 @@
 <?php
 namespace Acme\NewsBundle\Library;
 use Acme\NewsBundle\Library\Includes\Adaderana;
+use Acme\NewsBundle\Library\Includes\GoogleNews;
 
 class LibNews{
 	
@@ -18,9 +19,14 @@ class LibNews{
 	//load new news to database
 	public function UpdateNews($location) {
 		if($location == 'Colombo'){
-			$Adaderana = new Adaderana($this->em);
+			//adaderana
+			/*$Adaderana = new Adaderana($this->em);
       	//return 
-			return $Adaderana->updateNews();
+			return $Adaderana->updateNews();*/
+			//GoogleNews
+			echo "loading news for ".$location."\n";
+			$GoogleNews = new GoogleNews($this->em);
+			return $GoogleNews->updateNews($location);
 		}
 	}
 }

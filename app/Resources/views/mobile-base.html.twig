@@ -12,7 +12,74 @@
 	<script type="text/javascript" src="{{ asset('js/jquery.mobile-1.0.1.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/googleMaps.mobile.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/mobile.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/cordova-1.5.0.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/speechrecognizer.js') }}" charset="utf-8"></script>
 	{% block scripts %}{% endblock %}
+	<script type="text/javascript" charset="utf-8">
+		var voice_fail = false;
+		var processin = false;
+		function listn()
+		{
+			if(!voice_fail && !processin){
+				window.plugins.speechrecognizer.init(speechInitOk, speechInitFail);
+			}
+		}
+
+    function speechInitOk() {
+    	processin = true;
+        supportedLanguages();
+        recognizeSpeech();
+    }
+    function speechInitFail(m) {
+        alert(m);
+        voice_fail = true;
+    }
+
+    // Show the list of the supported languages
+    function supportedLanguages() {
+        window.plugins.speechrecognizer.getSupportedLanguages(function(languages){
+                // display the json array
+                alert(languages);
+            }, function(error){
+                alert("Could not retrieve the supported languages");
+        });
+    }
+
+    function recognizeSpeech() {
+        var requestCode = 1234;
+        var maxMatches = 5;
+        var promptString = "Please say a command";  // optional
+        var language = "en-US";                     // optional
+        window.plugins.speechrecognizer.startRecognize(speechOk, speechFail, requestCode, maxMatches, promptString, language);
+    }
+
+    function speechOk(result) {
+        var respObj, requestCode, matches;
+        if (result) {
+            respObj = JSON.parse(result);
+            if (respObj) {
+                var matches = respObj.speechMatches.speechMatch;
+					//open selectbox
+					openSelect(matches);
+            }        
+        }
+        processin = false;
+    }
+	function openSelect(matches){
+		$("#select-choice-1 option").remove();
+		for (x in matches) {
+			$("#select-choice-1").append('<option value="'+matches[x]+'">'+matches[x]+'</option>');
+		}
+		$('#select-choice-1').selectmenu('refresh', true);
+		$('#select-choice-1').selectmenu('open');
+	}
+	$("#select-choice-1").bind( "change", function(event, ui) {
+		$("#form_task").val($(this).find("option:selected").text());
+	});
+    function speechFail(message) {
+        console.log("speechFail: " + message);
+    }
+  </script>
 	<script type="text/javascript" >
 	function didyoumean(that){
 		$('#form_task').val(that.innerHTML);

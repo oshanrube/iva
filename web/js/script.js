@@ -16,17 +16,18 @@ function closeAlert(that){
 }
 function ajaxSubmit(that){
 	$(that).find("*").hide();
-	$(that).append('<div id="loadingContainer" style="display:none"><div id="loading"><span></span><strong>loading...</strong></div></div><div onClick="closeLoadingContainer();" id="loadingContainerClose"></div>');
+	$(that).append('<div id="loadingContainer" style="display:none"><div class="meter animate"><span style="width: 100%"><span></span></span></div></div>	<div onClick="closeLoadingContainer();" id="loadingContainerClose"></div>');
 	$(that).find("#loadingContainer").slideDown('slow');
+	//load the request
+	var t=setTimeout("alertMsg()",30000);
+
 	//var url = that.action;
 	$(that).ajaxSubmit(function(r) {
 		if(r.response == 'success'){
 			//remove loading
-			$(that).find("#loadingContainer").remove();
-			$(that).find("#loadingContainerClose").remove();
 			$(that).find("#tasks").remove();
 			$(that).find("#html").remove();
-			$(that).find("*").show();
+			closeLoadingContainer();
 			//reset the form
 			$(that).resetForm();
 			//delete 
@@ -41,8 +42,15 @@ function ajaxSubmit(that){
 		}	else {
 			alert("An error adding your request");
 		} 
+		clearTimeout(t);
 	});
 	return false;
+}
+
+function alertMsg()
+{
+	alert("Network connection error");
+	closeLoadingContainer();
 }
 
 function closeLoadingContainer(){

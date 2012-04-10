@@ -5,7 +5,7 @@
 
 {% block content%}
 <form id="addNewTask" action="{{ path('AcmeMobileBundle_addtask') }}" method="post" {{ form_enctype(form) }}>
-	<input type="text" x-webkit-speech autocomplete="off" spellcheck="false" x-webkit-grammar="builtin:search" lang="en" id="form_task" name="task" required="required" maxlength="255" pattern=".{3,255}" placeholder="What, Where, When" value="{{ task.task }}" />
+	<input type="text" onFocus="listn()" x-webkit-speech autocomplete="off" spellcheck="false" x-webkit-grammar="builtin:search" lang="en" id="form_task" name="task" required="required" maxlength="255" pattern=".{3,255}" placeholder="What, Where, When" value="{{ task.task }}" />
 	<input type="hidden" id="lng" name="lng" value="{{ task.lng }}" />
 	<input type="hidden" id="lat" name="lat" value="{{ task.lat }}" />
 	<input type="hidden" id="form_task_loc_id" name="loc_id" />
@@ -15,6 +15,12 @@
    </span>
    <span id="locDetError">Automatic location Detector is working...</span>
 </form>
+<select name="select-choice-0" id="select-choice-1" data-native-menu="false">
+   <option value="standard">Standard: 7 day</option>
+   <option value="rush">Rush: 3 days</option>
+   <option value="express">Express: next day</option>
+   <option value="overnight">Overnight</option>
+</select>
 {% if venues is defined %}
 <ul id="venues-list" data-role="listview" data-theme="g" style="margin-top: 5px;">
 	<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-btn ui-bar-b ui-btn-up-undefined">Suggestions</li>

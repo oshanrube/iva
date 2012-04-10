@@ -9046,4 +9046,4 @@ jQuery.each([ "Height", "Width" ], function( i, name ) {
 window.jQuery = window.$ = jQuery;
 })(window);
 
-$.mobile.page.prototype.options.domCache = true;
+//$.mobile.page.prototype.options.domCache = true;

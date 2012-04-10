@@ -283,6 +283,8 @@ label.r_on { background: url(radio-on.png) no-repeat; }
 	#loadingContainerClose{
 		height: 10px;
 		background-color: #CCC;
+		margin-left: 30px;
+		margin-right: 30px;
 	}
 	
 /*******/
