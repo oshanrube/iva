@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new Acme\MobileBundle\AcmeMobileBundle(),
             new Acme\ScheduleBundle\AcmeScheduleBundle(),
             new Acme\LearningBundle\AcmeLearningBundle(),
+            new Acme\FeedbackBundle\AcmeFeedbackBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

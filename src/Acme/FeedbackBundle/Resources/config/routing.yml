@@ -1,0 +1,3 @@
+AcmeFeedbackBundle_add:
+    pattern:  /feedback/add
+    defaults: { _controller: AcmeFeedbackBundle:Default:add }

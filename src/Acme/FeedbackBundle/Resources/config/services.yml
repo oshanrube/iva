@@ -1,0 +1,7 @@
+parameters:
+#    acme_feedback.example.class: Acme\FeedbackBundle\Example
+
+services:
+#    acme_feedback.example:
+#        class: %acme_feedback.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

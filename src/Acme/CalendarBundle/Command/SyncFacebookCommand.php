@@ -16,7 +16,7 @@ class SyncFacebookCommand extends ContainerAwareCommand
     {
         $this
             ->setName('calendar:syncfacebook')
-            ->setDescription('Update the Weather')
+            ->setDescription('Sync with facebook calendar')
             ->addArgument('username', InputArgument::OPTIONAL)
         ;
     }

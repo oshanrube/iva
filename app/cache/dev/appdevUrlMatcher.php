@@ -143,6 +143,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // AcmeFeedbackBundle_add
+        if ($pathinfo === '/feedback/add') {
+            return array (  '_controller' => 'Acme\\FeedbackBundle\\Controller\\DefaultController::addAction',  '_route' => 'AcmeFeedbackBundle_add',);
+        }
+
         if (0 === strpos($pathinfo, '/member/learning')) {
             // AcmeLearningBundle_homepage
             if ($pathinfo === '/member/learning/index') {

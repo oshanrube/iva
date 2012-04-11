@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Exception\RouteNotFoundException;
 class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerator
 {
     static private $declaredRouteNames = array(
+       'AcmeFeedbackBundle_add' => true,
        'AcmeLearningBundle_homepage' => true,
        'AcmeLearningBundle_learnLocation' => true,
        'AcmeLearningBundle_addLocation' => true,
@@ -107,6 +108,11 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
         list($variables, $defaults, $requirements, $tokens) = $this->{'get'.$escapedName.'RouteInfo'}();
 
         return $this->doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $absolute);
+    }
+
+    private function getAcmeFeedbackBundle_addRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\FeedbackBundle\\Controller\\DefaultController::addAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/feedback/add',  ),));
     }
 
     private function getAcmeLearningBundle_homepageRouteInfo()

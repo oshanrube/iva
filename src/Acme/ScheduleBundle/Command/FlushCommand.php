@@ -33,7 +33,8 @@ class FlushCommand extends ContainerAwareCommand
     		if(!in_array($task->getCommand(),$tasks)){
     			//run the tasks
     			$command = 'php app/console '.$task->getCommand();
-    			echo $command."\n";//shell_exec($command);
+    			echo $command."\n";
+    			shell_exec($command);
     			$tasks[] = $task->getCommand();
     		}
     		$em->remove($task);

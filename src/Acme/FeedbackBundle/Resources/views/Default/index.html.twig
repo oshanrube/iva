@@ -1,0 +1,15 @@
+{% form_theme form 'AcmeFeedbackBundle:Default:form.html.twig' %}
+<div id="feedbackHandle" onClick="toggleFeedback()" >
+	<div class="left"></div>
+	<div class="middle">Feedback</div>
+	<div class="right"></div>
+</div>
+<form id="FeedbackForm"  data-ajax="false" onsubmit="ajaxFeedbackSubmit(this);return false;" 
+action="{{ path('AcmeFeedbackBundle_add') }}" method="post" {{ form_enctype(form) }}>
+	<fieldset><legend>Contact form</legend>
+		<p>
+			{{ form_widget(form) }}
+		</p>
+		<p class="submit"><button type="submit">Send</button></p>
+	</fieldset>
+</form>	

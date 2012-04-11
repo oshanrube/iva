@@ -97,7 +97,7 @@ class LibNotification{
 		$UrbanAirship = new UrbanAirship();
 		$UrbanAirship->sendNotification($user,$notification);
 		//sms
-		$UrbanAirship->sendSms($user,$notification);
+		//$UrbanAirship->sendSms($user,$notification);
 		exit();
 		//sms
 //		$Sms = new Sms();
