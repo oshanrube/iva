@@ -157,7 +157,6 @@
   ':Exception:trace.txt.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/trace.txt.twig',
   ':Exception:exception.rdf.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/exception.rdf.twig',
   ':Exception:exception.css.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/exception.css.twig',
-  ':Exception:error.html.twig~' => '/var/www/html/Symfony/app/Resources/views/Exception/error.html.twig~',
   ':Exception:error404.html.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/error404.html.twig',
   ':Exception:error.js.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/error.js.twig',
   ':Exception:error.html.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/error.html.twig',
@@ -170,7 +169,6 @@
   ':Exception:exception.json.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/exception.json.twig',
   ':Exception:error.xml.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/error.xml.twig',
   ':Exception:exception_full.html.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/exception_full.html.twig',
-  ':Exception:error404.html.twig~' => '/var/www/html/Symfony/app/Resources/views/Exception/error404.html.twig~',
   ':Exception:logs.html.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/logs.html.twig',
   ':Exception:traces.html.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/traces.html.twig',
   ':Exception:error.rdf.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/error.rdf.twig',
@@ -179,5 +177,4 @@
   ':Exception:traces.xml.twig' => '/var/www/html/Symfony/app/Resources/views/Exception/traces.xml.twig',
   '::layout.html.twig' => '/var/www/html/Symfony/app/Resources/views/layout.html.twig',
   '::topPanel.html.twig' => '/var/www/html/Symfony/app/Resources/views/topPanel.html.twig',
-  '::base.html.twig~' => '/var/www/html/Symfony/app/Resources/views/base.html.twig~',
 );

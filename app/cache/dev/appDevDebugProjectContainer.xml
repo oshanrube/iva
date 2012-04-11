@@ -52,7 +52,7 @@
     <parameter key="mailer_transport">gmail</parameter>
     <parameter key="mailer_host">localhost</parameter>
     <parameter key="mailer_user">drkmafia</parameter>
-    <parameter key="mailer_password">shaliniwi</parameter>
+    <parameter key="mailer_password"></parameter>
     <parameter key="locale">en</parameter>
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="router_listener.class">Symfony\Bundle\FrameworkBundle\EventListener\RouterListener</parameter>
@@ -289,7 +289,7 @@
     <parameter key="swiftmailer.transport.smtp.port">465</parameter>
     <parameter key="swiftmailer.transport.smtp.host">smtp.gmail.com</parameter>
     <parameter key="swiftmailer.transport.smtp.username">drkmafia</parameter>
-    <parameter key="swiftmailer.transport.smtp.password">shaliniwi</parameter>
+    <parameter key="swiftmailer.transport.smtp.password"></parameter>
     <parameter key="swiftmailer.transport.smtp.auth_mode">login</parameter>
     <parameter key="swiftmailer.spool.enabled">false</parameter>
     <parameter key="swiftmailer.sender_address">null</parameter>
@@ -1702,7 +1702,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>4f8558c30cd43</argument>
+            <argument>4f85a462d721d</argument>
           </service>
         </argument>
       </argument>
@@ -1916,7 +1916,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>4f8558c30cd43</argument>
+            <argument>4f85a462d721d</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -4822,7 +4822,7 @@
         <argument>drkmafia</argument>
       </call>
       <call method="setPassword">
-        <argument>shaliniwi</argument>
+        <argument></argument>
       </call>
       <call method="setAuthMode">
         <argument>login</argument>

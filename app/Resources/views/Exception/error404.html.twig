@@ -1,11 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>An Error Occurred: {{ status_text }}</title>
-</head>
-<body>
-    <h1>Oops! An Error Occurred</h1>
-    <h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
-</body>
-</html>
+{% extends '::errorLayout.html.twig' %}
+
+{% block title %}
+    {{ exception.message }} ({{ status_code }} {{ status_text }})
+{% endblock %}
+
+{% block body %}
+<div class="sf-exceptionreset">
+    <div class="block_exception">
+        <div class="block_exception_detected clear_fix" style="height: 424px;">
+        		<div id="background">
+            	<img alt="Exception detected!" style="width: 100%;" src="{{ asset('images/error-page.jpg') }}"/>
+            </div>
+            <div class="text_exception">
+
+                <div class="open_quote">
+                    <img alt="" src="{{ asset('bundles/framework/images/open_quote.gif') }}"/>
+                </div>
+
+                <h1>
+                    {{ exception.message|e|replace({"\n": '<br />'})|format_file_from_text }}
+                </h1>
+
+                <div class="close_quote">
+                    <img alt="" src="{{ asset('bundles/framework/images/close_quote.gif') }}"/>
+                </div>
+
+            </div>
+        </div>
+    </div></div>
+{% endblock %}

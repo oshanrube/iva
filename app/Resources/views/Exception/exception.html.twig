@@ -2,23 +2,16 @@
 
     <div class="block_exception">
         <div class="block_exception_detected clear_fix">
-            <div class="illustration_exception">
-                <img alt="Exception detected!" src="{{ asset('bundles/framework/images/exception_detected.gif') }}"/>
-            </div>
             <div class="text_exception">
-
                 <div class="open_quote">
                     <img alt="" src="{{ asset('bundles/framework/images/open_quote.gif') }}"/>
                 </div>
-
                 <h1>
                     {{ exception.message|e|replace({"\n": '<br />'})|format_file_from_text }}
                 </h1>
-
                 <div>
                     <strong>{{ status_code }}</strong> {{ status_text }} - {{ exception.class|abbr_class }}
                 </div>
-
                 {% set previous_count = exception.allPrevious|length %}
                 {% if previous_count %}
                     <div class="linked"><span><strong>{{ previous_count }}</strong> linked Exception{{ previous_count > 1 ? 's' : '' }}:</span>
@@ -31,11 +24,12 @@
                         </ul>
                     </div>
                 {% endif %}
-
                 <div class="close_quote">
                     <img alt="" src="{{ asset('bundles/framework/images/close_quote.gif') }}"/>
                 </div>
-
+            </div>
+            <div class="illustration_exception">
+                <img alt="Exception detected!" src="{{ asset('bundles/framework/images/exception_detected.gif') }}"/>
             </div>
         </div>
     </div>

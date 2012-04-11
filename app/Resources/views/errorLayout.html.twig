@@ -6,28 +6,29 @@
         <title>{% block title '' %}</title>
         <link href="{{ asset('bundles/framework/css/exception_layout.css') }}" rel="stylesheet" type="text/css" media="all" />
         <link href="{{ asset('bundles/framework/css/exception.css') }}" rel="stylesheet" type="text/css" media="all" />
+        <style>
+        .sf-exceptionreset .block_exception_detected .text_exception {width: 361px;float: right;top: -403px;}
+        .sf-exceptionreset .close_quote {right: 0;}
+        </style>
     </head>
     <body>
         <div id="content">
             <div class="header clear_fix">
                 <div class="header_logo">
-                    <img src="{{ asset('bundles/framework/images/logo_symfony.gif') }}" alt="Symfony" />
+                    <img style="height:62px" src="{{ asset('images/logo.png') }}" alt="IVA" />
                 </div>
-asdasddddddddddddddddddddddd
                 <div class="search">
-                  <form method="get" action="http://symfony.com/search">
+                  <form method="get" action="{{ url('AcmeHomeBundle_homepage') }}">
                     <div class="form_row">
 
                       <label for="search_id">
                           <img src="{{ asset('bundles/framework/images/grey_magnifier.png') }}" alt="Search on Symfony website" />
                       </label>
 
-                      <input name="q" id="search_id" type="search" placeholder="Search on Symfony website" />
-
                       <button type="submit">
                         <span class="border_l">
                           <span class="border_r">
-                            <span class="btn_bg">OK</span>
+                            <span class="btn_bg">Back to Home Page</span>
                           </span>
                         </span>
                       </button>

@@ -12,7 +12,7 @@ function toggleFeedback(){
 function ajaxFeedbackSubmit(that){
 	$(that).ajaxSubmit(function(r) {
 		if(r.response == 'success'){
-			$(that).resetForm();`
+			$(that).resetForm();
 			toggleFeedback();
 			$("#feedbackHandle .middle").text('Thank you for your feedback');
 		} else {
