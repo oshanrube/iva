@@ -1,0 +1,1 @@
+s:152:"{"error":{"message":"Unsupported type: 'device_code'. Supported types: web_server, user_agent, client_cred, username","type":"OAuthException","code":1}}";

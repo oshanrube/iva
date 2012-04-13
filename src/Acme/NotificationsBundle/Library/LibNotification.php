@@ -87,20 +87,35 @@ class LibNotification{
       return $notification;
 	}
 	
-	public function pushNotification($user,$notification) {
+	public function pushNotification($user,$notification, $method) {
 		//$Gnoti = new GtalkNotifications();
 		//$Gnoti->sendNotification();
 		//tokudu
 		//$Tokudu = new Tokudu();
 		//$Tokudu->sendNotification($user,$message);
 		//UrbanAirship//
-		$UrbanAirship = new UrbanAirship();
-		$UrbanAirship->sendNotification($user,$notification);
+		//$UrbanAirship = new UrbanAirship();
+		//$UrbanAirship->sendNotification($user,$notification);
 		//sms
 		//$UrbanAirship->sendSms($user,$notification);
-		exit();
 		//sms
 //		$Sms = new Sms();
 //		$Sms->sendNotification($user,$message);
+
+		switch($method) {
+			case "Push":
+				$UrbanAirship = new UrbanAirship();
+				$UrbanAirship->sendNotification($user,$notification);
+				break;
+			case "SMS":
+			echo "sms asdasdasd"; exit();
+				$Sms = new Sms();
+				$Sms->sendNotification($user,$message);
+				break;
+			case "Call":
+				//TODO
+				break;	
+		}
+		exit();
 	}
 }

@@ -9,7 +9,35 @@ use Acme\TaskBundle\Library\Decode;
 
 class CalendarController extends Controller
 {
-    
+   public function addAction(Request $request)
+	{
+		$calendar = new calendar();
+    	//get the user id
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	$calendar->setOwnerId($user->getId());
+    	//create form
+		$form = $this->createFormBuilder($calendar)
+			->add("title")
+			->add("enabled",null,array('required' => false))
+			->add("description")
+			->add("privacyType",'choice', array(
+ 				'choices'   => array('private' => 'Private', 'public' => 'Public','shared' => "Shared")
+				))
+         ->getForm();
+		//if save
+		if ($request->getMethod() == 'POST') {
+			$form->bindRequest($request);
+			if ($form->isValid()) {
+				$em = $this->getDoctrine()->getEntityManager();
+				$em->persist($calendar);
+				$em->flush();
+				// perform some action, such as saving the task to the database
+				return $this->redirect($this->generateUrl('AcmeMobileBundle_viewCalendars'));
+			}
+		}
+		return $this->render('AcmeMobileBundle:Calendar:add.html.twig', array('form' => $form->createView()));
+	}
+	
 	public function listAction()
 	{
 		$user = $this->get('security.context')->getToken()->getUser();
@@ -57,7 +85,7 @@ class CalendarController extends Controller
 		$Task = $this->getDoctrine()->getRepository('AcmeTaskBundle:Task');
 		$user = $this->get('security.context')->getToken()->getUser();
 		$timeline = $Task->findByCalendarMonth($user,$year,$month,$id);
-		$timeline = Decode::getCalendar($timeline,$year,$month);
+		$timeline = Decode::getCalendar($timeline, array(), $year,$month);
 		//		
     	$timestamp = mktime(0, 0, 0, $month, 1, $year);
     	return $this->render('AcmeMobileBundle:Calendar:view.html.twig',array('timestamp' => $timestamp,'timeline' => $timeline,'date' => $date,'nav' => $nav));

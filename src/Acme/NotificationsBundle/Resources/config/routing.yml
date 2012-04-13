@@ -7,3 +7,7 @@ AcmeNotificationsBundle_edit_id:
     defaults: { _controller: AcmeNotificationsBundle:Dash:edit }
     requirements:
         id:  \d+
+
+AcmeNotificationsBundle_confirm_push:
+    pattern:  /push/comfirm
+    defaults: { _controller: AcmeNotificationsBundle:Default:confirmPush }

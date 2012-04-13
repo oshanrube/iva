@@ -3,6 +3,7 @@
 {% block content%}
 {% if calendarlist is defined %}
 <ul data-role="listview" data-theme="g" style="margin-top: 5px;">
+	<li><a href="{{ path('AcmeMobileBundle_addCalendar') }}" >Add new Calendar</a></li>
 	<li><a href="{{ path('AcmeMobileBundle_viewCalendar', {'id' : 0 }) }}" >User</a></li>
 {% for calendar in calendarlist %} 
 	<li><a href="{{ path('AcmeMobileBundle_viewCalendar', {'id' : calendar.id }) }}" >{{ calendar.title }}</a></li>

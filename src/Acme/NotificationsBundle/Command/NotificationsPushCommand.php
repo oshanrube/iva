@@ -27,9 +27,12 @@ class NotificationsPushCommand extends ContainerAwareCommand
     	$em 	= $this->getContainer()->get('doctrine')->getEntityManager();
     	//create notification
     	$libNotification = new LibNotification($em);
+    	//
+    	//LEVEL 1 PUSH
+    	//
     	//retrive all the pending notifications at the moment
     	$notifications = $em->getRepository('AcmeTaskBundle:Notification')
-    							->findByPendingNotifications();
+    							->findByPendingPushNotifications();
     	$now = mktime(date("H"), date("i"), 0, date("m"), date("d"), date("Y"));
     	echo 'its : '.$now."\n";						
     	foreach($notifications as $noti){
@@ -38,8 +41,26 @@ class NotificationsPushCommand extends ContainerAwareCommand
     		$user = 	$em->getRepository('AcmeUserBundle:User')
       			->findOneById($userId);
       	//process and SEND notification
-			$libNotification->pushNotification($user,$noti);
+			$libNotification->pushNotification($user,$noti, "Push");
 		}
+		//
+    	//LEVEL 2 SMS
+    	//
+    	$notifications = $em->getRepository('AcmeTaskBundle:Notification')
+    							->findByPendingSMSNotifications();
+    	$now = mktime(date("H"), date("i"), 0, date("m"), date("d"), date("Y"));
+    	echo 'its : '.$now."\n";						
+    	foreach($notifications as $noti){
+    		//get user info
+    		$userId=$noti->getTask()->getUserId();
+    		$user = 	$em->getRepository('AcmeUserBundle:User')
+      			->findOneById($userId);
+      	//process and SEND notification
+			$libNotification->pushNotification($user,$noti, "SMS");
+		}
+    	//
+    	//LEVEL 3
+    	//
       $output->writeln('Done');
     }
 }

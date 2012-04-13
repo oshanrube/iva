@@ -151,4 +151,28 @@ class TaskRepository extends EntityRepository
         return null;
     	}
 	}
+	public function findByDay($user,$year,$month,$day) {
+		$todayDateTime = mktime(0, 0, 0, $month, $day, $year);
+		$tommorow = mktime(0, 0, 0, $month, $day+1, $year);
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE t.startTime > :today AND t.startTime < :tommorow AND t.userId = :userId AND t.taskRepeatId = 1';
+		
+		$today = $this->getEntityManager()
+			->createQuery($query)
+			->setParameter('today', $todayDateTime)
+			->setParameter('tommorow', $tommorow)
+			->setParameter('userId', $user->getId())
+			->getResult();
+		//get repeats
+		$query = 'SELECT t FROM AcmeTaskBundle:Task t WHERE (t.taskRepeatId != 1 AND t.userId = :userId)';
+		$events = $this->getEntityManager()
+					->createQuery($query)
+					->setParameter('userId', $user->getId())
+					->getResult();
+		foreach($events as $event){
+			if($evnts = TaskRepeatModel::getRepeatFor($event,$todayDateTime,$tommorow)){
+				$today = array_merge($today,$evnts);
+			}
+		}
+		return $today;
+	}
 }

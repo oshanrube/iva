@@ -13,3 +13,7 @@ AcmeUserBundle_login_fail:
 AcmeUserBundle_google_login:
     pattern:  /user/google/login
     defaults: { _controller: AcmeUserBundle:Google:login }
+    
+AcmeUserBundle_facebook_login:
+    pattern:  /user/facebook/login
+    defaults: { _controller: AcmeUserBundle:Facebook:login }

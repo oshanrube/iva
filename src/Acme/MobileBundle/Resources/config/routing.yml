@@ -13,7 +13,11 @@ AcmeMobileBundle_viewTodaysTasks:
 AcmeMobileBundle_viewTask:
     pattern:  /view/today/{id}
     defaults: { _controller: AcmeMobileBundle:Task:viewTask }
-    
+
+AcmeMobileBundle_addCalendar:
+    pattern:  /add/calendar
+    defaults: { _controller: AcmeMobileBundle:Calendar:add }
+   
 AcmeMobileBundle_viewCalendars:
     pattern:  /view/calendars
     defaults: { _controller: AcmeMobileBundle:Calendar:browse }
@@ -35,3 +39,11 @@ AcmeMobileBundle_editCalendar:
     defaults: { _controller: AcmeMobileBundle:Calendar:editCalendar }
     requirements:
         id:  \d+
+
+AcmeMobileBundle_viewTaskDay:
+    pattern:  /view/task/{year}/{month}/{day}
+    defaults: { _controller: AcmeMobileBundle:Task:viewTaskDay, year:null,month:null,day:null }
+    requirements:
+        year:  \d+
+        month: \d+
+        day:   \d+

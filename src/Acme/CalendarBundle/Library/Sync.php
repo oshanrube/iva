@@ -13,26 +13,8 @@ class Sync{
 	
 	private function geturl() {
 		// Create our Application instance (replace this with your appId and secret).
-		$facebook = new Facebook(array(
-		  'appId'  => '236123993144257',
-		  'secret' => 'c13e8c27c6b3dd0f00fb161c4fe371dc',
-		  'cookie' => true,
-		));
-		$session = $facebook->getSession();
-		
-		$me = null;
-		// Session based API call.
-		if ($session) {
-		  try {
-		    $uid = $facebook->getUser();
-		    $me = $facebook->api('/me');
-		  } catch (FacebookApiException $e) {
-		    error_log($e);
-		  }
-		}
-		$loginUrl = $facebook->getfbuploadAuthUrl();
-		
-		return $loginUrl;
+		$facebook = new Facebook();
+		return $facebook->getUrl();
 	}
 	
 	public function facebook($user) {
@@ -41,14 +23,17 @@ class Sync{
 		//is there a sheduled check already
 		$schedule = $this->em->getRepository('AcmeScheduleBundle:Schedule')
 						->findOneByCommand( 'calendar:syncfacebook '.$user->getUsername() );
-		if(count($schedule) > 0){ 
-			$facebook->synced = true;
-		}
+		
 		//if the user already has a token
-		else if(!$facebook->token = $user->getFbToken()){
+		if( ( !$facebook->token = $user->getFbToken() ) || ( $user->getFbToken() == "error" ) ){
+			// if theres a error in the token
 			//else get the url to authenticate
 			$facebook->addurl = $this->geturl();
+		}//if the sync is already scheduled 
+		elseif( count($schedule) > 0 ){ 
+			$facebook->synced = true;
 		}
+		
 		return $facebook;
 	}
 	
@@ -64,6 +49,7 @@ class Sync{
 		//error
 		if(isset($events->error)){
 			$this->error = $events->error->message;
+			echo $this->error; 
 			return false;
 		}
 		//load all events
@@ -104,7 +90,7 @@ class Sync{
 				$taskmodel->addFacebookBirthday($user,$profile);
 			}
 		}
-		return;
+		return true;
 	}	
 }
 

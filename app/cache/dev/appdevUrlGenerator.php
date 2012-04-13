@@ -47,10 +47,12 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeMobileBundle_addtask' => true,
        'AcmeMobileBundle_viewTodaysTasks' => true,
        'AcmeMobileBundle_viewTask' => true,
+       'AcmeMobileBundle_addCalendar' => true,
        'AcmeMobileBundle_viewCalendars' => true,
        'AcmeMobileBundle_manageCalendars' => true,
        'AcmeMobileBundle_viewCalendar' => true,
        'AcmeMobileBundle_editCalendar' => true,
+       'AcmeMobileBundle_viewTaskDay' => true,
        'AcmeDashBundle_ajax_panel' => true,
        'AcmeEventsBundle_homepage' => true,
        'AcmeNewsBundl_test' => true,
@@ -94,6 +96,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeUserBundle_profile' => true,
        'AcmeUserBundle_login_fail' => true,
        'AcmeUserBundle_google_login' => true,
+       'AcmeUserBundle_facebook_login' => true,
        'AcmeProfileBundle_homepage' => true,
        'AcmeStoreBundle_homepage' => true,
        'AcmeStoreBundle_create' => true,
@@ -107,6 +110,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'AcmeTaskBundle_delete' => true,
        'AcmeNotificationsBundle_homepage' => true,
        'AcmeNotificationsBundle_edit_id' => true,
+       'AcmeNotificationsBundle_confirm_push' => true,
     );
 
     /**
@@ -300,6 +304,11 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::viewTaskAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/mobile/view/today',  ),));
     }
 
+    private function getAcmeMobileBundle_addCalendarRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::addAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mobile/add/calendar',  ),));
+    }
+
     private function getAcmeMobileBundle_viewCalendarsRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::browseAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mobile/view/calendars',  ),));
@@ -318,6 +327,11 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getAcmeMobileBundle_editCalendarRouteInfo()
     {
         return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::editCalendarAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/mobile/edit/calendar',  ),));
+    }
+
+    private function getAcmeMobileBundle_viewTaskDayRouteInfo()
+    {
+        return array(array (  0 => 'year',  1 => 'month',  2 => 'day',), array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::viewTaskDayAction',  'year' => NULL,  'month' => NULL,  'day' => NULL,), array (  'year' => '\\d+',  'month' => '\\d+',  'day' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'day',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'month',  ),  2 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'year',  ),  3 =>   array (    0 => 'text',    1 => '/mobile/view/task',  ),));
     }
 
     private function getAcmeDashBundle_ajax_panelRouteInfo()
@@ -535,6 +549,11 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\GoogleController::loginAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/user/google/login',  ),));
     }
 
+    private function getAcmeUserBundle_facebook_loginRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\FacebookController::loginAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/user/facebook/login',  ),));
+    }
+
     private function getAcmeProfileBundle_homepageRouteInfo()
     {
         return array(array (  0 => 'name',), array (  '_controller' => 'Acme\\ProfileBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'name',  ),));
@@ -598,5 +617,10 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getAcmeNotificationsBundle_edit_idRouteInfo()
     {
         return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DashController::editAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/notification/edit',  ),));
+    }
+
+    private function getAcmeNotificationsBundle_confirm_pushRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::confirmPushAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/notification/push/comfirm',  ),));
     }
 }

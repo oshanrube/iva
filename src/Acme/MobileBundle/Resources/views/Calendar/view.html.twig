@@ -41,7 +41,8 @@
 	{% if(i < startday ) %}
 		<div class="ui-datebox-griddate ui-datebox-griddate-empty"></div>
 	{% else %}
-		<div class="ui-datebox-griddate ui-corner-all ui-btn-up-{% if(timeline[day] is defined) %}e{% else %}a{% endif %}">{{ (i - startday + 1) }}</div>
+		<a href="{{ path('AcmeMobileBundle_viewTaskDay', { 'year':nav['prev']['year'], 'month':nav['prev']['month'], 'day':(i - startday + 1)}) }}">
+			<div class="ui-datebox-griddate ui-corner-all ui-btn-up-{% if(timeline[day] is defined) %}e{% else %}a{% endif %}">{{ (i - startday + 1) }}</div></a>
 		 {% set timestamp =  totime("+1 day",timestamp) %}
 	{% endif %}
 	{% if((i % 7) == 6 ) %} </div> {% endif %}

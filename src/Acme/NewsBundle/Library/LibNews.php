@@ -20,13 +20,14 @@ class LibNews{
 	public function UpdateNews($location) {
 		if($location == 'Colombo'){
 			//adaderana
-			/*$Adaderana = new Adaderana($this->em);
-      	//return 
-			return $Adaderana->updateNews();*/
-			//GoogleNews
-			echo "loading news for ".$location."\n";
-			$GoogleNews = new GoogleNews($this->em);
-			return $GoogleNews->updateNews($location);
-		}
+			$Adaderana = new Adaderana($this->em);
+      	//update 
+			$Adaderana->updateNews();
+		} elseif(empty($location)) 
+			$location = 'Colombo';
+		//GoogleNews
+		echo "loading news for ".$location."\n";
+		$GoogleNews = new GoogleNews($this->em);
+		return $GoogleNews->updateNews($location);
 	}
 }

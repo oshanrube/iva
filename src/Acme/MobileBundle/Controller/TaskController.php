@@ -70,6 +70,15 @@ class TaskController extends Controller
 		array('tasklist' => $tasklist));
 	}
 	
+	public function viewTaskDayAction(Request $request, $year, $month, $day)
+	{
+		$Task = $this->getDoctrine()->getRepository('AcmeTaskBundle:Task');
+		$user = $this->get('security.context')->getToken()->getUser();
+		$tasklist = $Task->findByDay($user,$year,$month,$day);
+		return $this->render('AcmeMobileBundle:Task:today.html.twig', 
+		array('tasklist' => $tasklist));
+	}
+	
 	public function viewTaskAction(Request $request,$id)
 	{
 		$task = $this	->getDoctrine()->getRepository('AcmeTaskBundle:Task')

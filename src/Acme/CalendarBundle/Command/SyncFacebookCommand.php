@@ -31,7 +31,13 @@ class SyncFacebookCommand extends ContainerAwareCommand
     	if(!$user){ $output->writeln('Invalid Username: '.$username); exit(); }
     	//facebook link
 		$sync = new Sync($em);
-		$sync->syncFacebook($user);
+		$status = $sync->syncFacebook($user);
+		//if there is a sync error 
+		if(!$status){
+			$user->setFbToken('error');
+			$em->persist($user);
+			$em->flush();
+		}
 		//return 
       $output->writeln('Done');
     }

@@ -217,6 +217,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::viewTaskAction',)), array('_route' => 'AcmeMobileBundle_viewTask'));
             }
 
+            // AcmeMobileBundle_addCalendar
+            if ($pathinfo === '/mobile/add/calendar') {
+                return array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::addAction',  '_route' => 'AcmeMobileBundle_addCalendar',);
+            }
+
             // AcmeMobileBundle_viewCalendars
             if ($pathinfo === '/mobile/view/calendars') {
                 return array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::browseAction',  '_route' => 'AcmeMobileBundle_viewCalendars',);
@@ -235,6 +240,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // AcmeMobileBundle_editCalendar
             if (0 === strpos($pathinfo, '/mobile/edit/calendar') && preg_match('#^/mobile/edit/calendar/(?P<id>\\d+)$#xs', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\MobileBundle\\Controller\\CalendarController::editCalendarAction',)), array('_route' => 'AcmeMobileBundle_editCalendar'));
+            }
+
+            // AcmeMobileBundle_viewTaskDay
+            if (0 === strpos($pathinfo, '/mobile/view/task') && preg_match('#^/mobile/view/task(?:/(?P<year>\\d+)(?:/(?P<month>\\d+)(?:/(?P<day>\\d+))?)?)?$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\MobileBundle\\Controller\\TaskController::viewTaskDayAction',  'year' => NULL,  'month' => NULL,  'day' => NULL,)), array('_route' => 'AcmeMobileBundle_viewTaskDay'));
             }
 
         }
@@ -531,6 +541,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Acme\\UserBundle\\Controller\\GoogleController::loginAction',  '_route' => 'AcmeUserBundle_google_login',);
         }
 
+        // AcmeUserBundle_facebook_login
+        if ($pathinfo === '/user/facebook/login') {
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\FacebookController::loginAction',  '_route' => 'AcmeUserBundle_facebook_login',);
+        }
+
         // AcmeProfileBundle_homepage
         if (preg_match('#^/(?P<name>[^/]+?)$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\ProfileBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'AcmeProfileBundle_homepage'));
@@ -598,6 +613,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // AcmeNotificationsBundle_edit_id
             if (0 === strpos($pathinfo, '/notification/edit') && preg_match('#^/notification/edit/(?P<id>\\d+)$#xs', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DashController::editAction',)), array('_route' => 'AcmeNotificationsBundle_edit_id'));
+            }
+
+            // AcmeNotificationsBundle_confirm_push
+            if ($pathinfo === '/notification/push/comfirm') {
+                return array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::confirmPushAction',  '_route' => 'AcmeNotificationsBundle_confirm_push',);
             }
 
         }

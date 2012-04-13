@@ -12,14 +12,33 @@ use Doctrine\ORM\EntityRepository;
  */
 class NotificationRepository extends EntityRepository
 {
-	public function findByPendingNotifications() {
+	public function findByPendingPushNotifications() {
 		$now = mktime(date("H"), date("i"), 0, date("m"), date("d"), date("Y"));
-		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :now';
+		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :now AND n.push = 0';
 		
 		try{
 			return $this->getEntityManager()
 				->createQuery($query)
 				->setParameter('now', $now)
+				->getResult();
+		} catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    	}
+	}
+	public function findByPendingSMSNotifications() {
+		//tollerence time between push and sms
+		$tolerence = 5;
+		$TolerenceTime = mktime(date("H"), date("i"), 0, date("m"), date("d"), date("Y"));
+		$now = mktime(date("H"), date("i")+$tolerence, 0, date("m"), date("d"), date("Y"));
+		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE 
+		( n.datetime > :now AND n.datetime <= :TolerenceTime AND n.push = 1) || 
+		( n.datetime <= :now AND n.push = -1)';
+		
+		try{
+			return $this->getEntityManager()
+				->createQuery($query)
+				->setParameter('now', $now)
+				->setParameter('TolerenceTime', $TolerenceTime)
 				->getResult();
 		} catch (\Doctrine\ORM\NoResultException $e) {
         return null;

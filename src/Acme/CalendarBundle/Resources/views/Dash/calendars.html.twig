@@ -4,6 +4,11 @@
 		<p>{{ app.session.flash('question') }}</p>
 	</div>
 {% endif %}
+{% if app.session.hasFlash('error') %}
+	<div class="error message">
+		<p>{{ app.session.flash('error') }}</p>
+	</div>
+{% endif %}
 <style type="text/css">
 #calendar-list{
 	margin: 0 auto;
@@ -65,6 +70,9 @@
 {% if facebook.synced %}
 	<span class="link button minimal" id="facebook" >Facebook</span>
 	<span class="share button clean-gray disabled" >Scheduled</span>
+{% elseif facebook.token == "error" %}
+	<a href="" class="link button minimal" >Facebook</a>
+	<a href="{{ facebook.addurl }}" class="share button clean-gray" >Add</a>
 {% elseif facebook.token is defined %}
 	<a href="" class="link button minimal" id="facebook" >Facebook</a>
 	<a href="{{ url('AcmeCalendarBundle_sync_calendar_facebook') }}" class="share button clean-gray" >Sync</a>

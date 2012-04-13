@@ -16,7 +16,8 @@ class NewsUpdateCommand extends ContainerAwareCommand
         $this
             ->setName('news:update')
             ->setDescription('Update the News Feed')
-            ->addArgument('location', InputArgument::OPTIONAL, 'Colombo')
+            ->addArgument('location', InputArgument::OPTIONAL)
+            ->addArgument('locationPart2', InputArgument::OPTIONAL)
             //->addOption('yell', null, InputOption::VALUE_NONE, 'If set, the task will yell in uppercase letters')
         ;
     }
@@ -28,7 +29,7 @@ class NewsUpdateCommand extends ContainerAwareCommand
     	$output->writeln('Start');
 		$LibNews = new LibNews($em);
       //update news 
-		$LibNews->updateNews($input->getArgument('location'));
+		$LibNews->updateNews($input->getArgument('location').' '.$input->getArgument('locationPart2'));
       $output->writeln('Done');
     }
 }
