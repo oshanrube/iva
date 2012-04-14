@@ -62,6 +62,10 @@ class User extends BaseUser
      * @ORM\Column(type="integer",length="11", nullable=true)
      */
     private $phoneNum;
+    /**
+     * @ORM\Column(type="integer",length="11", nullable=true)
+     */
+    private $backupPhoneNum;
 
 	public function __construct()
 	{
@@ -85,9 +89,14 @@ class User extends BaseUser
 	public function getPhoneNum() {
 		return $this->phoneNum;
 	}
-	
 	public function setPhoneNum($phoneNum) {
 		$this->phoneNum = $phoneNum;
+	}
+	public function getBackupPhoneNum() {
+		return $this->backupPhoneNum;
+	}
+	public function setBackupPhoneNum($backupPhoneNum) {
+		$this->backupPhoneNum = $backupPhoneNum;
 	}
 	/**
      * Set lng

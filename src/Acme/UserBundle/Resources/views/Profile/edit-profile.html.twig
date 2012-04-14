@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="/Symfony/web/css/bootstrap.css" type="text/css" media="screen">
+{% stylesheets 'css/bootstrap.css' filter='?yui_css,cssrewrite' %}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="screen">
+{% endstylesheets %}
 <style type="text/css">
 #fos_user_profile_form .controls{
 	margin-left: 0;
@@ -10,6 +12,7 @@
 	margin-left: 160px;
 }
 </style>
+{% form_theme form theme %}
 
 <form class="thumbnail form-horizontal" action="{{ path('AcmeUserBundle_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
 	<fieldset>
@@ -18,7 +21,7 @@
     {{ form_widget(form) }}
    <div class="form-actions">
 		<button type="submit" class="btn btn-primary">Save changes</button>
-		<button type="reset" class="btn">Cancel</button>
+		<a href="{{ path('AcmeUserBundle_profile') }}" class="btn">Cancel</a>
 	</div>
-    </fieldset>
+	</fieldset>
 </form>

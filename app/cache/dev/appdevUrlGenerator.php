@@ -23,6 +23,52 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_demo' => true,
        '_demo_hello' => true,
        '_demo_contact' => true,
+       '_assetic_5711373' => true,
+       '_assetic_5711373_0' => true,
+       '_assetic_b91db09' => true,
+       '_assetic_b91db09_0' => true,
+       '_assetic_b91db09_1' => true,
+       '_assetic_b91db09_2' => true,
+       '_assetic_b91db09_3' => true,
+       '_assetic_cd2c765' => true,
+       '_assetic_cd2c765_0' => true,
+       '_assetic_cd2c765_1' => true,
+       '_assetic_cd2c765_2' => true,
+       '_assetic_cd2c765_3' => true,
+       '_assetic_cd2c765_4' => true,
+       '_assetic_cd2c765_5' => true,
+       '_assetic_e6261eb' => true,
+       '_assetic_e6261eb_0' => true,
+       '_assetic_e6261eb_1' => true,
+       '_assetic_e6261eb_2' => true,
+       '_assetic_e6261eb_3' => true,
+       '_assetic_e6261eb_4' => true,
+       '_assetic_e6261eb_5' => true,
+       '_assetic_e6261eb_6' => true,
+       '_assetic_e6261eb_7' => true,
+       '_assetic_e6261eb_8' => true,
+       '_assetic_e6261eb_9' => true,
+       '_assetic_e6261eb_10' => true,
+       '_assetic_e6261eb_11' => true,
+       '_assetic_1ea6468' => true,
+       '_assetic_1ea6468_0' => true,
+       '_assetic_1ea6468_1' => true,
+       '_assetic_1ea6468_2' => true,
+       '_assetic_1ea6468_3' => true,
+       '_assetic_1ea6468_4' => true,
+       '_assetic_1ea6468_5' => true,
+       '_assetic_1ea6468_6' => true,
+       '_assetic_1ea6468_7' => true,
+       '_assetic_1ea6468_8' => true,
+       '_assetic_1ea6468_9' => true,
+       '_assetic_1ea6468_10' => true,
+       '_assetic_1ea6468_11' => true,
+       '_assetic_1ea6468_12' => true,
+       '_assetic_1ea6468_13' => true,
+       '_assetic_1ea6468_14' => true,
+       '_assetic_1ea6468_15' => true,
+       '_assetic_197700a' => true,
+       '_assetic_197700a_0' => true,
        '_wdt' => true,
        '_profiler_search' => true,
        '_profiler_purge' => true,
@@ -182,6 +228,236 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function get_demo_contactRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::contactAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/demo/contact',  ),));
+    }
+
+    private function get_assetic_5711373RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 5711373,  'pos' => NULL,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/5711373.css',  ),));
+    }
+
+    private function get_assetic_5711373_0RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 5711373,  'pos' => 0,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/5711373_bootstrap_1.css',  ),));
+    }
+
+    private function get_assetic_b91db09RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'b91db09',  'pos' => NULL,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/b91db09.css',  ),));
+    }
+
+    private function get_assetic_b91db09_0RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'b91db09',  'pos' => 0,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/b91db09_jquery.mobile-1.0.1.min_1.css',  ),));
+    }
+
+    private function get_assetic_b91db09_1RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'b91db09',  'pos' => 1,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/b91db09_mobile-styles_2.css',  ),));
+    }
+
+    private function get_assetic_b91db09_2RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'b91db09',  'pos' => 2,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/b91db09_jquery.mobile.datebox_3.css',  ),));
+    }
+
+    private function get_assetic_b91db09_3RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'b91db09',  'pos' => 3,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/b91db09_iva.min_4.css',  ),));
+    }
+
+    private function get_assetic_cd2c765RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'cd2c765',  'pos' => NULL,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/cd2c765.js',  ),));
+    }
+
+    private function get_assetic_cd2c765_0RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'cd2c765',  'pos' => 0,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/cd2c765_jquery.mob_1.js',  ),));
+    }
+
+    private function get_assetic_cd2c765_1RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'cd2c765',  'pos' => 1,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/cd2c765_jquery.mobile-1.0.1.min_2.js',  ),));
+    }
+
+    private function get_assetic_cd2c765_2RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'cd2c765',  'pos' => 2,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/cd2c765_googleMaps.mobile_3.js',  ),));
+    }
+
+    private function get_assetic_cd2c765_3RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'cd2c765',  'pos' => 3,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/cd2c765_mobile_4.js',  ),));
+    }
+
+    private function get_assetic_cd2c765_4RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'cd2c765',  'pos' => 4,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/cd2c765_cordova-1.5.0_5.js',  ),));
+    }
+
+    private function get_assetic_cd2c765_5RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'cd2c765',  'pos' => 5,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/cd2c765_speechrecognizer_6.js',  ),));
+    }
+
+    private function get_assetic_e6261ebRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => NULL,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_0RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 0,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_layout_1.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_1RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 1,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_style_2.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_2RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 2,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_notifications_3.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_3RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 3,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_slide_4.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_4RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 4,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_menu_5.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_5RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 5,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_jquery.mCustomScrollbar_6.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_6RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 6,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_calendar_7.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_7RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 7,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_tasks_8.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_8RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 8,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_weather_9.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_9RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 9,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_news_10.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_10RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 10,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_feedback_11.css',  ),));
+    }
+
+    private function get_assetic_e6261eb_11RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'e6261eb',  'pos' => 11,  '_format' => 'css',), array (), array (  0 =>   array (    0 => 'text',    1 => '/css/e6261eb_jquery.jscrollpane_12.css',  ),));
+    }
+
+    private function get_assetic_1ea6468RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => NULL,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_0RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 0,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_jquery-1.6_1.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_1RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 1,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_jquery.jqtransform_2.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_2RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 2,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_menu_3.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_3RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 3,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_feedback_4.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_4RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 4,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_ajax_content_5.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_5RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 5,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_jquery-ui.min_6.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_6RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 6,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_jquery.easing.1.3_7.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_7RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 7,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_jquery.mousewheel.min_8.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_8RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 8,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_jquery.mousewheel_9.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_9RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 9,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_jquery.jscrollpane.min_10.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_10RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 10,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_jquery.form_11.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_11RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 11,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_slide_12.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_12RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 12,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_bootstrap-twipsy_13.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_13RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 13,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_bootstrap-popover_14.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_14RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 14,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_script_15.js',  ),));
+    }
+
+    private function get_assetic_1ea6468_15RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '1ea6468',  'pos' => 15,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/1ea6468_jquery.vticker-min_16.js',  ),));
+    }
+
+    private function get_assetic_197700aRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '197700a',  'pos' => NULL,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/197700a.js',  ),));
+    }
+
+    private function get_assetic_197700a_0RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '197700a',  'pos' => 0,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/197700a_jquery.mCustomScrollbar_1.js',  ),));
     }
 
     private function get_wdtRouteInfo()

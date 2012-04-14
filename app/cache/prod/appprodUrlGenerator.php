@@ -90,6 +90,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'AcmeTaskBundle_delete' => true,
        'AcmeNotificationsBundle_homepage' => true,
        'AcmeNotificationsBundle_edit_id' => true,
+       'AcmeNotificationsBundle_confirm_push' => true,
     );
 
     /**
@@ -496,5 +497,10 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
     private function getAcmeNotificationsBundle_edit_idRouteInfo()
     {
         return array(array (  0 => 'id',), array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DashController::editAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/notification/edit',  ),));
+    }
+
+    private function getAcmeNotificationsBundle_confirm_pushRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::confirmPushAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/notification/push/comfirm',  ),));
     }
 }

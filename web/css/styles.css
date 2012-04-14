@@ -1,0 +1,13 @@
+@import url("base.css");
+
+<link rel="stylesheet" href="{{ asset('css/layout.css') }}" type="text/css" media="all">
+		<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/notifications.css') }}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/slide.css') }}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/menu.css') }}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.css') }}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/calendar.css') }}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/tasks.css') }}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/weather.css') }}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/news.css') }}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{{ asset('css/feedback.css') }}" type="text/css" media="screen" />

@@ -63,6 +63,7 @@ class ProfileFormType extends AbstractType
 				->add('avgspeed')
 				->add('deviceId')
 				->add('phoneNum')
+				->add('backupPhoneNum')
             ->add('email', 'email')
         ;
     }

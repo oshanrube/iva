@@ -4,16 +4,25 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>{% block title %}Welcome!{% endblock %}</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1"/>
-	<link rel="stylesheet" href="{{ asset('css/jquery.mobile-1.0.1.min.css') }}" />
-	<link rel="stylesheet" href="{{ asset('css/mobile-styles.css') }}" /></link>
-	<link rel="stylesheet" href="{{ asset('css/jquery.mobile.datebox.css') }}" /></link>
-	<link rel="stylesheet" href="{{ asset('css/iva.min.css') }}" /></link>
-	<script type="text/javascript" src="{{ asset('js/jquery.mob.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('js/jquery.mobile-1.0.1.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('js/googleMaps.mobile.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('js/mobile.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('js/cordova-1.5.0.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('js/speechrecognizer.js') }}" charset="utf-8"></script>
+	{% stylesheets
+		'css/jquery.mobile-1.0.1.min.css'
+		'css/mobile-styles.css'
+		'css/jquery.mobile.datebox.css'
+		'css/iva.min.css'
+		filter='?yui_css,cssrewrite' %}
+		<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all">
+	{% endstylesheets %}
+	
+	{% javascripts
+			'js/jquery.mob.js'
+			'js/jquery.mobile-1.0.1.min.js'
+			'js/googleMaps.mobile.js'
+			'js/mobile.js'
+			'js/cordova-1.5.0.js'
+			'js/speechrecognizer.js'
+		filter='?yui_js' %}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
 	{% block scripts %}{% endblock %}
 	<script type="text/javascript" charset="utf-8">
 		var voice_fail = false;

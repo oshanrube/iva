@@ -16,7 +16,7 @@ class DashController extends Controller
 		//get the user id
 		$user = $this->get('security.context')->getToken()->getUser();
 		//retrive the users calendars
-		$calendars = 	$this->getDoctrine()
+		$calendars = $this->getDoctrine()
 							->getRepository('AcmeTaskBundle:Calendar')
 							->findByOwnerId($user->getId());
 		//facebook link

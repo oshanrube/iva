@@ -1,0 +1,11 @@
+#weather img{
+	width: 100px;
+}
+#weather .condition{
+	text-align: center;	
+}
+#weather h4 {
+	text-align: center;
+	border-bottom: 1px solid black;
+	margin-bottom: 5px;
+}
