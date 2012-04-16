@@ -81,9 +81,9 @@ class LibNotification{
       $notification->setPrepare($prepareTime);
       $notification->setTravelTime($travelTime);
       $notification->setWCondition($wCondition);
-      
-     	
-     	
+      $notification->setUpdatable(true);
+      $notification->setPush(false);
+      $notification->setCallConfirmCode("00000");
       return $notification;
 	}
 	
@@ -101,21 +101,26 @@ class LibNotification{
 		//sms
 //		$Sms = new Sms();
 //		$Sms->sendNotification($user,$message);
-
 		switch($method) {
 			case "Push":
 				$UrbanAirship = new UrbanAirship();
 				$UrbanAirship->sendNotification($user,$notification);
+				$notification->setPush(true);
 				break;
 			case "SMS":
-			echo "sms asdasdasd"; exit();
 				$Sms = new Sms();
-				$Sms->sendNotification($user,$message);
+				$Sms->sendNotification($user,$notification);
+				$notification->setSms(true);
 				break;
 			case "Call":
 				//TODO
+				$confirmationCode = substr(md5(strtotime('now').$notification->getId()),0,5);
+				$notification->setCallConfirmCode($confirmationCode);
+				$Twilio = new Twilio();
+				$Twilio->initiateCall($user,$notification);
+				$notification->setVoicecall(true);
 				break;	
 		}
-		exit();
+		return $notification;
 	}
 }

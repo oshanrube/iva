@@ -508,7 +508,7 @@ function outputString()
 function toggleFeedback(){
 	//$("#FeedbackForm").slideToggle('slow');
 	if( $("#feedbackHandle").css('bottom') == "234px" ) { 
-		$("#feedbackHandle").animate({ bottom: '20' }, 'slow' );
+		$("#feedbackHandle").animate({ bottom: '30' }, 'slow' );
 		$("#FeedbackForm").animate({ bottom: '-234' }, 'slow' );
    } else {
    	$("#feedbackHandle").animate({ bottom: '234' }, 'slow' );

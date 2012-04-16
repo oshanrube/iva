@@ -28,12 +28,13 @@ class UrbanAirship{
       $android['extra']->lng = (String) $notification->getTask()->getLng();
       $android['extra']->lat = (String) $notification->getTask()->getLat();
       $android['extra']->location = $notification->getTask()->getLocation();
-      
-
+     
       // create the contents of the main json object
       $dictionary = array();
       $dictionary['android'] = $android;
       $dictionary['apids'] = array($this->getDeviceId($user)); // The specific android urban airship phone id
+      if(empty($dictionary['apids'][0]))
+      	return false;
       echo "pushed noti ".$notification->getId()." to ".$this->getDeviceId($user)."\n";
       // convert the dictionary to a json string
       $this->vars = json_encode($dictionary);

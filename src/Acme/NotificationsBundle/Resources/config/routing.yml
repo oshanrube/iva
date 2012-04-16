@@ -11,3 +11,9 @@ AcmeNotificationsBundle_edit_id:
 AcmeNotificationsBundle_confirm_push:
     pattern:  /push/comfirm
     defaults: { _controller: AcmeNotificationsBundle:Default:confirmPush }
+    
+AcmeNotificationsBundle_call_details:
+    pattern:  /call/voice/{id}/{confirmId}
+    defaults: { _controller: AcmeNotificationsBundle:Default:callDetails }
+    requirements:
+        id:  \d+

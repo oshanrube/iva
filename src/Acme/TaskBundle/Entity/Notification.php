@@ -399,4 +399,29 @@ class Notification
     {
         return $this->updatable;
     }
+    /**
+     * @var string $callConfirmCode
+     */
+    private $callConfirmCode;
+
+
+    /**
+     * Set callConfirmCode
+     *
+     * @param string $callConfirmCode
+     */
+    public function setCallConfirmCode($callConfirmCode)
+    {
+        $this->callConfirmCode = $callConfirmCode;
+    }
+
+    /**
+     * Get callConfirmCode
+     *
+     * @return string 
+     */
+    public function getCallConfirmCode()
+    {
+        return $this->callConfirmCode;
+    }
 }

@@ -115,7 +115,8 @@ class DefaultController extends Controller
     	//shedule a update
 		$schedule = new Schedule();
 		$schedule->setDatetime(time());
-		$schedule->setCommand('calendar:syncfacebook '.$user->getUsername());
+		$schedule->setCommand('calendar:syncfacebook');
+		$schedule->setArguments('username:'.$user->getUsername());
 		// saving the task to the database
 		$em = $this->getDoctrine()->getEntityManager(); 
 		$em->persist($schedule);

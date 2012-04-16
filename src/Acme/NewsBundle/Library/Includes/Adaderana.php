@@ -20,7 +20,8 @@ class Adaderana {
 			//shedule a update
 			$schedule = new Schedule();
 			$schedule->setDatetime(time());
-			$schedule->setCommand('weather:update '.$location);
+			$schedule->setCommand('weather:update');
+			$schedule->setArguments('location:'.$location);
 			// saving the task to the database 
 			$this->em->persist($schedule);
 			$this->em->flush();

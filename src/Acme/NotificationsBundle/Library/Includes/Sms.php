@@ -10,13 +10,21 @@ class Sms{
 		
 	}
 		
-	public function sendNotification($user,$message) {
+	public function sendNotification($user,$notification) {
+		//if the user has not entered a phone number
+		if($user->getPhoneNum() == "")
+			return false;
+		//check for phone number reg ex
+		if(!preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{5}$/", $user->getPhoneNum()))	
+			return false;
+			
 		//set var
+		$message = 'REMINDER: '.$notification->getTask()->getDescription().' At '.date("D M j G:i:s",$notification->getTask()->getStartTime());
 		$this->baseUrl = str_replace('#PHONE#',$user->getPhoneNum(),$this->baseUrl);
 		$this->baseUrl = str_replace('#MESSAGE#',$message,$this->baseUrl);
 		//send
 		$this->exec();
-		return false;
+		return true;
 	}
 	
 	//run the 

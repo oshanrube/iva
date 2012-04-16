@@ -74,4 +74,29 @@ class Schedule
     {
         return $this->command;
     }
+    /**
+     * @var string $arguments
+     */
+    private $arguments;
+
+
+    /**
+     * Set arguments
+     *
+     * @param string $arguments
+     */
+    public function setArguments($arguments)
+    {
+        $this->arguments = $arguments;
+    }
+
+    /**
+     * Get arguments
+     *
+     * @return string 
+     */
+    public function getArguments()
+    {
+        return $this->arguments;
+    }
 }

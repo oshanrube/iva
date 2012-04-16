@@ -14,4 +14,7 @@ Acme\ScheduleBundle\Entity\Schedule:
     command:
       type: string
       length: '63'
+    arguments:
+      type: string
+      length: '64'
   lifecycleCallbacks: {  }

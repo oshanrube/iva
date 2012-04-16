@@ -38,6 +38,9 @@ Acme\TaskBundle\Entity\Notification:
     voicecall:
       type: boolean
       default: false
+    callConfirmCode:
+      type: string
+      length: '5'
   lifecycleCallbacks: {  }
   oneToOne:
     task:

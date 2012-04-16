@@ -14,7 +14,7 @@ class NotificationRepository extends EntityRepository
 {
 	public function findByPendingPushNotifications() {
 		$now = mktime(date("H"), date("i"), 0, date("m"), date("d"), date("Y"));
-		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :now AND n.push = 0';
+		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :now AND n.push = 0 ORDER BY n.datetime';
 		
 		try{
 			return $this->getEntityManager()
@@ -25,19 +25,44 @@ class NotificationRepository extends EntityRepository
         return null;
     	}
 	}
-	public function findByPendingSMSNotifications() {
-		//tollerence time between push and sms
-		$tolerence = 5;
-		$TolerenceTime = mktime(date("H"), date("i"), 0, date("m"), date("d"), date("Y"));
-		$now = mktime(date("H"), date("i")+$tolerence, 0, date("m"), date("d"), date("Y"));
-		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE 
-		( n.datetime > :now AND n.datetime <= :TolerenceTime AND n.push = 1) || 
-		( n.datetime <= :now AND n.push = -1)';
+	public function findOneByIdAndConfirmId($id, $confirmId) {
+		$query = 'SELECT n FROM AcmeTaskBundle:Notification n 
+		WHERE n.id = :id AND n.callConfirmCode = :confirmId';
 		
 		try{
 			return $this->getEntityManager()
 				->createQuery($query)
-				->setParameter('now', $now)
+				->setParameter('id', $id)
+				->setParameter('confirmId', $confirmId)
+				->getSingleResult();
+		} catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    	}
+	}
+	public function findByPendingSMSNotifications() {
+		//tollerence time between push and sms
+		$tolerence = 5;
+		$TolerenceTime = mktime(date("H"), date("i")+$tolerence, 0, date("m"), date("d"), date("Y"));
+		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :TolerenceTime AND n.push = 1  ORDER BY n.datetime';
+		
+		try{
+			return $this->getEntityManager()
+				->createQuery($query)
+				->setParameter('TolerenceTime', $TolerenceTime)
+				->getResult();
+		} catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    	}
+	}
+	public function findByPendingCallNotifications() {
+		//tollerence time between sms and call
+		$tolerence = 10;
+		$TolerenceTime = mktime(date("H"), date("i")+$tolerence, 0, date("m"), date("d"), date("Y"));
+		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :TolerenceTime AND n.push = 1 AND n.sms = 1  ORDER BY n.datetime';
+		
+		try{
+			return $this->getEntityManager()
+				->createQuery($query)
 				->setParameter('TolerenceTime', $TolerenceTime)
 				->getResult();
 		} catch (\Doctrine\ORM\NoResultException $e) {

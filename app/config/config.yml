@@ -81,3 +81,6 @@ services:
         tags: [{ name: 'twig.extension' }]
     database:
         class: Acme\MemberBundle\Service\DBService   
+
+parameters:
+    url: http://46.137.221.250
