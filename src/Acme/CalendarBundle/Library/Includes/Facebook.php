@@ -14,6 +14,7 @@ class Facebook
 	public function __construct() {
 		$this->appId  = '236123993144257';
 		$this->secret = '7d0971c045d0ece5043a8b253e6c06d5';
+		$this->cachePath = __DIR__.'/../../../../../app/cache/app/';
 	}
 	
 	//this will return the auth url 
@@ -29,7 +30,6 @@ class Facebook
    	$params['code'] = $code;
 		$url = 'https://graph.facebook.com/oauth/access_token?'.http_build_query($params);
 		$res = $this->exec($url, false);
-		var_dump($res);exit();
 		if(isset($res->error)){
 			return false;
 		}
@@ -37,7 +37,6 @@ class Facebook
 	}
 	public function setAccessToken($token) {
 		$this->access_token = $token;
-		$this->cachePath = __DIR__.'/../../../../../app/cache/app/';
 	}
 	
 	public function setAction($action,$id = null) {
