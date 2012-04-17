@@ -39,6 +39,6 @@ class SyncFacebookCommand extends ContainerAwareCommand
 			$em->flush();
 		}
 		//return 
-      $output->writeln('Done');
+      $output->writeln('Sync Facebook Compleate');
     }
 }

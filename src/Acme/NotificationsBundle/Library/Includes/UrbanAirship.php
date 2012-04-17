@@ -1,5 +1,6 @@
 <?php
 namespace Acme\NotificationsBundle\Library\Includes;
+use Acme\NotificationsBundle\Library\LibNotification;
 
 class UrbanAirship{
 
@@ -13,8 +14,8 @@ class UrbanAirship{
 		
 	public function sendNotification($user,$notification) {
 		//prepair the message
-		$message = 'REMINDER: '.$notification->getTask()->getDescription().' At '.date("D M j G:i:s",$notification->getTask()->getStartTime());
-		$message = 'REMINDER: Notified At '.date("D M j G:i:s");
+		//$message = 'REMINDER: '.$notification->getTask()->getDescription().' At '.date("D M j G:i:s",$notification->getTask()->getStartTime());
+		$message = LibNotification::createMessage($notification);
 		$colour = $notification->getTask()->getTaskColour()->getColour();
     	if($colour == "Default"){$colour = '000000';}
     	$datetime = date('l jS \of F Y h:i:s A',$notification->getTask()->getStartTime());
@@ -33,8 +34,11 @@ class UrbanAirship{
       $dictionary = array();
       $dictionary['android'] = $android;
       $dictionary['apids'] = array($this->getDeviceId($user)); // The specific android urban airship phone id
+
       if(empty($dictionary['apids'][0]))
       	return false;
+      	//tmp pass
+      	return null;
       echo "pushed noti ".$notification->getId()." to ".$this->getDeviceId($user)."\n";
       // convert the dictionary to a json string
       $this->vars = json_encode($dictionary);

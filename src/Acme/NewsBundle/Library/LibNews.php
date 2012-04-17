@@ -18,15 +18,17 @@ class LibNews{
 	}
 	//load new news to database
 	public function UpdateNews($location) {
+		if(trim($location) == "") 
+			$location = 'Colombo';
+			
+		echo "loading news for ".$location."\n";
 		if($location == 'Colombo'){
 			//adaderana
 			$Adaderana = new Adaderana($this->em);
       	//update 
 			$Adaderana->updateNews();
-		} elseif(empty($location)) 
-			$location = 'Colombo';
+		}
 		//GoogleNews
-		echo "loading news for ".$location."\n";
 		$GoogleNews = new GoogleNews($this->em);
 		return $GoogleNews->updateNews($location);
 	}

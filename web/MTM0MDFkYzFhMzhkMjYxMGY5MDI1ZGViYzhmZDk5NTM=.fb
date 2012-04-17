@@ -1,0 +1,1 @@
+s:139:"{"error":{"message":"Invalid redirect_uri: Given URL is not allowed by the Application configuration.","type":"OAuthException","code":191}}";

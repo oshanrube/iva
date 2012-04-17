@@ -22,7 +22,7 @@ class Sync{
 		$facebook->synced = false;
 		//is there a sheduled check already
 		$schedule = $this->em->getRepository('AcmeScheduleBundle:Schedule')
-						->findOneByCommand( 'calendar:syncfacebook '.$user->getUsername() );
+						->findOneByCommandAndArgument( 'calendar:syncfacebook','username:'.$user->getUsername() );
 		
 		//if the user already has a token
 		if( ( !$facebook->token = $user->getFbToken() ) || ( $user->getFbToken() == "error" ) ){
@@ -33,7 +33,6 @@ class Sync{
 		elseif( count($schedule) > 0 ){ 
 			$facebook->synced = true;
 		}
-		
 		return $facebook;
 	}
 	
@@ -45,6 +44,7 @@ class Sync{
 		$facebook->setAccessToken($user->getFbToken());
 		$facebook->setAction('events');
 		//execute
+		echo "Downloading facebook events\n";
 		$events = $facebook->exec();
 		//error
 		if(isset($events->error)){
@@ -54,12 +54,14 @@ class Sync{
 		}
 		//load all events
 		while(count($events->data)>0){
+			echo "Downloading facebook events on page ".$events->paging->next."\n";
 			$FBevents = array_merge($FBevents,$events->data);
 			//next page
 			$events = $facebook->exec($events->paging->next);
 		}
 		//create events
 		$taskmodel = New TaskModel($this->em);
+		echo 'Updating facebook events for '.$user->getName()."\n";
 		foreach($FBevents as $event){
 			$taskmodel->addFacebookEvent($user,$event);
 		}
@@ -69,6 +71,7 @@ class Sync{
 		//grab the friendlist
 		$facebook->setAction('friends');
 		//execute
+		echo "Requesting friend list \n";
 		$friends = $facebook->exec();
 		//error
 		if(isset($friends->error)){
@@ -78,6 +81,7 @@ class Sync{
 		//load all events
 		while(count($friends->data)>0){
 			$FBFriends = array_merge($FBFriends,$friends->data);
+			echo "Requesting friend list on page ".$friends->paging->next."\n";
 			//next page
 			$friends = $facebook->exec($friends->paging->next);
 		}

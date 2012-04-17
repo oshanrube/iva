@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Acme\NotificationsBundle\Library\LibNotification;
 //use Acme\NotificationsBundle\Library\Twilio;
 
-include __DIR__.'/../Library/Twilio.php';
+//include __DIR__.'/../Library/Twilio.php';
 
 class NotificationsPushCommand extends ContainerAwareCommand
 {
@@ -45,9 +45,9 @@ class NotificationsPushCommand extends ContainerAwareCommand
 					->findOneById($userId);
 			//process and SEND notification
 			$notification = $libNotification->pushNotification($user,$noti, "Push");
-			$em->persist($notification);
-			$em->flush();
+			$em->persist($notification);			
 		}
+		$em->flush();
 		//
 		//LEVEL 2 SMS
 		//
@@ -61,8 +61,8 @@ class NotificationsPushCommand extends ContainerAwareCommand
 			//process and SEND notification
 			$notification = $libNotification->pushNotification($user,$noti, "SMS");
 			$em->persist($notification);
-			$em->flush();
 		}
+		$em->flush();
 		//
 		//LEVEL 3
 		//
@@ -83,18 +83,16 @@ class NotificationsPushCommand extends ContainerAwareCommand
 			$AccountSid = "AC403828398da640fda9cfbd3dd9c59e9a";
    	 	$AuthToken = "1d8d08ffeb0a2163040403fec73547f7";
     		$client = new \Services_Twilio($AccountSid, $AuthToken);
-			echo __DIR__;exit();
-      	
 			/*$call = $client->account->calls->create(
 				'94776566978', // From this number
-				'94776566978', // Call this number
-				'http://foo.com/call.xml'
+				'+'.$user->getBackupPhoneNum(), // Call this number
+				$url
 			);*/
+			echo $url;exit(); 
 			//process and SEND notification
-			$notification = $libNotification->pushNotification($user,$noti, "Call");
 			$em->persist($notification);
-			$em->flush();
 		}
+		$em->flush();
 		$output->writeln('Done');
 	}
 }

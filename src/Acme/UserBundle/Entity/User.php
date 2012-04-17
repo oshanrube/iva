@@ -55,7 +55,7 @@ class User extends BaseUser
      */
     private $lat;
     /**
-     * @ORM\Column(type="string",length="16", nullable=true)
+     * @ORM\Column(type="string",length="32", nullable=true)
      */
     private $deviceId;
     /**
@@ -63,7 +63,7 @@ class User extends BaseUser
      */
     private $phoneNum;
     /**
-     * @ORM\Column(type="integer",length="11", nullable=true)
+     * @ORM\Column(type="string",length="14", nullable=true)
      */
     private $backupPhoneNum;
 

@@ -502,6 +502,11 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::confirmPushAction',  '_route' => 'AcmeNotificationsBundle_confirm_push',);
             }
 
+            // AcmeNotificationsBundle_call_details
+            if (0 === strpos($pathinfo, '/notification/call/voice') && preg_match('#^/notification/call/voice/(?P<id>\\d+)/(?P<confirmId>[^/]+?)$#xs', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::callDetailsAction',)), array('_route' => 'AcmeNotificationsBundle_call_details'));
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

@@ -123,4 +123,18 @@ class LibNotification{
 		}
 		return $notification;
 	}
+	
+	public static function createMessage($notification){
+		//get task type
+		$taskType = $notification->getTask()->getTaskType()->getTitle();
+		switch($taskType) {
+			case "Birthday":
+				$msg = "It's ".$notification->getTask()->getDescription()." Today";
+				break;
+			default:
+				$msg = $notification->getTask()->getDescription().' At '.date("g:i:s a",$notification->getTask()->getStartTime()).' in '.$notification->getTask()->getLocation();
+			break;
+		}
+		return $msg;
+	}
 }

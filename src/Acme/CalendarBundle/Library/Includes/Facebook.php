@@ -8,7 +8,8 @@ class Facebook
 	private $appId,$secret;
 	private $params = array();
 	private $base_url = 'https://graph.facebook.com/';
-	private $redirectUrl = 'http://iva.whatsupbuddy.com/redirect.php/?path=user/facebook/login';
+	//private $redirectUrl = 'http://iva.whatsupbuddy.com/redirect.php/?path=user/facebook/login';
+	private $redirectUrl = 'http://iva.whatsupbuddy.com/mask.php?path=user/facebook/login';
 	
 	public function __construct() {
 		$this->appId  = '236123993144257';
@@ -17,8 +18,8 @@ class Facebook
 	
 	//this will return the auth url 
 	public function getUrl() {
-		$url = "https://www.facebook.com/dialog/oauth?client_id=".$this->appId."&redirect_uri=".$this->redirectUrl."&scope=".$this->permission."&state=".md5(date('c'));
- 		return $url;
+		//$url = "https://www.facebook.com/dialog/oauth?client_id=".$this->appId."&redirect_uri=".$this->redirectUrl."&scope=".$this->permission."&state=".$_SESSION['state'];
+		return $this->redirectUrl;
 	}
 	//get access token
 	public function getAccessToken($code){
@@ -28,6 +29,7 @@ class Facebook
    	$params['code'] = $code;
 		$url = 'https://graph.facebook.com/oauth/access_token?'.http_build_query($params);
 		$res = $this->exec($url, false);
+		var_dump($res);exit();
 		if(isset($res->error)){
 			return false;
 		}
@@ -54,9 +56,10 @@ class Facebook
 		if(!$url){
 			$url = $this->base_url.$this->path.'?access_token='.$this->access_token.'&'.http_build_query($this->params);
 		}
-		if(!$response = $this->getCache($url)){
+		//if(!$response = $this->getCache($url)){
 			$ch = curl_init($url);
 			curl_setopt($ch,CURLOPT_POST, $post);
+			curl_setopt($ch, CURLOPT_VERBOSE, true);
 			if($post)
 			curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($this->params));
 			curl_setopt($ch, CURLOPT_HEADER      ,0);  // DO NOT RETURN HTTP HEADERS
@@ -64,7 +67,7 @@ class Facebook
 			$response = curl_exec ($ch);
 			curl_close ($ch);
 			$this->addCache($url,$response);
-		}
+		//}
 		return json_decode($response);
 	}
 	private function getCache($query) {

@@ -91,6 +91,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'AcmeNotificationsBundle_homepage' => true,
        'AcmeNotificationsBundle_edit_id' => true,
        'AcmeNotificationsBundle_confirm_push' => true,
+       'AcmeNotificationsBundle_call_details' => true,
     );
 
     /**
@@ -502,5 +503,10 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
     private function getAcmeNotificationsBundle_confirm_pushRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::confirmPushAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/notification/push/comfirm',  ),));
+    }
+
+    private function getAcmeNotificationsBundle_call_detailsRouteInfo()
+    {
+        return array(array (  0 => 'id',  1 => 'confirmId',), array (  '_controller' => 'Acme\\NotificationsBundle\\Controller\\DefaultController::callDetailsAction',), array (  'id' => '\\d+',), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'confirmId',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '\\d+',    3 => 'id',  ),  2 =>   array (    0 => 'text',    1 => '/notification/call/voice',  ),));
     }
 }

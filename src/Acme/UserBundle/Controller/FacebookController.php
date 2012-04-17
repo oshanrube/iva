@@ -18,21 +18,20 @@ class FacebookController extends Controller
 {	 
 	public function loginAction(Request $request)
 	{
-		$code = $request->query->get('code');
+		$accessToken = $request->query->get('at');
 		$facebook = new Facebook();
 		//if not logged in 
-		if(empty($code)) {
+		if(empty($accessToken)) {
 			return new RedirectResponse($facebook->getUrl());
 		}
-		//exchange the exchange code to access token
-		$accesstokenRes = $facebook->getAccessToken($code);
-		if(!$accesstokenRes) {
+		
+		if(!$accessToken) {
 			 $this->get('session')->setFlash('error', 'Error accesing your facebook account please try again later!');
 			return new RedirectResponse($this->generateUrl('AcmeCalendarBundle_dash_list_calendars'));
 		}
 		//update the user token
 		$user = $this->get('security.context')->getToken()->getUser();
-		$user->setFbToken($accesstokenRes->access_token);
+		$user->setFbToken($accessToken);
 		$em = $this->getDoctrine()->getEntityManager();
 		$em->persist($user);
 		$em->flush();

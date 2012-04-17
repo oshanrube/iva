@@ -101,7 +101,7 @@ class DefaultController extends Controller
 				$em->remove($calendar);
 				$em->flush();
 		if($this->getRequest()->isXmlHttpRequest()){
-   		$response = new Response(json_encode(array('response' => 'success')));
+   		$response = new Response(json_encode(array('success' => 'true')));
 			$response->headers->set('Content-Type', 'application/json');
 			return $response;
 		} else {

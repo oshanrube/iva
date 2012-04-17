@@ -17,5 +17,19 @@ class ScheduleRepository extends EntityRepository
             ->createQuery('SELECT s FROM AcmeScheduleBundle:Schedule s ORDER BY s.id ')
             ->getResult();
       return $schedule;
-    }
+	}
+	public function findOneByCommandAndArgument($command,$arg) {
+		
+		try{
+			return $this->getEntityManager()
+            		->createQuery('SELECT s FROM AcmeScheduleBundle:Schedule s 
+            		WHERE s.command = :command AND s.arguments = :arg ')
+            		->setParameter('command', $command)
+						->setParameter('arg', $arg)
+						->setMaxResults(1)
+            		->getSingleResult();
+      } catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    	}
+	}
 }

@@ -33,14 +33,8 @@ class FacebookAPI{
 		$params['client_secret']	= $this->client_secret;
 		$params['redirect_uri'] 	= 'http://iva.whatsupbuddy.com/redirect.php/?path=user/google/login';
 		$this->query = http_build_query($params);
-		
-		if($res = $this->getCache($this->query)){
-			return $res;
-		} else {
-			$res = $this->exec(true);
-			$this->addCache($this->query,$res);
-		}
-		return $res;
+		echo $this->query;exit(); 
+		return $this->exec(true);
 	}
 	
 	public function refreshToken($refresh_token) {
@@ -97,6 +91,7 @@ class FacebookAPI{
 			curl_setopt($ch, CURLOPT_USERAGENT, "google-api-php-client/0.5.0");
 			$data = curl_exec($ch);
 			curl_close($ch);
+			echo $data;exit();
 		$this->rawData = json_decode($data);
 		if(!empty($this->rawData->message)){
 			throw new \Exception($this->rawData->message);

@@ -44,6 +44,7 @@ class Adaderana {
 		//loop thro
 		foreach($items as $item) {
 			$title = $item->getElementsByTagName( "title" )->item(0)->nodeValue;
+			echo $title."\n";
 			if(!$News->findOneByTitle($title)){
 				$news = new News();
 				$news->setTitle($title);

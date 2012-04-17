@@ -292,7 +292,7 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 		//add the task
 		$task = new Task();
 		$task->setTask($profile->name.'\'s Birthday');
-		$task->setDescription($profile->name.'\'s Birthday');
+		$task->setDescription('It\'s '.$profile->name.'\'s Birthday');
 		$task->setStartTime(strtotime($profile->birthday));
 		$task->setEndtime(0);
 		$task->setLocation('');
