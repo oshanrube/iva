@@ -63,8 +63,10 @@ class Sync{
 		$taskmodel = New TaskModel($this->em);
 		echo 'Updating facebook events for '.$user->getName()."\n";
 		foreach($FBevents as $event){
+			echo $event->name."\n";
 			$taskmodel->addFacebookEvent($user,$event);
 		}
+		echo "Updating events Compleate\n";
 		/***************/
 		/** BIRTHDAYS **/
 		$FBFriends = array();

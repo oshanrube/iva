@@ -5,7 +5,7 @@
 	padding: 2px;
 	padding-bottom: 5px;
 }
-#dashboard table tbody td .date{
+#dashboard .date{
 	text-align: center;
 	background: #0099FF;
 	border-radius: 9px;
@@ -21,7 +21,10 @@ background-image: -ms-linear-gradient(#0099FF, #0bf);
 background-image: -o-linear-gradient(#0099FF, #0bf);
 background-image: linear-gradient(#0099FF, #0bf);
 }
-#dashboard table tbody .border{
+#dashboard table tbody .date{
+	cursor: pointer;
+}
+#dashboard .border{
 	margin: 0px;
 	padding: 0px;
 	height: 120px;
@@ -107,3 +110,46 @@ body #dashboard{
 #dashboard .border:hover { border-color: #0088cc; -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); }
 #dashboard content {cursor: pointer;}
 #dashboard a{text-decoration: none;}
+
+#dashboard #fullscreen ul{
+	padding: 10px;
+	list-style: none;
+	border: 2px solid #2D2D2D;
+	background: white;
+	color: black;
+}
+#dashboard #fullscreen *{
+	opacity:1;
+}
+#dashboard #fullscreen ul li{
+	border-bottom: 1px solid #AAA;
+	line-height: 18px;
+	height: 20px;
+	padding: 5px;
+}
+#dashboard #fullscreen{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 75%;
+    height: 75%;
+    padding: 15%;
+    background: #4D5152;
+	opacity: 0.9;
+}
+#dashboard #fullscreen #closeBtn{ 
+	width: 26px;
+	height: 26px;
+	background: white url('../images/close.gif') no-repeat;
+	display: block;
+	float: right;
+	border-radius: 5px;
+	top: -26px;
+	border: 2px solid;
+	margin: 10;
+	cursor: pointer;
+}
+
+#dashboard #fullscreen ul li:hover{
+	background:#F4F4F4;
+}

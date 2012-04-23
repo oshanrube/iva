@@ -18,10 +18,18 @@ class GoogleGeocoding{
 		$response = json_decode($this->exec());
 		//if server is responding
 		if($response->status == "OK"){
-			if($response->results[3]->address_components[0]->short_name)
-				return $response->results[3]->address_components[0]->short_name;
+			return $this->getCity($response->results[0]->address_components);
 		}
 		return false;
+	}
+	
+	private function getCity($address_components) {
+		//get administrative_area_level_2
+		foreach($address_components as $component){
+			if(in_array("administrative_area_level_2", $component->types)){
+				return $component->short_name;
+			}
+		}
 	}
 	
 	//run the 

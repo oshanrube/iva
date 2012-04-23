@@ -55,10 +55,10 @@ class Facebook
 		if(!$url){
 			$url = $this->base_url.$this->path.'?access_token='.$this->access_token.'&'.http_build_query($this->params);
 		}
-		//if(!$response = $this->getCache($url)){
+		if(!$response = $this->getCache($url)){
 			$ch = curl_init($url);
 			curl_setopt($ch,CURLOPT_POST, $post);
-			curl_setopt($ch, CURLOPT_VERBOSE, true);
+			//curl_setopt($ch, CURLOPT_VERBOSE, true);
 			if($post)
 			curl_setopt($ch,CURLOPT_POSTFIELDS, http_build_query($this->params));
 			curl_setopt($ch, CURLOPT_HEADER      ,0);  // DO NOT RETURN HTTP HEADERS
@@ -66,7 +66,7 @@ class Facebook
 			$response = curl_exec ($ch);
 			curl_close ($ch);
 			$this->addCache($url,$response);
-		//}
+		}
 		return json_decode($response);
 	}
 	private function getCache($query) {

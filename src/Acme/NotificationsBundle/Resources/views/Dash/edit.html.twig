@@ -10,7 +10,7 @@
 	{{ form_widget(notification_form) }}
 	<div class="form-actions">
 		<button type="submit" class="btn btn-primary">Save changes</button>
-		<button type="reset" class="btn">Cancel</button>
+		<a href="{{ path('AcmeTaskBundle_edit_id', { "id": id } ) }}" class="btn">Cancel</a>
 	</div>
 </fieldset>    
 </form>

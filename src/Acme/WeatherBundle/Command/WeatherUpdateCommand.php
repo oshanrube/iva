@@ -16,7 +16,7 @@ class WeatherUpdateCommand extends ContainerAwareCommand
         $this
             ->setName('weather:update')
             ->setDescription('Update the Weather')
-            ->addArgument('location', InputArgument::OPTIONAL, 'Colombo')
+            ->addArgument('location', InputArgument::OPTIONAL, 'City of the required weather ','Colombo')
             //->addOption('yell', null, InputOption::VALUE_NONE, 'If set, the task will yell in uppercase letters')
         ;
     }
@@ -26,8 +26,10 @@ class WeatherUpdateCommand extends ContainerAwareCommand
     	$em 	= $this->getContainer()->get('doctrine')->getEntityManager();
     	//
     	$Gweather = new Googleweather($em);
+    	
+    	$output->writeln('Updating weather for '.$input->getArgument('location'));
       //return 
 		$Gweather->update( $input->getArgument('location'));
-      $output->writeln('Done');
+      $output->writeln('Update weather Compleate.');
     }
 }

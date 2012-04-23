@@ -69,6 +69,9 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_assetic_1ea6468_15' => true,
        '_assetic_197700a' => true,
        '_assetic_197700a_0' => true,
+       '_assetic_ff14cbc' => true,
+       '_assetic_ff14cbc_0' => true,
+       '_assetic_ff14cbc_1' => true,
        '_wdt' => true,
        '_profiler_search' => true,
        '_profiler_purge' => true,
@@ -459,6 +462,21 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function get_assetic_197700a_0RouteInfo()
     {
         return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => '197700a',  'pos' => 0,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/197700a_jquery.mCustomScrollbar_1.js',  ),));
+    }
+
+    private function get_assetic_ff14cbcRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'ff14cbc',  'pos' => NULL,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/ff14cbc.js',  ),));
+    }
+
+    private function get_assetic_ff14cbc_0RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'ff14cbc',  'pos' => 0,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/ff14cbc_jquery-1.6_1.js',  ),));
+    }
+
+    private function get_assetic_ff14cbc_1RouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'assetic.controller:render',  'name' => 'ff14cbc',  'pos' => 1,  '_format' => 'js',), array (), array (  0 =>   array (    0 => 'text',    1 => '/js/ff14cbc_dashboard_2.js',  ),));
     }
 
     private function get_wdtRouteInfo()

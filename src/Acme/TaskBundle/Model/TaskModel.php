@@ -224,6 +224,7 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 				$schedule = new Schedule();
 				$schedule->setDatetime(time());
 				$schedule->setCommand('notifications:create');
+				$schedule->setArguments('');
 				// saving the task to the database 
 				$this->em->persist($schedule);
 				$this->em->flush();
@@ -249,10 +250,16 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 		if(!$taskLocation = $location->searchLocation('',$locations,$lng,$lat,$accurate = false)){
 			//add Venues
 			$venues = $location->getVenues();
-			//get the best result
-			$task->setLocation($venues[0]->name);
-			$task->setLng($venues[0]->lng);
-			$task->setLat($venues[0]->lat);
+			if(isset($venues[0])){
+				//get the best result
+				$task->setLocation($venues[0]->name);
+				$task->setLng($venues[0]->lng);
+				$task->setLat($venues[0]->lat);
+			} else {
+				$task->setLocation("");
+				$task->setLng(0);
+				$task->setLat(0);
+			}
 		} else {
 			$task->setLocation($taskLocation->name);
 			$task->setLng($taskLocation->location->lng);
@@ -281,6 +288,12 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 			$this->em->flush();
 		}
 		$task->setCalendar($fbcalendar);
+		$taskRepeat = $this->em->getRepository('AcmeTaskBundle:TaskRepeat')->findOneByTitle('No Repeat');
+		$task->setTaskRepeat($taskRepeat);
+		$TaskColour = $this->em->getRepository('AcmeTaskBundle:TaskColour')->findOneByColour('Default');
+		$task->setTaskColour($TaskColour);
+		$TaskPriority = $this->em->getRepository('AcmeTaskBundle:TaskPriority')->findOneByDescription('No Priority');
+		$task->setTaskPriority($TaskPriority);
 		//search for the task
 		$tsk = $this->em->getRepository('AcmeTaskBundle:Task')->findOneByTitleandTime($task->getTask(),$task->getStartTime());
 		if(!$tsk){
@@ -318,6 +331,10 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 			$this->em->flush();
 		}
 		$task->setCalendar($fbcalendar);
+		$TaskColour = $this->em->getRepository('AcmeTaskBundle:TaskColour')->findOneByColour('Default');
+		$task->setTaskColour($TaskColour);
+		$TaskPriority = $this->em->getRepository('AcmeTaskBundle:TaskPriority')->findOneByDescription('No Priority');
+		$task->setTaskPriority($TaskPriority);
 		//search for the task
 		$tsk = $this->em->getRepository('AcmeTaskBundle:Task')->findOneByTitleandTime($task->getTask(),$task->getStartTime());
 		if(!$tsk){

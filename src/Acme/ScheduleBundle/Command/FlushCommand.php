@@ -31,7 +31,7 @@ class FlushCommand extends ContainerAwareCommand
     	//group by and find last id
     	$tasks[] = array();
     	foreach($shedule as $task){
-    		if(!in_array($task->getCommand(),$tasks)){
+    		if(!in_array($task->getCommand().' '.$task->getArguments(),$tasks)){
     			//run the tasks
     			$command = $this->getApplication()->find($task->getCommand());
     			$arg = explode(':',$task->getArguments());
@@ -42,7 +42,7 @@ class FlushCommand extends ContainerAwareCommand
 			
 			   $input = new ArrayInput($arguments);
 			   echo $command->run($input, $output);
-    			$tasks[] = $task->getCommand();
+    			$tasks[] = $task->getCommand().' '.$task->getArguments();
     		}
     		$em->remove($task);
 		}

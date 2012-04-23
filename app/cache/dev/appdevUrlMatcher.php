@@ -314,6 +314,21 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'assetic.controller:render',  'name' => '197700a',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_197700a_0',);
         }
 
+        // _assetic_ff14cbc
+        if ($pathinfo === '/js/ff14cbc.js') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => 'ff14cbc',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_ff14cbc',);
+        }
+
+        // _assetic_ff14cbc_0
+        if ($pathinfo === '/js/ff14cbc_jquery-1.6_1.js') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => 'ff14cbc',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_ff14cbc_0',);
+        }
+
+        // _assetic_ff14cbc_1
+        if ($pathinfo === '/js/ff14cbc_dashboard_2.js') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => 'ff14cbc',  'pos' => 1,  '_format' => 'js',  '_route' => '_assetic_ff14cbc_1',);
+        }
+
         // _wdt
         if (preg_match('#^/_wdt/(?P<token>[^/]+?)$#xs', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController::toolbarAction',)), array('_route' => '_wdt'));

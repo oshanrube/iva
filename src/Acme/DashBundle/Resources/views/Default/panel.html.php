@@ -4,6 +4,12 @@
 <!--bootstrap-->
 <link rel="stylesheet/less" type="text/css" href="<?php echo $view['assets']->getUrl('bootstrap/lib/bootstrap.less') ?>">
 <script src="<?php echo $view['assets']->getUrl('js/less.js') ?>" type="text/javascript"></script>
+<?php foreach ($view['assetic']->javascripts(
+    array('js/jquery-1.6.js','js/dashboard.js'),
+    array()
+) as $url): ?>
+<script src="<?php echo $view->escape($url) ?>" type="text/javascript"></script>
+<?php endforeach; ?>
 
 
 <div id="dashboard">
