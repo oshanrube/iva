@@ -34,12 +34,13 @@ class FlushCommand extends ContainerAwareCommand
     		if(!in_array($task->getCommand().' '.$task->getArguments(),$tasks)){
     			//run the tasks
     			$command = $this->getApplication()->find($task->getCommand());
-    			$arg = explode(':',$task->getArguments());
-			   $arguments = array(
-			        'command' => $task->getCommand(),
-			        $arg[0]    => $arg[1]
-			    );
-			
+    			if($task->getArguments() != "") {
+    				$arg = explode(':',$task->getArguments());
+    				$arguments = array('command' => $task->getCommand(),$arg[0]    => $arg[1]);
+    			}
+    			else {
+    				$arguments = array('command' => $task->getCommand());
+    			}
 			   $input = new ArrayInput($arguments);
 			   echo $command->run($input, $output);
     			$tasks[] = $task->getCommand().' '.$task->getArguments();

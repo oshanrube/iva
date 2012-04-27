@@ -41,14 +41,17 @@ class NotificationRepository extends EntityRepository
 	}
 	public function findByPendingSMSNotifications() {
 		//tollerence time between push and sms
-		$tolerence = 5;
-		$TolerenceTime = mktime(date("H"), date("i")+$tolerence, 0, date("m"), date("d"), date("Y"));
-		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :TolerenceTime AND n.push = 1  ORDER BY n.datetime';
+		$smsTolerence = 5;
+		$callTolerence = 10;
+		$smsTolerenceTime = mktime(date("H"), date("i")+$smsTolerence, 0, date("m"), date("d"), date("Y"));
+		$callTolerenceTime = mktime(date("H"), date("i")+$callTolerence, 0, date("m"), date("d"), date("Y"));
+		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :smsTolerenceTime AND n.datetime > :callTolerenceTime AND n.push = 1 AND n.pushConfirm = 0 ORDER BY n.datetime';
 		
 		try{
 			return $this->getEntityManager()
 				->createQuery($query)
-				->setParameter('TolerenceTime', $TolerenceTime)
+				->setParameter('smsTolerenceTime', $smsTolerenceTime)
+				->setParameter('callTolerenceTime', $callTolerenceTime)
 				->getResult();
 		} catch (\Doctrine\ORM\NoResultException $e) {
         return null;
@@ -56,14 +59,14 @@ class NotificationRepository extends EntityRepository
 	}
 	public function findByPendingCallNotifications() {
 		//tollerence time between sms and call
-		$tolerence = 10;
-		$TolerenceTime = mktime(date("H"), date("i")+$tolerence, 0, date("m"), date("d"), date("Y"));
-		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :TolerenceTime AND n.push = 1 AND n.sms = 1  ORDER BY n.datetime';
+		$callTolerence = 10;
+		$callTolerenceTime = mktime(date("H"), date("i")+$callTolerence, 0, date("m"), date("d"), date("Y"));
+		$query = 'SELECT n FROM AcmeTaskBundle:Notification n WHERE n.datetime <= :callTolerenceTime AND n.push = 1 AND n.pushConfirm = 0 AND n.sms = 0 AND n.voicecall = 0  ORDER BY n.datetime';
 		
 		try{
 			return $this->getEntityManager()
 				->createQuery($query)
-				->setParameter('TolerenceTime', $TolerenceTime)
+				->setParameter('callTolerenceTime', $callTolerenceTime)
 				->getResult();
 		} catch (\Doctrine\ORM\NoResultException $e) {
         return null;

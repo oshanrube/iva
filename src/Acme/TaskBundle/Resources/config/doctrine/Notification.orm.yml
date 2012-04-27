@@ -32,6 +32,9 @@ Acme\TaskBundle\Entity\Notification:
     push:
       type: boolean
       default: false
+    pushConfirm:
+      type: boolean
+      default: false
     sms:
       type: boolean
       default: false

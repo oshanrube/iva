@@ -83,6 +83,7 @@ class LibNotification{
       $notification->setWCondition($wCondition);
       $notification->setUpdatable(true);
       $notification->setPush(false);
+      $notification->setPushConfirm(false);
       $notification->setCallConfirmCode("00000");
       return $notification;
 	}

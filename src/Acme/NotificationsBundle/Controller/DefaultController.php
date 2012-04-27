@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 use Acme\NotificationsBundle\Library\LibNotification;
-include __DIR__.'/../Library/Twilio.php';
+include_once __DIR__.'/../Library/Twilio.php';
 
 class DefaultController extends Controller
 {
@@ -28,7 +28,7 @@ class DefaultController extends Controller
             				->findOneById($id);
          if(!$notification)
          	return $this->redirect($this->generateUrl('AcmeHomeBundle_homepage'));
-         $notification->setPush(true);
+         $notification->setPushConfirm(true);
          $em = $this->getDoctrine()->getEntityManager();
 			$em->persist($notification);
 			$em->flush();

@@ -1,2 +1,16 @@
 @font-face { font-family: eraser; src: url('../fonts/CasketBreath.otf'); } 
 @font-face { font-family: beamBB; src: url('../fonts/DestructoBeamBB.otf'); } 
+@font-face {
+  font-family: 'Just Me Again Down Here';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Just Me Again Down Here'), local('JustMeAgainDownHere'), 
+  url('../fonts/JustMeAgainDownHere.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Great Vibes';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Great Vibes'), local('GreatVibes-Regular'), 
+  url('../fonts/GreatVibes-Regular.ttf') format('ttf');
+}

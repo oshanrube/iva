@@ -424,4 +424,29 @@ class Notification
     {
         return $this->callConfirmCode;
     }
+    /**
+     * @var boolean $pushConfirm
+     */
+    private $pushConfirm;
+
+
+    /**
+     * Set pushConfirm
+     *
+     * @param boolean $pushConfirm
+     */
+    public function setPushConfirm($pushConfirm)
+    {
+        $this->pushConfirm = $pushConfirm;
+    }
+
+    /**
+     * Get pushConfirm
+     *
+     * @return boolean 
+     */
+    public function getPushConfirm()
+    {
+        return $this->pushConfirm;
+    }
 }

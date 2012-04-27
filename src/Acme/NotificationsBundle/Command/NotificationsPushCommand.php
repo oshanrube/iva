@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Acme\NotificationsBundle\Library\LibNotification;
 //use Acme\NotificationsBundle\Library\Twilio;
 
-//include __DIR__.'/../Library/Twilio.php';
+include __DIR__.'/../Library/Twilio.php';
 
 class NotificationsPushCommand extends ContainerAwareCommand
 {
@@ -38,6 +38,7 @@ class NotificationsPushCommand extends ContainerAwareCommand
 		//retrive all the pending notifications at the moment
 		$notifications = $em->getRepository('AcmeTaskBundle:Notification')
 								->findByPendingPushNotifications();
+		$output->writeln('Loading push notifications: '.count($notifications));
 		foreach($notifications as $noti){
 			//get user info
 			$userId=$noti->getTask()->getUserId();
@@ -53,6 +54,7 @@ class NotificationsPushCommand extends ContainerAwareCommand
 		//
 		$notifications = $em->getRepository('AcmeTaskBundle:Notification')
 								->findByPendingSMSNotifications();
+		$output->writeln('Loading SMS notifications: '.count($notifications));
 		foreach($notifications as $noti){
 			//get user info
 			$userId=$noti->getTask()->getUserId();
@@ -68,6 +70,7 @@ class NotificationsPushCommand extends ContainerAwareCommand
 		//
 		$notifications = $em->getRepository('AcmeTaskBundle:Notification')
 								->findByPendingCallNotifications();
+		$output->writeln('Loading backup call notifications: '.count($notifications));
 		foreach($notifications as $noti){
 			$AccountSid = "AC403828398da640fda9cfbd3dd9c59e9a";
 			$AuthToken = "1d8d08ffeb0a2163040403fec73547f7";
@@ -88,9 +91,10 @@ class NotificationsPushCommand extends ContainerAwareCommand
 				'+'.$user->getBackupPhoneNum(), // Call this number
 				$url
 			);*/
-			echo $url;exit(); 
+			echo $url."\n";//exit(); 
 			//process and SEND notification
-			$em->persist($notification);
+			$noti->setVoicecall(true);
+			$em->persist($noti);
 		}
 		$em->flush();
 		$output->writeln('Done');

@@ -1,0 +1,14 @@
+.body2 #ajax_content h2{
+	font-family: 'Great Vibes', cursive;
+}
+
+.body2 #ajax_content p{
+	font-family: 'Just Me Again Down Here', cursive;
+}
+
+#ajax_content #article .customScrollBox{position:relative; height:100%; overflow:hidden;float: left;}
+#ajax_content #article .dragger_container{display:none;}
+#ajax_content #article {height: 350px;top: 0;}
+#ajax_content #article .dragger_container{margin:0;margin-left: 470px;position:absolute; width:2px; height: 350px; float:left; background:#000; cursor:pointer -moz-border-radius:2px; -khtml-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; cursor:s-resize;}
+#ajax_content #article .dragger{position:absolute; width:2px; height:60px; background:#999; text-align:center; line-height:60px; color:#666; overflow:hidden; cursor:pointer; -moz-border-radius:2px; -khtml-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;}
+#ajax_content #article .dragger_pressed{position:absolute; width:4px; margin-left:-1px; height:60px; background:#999; text-align:center; line-height:60px; color:#666; overflow:hidden; -moz-border-radius:4px; -khtml-border-radius:4px; -webkit-border-radius:4px; border-radius:4px; cursor:s-resize;}

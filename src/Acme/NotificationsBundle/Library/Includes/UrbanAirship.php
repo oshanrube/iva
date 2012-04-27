@@ -37,8 +37,7 @@ class UrbanAirship{
 
       if(empty($dictionary['apids'][0]))
       	return false;
-      	//tmp pass
-      	return null;
+      	
       echo "pushed noti ".$notification->getId()." to ".$this->getDeviceId($user)."\n";
       // convert the dictionary to a json string
       $this->vars = json_encode($dictionary);

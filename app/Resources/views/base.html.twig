@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>{% block title %}Welcome!{% endblock %}</title>
+		<title>{% block title %}Welcome to IVA!{% endblock %}</title>
 		<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 		<meta charset="utf-8">
 		<!-- stylesheets -->
@@ -13,6 +13,7 @@
 			'css/slide.css'
 			'css/menu.css'
 			'css/jquery.mCustomScrollbar.css'
+			'css/articles.css'
 			'css/calendar.css'
 			'css/tasks.css'
 			'css/weather.css'
@@ -90,7 +91,7 @@
 			<ul id="menu">
 				<li class="first" class="menu_active">
 					<a href="{{ path('AcmeHomeBundle_ajax', { 'article': 'aa' }) }}"  class="house">Home</a></li>
-				<li><a href="{{ path('AcmeHomeBundle_ajax', { 'article': 'features' }) }}" class="features">Features</a></li>
+				<li><a href="{{ path('AcmeHomeBundle_ajax', { 'article': 'concept' }) }}" class="features">Features</a></li>
 				<li><a href="{{ path('AcmeHomeBundle_ajax', { 'article': 'about' }) }}" class="info">About</a></li>
 				<li><a href="{{ path('AcmeHomeBundle_ajax', { 'article': 'mobile' }) }}" class="wrench">Mobile</a></li>
 				<li><a href="{{ path('AcmeHomeBundle_ajax', { 'article': 'contact-us' }) }}" class="envelope">Contact us</a></li>

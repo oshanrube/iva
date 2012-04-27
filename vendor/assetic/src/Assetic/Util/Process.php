@@ -150,12 +150,12 @@ class Process
 
             if (false === $n) {
                 break;
-            } elseif ($n === 0) {
+            }/* elseif ($n === 0) {
                 proc_terminate($process);
 
                 throw new \RuntimeException('The process timed out.');
             }
-
+				*/
             if ($w) {
                 $written = fwrite($writePipes[0], (binary) substr($this->stdin, $stdinOffset), 8192);
                 if (false !== $written) {

@@ -47,7 +47,7 @@ return array (
       'combine' => NULL,
     ),
   ),
-  'e6261eb' => 
+  'c9c1fcb' => 
   array (
     0 => 
     array (
@@ -57,12 +57,13 @@ return array (
       3 => 'css/slide.css',
       4 => 'css/menu.css',
       5 => 'css/jquery.mCustomScrollbar.css',
-      6 => 'css/calendar.css',
-      7 => 'css/tasks.css',
-      8 => 'css/weather.css',
-      9 => 'css/news.css',
-      10 => 'css/feedback.css',
-      11 => 'css/jquery.jscrollpane.css',
+      6 => 'css/articles.css',
+      7 => 'css/calendar.css',
+      8 => 'css/tasks.css',
+      9 => 'css/weather.css',
+      10 => 'css/news.css',
+      11 => 'css/feedback.css',
+      12 => 'css/jquery.jscrollpane.css',
     ),
     1 => 
     array (
@@ -71,8 +72,8 @@ return array (
     ),
     2 => 
     array (
-      'output' => '_controller/css/e6261eb.css',
-      'name' => 'e6261eb',
+      'output' => '_controller/css/c9c1fcb.css',
+      'name' => 'c9c1fcb',
       'debug' => NULL,
       'combine' => NULL,
     ),
