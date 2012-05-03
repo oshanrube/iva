@@ -12,3 +12,9 @@
 #actionList {
 	clear: both;
 }
+#speakBtn {
+	display: none;
+}
+#voice-choices {
+	display: none;
+}

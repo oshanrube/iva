@@ -103,7 +103,7 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 				//search for locations in the text
 			} elseif($locations = Language::getEasyLocation($this->quickTask,$userLocations)) {
 				if(!$lng || !$lat){
-					if($_SERVER['REMOTE_ADDR'] == '192.168.1.100'){$_SERVER['REMOTE_ADDR'] ='112.134.98.178'; }
+					if(preg_match("/192\.168/",$_SERVER['REMOTE_ADDR'])){$_SERVER['REMOTE_ADDR'] ='112.134.98.178'; }
 					$rec = geoip_record_by_name ($_SERVER['REMOTE_ADDR']);
 					$lng = $rec["longitude"];
 					$lat = $rec["latitude"];

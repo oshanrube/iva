@@ -33,7 +33,7 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="float")
      */
-    private $avgspeed;
+    private $avgspeed = 60;
     
     /**
      * @ORM\Column(type="string",length="255", nullable=true)

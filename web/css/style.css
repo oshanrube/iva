@@ -394,7 +394,7 @@ body.member {
 }
 #contentHolder .col{ width: 237px; display: inline-block; vertical-align: top; }
 #contentHolder .middle-col{ width: 67%; background: #ebe8d9; margin: 0 0 30px 0; padding: 20px; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; box-shadow: 0 0 10px #629996; -moz-box-shadow: 0 0 10px #629996; -webkit-box-shadow: 0 0 10px #629996; }
-section header{ border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; color: #eee; height: 50px; margin-bottom: 15px; background-color: #0081ac; box-shadow: inset 0 -35px 35px -18px #005b79; background-image: -moz-linear-gradient(top, #0081ac, #005b79); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #0081ac),color-stop(1, #005b79)); }
+section header{ cursor:pointer; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; color: #eee; height: 50px; margin-bottom: 15px; background-color: #0081ac; box-shadow: inset 0 -35px 35px -18px #005b79; background-image: -moz-linear-gradient(top, #0081ac, #005b79); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #0081ac),color-stop(1, #005b79)); }
 section header h2 { font: 24px/36px Colaborate-RegularRegular, "Trebuchet MS", Arial, Helvetica, sans-serif ; line-height: 50px; padding-left: 20px; color: #EEE; }
 
 #contentHolder .col .widget{ background: #AAA; padding: 5px; border-radius: 5px; border: 4px solid white; border-image: initial; margin-bottom: 10px; background: #ebe8d9; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; box-shadow: 0 0 10px #629996; -moz-box-shadow: 0 0 10px #629996; -webkit-box-shadow: 0 0 10px #629996; }

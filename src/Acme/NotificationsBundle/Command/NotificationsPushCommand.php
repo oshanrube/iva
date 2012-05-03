@@ -29,7 +29,7 @@ class NotificationsPushCommand extends ContainerAwareCommand
 	{
 		$em 	= $this->getContainer()->get('doctrine')->getEntityManager();
 		$now = mktime(date("H"), date("i"), 0, date("m"), date("d"), date("Y"));
-		echo 'its : '.$now."\n";
+		echo 'its : '.date('c',$now)."\n";
 		//create notification
 		$libNotification = new LibNotification($em);
 		//
@@ -79,6 +79,9 @@ class NotificationsPushCommand extends ContainerAwareCommand
 			$userId=$noti->getTask()->getUserId();
 			$user = 	$em->getRepository('AcmeUserBundle:User')
 					->findOneById($userId);
+			//if user backup phone number is emty
+			if(strlen($user->getBackupPhoneNum()) < 9)
+      		continue;
 			//
 			$url = $this->getContainer()->getParameter('url');
 			$url .= $this->getContainer()->get('router')->generate('AcmeNotificationsBundle_call_details', array( 'id' => $noti->getId(), 'confirmId' => $noti->getCallConfirmCode()));
@@ -91,7 +94,7 @@ class NotificationsPushCommand extends ContainerAwareCommand
 				'+'.$user->getBackupPhoneNum(), // Call this number
 				$url
 			);*/
-			echo $url."\n";//exit(); 
+			//echo $url."\n";//exit(); 
 			//process and SEND notification
 			$noti->setVoicecall(true);
 			$em->persist($noti);

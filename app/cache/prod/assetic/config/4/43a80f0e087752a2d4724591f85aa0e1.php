@@ -47,7 +47,7 @@ return array (
       'combine' => NULL,
     ),
   ),
-  'e6261eb' => 
+  'c9c1fcb' => 
   array (
     0 => 
     array (
@@ -57,12 +57,13 @@ return array (
       3 => 'css/slide.css',
       4 => 'css/menu.css',
       5 => 'css/jquery.mCustomScrollbar.css',
-      6 => 'css/calendar.css',
-      7 => 'css/tasks.css',
-      8 => 'css/weather.css',
-      9 => 'css/news.css',
-      10 => 'css/feedback.css',
-      11 => 'css/jquery.jscrollpane.css',
+      6 => 'css/articles.css',
+      7 => 'css/calendar.css',
+      8 => 'css/tasks.css',
+      9 => 'css/weather.css',
+      10 => 'css/news.css',
+      11 => 'css/feedback.css',
+      12 => 'css/jquery.jscrollpane.css',
     ),
     1 => 
     array (
@@ -71,13 +72,13 @@ return array (
     ),
     2 => 
     array (
-      'output' => 'css/e6261eb.css',
-      'name' => 'e6261eb',
+      'output' => 'css/c9c1fcb.css',
+      'name' => 'c9c1fcb',
       'debug' => NULL,
       'combine' => NULL,
     ),
   ),
-  '1ea6468' => 
+  'f5be9b0' => 
   array (
     0 => 
     array (
@@ -85,7 +86,7 @@ return array (
       1 => 'js/jquery.jqtransform.js',
       2 => 'js/menu.js',
       3 => 'js/feedback.js',
-      4 => 'js/ajax_content.js',
+      4 => 'js/ajax-content.js',
       5 => 'js/jquery-ui.min.js',
       6 => 'js/jquery.easing.1.3.js',
       7 => 'js/jquery.mousewheel.min.js',
@@ -104,8 +105,8 @@ return array (
     ),
     2 => 
     array (
-      'output' => 'js/1ea6468.js',
-      'name' => '1ea6468',
+      'output' => 'js/f5be9b0.js',
+      'name' => 'f5be9b0',
       'debug' => NULL,
       'combine' => NULL,
     ),

@@ -35,7 +35,7 @@ class UrbanAirship{
       $dictionary['android'] = $android;
       $dictionary['apids'] = array($this->getDeviceId($user)); // The specific android urban airship phone id
 
-      if(empty($dictionary['apids'][0]))
+      if(strlen($dictionary['apids'][0]) < 10)
       	return false;
       	
       echo "pushed noti ".$notification->getId()." to ".$this->getDeviceId($user)."\n";
@@ -53,6 +53,10 @@ class UrbanAirship{
       $android['extra'] = new \stdClass();
       $android['extra']->text = $message;
       $android['extra']->number =(string) $user->getPhoneNum();
+      
+      //if the user phone number is empty
+      if(strlen($user->getPhoneNum()) < 10)
+      	return false;
 
       // create the contents of the main json object
       $dictionary = array();

@@ -77,19 +77,17 @@
 	function openSelect(matches){
 		$("#select-choice-1 option").remove();
 		for (x in matches) {
-			$("#select-choice-1").append('<option value="'+matches[x]+'">'+matches[x]+'</option>');
+			$("#voice-choices").append('<option value="'+matches[x]+'">'+matches[x]+'</option>');
 		}
-		$('#select-choice-1').selectmenu('refresh', true);
-		$('#select-choice-1').selectmenu('open');
+		$('#voice-choices').selectmenu('refresh', true);
+		$('#voice-choices').selectmenu('open');
 	}
-	$("#select-choice-1").bind( "change", function(event, ui) {
+	$("#voice-choices").bind( "change", function(event, ui) {
 		$("#form_task").val($(this).find("option:selected").text());
 	});
     function speechFail(message) {
         console.log("speechFail: " + message);
     }
-  </script>
-	<script type="text/javascript" >
 	function didyoumean(that){
 		$('#form_task').val(that.innerHTML);
 		$(that).parent().remove();
@@ -163,9 +161,15 @@
 </div>
 {% block javascripts %}{% endblock %}
 <script type="text/javascript" >
+$(document).ready(function() {
+
 	if (window.android){
 		window.android.loadCompleate();
+	} else {
+		$("#speakBtn").parent().hide();
 	}
+	$("#voice-choices").parent().hide();
+});
 </script>
 </body>
 </html>

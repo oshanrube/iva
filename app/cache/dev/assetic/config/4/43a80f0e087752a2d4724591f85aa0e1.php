@@ -78,7 +78,7 @@ return array (
       'combine' => NULL,
     ),
   ),
-  '1ea6468' => 
+  'f5be9b0' => 
   array (
     0 => 
     array (
@@ -86,7 +86,7 @@ return array (
       1 => 'js/jquery.jqtransform.js',
       2 => 'js/menu.js',
       3 => 'js/feedback.js',
-      4 => 'js/ajax_content.js',
+      4 => 'js/ajax-content.js',
       5 => 'js/jquery-ui.min.js',
       6 => 'js/jquery.easing.1.3.js',
       7 => 'js/jquery.mousewheel.min.js',
@@ -105,8 +105,8 @@ return array (
     ),
     2 => 
     array (
-      'output' => '_controller/js/1ea6468.js',
-      'name' => '1ea6468',
+      'output' => '_controller/js/f5be9b0.js',
+      'name' => 'f5be9b0',
       'debug' => NULL,
       'combine' => NULL,
     ),

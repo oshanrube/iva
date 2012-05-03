@@ -109,9 +109,9 @@ class LibNotification{
 				$notification->setPush(true);
 				break;
 			case "SMS":
-				$Sms = new Sms();
-				$Sms->sendNotification($user,$notification);
-				$notification->setSms(true);
+				//UrbanAirship//
+				$UrbanAirship = new UrbanAirship();
+				$UrbanAirship->sendSms($user,$notification);
 				break;
 			case "Call":
 				//TODO
