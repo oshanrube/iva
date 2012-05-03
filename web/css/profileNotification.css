@@ -1,0 +1,132 @@
+#container {
+	margin:0 auto;
+	background:#fff;
+	width:600px;
+	padding:20px 40px;
+	text-align:left;
+}
+#profileNotifications button {
+	width:150px;
+	height:37px;
+	line-height:37px;
+	border:none;
+	background:url(../images/form/form_button.gif) no-repeat 0 0;
+	color:#fff;
+	cursor:pointer;
+	text-align: center;
+}
+/* // form 1 */
+/* form 2 */
+#profileNotifications {
+	margin:1em 0;
+	color:#fff;
+	width:320px;
+	/* customize width,this form have fluid layout */
+	position:fixed;
+	left:0;
+	bottom:-234px;
+	border:10px solid black;
+	border-radius:10px;
+	border-top-left-radius:0;
+}
+#profileNotifications h3 {
+	margin:0;
+	font-size:20px;
+	border:1px solid #57a700;
+	background:black url(../images/form/form_heading.gif) no-repeat;
+	padding-bottom:0;
+}
+#profileNotifications h3 span {
+	display:block;
+	height:25px;
+	padding:10px 20px;
+	background:url(../images/form/form_ico.gif) no-repeat 93% 50%;
+}
+#profileNotifications fieldset {
+	margin:0;
+	padding:0;
+	border:none;
+	border-top:3px solid #000;
+	background:#000 url(../images/form/form_top.gif) repeat-x;
+	padding-bottom:1em;
+}
+
+#profileNotifications p {
+	margin:.5em 20px;
+	padding-bottom:0px;
+}
+#profileNotifications label {
+	display:block;
+}
+#profileNotifications input,#profileNotifications textarea {
+	width:272px;
+	border:1px solid #111;
+	background:#282828 url(../images/form/form_input.gif) repeat-x;
+	padding:5px 3px;
+	color:#fff;
+}
+#profileNotifications textarea {
+	height:125px;
+	overflow:auto;
+}
+#profileNotifications p.submit {
+	text-align:right;
+}
+#profileNotifications ul {
+	padding-top: 5px;
+	padding-right: 5px;
+}
+#profileNotifications div {
+padding-left: 150px;
+font-size: 19.5px;
+line-height: 1;
+color: white;
+border-bottom: 2px solid #CCC;
+}
+#form1 button {
+	padding:0 20px;
+	height:32px;
+	line-height:32px;
+	border:1px solid #70ad2e;
+	background:#5aae00 url(../images/form/form_button.gif) repeat-x;
+	color:#fff;
+	cursor:pointer;
+	text-align:center;
+}
+#profileNotificationHandle {
+	position:fixed;
+	left:0;
+	bottom:30px;
+	cursor:pointer;
+}
+#profileNotificationHandle .left {
+	background:url(../images/tab_b_l.png) no-repeat left 0;
+	height:42px;
+	width:30px;
+	padding:0;
+	margin:0;
+	display:block;
+	float:left;
+}
+#profileNotificationHandle .middle {
+	color: red;
+	font-weight: bold;
+	text-align:left;
+	padding:0 6px;
+	display:block;
+	float:left;
+	height:42px;
+	background:url(../images/tab_b_m.png) repeat-x 0 0;
+	line-height:42px;
+	color:white;
+	float:left;
+	width:260px;
+}
+#profileNotificationHandle .right {
+	background:url(../images/tab_b_r.png) no-repeat left 0;
+	height:42px;
+	width:30px;
+	padding:0;
+	margin:0;
+	display: block;
+}

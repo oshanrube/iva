@@ -5601,3 +5601,8 @@
 [2012-04-27 08:14:16] security.DEBUG: Write SecurityContext in the session [] []
 [2012-05-03 23:43:52] security.INFO: Populated SecurityContext with an anonymous Token [] []
 [2012-05-03 23:43:52] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /asd/asd" (uncaught exception) at /var/www/html/Symfony/app/cache/prod/classes.php line 5056 [] []
+[2012-05-04 00:55:51] security.DEBUG: Read SecurityContext from the session [] []
+[2012-05-04 00:55:51] security.DEBUG: Reloading user from user provider. [] []
+[2012-05-04 00:55:51] security.DEBUG: Username "oshan" was reloaded from user provider. [] []
+[2012-05-04 00:55:51] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /member/app_dev.php" (uncaught exception) at /var/www/html/Symfony/app/cache/prod/classes.php line 5056 [] []
+[2012-05-04 00:55:51] security.DEBUG: Write SecurityContext in the session [] []

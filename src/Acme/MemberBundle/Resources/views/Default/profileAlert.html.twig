@@ -1,0 +1,23 @@
+{% if errors > 0 %}
+<div id="profileNotificationHandle" onClick="toggleProfileNotification({{ height }})" >
+	<div class="left"></div>
+	<div class="middle">Alerts!!!</div>
+	<div class="right"></div>
+</div>
+<div id="profileNotifications">
+	<fieldset><div>Alerts</div>
+		<ul>
+		{% if user.deviceId is empty %}
+			<li>You have not connected an mobile device with IVA yet!</li>
+		{% endif %}
+		{% if user.phoneNum is empty %}
+			<li>You have not entered a phone number yet!</li>
+		{% endif %}
+		{% if user.backupPhoneNum is empty %}
+			<li>You have not entered a Backup phone number yet!</li>
+		{% endif %}
+		</ul>
+		<a href="{{ url('AcmeUserBundle_profile_edit') }}" style="float: right;top: -15px;" class="nav" target="dashboard">Update Profile</a>
+	</fieldset>
+</div>
+{% endif %}
