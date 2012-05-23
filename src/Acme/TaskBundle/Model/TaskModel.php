@@ -16,7 +16,7 @@ use Acme\ScheduleBundle\Entity\Schedule;
 class TaskModel{
 	//Entity Manager
 	private $em;
-	private $question,$description,$suggestions,$requestTask,$quickTask,$venues,$tasks;
+	private $question,$description,$suggestions,$requestTask,$quickTask,$venues,$tasks,$location;
 	
 	public function __construct($em) {
 		$this->em = $em;
@@ -80,7 +80,7 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 			//get time
 			$startTime = Decode::getDateTime($this->quickTask);
 			if($startTime == 0){
-				$this->question = 'Hey system couldnt figure out the "when" part(Time), please help out!!';
+				$this->question = 'Hey system couldn\'t figure out the "when" part(Time), please help out!!';
 				return false;
 			} else {
 				$task->setStartTime($startTime);
@@ -121,18 +121,42 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 					$this->suggestions = $location->improveSentence();
 					//add Venues
 					$this->venues = $location->getVenues();
-					$this->question = 'Hey system couldnt figure out the "Where" part(Location), please help out from the map!!';
-					return false;
+					//get venue sensitiv
+					foreach($this->venues as $key => $val){
+						$val->compairValue = strcasecmp($val->name,$val->loc);
+						
+						if(!isset($this->bestSuggestion))
+							$this->bestSuggestion = $val;
+						
+						if(
+							($val->compairValue < $this->bestSuggestion->compairValue) && 
+							($val->compairValue > 0) &&
+							(strlen($val->loc) > strlen($this->bestSuggestion->loc))
+						  )
+							$this->bestSuggestion = $val;
+					}
+					//if the location is found in side the best suggestion
+					if(preg_match("/".$this->bestSuggestion->loc."/i",$this->bestSuggestion->name)){
+						//set location
+						$this->location = $this->bestSuggestion->loc;
+						$task->setLocation($this->bestSuggestion->name);
+						$task->setLng($this->bestSuggestion->lng);
+						$task->setLat($this->bestSuggestion->lat);
+					} else {
+						//return the sugestions
+						$this->question = 'Hey system couldn\'t figure out the "Where" part(Location), please help out from the map!!';
+						return false;
+					}
 				} else {
+					$this->location = $taskLocation->name;
 					$task->setLocation($taskLocation->name);
 					$task->setLng($taskLocation->location->lng);
 					$task->setLat($taskLocation->location->lat); 
-				}
+				}					
 			} else {
-				$this->question = 'Hey system couldnt figure out the "Where" part(Location), please help out!!';
+				$this->question = 'Hey system couldn\'t figure out the "Where" part(Location), please help out!!';
 				return false;
 			}
-			
 			/*********************/
 			/*Calendar************/
 			/*********************/
@@ -154,13 +178,12 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 			// fill  the task
 				$CleanedTask = Language::removePronouns($this->requestTask);
 				$CleanedTask = Decode::removeTime($CleanedTask);
-				$CleanedTask = Decode::removeLocation($CleanedTask,$task->getLocation());
+				$CleanedTask = Decode::removeLocation($CleanedTask,$this->location);
 				if(!$tsk = Decode::getTask($CleanedTask)){
-					$this->question = 'Hey system couldnt figure out the "What" part(Task), please help out!!';
+					$this->question = 'Hey system couldn\'t figure out the "What" part(Task), please help out!!';
 					return false;
 				} 
 				$task->setTask($tsk);
-				
 			/*********************/
 			/*Task Type***********/
 			/*********************/
@@ -229,6 +252,20 @@ Log::bench('AddNewTask',$time_start,'improveSentence'); $time_start = microtime(
 				$this->em->persist($schedule);
 				$this->em->flush();
 			//finish
+			//log
+			$msg = "\nInput=>".$this->requestTask."\n";
+			$msg .= "StartTime=>".$task->getStartTime()."\n";
+			$msg .= "Time=>".date("c",$task->getStartTime())."\n";
+			$msg .= "Location=>".$task->getLocation()."\n";
+			$msg .= "Calendar=>".$task->getCalendar()->getTitle()."\n";
+			$msg .= "Task=>".$task->getTask()."\n";
+			$msg .= "Endtime=>".$task->getEndtime()."\n";
+			$msg .= "UserId=>".$task->getUserId()."\n";
+			$msg .= "TaskType=>".$task->getTaskType()->getTitle()."\n";
+			$msg .= "TaskRepeat=>".$task->getTaskRepeat()->getTitle()."\n";
+			$msg .= "TaskPriority=>".$task->getTaskPriority()->getDescription()."\n";
+			$msg .= "Description=>".$task->getDescription()."\n";
+			Log::log('taskModel',$msg);
 		return true;
 	}
 

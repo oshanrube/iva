@@ -20,7 +20,7 @@ echo "<div class=\"success message\">
 endif;
 
 echo "<table>";
-echo "<thead><tr><td>Sunday</td><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td><td>Saturday</td></tr></thead>";
+echo "<thead><tr><td>Sunday</td><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td><td>Satuaaarday</td></tr></thead>";
 echo "<tbody>";
 for ($i=0; $i<($maxday+$startday); $i++) {
 	$day = ($i - $startday + 1);

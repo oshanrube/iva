@@ -39,8 +39,8 @@ class DefaultControllerTest extends WebTestCase
 	
 	public function testIndex()
 	{
-$client = $this->createClientWithAuthentication('main');
-//$client = $this->createClient();
+		$client = $this->createClientWithAuthentication('main');
+		//$client = $this->createClient();
 		$client->followRedirects(true);
 
 		$serviceContainer = self::$kernel->getContainer();

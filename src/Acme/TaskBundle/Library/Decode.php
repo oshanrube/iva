@@ -81,19 +81,28 @@ class Decode{
 		return implode(' ',$matches[0]);
 	}
 	public static function removeLocation($task,$location) {
-		return preg_replace("/".$location."/i",'',$task);	
+		//remove extra spaces
+		$task = preg_replace("/\s\s+/"," ",$task);
+		return preg_replace("/".$location."/si",'',$task);	
 	}
 	public static function getTask($task) {
+		/******************************************************/
+		/*dissmissed because it only takes words with capitals*/
+		/******************************************************/
 		//create instance from pronous class
-		$pn = new ProperNouns();
+		//$pn = new ProperNouns();
 		//get array with proper nouns
-		$str = implode('',$pn->get($task));
-		if($str == ''){
+		//$str = implode('',$pn->get($task));
+		if($task != ''){
+			//remove extra spaces
+			$task = preg_replace("/\s\s+/"," ",$task);
 			$task = Language::improveSentence($task);
+			$task = preg_replace("/^\s/","",$task);
+			$task = preg_replace("/\s$/","",$task);
+			$task = ucfirst(strtolower($task));
 			return $task;
 		}
-		return $str;
-		
+		return '';
 	}
 	
 	public static function getTaskType($task,$taskTypeRepo) {

@@ -18,7 +18,7 @@ class Log{
 	}
 	public static function log($file,$message) {
 		$logger = new Logger($file);
-		$logger->pushHandler(new StreamHandler('/var/www/html/Symfony/app/logs/customlog.log', Logger::WARNING));
+		$logger->pushHandler(new StreamHandler(__DIR__.'/../../../../app/logs/'.$file.'.log', Logger::WARNING));
 		$logger->addError($message);
 	}
 }

@@ -13,7 +13,7 @@ class Language{
 		if($changes != 0) {
 			$googleLibrary = new GoogleLibrary();
 			if($googleLibrary->search($seachText)){$seachText = $googleLibrary->correct;}
-			else {Log::err('Leanguage','Search Text not found '.$seachText);}
+			else {Log::err('Language','Search Text not found '.$seachText);}
 		}
 		return $seachText;
 	}
@@ -39,7 +39,9 @@ class Language{
 			}
 		}
 		//check for new locations
-		$combos = array("at ([1-z]+)","in ([1-z]+)","venue ([1-z]+)");
+		$combos = array("at ([1-z]+\s[1-z]+)","at ([1-z]+)",
+							 "in ([1-z]+\s[1-z]+)","in ([1-z]+)",
+							 "venue ([1-z]+\s[1-z]+)","venue ([1-z]+)");
 		$matches = array();
 		foreach($combos as $combo){
 			preg_match_all("/".$combo."/i",$string,$match);
