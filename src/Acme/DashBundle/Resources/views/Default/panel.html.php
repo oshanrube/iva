@@ -18,16 +18,21 @@ echo "<div class=\"success message\">
         <p>".$view['session']->getFlash('success')."</p>
     </div>";
 endif;
-
-echo "<table>";
-echo "<thead><tr><td>Sunday</td><td>Monday</td><td>Tuesday</td><td>Wednesday</td><td>Thursday</td><td>Friday</td><td>Satuaaarday</td></tr></thead>";
-echo "<tbody>";
+?>
+<div id="calendar">
+	<div id="head">
+		<div class="row">
+			<div class="cell">Sunday</div><div class="cell">Monday</div><div class="cell">Tuesday</div><div class="cell">Wednesday</div><div class="cell">Thursday</div><div class="cell">Friday</div><div class="cell">Saturday</div>
+		</div>
+	</div>
+	<div id="body">
+<?php
 for ($i=0; $i<($maxday+$startday); $i++) {
 	$day = ($i - $startday + 1);
-	if(($i % 7) == 0 ) echo "<tr>";
-	if($i < $startday) echo "<td></td>\n";
+	if(($i % 7) == 0 ) echo "<div class=\"row\">";
+	if($i < $startday) echo "<div class=\"cell\"></div>\n";
 	else{
-		 echo "<td><span class=\"border\"><div class=\"date\">". ($i - $startday + 1) . "</div>";
+		 echo "<div class=\"cell\"><span class=\"border\"><div class=\"date\">". ($i - $startday + 1) . "</div>";
 		 //print tasks
 		 if(isset($timeline[$day]['evnts'])){
 		 	echo '<ul>';
@@ -43,12 +48,12 @@ for ($i=0; $i<($maxday+$startday); $i++) {
 			}
 			echo '</ul>';
 		 }
-		 echo "</span></td>\n";
+		 echo "</span></div>\n";
 		 $timestamp =  strtotime("+1 day",$timestamp);
 	}
-	if(($i % 7) == 6 ) echo "</tr>\n";
+	if(($i % 7) == 6 ) echo "</div>\n";
 }
-echo "</tbody>";
-echo "</table>";
 ?>
+	</div>
+</div>
 </div>
