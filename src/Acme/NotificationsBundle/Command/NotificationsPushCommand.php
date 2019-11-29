@@ -72,8 +72,8 @@ class NotificationsPushCommand extends ContainerAwareCommand
 								->findByPendingCallNotifications();
 		$output->writeln('Loading backup call notifications: '.count($notifications));
 		foreach($notifications as $noti){
-			$AccountSid = "AC403828398da640fda9cfbd3dd9c59e9a";
-			$AuthToken = "1d8d08ffeb0a2163040403fec73547f7";
+			$AccountSid = "";
+			$AuthToken = "";
 		 
 			//get user info
 			$userId=$noti->getTask()->getUserId();
@@ -86,8 +86,8 @@ class NotificationsPushCommand extends ContainerAwareCommand
 			$url = $this->getContainer()->getParameter('url');
 			$url .= $this->getContainer()->get('router')->generate('AcmeNotificationsBundle_call_details', array( 'id' => $noti->getId(), 'confirmId' => $noti->getCallConfirmCode()));
 			// Instantiate a new Twilio Rest Client
-			$AccountSid = "AC403828398da640fda9cfbd3dd9c59e9a";
-   	 	$AuthToken = "1d8d08ffeb0a2163040403fec73547f7";
+			$AccountSid = "";
+   	 	$AuthToken = "";
     		$client = new \Services_Twilio($AccountSid, $AuthToken);
 			/*$call = $client->account->calls->create(
 				'94776566978', // From this number
